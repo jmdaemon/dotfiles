@@ -2,8 +2,8 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 export DOTFILES="$HOME/.config/dotfiles"
-
 export ZDOTDIR=$DOTFILES/zsh
+
 # https://github.com/ohmyzsh/ohmyzsh/issues/7332#issuecomment-593308026
 skip_global_compinit=1
 ZSH_CACHE_DIR=$HOME/.cache/zsh
@@ -13,14 +13,12 @@ ZSH_COMPDUMP="${ZSH_CACHE_DIR}/.zcompdump-${HOST/.*/}-${ZSH_VERSION}"
 export ZSH="$HOME/.oh-my-zsh"
 source $DOTFILES/scripts/terminal/base16.sh
 source $DOTFILES/scripts/terminal/prompt/zprompt.zsh
-#source $DOTFILES/scripts/tprompt/zsh/zprompt.zsh
 
-HISTFILE=$HOME/.history/zsh/arch-laptop/.zsh_history
+HISTFILE=$HOME/.history/zsh/"{{- .system}}"/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
 
-
-fpath=( ~/config/.zsh/completion $fpath ~/.cfg/scripts/completion )
+fpath=( ~/config/.zsh/completion $fpath "$DOTFILES/completion" )
 zstyle ':completion:*' completer _complete
 zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' '+l:|=* r:|=*'
 #autoload -Uz compinit && compinit -i
@@ -102,14 +100,8 @@ source $ZSH/oh-my-zsh.sh
 # export SSH_KEY_PATH="~/.ssh/rsa_id"
 #
 
-#source $HOME/.cfg/scripts/aliases/aliases.zsh
-#source $HOME/.cfg/scripts/tstart/hidpi.sh
-#source $HOME/.cfg/scripts/tstart/conda-init.sh
-#source $HOME/.profile
-#source $HOME/.cfg/scripts/tstart/sdkman.sh
-
 source $DOTFILES/scripts/aliases/aliases.zsh
-source $DOTFILES/scripts/terminal/hidpi.sh
+{{ if (eq .system "arch-laptop") }}source $DOTFILES/scripts/terminal/hidpi.sh {{ end }}
 source $DOTFILES/scripts/terminal/conda-init.sh
 source $DOTFILES/scripts/terminal/sdkman.sh
 source $HOME/.profile

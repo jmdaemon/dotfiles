@@ -1,0 +1,14 @@
+#!/bin/sh
+
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx
+
+xrdb -merge ~/.Xresources
+{{ if (eq .system "arch-laptop" ) }}xrandr --dpi 240{{end}}
+
+rofi &
+mpd &
+picom -b
+bash ~/.config/polybar/launch.sh
+exec i3

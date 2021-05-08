@@ -1,0 +1,52 @@
+!Xft.dpi: 240
+{{ if (eq .system "arch-laptop" ) }}Xft.dpi: 220{{end}}
+Xft.hinting: 1
+Xft.antialias: 1
+Xft.rgba: rgb
+
+{{ if (eq .system "arch-laptop" ) }}rofi.dpi: 156{{end}}
+!rofi.theme: solarized-darker
+
+!#--$template: xresources.template
+
+! ------------------------------------------------------------------------------
+! ROFI Color theme
+! ------------------------------------------------------------------------------
+ rofi.color-enabled: true
+ rofi.color-window: #510231, #510231, #FF974E
+ rofi.color-normal: #510231, #FEE8DA, #510231, #FF974E, #510231
+ rofi.color-active: #510231, #FEE8DA, #510231, #FF974E, #510231
+ rofi.color-urgent: #510231, #FA6E43, #510231, #FA6E43, #FEE8DA
+
+
+! black
+*.color0  : #${col0}#
+*.color8  : #${col8}#
+
+! red
+*.color1  : #${col1}#
+*.color9  : #${col9}#
+
+! green
+*.color2  : #${col2}#
+*.color10 : #${col10}#
+
+! yellow
+*.color3  : #${col3}#
+*.color11 : #${col11}#
+
+! blue
+*.color4  : #${col4}#
+*.color12 : #${col12}#
+
+! magenta
+*.color5  : #${col5}#
+*.color13 : #${col13}#
+
+! cyan
+*.color6  : #${col6}#
+*.color14 : #${col14}#
+
+! white
+*.color7  : #${col7}#
+*.color15 : #${col15}#

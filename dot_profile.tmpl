@@ -103,10 +103,9 @@ export EDITOR=nvim
 
 #ALIAS="$HOME/.config/dotfiles/{{ .system }}/.cfg/scripts/aliases" 
 ALIAS="$XDG_CONFIG_HOME/dotfiles/scripts/aliases" 
-source $ALIAS/shared.sh
-{{ if ( eq .system "ubuntu-workstation" ) }}source $ALIAS/nvidia.sh{{ end }}
-{{ if ( eq .system "arch-laptop" ) }}source $ALIAS/pacman.sh{{ end }}
-source $ALIAS/school.sh
+source $ALIAS/aliases.sh
+{{- if ( eq .system "ubuntu-workstation" ) -}}source $ALIAS/nvidia.sh{{ end }}
+{{ if ( eq .system "arch-laptop" ) -}}source $ALIAS/pacman.sh{{ end }}
 #source $HOME/.cfg/scripts/tstart/fortunecow.sh
 #source $HOME/.config/dotfiles/scripts/init/init-nvm.sh
 #source $XDG_CONFIG_HOME/scripts/init/init-nvm.sh

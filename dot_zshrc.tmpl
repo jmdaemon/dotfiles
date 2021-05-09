@@ -102,7 +102,9 @@ source $ZSH/oh-my-zsh.sh
 #
 
 source $DOTFILES/scripts/aliases/zsh.zsh
-{{ if (eq .system "arch-laptop") }}source $DOTFILES/scripts/terminal/hidpi.sh {{ end }}
+{{- if (eq .system "arch-laptop") }}
+source $DOTFILES/scripts/terminal/hidpi.sh 
+{{ end -}}
 source $DOTFILES/scripts/terminal/conda-init.sh
 source $DOTFILES/scripts/terminal/sdkman.sh
 source $HOME/.profile

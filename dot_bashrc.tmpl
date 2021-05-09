@@ -115,8 +115,10 @@ fi
 
 #export PATH="$HOME/anaconda3/bin:$PATH:$HOME/npm/bin:/usr/games"
 DOTFILES="$HOME/.config/dotfiles"
-{{ if ( eq .system "arch-laptop" ) -}}source $DOTFILES/scripts/terminal/hidpi.sh{{end}}
-source $HOME/.profile
+{{- if ( eq .system "arch-laptop" ) }}
+source $DOTFILES/scripts/terminal/hidpi.sh 
+{{ end -}}
 source $DOTFILES/scripts/terminal/sdkman.sh
+source $HOME/.profile
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash

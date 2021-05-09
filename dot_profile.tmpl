@@ -54,6 +54,7 @@ export NPM_CONFIG_CACHE=$XDG_CACHE_HOME/npm
 export NPM_CONFIG_TMP=$XDG_RUNTIME_DIR_HOME/npm
 export NODE_PATH="$NODE_PATH:$NPM_DIR/lib/node_modules"
 
+export RBENV_ROOT="$XDG_CONFIG_HOME/rbenv"
 #export BASH_COMPLETION_USER_FILE="$XDG_CONFIG_HOME"/bash-completion/bash_completion
 
 # Applications - Config
@@ -108,8 +109,11 @@ export EDITOR=nvim
 
 ALIAS="$XDG_CONFIG_HOME/dotfiles/scripts/aliases" 
 source $ALIAS/aliases.sh
-{{- if ( eq .system "ubuntu-workstation" ) -}}source $ALIAS/nvidia.sh{{ end }}
-{{ if ( eq .system "arch-laptop" ) -}}source $ALIAS/pacman.sh{{ end }}
+{{- if ( eq .system "ubuntu-workstation" ) }}
+source $ALIAS/nvidia.sh 
+{{- else if ( eq .system "arch-laptop" ) }}
+source $ALIAS/pacman.sh
+{{ end -}}
 #source $XDG_CONFIG_HOME/dotfiles/scripts/startup/nvm.sh
 #source $XDG_CONFIG_HOME/dotfiles/scripts/terminal/fortunecow.sh
 

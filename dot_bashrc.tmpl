@@ -114,7 +114,7 @@ if ! shopt -oq posix; then
 fi
 
 #export PATH="$HOME/anaconda3/bin:$PATH:$HOME/npm/bin:/usr/games"
-{{ if ( eq .system "arch-laptop" ) }}source $HOME/.cfg/scripts/tstart/hidpi.sh{{end}}
+{{ if ( eq .system "arch-laptop" ) -}}source $HOME/.cfg/scripts/tstart/hidpi.sh{{end}}
 source $HOME/.profile
 source $HOME/.cfg/scripts/tstart/sdkman.sh
 

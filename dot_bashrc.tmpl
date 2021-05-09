@@ -114,11 +114,9 @@ if ! shopt -oq posix; then
 fi
 
 #export PATH="$HOME/anaconda3/bin:$PATH:$HOME/npm/bin:/usr/games"
-{{ if ( eq .system "arch-laptop" ) -}}source $HOME/.cfg/scripts/tstart/hidpi.sh{{end}}
+DOTFILES="$HOME/.config/dotfiles"
+{{ if ( eq .system "arch-laptop" ) -}}source $DOTFILES/scripts/terminal/hidpi.sh{{end}}
 source $HOME/.profile
-source $HOME/.cfg/scripts/tstart/sdkman.sh
-
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-#export PATH="$PATH:$HOME/.rvm/bin"
+source $DOTFILES/scripts/terminal/sdkman.sh
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash

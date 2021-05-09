@@ -36,7 +36,7 @@ export SQLITE_HISTORY="$HISTORY_DIR"/sqlite3/"{{ .system }}"/sqlite_history
 
 # RC Files
 export OCTAVE_SITE_INITFILE="$XDG_CONFIG_HOME/octave/octaverc"
-export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
+export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
 export CONDARC="$XDG_CONFIG_HOME/conda/condarc"
 export WGETRC="$XDG_CONFIG_HOME/wget/wgetrc"
 
@@ -48,15 +48,11 @@ export GEM_SPEC_CACHE="$XDG_CACHE_HOME"/gem
 export RUSTUP_HOME="$XDG_DATA_HOME"/rustup 
 export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
 
-
 export NVM_DIR="$XDG_DATA_HOME"/nvm 
 export NPM_DIR="$XDG_DATA_HOME"/npm
-
 export NPM_CONFIG_CACHE=$XDG_CACHE_HOME/npm
 export NPM_CONFIG_TMP=$XDG_RUNTIME_DIR_HOME/npm
-export NODE_PATH="$NODE_PATH:$NPM_DIR/npm/lib/node_modules"
-
-
+export NODE_PATH="$NODE_PATH:$NPM_DIR/lib/node_modules"
 
 #export BASH_COMPLETION_USER_FILE="$XDG_CONFIG_HOME"/bash-completion/bash_completion
 
@@ -96,11 +92,9 @@ fi
 
 SBIN=/usr/sbin
 NPM=$NPM_DIR/bin
-RUST="$CARGO_HOME"/bin
+RUST=$CARGO_HOME/bin
 GO=/usr/local/go/bin
 LOCAL=$HOME/.local/bin
-#RVM=$HOME/.rvm/bin # Make sure this is the last PATH variable change.
-#export PATH=$PATH:$SBIN:$NPM:$RUST:$GO:$LOCAL:$RVM
 export PATH=$PATH:$SBIN:$NPM:$RUST:$GO:$LOCAL
 
 # Java
@@ -120,8 +114,6 @@ source $ALIAS/aliases.sh
 
 #export GOPATH="$HOME/workspace/go_projects"
 #export GOBIN="$GOPATH/bin"
-
-# [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
 # Persistent Tmux Sessions
 #/usr/bin/tmux attach -t 0

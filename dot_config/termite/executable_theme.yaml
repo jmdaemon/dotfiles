@@ -1,0 +1,105 @@
+name: "firewatch"
+
+startup:
+  - "i3-msg restart"
+  - "killall -USR1 termite"
+  - "feh --bg-fill 'background.jpg'"
+  - "xrdb -load ~/.Xresources"
+  # - "sh polybar.sh"
+
+
+
+variables:
+  gapsInner : "20"
+  gapsOuter : "15"
+
+  ## Colors
+  #########
+
+  # Black
+  col0  : &color0  "#2e282e"
+  col8  : &color8  "#403741"
+
+  # Red
+  col1  : &color1  "#C8293F"
+  col9  : &color9  "#CA407E"
+
+  # Green
+  col2  : &color2  "#DCA484"
+  col10 : &color10 "#F8D2BD"
+
+  # Yellow
+  col3  : &color3  "#ffc857"
+  col11 : &color11 "#ffd171"
+
+  # Blue
+  col4  : &color4  "#E3B195"
+  col12 : &color12 "#FFDCC8"
+
+  # Magenta
+  col5  : &color5  "#AC1358"
+  col13 : &color13 "#CA407E"
+
+  # Cyan
+  col6  : &color6  "#D9583C"
+  col14 : &color14 "#E57860"
+
+  # White
+  col7  : &color7  "#E8E2DB"
+  col15 : &color15 "#F7EDE2"
+
+  colFg        : &colorFg "#E9DDCF"
+  colBg        : &colorBg "#201D21"
+  colHighlight : &colorHighlight "#553035"
+  colCursor    : &colorCursor "#c8c5c8"
+  colFocus     : &colorFocus "#D9583C"
+
+  colPrimary    : &colorPrimary "#E57860"
+  colBackground : "#000000"
+
+  ## Bar colors
+  
+  # Bottom bar
+  colBottomBarFg     : "#70ffffff"
+  colBottomBarBg     : "#00ffffff"
+  colBottomBarShaded : "#15ffffff"
+ 
+  # Top bar
+  colTopBarFg     : "#bb000000"
+  colTopBarBg     : "#00ffffff"
+  colTopBarShaded : "#15ffffff"
+
+  colBarVolume          : "#000000"
+  colBarVolumeMax       : "#000000"
+  colBarVolumeMute      : "#000000"
+  colBarVolumeIndicator : "#000000"
+
+  colBarBrightness          : "#000000"
+  colBarBrightnessIndicator : "#000000"
+
+  colBarBatteryWarn : *color9
+
+  bgTerminal    : "rgba(32, 29, 33, 0.9)"
+  hiTerminal    : "#553035"
+
+  bgFocused     : *colorPrimary
+  bFocused      : *colorPrimary
+  tFocused      : "#FFFFFF"
+
+  bgUnfocused   : "#333333"
+  bUnfocused    : "#222222"
+  tUnfocused    : "#888888"
+
+  bgInactive    : "#222222"
+  bInactive     : "#5F676A"
+  tInactive     : "#FFFFFF"
+
+  bgUrgent      : "#222222"
+  bUrgent       : "#900000"
+  tUrgent       : "#FFFFFF"
+
+  bgPlaceholder : "#000000"
+  bPlaceholder  : "#0C0C0C"
+  tPlaceholder  : "#FFFFFF"
+
+  colTest       : "#FF0000"

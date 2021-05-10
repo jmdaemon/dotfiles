@@ -1,0 +1,53 @@
+#--$template: termite.template
+
+[colors]
+
+# special
+foreground      = #${colFg}#
+foreground_bold = #${colFg}#
+cursor          = #${colCursor}#
+background      = #${bgTerminal}#
+
+highlight = #${colHighlight}#
+
+# black
+color0  = #${col0}#
+color8  = #${col8}#
+
+# red
+color1  = #${col1}#
+color9  = #${col9}#
+
+# green
+color2  = #${col2}#
+color10 = #${col10}#
+
+# yellow
+color3  = #${col3}#
+color11 = #${col11}#
+
+# blue
+color4  = #${col4}#
+color12 = #${col12}#
+
+# magenta
+color5  = #${col5}#
+color13 = #${col13}#
+
+# cyan
+color6  = #${col6}#
+color14 = #${col14}#
+
+# white
+color7  = #${col7}#
+color15 = #${col15}#
+
+[options]
+font = Inconsolata Nerd Font Bold 12
+mouse_autohide = true
+allow_bold = true
+dynamic_title = true
+#urgent_on_bell = true
+clickable_url = true
+scrollback_lines = 10000
+search_wrap = true

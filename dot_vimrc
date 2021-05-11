@@ -62,7 +62,7 @@ Plug 'MaxMEllon/vim-jsx-pretty'     , { 'for': 'jsx' }
 call plug#end()
 
 if !has('nvim')
-  set viminfo+=n~/.local/share/vim/viminfo
+  set viminfo+=~/.local/share/vim/viminfo
 endif
 
 "================ Syntastic ==============="

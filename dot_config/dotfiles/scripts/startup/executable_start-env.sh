@@ -30,7 +30,6 @@ show_usage() {
     echo "Usage: start_env.sh [conda_environment]"
 }
 
-
 ENVS_LIST=$(conda info --envs | tail -n +3 | awk '{print $1}' | awk '{printf $1 " "}END{printf "\n"}')
 
 if [[ -z $1 ]]

@@ -10,9 +10,9 @@ make_bigger_font() {
 }
 
 customize_default_grub() {
-    sed -i 's,GRUB_BACKGROUND.*,GRUB_BACKGROUND='"$WALLPAPER"',' "$DEFAULT_GRUB"    # Change bootloader background
-    if [[ ! -z $FONT ]]; then make_bigger_font; else :; fi                          # Make font if not generated
-    sed -i 's,GRUB_FONT.*,GRUB_FONT='"$FONT"',' "$DEFAULT_GRUB"                     # Change bootloader font
+    sudo sed -i 's,GRUB_BACKGROUND.*,GRUB_BACKGROUND='"$WALLPAPER"',' "$DEFAULT_GRUB"   # Change bootloader background
+    if [[ ! -z $FONT ]]; then make_bigger_font; else :; fi                              # Make font if not generated
+    sudo sed -i 's,GRUB_FONT.*,GRUB_FONT='"$FONT"',' "$DEFAULT_GRUB"                    # Change bootloader font
 }
 
 create_custom_grub_cfg() {

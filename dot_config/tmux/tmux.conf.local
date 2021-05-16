@@ -321,5 +321,5 @@ set -g default-terminal "tmux-256color"
 set-option -ga terminal-overrides ",tmux-256color:Tc,xterm-256color:Tc"
 set-option -g default-shell /bin/zsh
 # if-shell "test -f ~/config/dotfiles/src/themes/gruvbox-hard-dark-tmux.conf" "source ~/config/dotfiles/src/themes/gruvbox-hard-dark-tmux.conf"
-if-shell "test -f ~/.tmux-status.conf" "source ~/.tmux-status.conf"
+if-shell "test -f ~/.config/tmux/tmux-status.conf" "source ~/.config/tmux/tmux-status.conf"
 # source ~/.tmux-status.conf

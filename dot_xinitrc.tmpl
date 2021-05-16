@@ -1,5 +1,10 @@
 #!/bin/sh
 
+USERXSESSION="$XDG_CACHE_HOME/x11/xsession"
+USERXSESSIONRC="$XDG_CACHE_HOME/x11/xsessionrc"
+ALTUSERXSESSION="$XDG_CACHE_HOME/x11/Xsession"
+ERRFILE="$XDG_CACHE_HOME/x11/xsession-errors"
+
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx

@@ -5,8 +5,8 @@ set $mod Mod4
 font pango:DejaVu Sans Mono 8
 
 exec --no-startup-id nm-applet
-exec --no-startup-id udiskie -a -t -f thunar
-exec --no-startup-id fcitx -d
+#exec --no-startup-id udiskie -a -t -f thunar
+#exec --no-startup-id fcitx -d
 exec --no-startup-id keepassxc ~/.config/dotfiles/Passwords/Passwords.kdbx
 exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent # For Redshift
 exec --no-startup-id birdtray
@@ -128,15 +128,16 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
+#-- [ MODE ]--#
+
 set $mode_system System
-mode "$mode_system" { # System: (l)ock, (e) logout, (s)uspend, (h)ibernate, (r)eboot, (p)oweroff
-    bindsym l exec --no-startup-id dm-tool lock, mode "default"
+mode "$mode_system" {   # System: [l]ock, [e]xit/logout, [s]uspend, [h]ibernate, [r]eboot, [p]oweroff 
+        bindsym l exec --no-startup-id dm-tool lock, mode "default"
         bindsym e exec --no-startup-id i3-msg exit, mode "default"
         bindsym s exec --no-startup-id systemctl suspend, mode "default"
         bindsym h exec --no-startup-id systemctl hibernate, mode "default"
         bindsym r exec --no-startup-id systemctl reboot, mode "default"
         bindsym p exec --no-startup-id systemctl poweroff, mode "default"
-
 # back to normal: Enter or Escape
         bindsym Return mode "default"
         bindsym Escape mode "default"
@@ -145,25 +146,39 @@ bindsym $mod+Shift+s mode "$mode_system"
 
 bindsym Print exec flameshot full -p "$HOME/Pictures/captures"
 
-mode "resize" { # resize window (you can also use the mouse for that)
-    bindsym h resize shrink width 10 px or 10 ppt
+set $mode_resize Resize 
+mode "$mode_resize" {   # resize window (you can also use the mouse for that) 
+        bindsym h resize shrink width 10 px or 10 ppt
         bindsym j resize grow height 10 px or 10 ppt
         bindsym k resize shrink height 10 px or 10 ppt
         bindsym l resize grow width 10 px or 10 ppt
-
 # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
         bindsym Down resize grow height 10 px or 10 ppt
         bindsym Up resize shrink height 10 px or 10 ppt
         bindsym Right resize grow width 10 px or 10 ppt
-
 # back to normal: Enter or Escape or $mod+r
         bindsym Return mode "default"
         bindsym Escape mode "default"
         bindsym $mod+r mode "default"
 }
-
 bindsym $mod+r mode "resize"
+
+set $mode_exec Execute 
+mode "$mode_exec" {     # Executes applications and tray indicators
+        bindsym u exec --no-startup-id udiskie -a -t -f thunar
+        bindsym f exec --no-startup-id fcitx -d
+        bindsym r exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent
+        bindsym k exec --no-startup-id kdeconnect-indicator
+        bindsym i exec --no-startup-id birdtray
+        bindsym l exec --no-startup-id blueman-tray
+        bindsym e exec --no-startup-id emojione-picker
+        bindsym a exec --no-startup-id flameshot
+# back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+bindsym $mod+x mode "Execute"
 
 #--[ EXEC ]--#
 
@@ -187,7 +202,6 @@ gaps outer 15
 #smart_borders enable
 new_window none
 for_window [class="^.*"] border pixel 1
-#for_window [class="^.*"] border pixel 0
 
 for_window [title="Desktop — Plasma"] kill; floating enable; border none
 for_window [class="plasmashell"] floating enable;
@@ -200,12 +214,11 @@ for_window [class="Klipper"] floating enable; border none
 for_window [class="Plasmoidviewer"] floating enable; border none
 for_window [class="(?i)*nextcloud*"] floating disable
 for_window [class="plasmashell" window_type="notification"] floating enable, border none, move right 700px, move down 450px
-no_focus [class="plasmashell" window_type="notification"]
+no_focus   [class="plasmashell" window_type="notification"]
 
-client.focused          #6eaafb     #000000     #FFFFFF     #000000     #000000
-client.focused_inactive #222222    #5F676A    #FFFFFF    #5F676A    #5F676A
-client.unfocused        #333333   #222222   #888888   #222222   #333333
-client.urgent           #222222      #900000      #FFFFFF      #900000      #222222
+client.focused          #6eaafb #000000 #FFFFFF #000000 #000000
+client.focused_inactive #222222 #5F676A #FFFFFF #5F676A #5F676A
+client.unfocused        #333333 #222222 #888888 #222222 #333333
+client.urgent           #222222 #900000 #FFFFFF #900000 #222222
 client.placeholder      #000000 #0C0C0C #FFFFFF #0C0C0C #000000
-
 client.background       #000000

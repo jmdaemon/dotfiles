@@ -162,7 +162,7 @@ mode "$mode_resize" {   # resize window (you can also use the mouse for that)
         bindsym Escape mode "default"
         bindsym $mod+r mode "default"
 }
-bindsym $mod+r mode "resize"
+bindsym $mod+r mode "$mode_resize"
 
 set $mode_exec Execute 
 mode "$mode_exec" {     # Executes applications and tray indicators
@@ -178,7 +178,7 @@ mode "$mode_exec" {     # Executes applications and tray indicators
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
-bindsym $mod+x mode "Execute"
+bindsym $mod+x mode "$mode_exec"
 
 #--[ EXEC ]--#
 

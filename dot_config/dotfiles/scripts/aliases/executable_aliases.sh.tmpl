@@ -1,0 +1,37 @@
+#!/bin/bash/
+
+# LSD - https://github.com/Peltoche/lsd 
+alias l='ls -l'
+alias ls='lsd'
+alias la='ls -a'
+alias lla='ls -la'
+alias lt='ls --tree'
+
+# Hub - https://hub.github.com/
+#alias git=hub
+#alias gpr='git pull-request -m "$(git log -1 --pretty=%B)"'
+#clonefork() {
+#hub clone "$1"
+#cd "${1##*/}"
+#hub fork
+#}
+
+# Shortcuts
+alias nv='nvim'
+alias xclip='xclip -selection c' # X Server copy to clipboard
+alias start_env="source $HOME/.config/dotfiles/scripts/startup/start-env.sh"
+
+{{- if (eq .system "ubuntu-workstation" ) }}
+alias nvsmi="watch -n 1 nvidia-smi"
+alias nvsmc="nvidia-smi --query-gpu=timestamp,pstate,temperature.gpu,utilization.gpu,utilization.memory,memory.total,memory.free,memory.used --format=csv -l 1"
+alias nvhelp="nvidia-smi --help-query-gpu"
+alias nvmem="nvidia-smi --query-gpu=timestamp,memory.used,memory.total --format=csv -l 1"
+alias nvcent="nvidia-smi dmon -s u"
+
+# PyPi pip3 install nvidia-ml-py3
+# Conda conda install nvidia-ml-py3 -c fastai
+{{- end }}
+
+{{- if (eq .system "arch-laptop" ) }}
+alias pkgs="expac -H M '%m\t%n' | sort -h"
+{{- end }}

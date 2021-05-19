@@ -118,11 +118,6 @@ export GDK_DPI_SCALE=0.5
 
 ALIAS="$XDG_CONFIG_HOME/dotfiles/scripts/aliases" 
 source $ALIAS/aliases.sh
-{{- if ( eq .system "ubuntu-workstation" ) }}
-source $ALIAS/nvidia.sh 
-{{- else if ( eq .system "arch-laptop" ) }}
-source $ALIAS/pacman.sh
-{{- end }}
 #source $XDG_CONFIG_HOME/dotfiles/scripts/startup/nvm.sh
 #source $XDG_CONFIG_HOME/dotfiles/scripts/terminal/fortunecow.sh
 

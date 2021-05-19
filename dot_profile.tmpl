@@ -109,6 +109,13 @@ export JAVA_HOME=/usr/lib/jvm/java-15-openjdk
 
 export EDITOR=nvim
 
+{{- if (eq .system "arch-laptop") }}
+# HiDPI
+# https://wiki.archlinux.org/index.php/HiDPI#GDK_3_(GTK_3)
+export GDK_SCALE=2
+export GDK_DPI_SCALE=0.5
+{{- end }}
+
 ALIAS="$XDG_CONFIG_HOME/dotfiles/scripts/aliases" 
 source $ALIAS/aliases.sh
 {{- if ( eq .system "ubuntu-workstation" ) }}

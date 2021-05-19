@@ -120,9 +120,6 @@ source $ZSH/oh-my-zsh.sh
 # export SSH_KEY_PATH="~/.ssh/rsa_id"
 #
 
-{{- if (eq .system "arch-laptop") }}
-source $DOTFILES/scripts/terminal/hidpi.sh 
-{{- end }}
 source $DOTFILES/scripts/terminal/conda-init.sh
 source $DOTFILES/scripts/terminal/sdkman.sh
 source $HOME/.profile

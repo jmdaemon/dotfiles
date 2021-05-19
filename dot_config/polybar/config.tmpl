@@ -74,7 +74,7 @@ font-0 = Inconsolata Nerd Font:style=Bold:size=12;6
 
 ;modules-right = filesystem xbacklight alsa pulseaudio xkeyboard memory cpu wlan eth battery temperature date powermenu
 {{- if ( eq .system "ubuntu-workstation" ) }}
-modules-right = pulseaudio eth battery date
+modules-right = pulseaudio eth date
 {{- else if ( eq .system "arch-laptop" ) }}
 modules-right = xbacklight pulseaudio xkeyboard wlan eth battery date 
 {{- end }}
@@ -119,7 +119,6 @@ font-0 = Inconsolata Nerd Font:style=Bold:size=14;0
 {{- else if ( eq .system "arch-laptop" ) }}
 font-0 = Inconsolata Nerd Font:style=Bold:size=12;0
 {{- end }}
-;modules-left = openweathermap-detailed temperature 
 modules-left = weather
 ;modules-right = mpd xkeyboard temperature filesystem memory cpu powermenu
 ;modules-right = filesystem memory cpu powermenu
@@ -137,6 +136,7 @@ cursor-scroll = ns-resize
 override-redirect = true
 wm-restack = i3
 
+{{- if ( eq .system "arch-laptop" ) }}
 [module/xwindow]
 type = internal/xwindow
 label = %title:0:30:...%
@@ -153,6 +153,7 @@ label-layout = %layout%
 label-indicator-padding = 2
 label-indicator-margin = 1
 label-indicator-background = ${bar/bottombar.background}
+{{- end }}
 
 [module/filesystem]
 type = internal/fs
@@ -231,6 +232,7 @@ bar-progress-indicator = |
 bar-progress-fill = ─
 bar-progress-empty = ─
 
+{{- if ( eq .system "arch-laptop" ) }}
 [module/xbacklight]
 type = internal/xbacklight
 
@@ -253,6 +255,7 @@ bar-empty-foreground = ${bar/topbar.foreground}
 inherit = module/xbacklight
 type = internal/backlight
 card = intel_backlight
+{{- end }}
 
 [module/cpu]
 type = internal/cpu
@@ -270,6 +273,7 @@ format-prefix-foreground = ${colors.foreground-alt}
 format-underline = #4bffdc
 label = %percentage_used%%
 
+{{- if ( eq .system "arch-laptop" ) }}
 [module/wlan]
 type = internal/network
 interface = wlp58s0
@@ -282,6 +286,7 @@ label-connected = %essid%
 format-disconnected = 睊
 ramp-signal-0 = " "
 ramp-signal-foreground = ${colors.foreground-alt}
+{{- end }}
 
 [module/eth]
 type = internal/network
@@ -350,6 +355,7 @@ bar-volume-empty = ─
 bar-volume-empty-font = 2
 bar-volume-empty-foreground = ${bar/topbar.foreground}
 
+{{- if ( eq .system "arch-laptop" ) }}
 [module/battery]
 type = internal/battery
 battery = BAT0
@@ -396,6 +402,7 @@ animation-discharging-4 = "   "
 
 animation-discharging-foreground = ${colors.foreground-alt}
 animation-discharging-framerate = 750
+{{- end }}
 
 [module/temperature]
 type = internal/temperature
@@ -418,7 +425,11 @@ ramp-foreground = ${colors.foreground-alt}
 type = custom/script
 interval = 10
 format = <label>
+{{- if ( eq .system "arch-laptop" ) }}
 exec = ~/.config/polybar/weather
+{{- else if ( eq .system "ubuntu-workstation" ) }}
+exec = python3 ~/.config/polybar/weather
+{{- end }}
 
 [module/openweathermap-detailed]
 type = custom/script

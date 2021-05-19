@@ -40,20 +40,20 @@ margin-bottom = 5
 
 [bar/topbar]
 width = 100%
-{{ if ( eq .system "ubuntu-workstation" ) }}
+{{- if ( eq .system "ubuntu-workstation" ) }}
 height = 24
-{{ else if ( eq .system "arch-laptop" ) }}
+{{- else if ( eq .system "arch-laptop" ) }}
 height = 40
-{{ end }}
+{{- end }}
 offset-x = 0
 offset-y = 0
 radius = 0.0
 fixed-center = true
 tray-scale = 1.0
-{{ if ( eq .system "arch-laptop" ) }}
+{{- if ( eq .system "arch-laptop" ) }}
 tray-maxsize = 666
 dpi=240
-{{ end }}
+{{- end }}
 
 background = ${colors.top-background}
 foreground = ${colors.top-foreground}
@@ -66,18 +66,18 @@ padding-right = 5
 module-margin-left = 2
 module-margin-right = 2
 
-{{ if ( eq .system "ubuntu-workstation" ) }}
+{{- if ( eq .system "ubuntu-workstation" ) }}
 font-0 = Inconsolata Nerd Font:style=Bold:size=14;6
-{{ else if ( eq .system "arch-laptop" ) }}
+{{- else if ( eq .system "arch-laptop" ) }}
 font-0 = Inconsolata Nerd Font:style=Bold:size=12;6
-{{ end }}
+{{- end }}
 
 ;modules-right = filesystem xbacklight alsa pulseaudio xkeyboard memory cpu wlan eth battery temperature date powermenu
-{{ if ( eq .system "ubuntu-workstation" ) }}
+{{- if ( eq .system "ubuntu-workstation" ) }}
 modules-right = pulseaudio eth battery date
-{{ else if ( eq .system "arch-laptop" ) }}
+{{- else if ( eq .system "arch-laptop" ) }}
 modules-right = xbacklight pulseaudio xkeyboard wlan eth battery date 
-{{ end }}
+{{- end }}
 
 tray-position = left
 tray-padding = 2
@@ -90,18 +90,18 @@ cursor-scroll = ns-resize
 
 [bar/bottombar]
 width = 100%
-{{ if ( eq .system "ubuntu-workstation" ) }}
+{{- if ( eq .system "ubuntu-workstation" ) }}
 height = 24
-{{ else if ( eq .system "arch-laptop" ) }}
+{{- else if ( eq .system "arch-laptop" ) }}
 height = 40
-{{ end }}
+{{- end }}
 offset-x = 0
 offset-y = 0
 fixed-center = true
 bottom = true
-{{ if ( eq .system "arch-laptop" ) }}
+{{- if ( eq .system "arch-laptop" ) }}
 dpi=240
-{{ end }}
+{{- end }}
 
 background = ${colors.bottom-background}
 foreground = ${colors.bottom-foreground}
@@ -114,21 +114,21 @@ padding-right = 5
 module-margin-left = 2
 module-margin-right = 2
 
-{{ if ( eq .system "ubuntu-workstation" ) }}
+{{- if ( eq .system "ubuntu-workstation" ) }}
 font-0 = Inconsolata Nerd Font:style=Bold:size=14;0
-{{ else if ( eq .system "arch-laptop" ) }}
+{{- else if ( eq .system "arch-laptop" ) }}
 font-0 = Inconsolata Nerd Font:style=Bold:size=12;0
-{{ end }}
+{{- end }}
 ;modules-left = openweathermap-detailed temperature 
 modules-left = weather
 ;modules-right = mpd xkeyboard temperature filesystem memory cpu powermenu
 ;modules-right = filesystem memory cpu powermenu
 modules-center = i3
-{{ if ( eq .system "ubuntu-workstation" ) }}
+{{- if ( eq .system "ubuntu-workstation" ) }}
 modules-right = memory cpu
-{{ else if ( eq .system "arch-laptop" ) }}
+{{- else if ( eq .system "arch-laptop" ) }}
 modules-right = mpd memory cpu 
-{{ end }}
+{{- end }}
 
 tray-positon = right
 tray-padding = 2

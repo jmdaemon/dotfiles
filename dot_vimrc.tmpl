@@ -193,6 +193,9 @@ map <C-K> :py3f /usr/share/clang/clang-format.py<cr>
 imap <C-K> <c-o>:py3f /usr/share/clang/clang-format.py<cr>
 "au BufWrite * :Autoformat
 
+" https://www.chezmoi.io/docs/how-to/#configure-vim-to-run-chezmoi-apply-whenever-you-save-a-dotfile
+autocmd BufWritePost ~/.local/share/chezmoi/* ! chezmoi apply --source-path %
+
 "============ LaTeX & Markdown =============
 let g:vimtex_compiler_progname = 'nvr'
 let g:vimtex_view_general_viewer = 'okular'

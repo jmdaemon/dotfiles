@@ -40,65 +40,73 @@ margin-bottom = 5
 
 [bar/topbar]
 width = 100%
+{{ if ( eq .system "ubuntu-workstation" ) }}
+height = 24
+{{ else if ( eq .system "arch-laptop" ) }}
 height = 40
+{{ end }}
 offset-x = 0
 offset-y = 0
 radius = 0.0
 fixed-center = true
 tray-scale = 1.0
+{{ if ( eq .system "arch-laptop" ) }}
 tray-maxsize = 666
 dpi=240
+{{ end }}
 
 background = ${colors.top-background}
 foreground = ${colors.top-foreground}
 
 line-size = 0
-
 border-size = 0
 border-color = #00000000
-
 padding-left = 5
 padding-right = 5
-
 module-margin-left = 2
 module-margin-right = 2
 
 font-0 = Inconsolata Nerd Font:style=Bold:size=12;6
 
 ;modules-right = filesystem xbacklight alsa pulseaudio xkeyboard memory cpu wlan eth battery temperature date powermenu
+{{ if ( eq .system "ubuntu-workstation" ) }}
+modules-right = pulseaudio eth battery date
+{{ else if ( eq .system "arch-laptop" ) }}
 modules-right = xbacklight pulseaudio xkeyboard wlan eth battery date 
+{{ end }}
 
 tray-position = left
 tray-padding = 2
 tray-background = ${self.background}
 tray-detached = true
-
 wm-restack = i3
 override-redirect = true
-
 cursor-click = pointer
 cursor-scroll = ns-resize
 
 [bar/bottombar]
 width = 100%
+{{ if ( eq .system "ubuntu-workstation" ) }}
+height = 24
+{{ else if ( eq .system "arch-laptop" ) }}
 height = 40
+{{ end }}
 offset-x = 0
 offset-y = 0
 fixed-center = true
 bottom = true
+{{ if ( eq .system "arch-laptop" ) }}
 dpi=240
+{{ end }}
 
 background = ${colors.bottom-background}
 foreground = ${colors.bottom-foreground}
 
 line-size = 0
-
 border-size = 0
 border-color = #00000000
-
 padding-left = 5
 padding-right = 5
-
 module-margin-left = 2
 module-margin-right = 2
 
@@ -108,11 +116,14 @@ modules-left = weather
 ;modules-right = mpd xkeyboard temperature filesystem memory cpu powermenu
 ;modules-right = filesystem memory cpu powermenu
 modules-center = i3
+{{ if ( eq .system "ubuntu-workstation" ) }}
+modules-right = memory cpu
+{{ else if ( eq .system "arch-laptop" ) }}
 modules-right = mpd memory cpu 
+{{ end }}
 
 tray-positon = right
 tray-padding = 2
-
 cursor-click = pointer
 cursor-scroll = ns-resize
 override-redirect = true

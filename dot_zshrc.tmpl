@@ -25,6 +25,7 @@ zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower
 autoload -Uz compinit && compinit -d $XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION
 zstyle ':completion:*' cache-path $XDG_CACHE_HOME/zsh/zcompcache
 
+{{ if ( eq .system "arch-laptop" ) }}
 # https://wiki.archlinux.org/title/Zsh#On-demand_rehash
 # Automatically rehash $PATH
 zshcache_time="$(date +%s%N)"
@@ -41,6 +42,7 @@ rehash_precmd() {
 }
 
 add-zsh-hook -Uz precmd rehash_precmd
+{{ end }}
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load

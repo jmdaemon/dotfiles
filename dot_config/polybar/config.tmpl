@@ -66,7 +66,11 @@ padding-right = 5
 module-margin-left = 2
 module-margin-right = 2
 
+{{ if ( eq .system "ubuntu-workstation" ) }}
+font-0 = Inconsolata Nerd Font:style=Bold:size=14;6
+{{ else if ( eq .system "arch-laptop" ) }}
 font-0 = Inconsolata Nerd Font:style=Bold:size=12;6
+{{ end }}
 
 ;modules-right = filesystem xbacklight alsa pulseaudio xkeyboard memory cpu wlan eth battery temperature date powermenu
 {{ if ( eq .system "ubuntu-workstation" ) }}
@@ -110,7 +114,11 @@ padding-right = 5
 module-margin-left = 2
 module-margin-right = 2
 
+{{ if ( eq .system "ubuntu-workstation" ) }}
+font-0 = Inconsolata Nerd Font:style=Bold:size=14;0
+{{ else if ( eq .system "arch-laptop" ) }}
 font-0 = Inconsolata Nerd Font:style=Bold:size=12;0
+{{ end }}
 ;modules-left = openweathermap-detailed temperature 
 modules-left = weather
 ;modules-right = mpd xkeyboard temperature filesystem memory cpu powermenu

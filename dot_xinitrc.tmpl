@@ -1,10 +1,9 @@
 #!/bin/sh
 
-XDG_CACHE_HOME="$HOME/.cache"
-USERXSESSION="$XDG_CACHE_HOME/x11/xsession"
-USERXSESSIONRC="$XDG_CACHE_HOME/x11/xsessionrc"
-ALTUSERXSESSION="$XDG_CACHE_HOME/x11/Xsession"
-ERRFILE="$XDG_CACHE_HOME/x11/xsession-errors"
+USERXSESSION="{{ .chezmoi.homeDir}}/.cache/x11/xsession"
+USERXSESSIONRC="{{ .chezmoi.homeDir}}/.cache/x11/xsessionrc"
+ALTUSERXSESSION="{{ .chezmoi.homeDir}}/.cache/x11/Xsession"
+ERRFILE="{{ .chezmoi.homeDir}}/.cache/x11/xsession-errors"
 
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx

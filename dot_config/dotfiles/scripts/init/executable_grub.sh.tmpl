@@ -13,7 +13,7 @@ make_bigger_font() {
     {{- if ( eq .system "arch-laptop" ) }} 
     sudo grub2-mkfont -s 36 -o $FONT /usr/share/fonts/dejavu/DejaVuSansMono.ttf
     {{- else if ( eq .system "ubuntu-workstation" ) }}
-    sudo grub2-mkfont -s 12 -o $FONT /usr/share/fonts/dejavu/DejaVuSansMono.ttf
+    sudo grub-mkfont -s 12 -o $FONT /usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf
     {{- end }}
 }
 
@@ -63,3 +63,9 @@ elif [[ $1 == "-a" || $1 == "--all" ]]; then
 else 
     show_usage
 fi
+
+{{- if ( eq .system "ubuntu-workstation" ) }}
+sudo update-grub
+{{- else if ( eq .system "arch-laptop" ) }}
+sudo grub-mkconfig -o /boot/grub/grub.cfg
+{{- end }}

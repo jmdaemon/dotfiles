@@ -5,9 +5,11 @@ USERXSESSIONRC="{{ .chezmoi.homeDir}}/.cache/x11/xsessionrc"
 ALTUSERXSESSION="{{ .chezmoi.homeDir}}/.cache/x11/Xsession"
 ERRFILE="{{ .chezmoi.homeDir}}/.cache/x11/xsession-errors"
 
+{{- if ( eq .system "arch-laptop" ) }}
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
+{{- end }}
 
 xrdb -merge ~/.Xresources
 {{- if (eq .system "arch-laptop" ) }}

@@ -331,16 +331,16 @@ type = internal/network
 interface = docker0
 interval = 3.0
 
+format-connected-prefix = "ﮣ "
 format-connected-underline = #55aa55
-format-connected-prefix = " "
 format-connected-prefix-foreground = ${colors.foreground-alt}
-label-connected = %local_ip%
 
-format-disconnected =
-;format-disconnected = <label-disconnected>
-;format-disconnected-underline = ${self.format-connected-underline}
-;label-disconnected = %ifname% disconnected
-;label-disconnected-foreground = ${colors.foreground-alt}
+format-disconnected-prefix = "ﮤ "
+format-disconnected-underline = ${self.format-connected-underline}
+label-disconnected-foreground = ${colors.foreground-alt}
+
+label-connected = %local_ip%
+label-disconnected = %ifname% disconnected
 {{- end }}
 
 [module/date]

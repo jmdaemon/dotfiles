@@ -142,7 +142,7 @@ cursor-scroll = ns-resize
 override-redirect = true
 wm-restack = i3
 
-{{- if ( eq .system "arch-laptop" ) -}}
+{{- if ( eq .system "arch-laptop" ) }}
 [module/xwindow]
 type = internal/xwindow
 label = %title:0:30:...%
@@ -244,7 +244,7 @@ bar-indicator-font = 5
 bar-empty-font = 5
 bar-fill-font = 5
 
-{{- if ( eq .system "arch-laptop" ) -}}
+{{- if ( eq .system "arch-laptop" ) }}
 [module/xbacklight]
 type = internal/xbacklight
 
@@ -283,7 +283,7 @@ format-prefix = "﬙ "
 format-prefix-foreground = ${bar/bottombar.foreground}
 label = %percentage_used%%
 
-{{ if ( eq .system "arch-laptop" ) -}}
+{{- if ( eq .system "arch-laptop" ) }}
 [module/wlan]
 type = internal/network
 interface = wlp58s0
@@ -325,7 +325,7 @@ ramp-signal-foreground = ${bar/topbar.foreground}
 
 {{- end }}
 
-{{- if ( eq .system "ubuntu-workstation" ) -}}
+{{- if ( eq .system "ubuntu-workstation" ) }}
 [module/eth]
 type = internal/network
 interface = enp0s31f6
@@ -389,10 +389,9 @@ bar-volume-fill-font = 2
 bar-volume-empty = 
 bar-volume-empty-font = 2
 bar-volume-empty-foreground = ${bar/topbar.foreground}
-
 click-middle = pavucontrol
 
-{{- if ( eq .system "arch-laptop" ) -}}
+{{ if ( eq .system "arch-laptop" ) -}}
 [module/battery]
 type = internal/battery
 battery = BAT0
@@ -414,7 +413,6 @@ format-full-underline = ${self.format-charging-underline}
 label-discharging-foreground = ${bar/topbar.foreground}
 label-charging-foreground = ${bar/topbar.foreground}
 label-full = 󰁹 
-;label-full-font = 3
 
 ; Glyphs (F007A, F007B, F007C, F007D, F007E, F007F, F0080, F0081, F0082, F0079)
 ramp-capacity-0 = 󰁺 

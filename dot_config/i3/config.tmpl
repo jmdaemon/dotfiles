@@ -183,6 +183,7 @@ exec --no-startup-id keepassxc ~/.config/dotfiles/Passwords/Passwords.kdbx
 exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent       # For Redshift
 {{- else if ( eq .system "ubuntu-workstation" ) }}
 #exec --no-startup-id /usr/libexec/geoclue-2.0/demos/agent   # For Redshift
+exec --no-startup-id redshift
 {{- end }}
 exec --no-startup-id picom -bc --config ~/.config/picom/picom.conf
 exec --no-startup-id dunst

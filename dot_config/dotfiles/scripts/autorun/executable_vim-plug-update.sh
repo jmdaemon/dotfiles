@@ -1,5 +1,5 @@
 #!/bin/bash
 
 su jmd
-nvim +PlugUpdate +qall
-nvim +PlugUpgrade +qall
+nvim -c PlugUpdate  -c qall
+nvim -c PlugUpgrade -c qall

@@ -142,7 +142,7 @@ cursor-scroll = ns-resize
 override-redirect = true
 wm-restack = i3
 
-{{ if ( eq .system "arch-laptop" ) -}}
+{{- if ( eq .system "arch-laptop" ) -}}
 [module/xwindow]
 type = internal/xwindow
 label = %title:0:30:...%
@@ -244,7 +244,7 @@ bar-indicator-font = 5
 bar-empty-font = 5
 bar-fill-font = 5
 
-{{ if ( eq .system "arch-laptop" ) -}}
+{{- if ( eq .system "arch-laptop" ) -}}
 [module/xbacklight]
 type = internal/xbacklight
 
@@ -392,7 +392,7 @@ bar-volume-empty-foreground = ${bar/topbar.foreground}
 
 click-middle = pavucontrol
 
-{{ if ( eq .system "arch-laptop" ) -}}
+{{- if ( eq .system "arch-laptop" ) -}}
 [module/battery]
 type = internal/battery
 battery = BAT0

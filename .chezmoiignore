@@ -1,0 +1,3 @@
+{{- if ( eq .system "arch-laptop" ) -}}
+.config/redshift/redshift.conf
+{{- end }}

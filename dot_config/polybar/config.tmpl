@@ -70,13 +70,15 @@ module-margin-right = 2
 font-0 = Inconsolata Nerd Font:style=Bold:size=14;6
 {{- else if ( eq .system "arch-laptop" ) }}
 font-0 = Inconsolata Nerd Font:style=Bold:size=12;6
+font-1 = Monaco for Powerline:style=Regular:size=12;6
+font-2 = Material Design Icons:style=Regular:12;6
+font-3 = Font Awesome 5 Free:style=Regular:size=12;6
 {{- end }}
 
-;modules-right = filesystem xbacklight alsa pulseaudio xkeyboard memory cpu wlan eth battery temperature date powermenu
 {{- if ( eq .system "ubuntu-workstation" ) }}
 modules-right = pulseaudio eth date
 {{- else if ( eq .system "arch-laptop" ) }}
-modules-right = xbacklight pulseaudio xkeyboard wlan eth battery date 
+modules-right = xbacklight pulseaudio xkeyboard wlan battery date 
 {{- end }}
 
 tray-position = left
@@ -118,16 +120,20 @@ module-margin-right = 2
 font-0 = Inconsolata Nerd Font:style=Bold:size=14;0
 {{- else if ( eq .system "arch-laptop" ) }}
 font-0 = Inconsolata Nerd Font:style=Bold:size=12;0
+font-1 = Monaco for Powerline:style=Regular:size=12;0
+font-2 = Material Design Icons:style=Regular:size=12;0
+font-3 = Font Awesome 5 Free:style=Solid:size=12;0
+font-4 = Noto Sans Nerd Font:style=Regular:size=8;-1
 {{- end }}
-modules-left = weather
-;modules-right = mpd xkeyboard temperature filesystem memory cpu powermenu
-;modules-right = filesystem memory cpu powermenu
-modules-center = i3
+
 {{- if ( eq .system "ubuntu-workstation" ) }}
-modules-right = memory cpu
+modules-left = weather
 {{- else if ( eq .system "arch-laptop" ) }}
-modules-right = mpd memory cpu 
+modules-left = weather mpd
 {{- end }}
+
+modules-center = i3
+modules-right = temperature cpu memory
 
 tray-positon = right
 tray-padding = 2
@@ -136,7 +142,7 @@ cursor-scroll = ns-resize
 override-redirect = true
 wm-restack = i3
 
-{{- if ( eq .system "arch-laptop" ) }}
+{{ if ( eq .system "arch-laptop" ) -}}
 [module/xwindow]
 type = internal/xwindow
 label = %title:0:30:...%
@@ -158,7 +164,6 @@ label-indicator-background = ${bar/bottombar.background}
 [module/filesystem]
 type = internal/fs
 interval = 25
-
 mount-0 = /
 
 label-mounted = " %{F#0a81f5}%mountpoint%%{F-}: %percentage_used%%"
@@ -169,7 +174,7 @@ label-unmounted-foreground = ${bar/bottombar.foreground}
 type = internal/i3
 format = <label-state> <label-mode>
 index-sort = true
-;enable-scroll = false
+enable-scroll = true
 wrapping-scroll = false
 
 ; Only show workspaces on the same output as the bar
@@ -191,7 +196,6 @@ label-unfocused-padding = 1
 
 ; visible = Active workspace on unfocused monitor
 label-visible = %index%
-;label-visible = " "
 label-visible-background = ${self.label-focused-background}
 label-visible-underline = ${self.label-focused-underline}
 label-visible-padding = ${self.label-focused-padding}
@@ -203,52 +207,60 @@ label-urgent-padding = 1
 
 [module/mpd]
 type = internal/mpd
-;format-online = <label-song>  <icon-prev> <icon-stop> <toggle> <icon-next>
-format-online = <label-song>  <icon-seekb> <icon-prev> <icon-stop> <toggle> <icon-next> <icon-seekf> <icon-random> <bar-progress>
+format-online = <icon-prev> <icon-stop> <toggle> <icon-next> <icon-repeat> <icon-random> <bar-progress> <label-time> <label-song>
+label-song = "%artist% - %title%"
 
-;label-song = 𝄞 %artist% - %title%
-label-song = "Artist - %title%"
-
-icon-play = " "
-icon-pause = " "
-icon-stop = " "
-icon-prev = " "
-icon-next = " "
-icon-seekf = " "
-icon-seekb = " "
+; Nerd Fonts - Font Awesome 5 
+icon-play   = " "
+icon-pause  = " "
+icon-stop   = " "
+icon-next   = " "
+icon-prev   = " "
 icon-random = " "
-;icon-repeat = " "
+icon-repeat = " "
 
+; Nerd Fonts - Material Icons
+;icon-play   = " "
+;icon-pause  = "契"
+;icon-stop   = "栗"
+;icon-prev   = "玲"
+;icon-next   = "怜"
+;icon-random = " "
+;icon-repeat = "凌"
+;icon-single = "綾"
 
+format-online-font = 5
 label-offline = "ﱙ mpd is offline"
 
-;label-song-maxlen = 25
-label-song-maxlen = 25
+label-song-maxlen = -1
 label-song-ellipsis = true
 
-;bar-progress-width = 45
-bar-progress-width = 16
+bar-progress-width = 10
+bar-progress-format = %{A4:mpdseek+2: A5:mpdseek-2:}%fill%%indicator%%empty%%{A A}
 bar-progress-indicator = |
 bar-progress-fill = ─
 bar-progress-empty = ─
+bar-indicator-font = 5
+bar-empty-font = 5
+bar-fill-font = 5
 
-{{- if ( eq .system "arch-laptop" ) }}
+{{ if ( eq .system "arch-laptop" ) -}}
 [module/xbacklight]
 type = internal/xbacklight
 
-format = <label> <bar>
-#label = "嗀 BL"
-label = " "
+format = <ramp> <bar>
+ramp-0 = 滛
+ramp-font = 1
 
 bar-width = 10
-bar-indicator = |
+bar-indicator = 
 bar-indicator-foreground = #000000
-bar-indicator-font = 2
-bar-fill = ─
-bar-fill-font = 2
+bar-indicator-font = 1
+bar-fill = 
+bar-fill-font = 1
 bar-fill-foreground = #000000
-bar-empty = ─
-bar-empty-font = 2
+bar-empty = 
+bar-empty-font = 1
 bar-empty-foreground = ${bar/topbar.foreground}
 
 [module/backlight-acpi]
@@ -260,34 +272,60 @@ card = intel_backlight
 [module/cpu]
 type = internal/cpu
 interval = 2
-format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #f90000
-label = %percentage:2%%
+format-prefix = " "
+format-prefix-foreground = ${bar/bottombar.foreground}
+label = %percentage%%
 
 [module/memory]
 type = internal/memory
 interval = 2
-format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #4bffdc
+format-prefix = "﬙ "
+format-prefix-foreground = ${bar/bottombar.foreground}
 label = %percentage_used%%
 
-{{- if ( eq .system "arch-laptop" ) }}
+{{ if ( eq .system "arch-laptop" ) -}}
 [module/wlan]
 type = internal/network
 interface = wlp58s0
 interval = 3.0
 
+; --- Nerd Font Version ---
+; Displays connectivity to wireless network
+;format-connected = <ramp-signal> <label-connected>
+;format-connected-underline = #9f78e1
+;label-connected = %essid%
+;format-disconnected = 睊
+;ramp-signal-0 = " "
+;ramp-signal-0 = "睊 "
+;ramp-signal-foreground = ${colors.foreground-alt}
+
+; --- Material Icons Version ---
+; Displays wireless network name, and signal strength
+label-active-font = 3
+format-prefix = 1
 format-connected = <ramp-signal> <label-connected>
 format-connected-underline = #9f78e1
 label-connected = %essid%
+label-connected-foreground = ${bar/topbar.foreground}
 
-format-disconnected = 睊
-ramp-signal-0 = " "
-ramp-signal-foreground = ${colors.foreground-alt}
+# Glyph (F092E)
+format-disconnected = <label-disconnected>
+label-disconnected = 󰤮
+label-disconnected-font = 3
+label-disconnected-foreground = ${bar/topbar.foreground}
+
+; Glyphs (F092F, F091F, F0922, F0925, F0928)
+ramp-signal-0 = 󰤯 
+ramp-signal-1 = 󰤟 
+ramp-signal-2 = 󰤢 
+ramp-signal-3 = 󰤥 
+ramp-signal-4 = 󰤨 
+ramp-signal-font = 5
+ramp-signal-foreground = ${bar/topbar.foreground}
+
 {{- end }}
 
+{{- if ( eq .system "ubuntu-workstation" ) -}}
 [module/eth]
 type = internal/network
 interface = docker0
@@ -303,42 +341,39 @@ format-disconnected =
 ;format-disconnected-underline = ${self.format-connected-underline}
 ;label-disconnected = %ifname% disconnected
 ;label-disconnected-foreground = ${colors.foreground-alt}
+{{- end }}
 
 [module/date]
 type = internal/date
-interval = 5
+interval = 1.0
 
 date = " %a %b"
 date-alt = "  %Y/%m/%d"
 
 time ="  %I:%M %p"
-time-alt = "%H:%M:%S %p"
-
-;format-prefix = 
-;format-prefix = " "
-;format-prefix = " "
-format-prefix =
-format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #0a6cf5
-
+time-alt = "   %H:%M:%S %p"
 label = %date% %time%
 
 [module/pulseaudio]
 type = internal/pulseaudio
 
-format-volume = <label-volume> <bar-volume>
-;label-volume ="墳 VOL %percentage%%"
-label-volume ="奔 VOL %percentage%%"
-;label-volume ="奔"
-;label-percent = "$percentage%%"
-;label-volume-foreground = ${root.foreground}
-label-volume-foreground = ${bar/topbar.foreground}
+format-volume = <ramp-volume> <label-volume> <bar-volume>
+label-volume = %percentage%%
+label-volume-foreground = ${root.foreground}
 
-label-muted = "  "
-label-muted-foreground = #000000 
+ramp-volume-0 = "奄"
+ramp-volume-1 = "奔"
+ramp-volume-2 = "墳"
+ramp-volume-foreground = ${bar/topbar.foreground}
+
+format-muted-prefix = "ﱝ "
+format-muted-foreground = ${bar/topbar.foreground}
+label-muted-foreground =  #000000
+label-muted = " "
+label-muted-font = 1
 
 bar-volume-width = 10
-ar-volume-foreground-0 = #000000 
+bar-volume-foreground-0 = #000000
 bar-volume-foreground-1 = #000000
 bar-volume-foreground-2 = #000000
 bar-volume-foreground-3 = #000000
@@ -346,62 +381,66 @@ bar-volume-foreground-4 = #000000
 bar-volume-foreground-5 = #f5a70a
 bar-volume-foreground-6 = #ff5555
 bar-volume-gradient = false
-bar-volume-indicator = |
+bar-volume-indicator = 
 bar-volume-indicator-font = 2
-bar-volume-indicator-foreground = #000000 
-bar-volume-fill = ─
+bar-volume-indicator-foreground = #000000
+bar-volume-fill = 
 bar-volume-fill-font = 2
-bar-volume-empty = ─
+bar-volume-empty = 
 bar-volume-empty-font = 2
 bar-volume-empty-foreground = ${bar/topbar.foreground}
 
-{{- if ( eq .system "arch-laptop" ) }}
+click-middle = pavucontrol
+
+{{ if ( eq .system "arch-laptop" ) -}}
 [module/battery]
 type = internal/battery
 battery = BAT0
 adapter = AC
 full-at = 98
 
+; Use Material Design Icons
+label-active-font = 3
 format-charging = <animation-charging> <label-charging>
 format-charging-underline = #ffb52a
 
-format-discharging = <animation-discharging> <label-discharging>
+format-discharging = <ramp-capacity> <label-discharging>
 format-discharging-underline = ${self.format-charging-underline}
 
-format-full-prefix = "   "
-format-full-prefix-foreground = ${colors.foreground-alt}
+format-full = <label-full> 100%
+format-full-prefix-foreground = ${bar/topbar.foreground}
 format-full-underline = ${self.format-charging-underline}
 
-ramp-capacity-0 = "  "
-ramp-capacity-1 = "  "
-ramp-capacity-2 = "  "
-ramp-capacity-3 = "  "
-ramp-capacity-4 = "  "
+label-discharging-foreground = ${bar/topbar.foreground}
+label-charging-foreground = ${bar/topbar.foreground}
+label-full = 󰁹 
+;label-full-font = 3
 
-ramp-capacity-foreground = ${colors.foreground-alt}
+; Glyphs (F007A, F007B, F007C, F007D, F007E, F007F, F0080, F0081, F0082, F0079)
+ramp-capacity-0 = 󰁺 
+ramp-capacity-1 = 󰁻 
+ramp-capacity-2 = 󰁼 
+ramp-capacity-3 = 󰁽 
+ramp-capacity-4 = 󰁾 
+ramp-capacity-5 = 󰁿 
+ramp-capacity-6 = 󰂀 
+ramp-capacity-7 = 󰂁 
+ramp-capacity-8 = 󰂂 
+ramp-capacity-9 = 󰁹 
+ramp-capacity-foreground = ${bar/topbar.foreground}
 
-animation-charging-0 = 
-animation-charging-1 =  
-animation-charging-2 =  
-animation-charging-3 =  
-animation-charging-4 =  
-;animation-charging-5 = There is no 50% here
-animation-charging-5 =   
-animation-charging-6 =  
-animation-charging-7 =  
-
-
-animation-charging-foreground = ${colors.foreground-alt}
-animation-charging-framerate = 750
-
-animation-discharging-0 = "   "
-animation-discharging-1 = "   "
-animation-discharging-2 = "   "
-animation-discharging-3 = "   "
-animation-discharging-4 = "   "
-
-animation-discharging-foreground = ${colors.foreground-alt}
-animation-discharging-framerate = 750
+; Glyphs (F089C, F0086, F0087, F0088, F089D, F0089, F089E, F008A, F008B, F0085)
+animation-charging-0 = 󰢜 
+animation-charging-1 = 󰂆 
+animation-charging-2 = 󰂇 
+animation-charging-3 = 󰂈 
+animation-charging-4 = 󰢝 
+animation-charging-5 = 󰂉 
+animation-charging-6 = 󰢞 
+animation-charging-7 = 󰂊 
+animation-charging-8 = 󰂋 
+animation-charging-9 = 󰂅 
+animation-charging-foreground = ${bar/topbar.foreground}
 {{- end }}
 
 [module/temperature]
@@ -410,16 +449,14 @@ thermal-zone = 0
 warn-temperature = 60
 
 format = <ramp> <label>
-format-underline = #f50a4d
 format-warn = <ramp> <label-warn>
-format-warn-underline = ${self.format-underline}
 
-label = %temperature-c%
-label-warn = %temperature-c%
-label-warn-foreground = ${colors.secondary}
+label = %temperature%
+label-warn = %temperature%
 
-ramp-0 = "摒"
-ramp-foreground = ${colors.foreground-alt}
+ramp-0 = 﨎
+ramp-font = 1
+ramp-foreground = ${bar/bottombar.foreground}
 
 [module/weather]
 type = custom/script
@@ -430,12 +467,6 @@ exec = ~/.config/polybar/weather
 {{- else if ( eq .system "ubuntu-workstation" ) }}
 exec = python3 ~/.config/polybar/weather
 {{- end }}
-
-[module/openweathermap-detailed]
-type = custom/script
-exec = ~/.cfg/scripts/openweathermap-detailed.sh/
-interval = 600
-label-font = 3
 
 [module/powermenu]
 type = custom/menu

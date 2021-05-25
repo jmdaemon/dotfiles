@@ -175,7 +175,7 @@ bindsym $mod+x mode "$mode_exec"
 
 {{- if ( eq .system "arch-laptop" ) }}
 exec --no-startup-id nm-applet
-exec --no-startup-id fcitx -d
+#exec --no-startup-id fcitx -d
 exec --no-startup-id birdtray
 {{- end }}
 exec --no-startup-id keepassxc ~/.config/dotfiles/Passwords/Passwords.kdbx
@@ -191,8 +191,7 @@ exec --no-startup-id dunst
 exec --no-startup-id xrandr --dpi 240
 exec --no-startup-id xfconf-query -c xsettings -p /Gdk/WindowScalingFactor -s 2
 {{- end }}
-exec --no-startup-id mpd
-exec_always --no-startup-id setxkbmap -model pc105 -layout us,ca -variant ,, -option grp:win_space_toggle compose:ralt
+#exec_always --no-startup-id setxkbmap -model pc105 -layout us,ca -variant ,, -option grp:win_space_toggle compose:ralt
 exec_always --no-startup-id sh ~/.fehbg &
 exec_always $HOME/.config/polybar/launch.sh
 

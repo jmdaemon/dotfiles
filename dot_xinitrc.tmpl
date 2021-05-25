@@ -5,7 +5,7 @@ USERXSESSIONRC="{{ .chezmoi.homeDir}}/.cache/x11/xsessionrc"
 ALTUSERXSESSION="{{ .chezmoi.homeDir}}/.cache/x11/Xsession"
 ERRFILE="{{ .chezmoi.homeDir}}/.cache/x11/xsession-errors"
 
-{{- if ( eq .system "arch-laptop" ) }}
+{{ if ( eq .system "arch-laptop" ) -}}
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
@@ -16,8 +16,10 @@ xrdb -merge ~/.Xresources
 xrandr --dpi 240
 {{- end }}
 
+{{ if ( eq .system "ubuntu-workstation" ) -}}
 rofi &
 mpd &
 picom -b
 bash ~/.config/polybar/launch.sh
+{{- end }}
 exec i3

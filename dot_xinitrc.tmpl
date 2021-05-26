@@ -1,10 +1,10 @@
 #!/bin/sh
 
-source $HOME/.profile
-USERXSESSION="{{ .chezmoi.homeDir}}/.cache/x11/xsession"
-USERXSESSIONRC="{{ .chezmoi.homeDir}}/.cache/x11/xsessionrc"
-ALTUSERXSESSION="{{ .chezmoi.homeDir}}/.cache/x11/Xsession"
-ERRFILE="{{ .chezmoi.homeDir}}/.cache/x11/xsession-errors"
+#source $HOME/.profile
+#USERXSESSION="{{ .chezmoi.homeDir}}/.cache/x11/xsession"
+#USERXSESSIONRC="{{ .chezmoi.homeDir}}/.cache/x11/xsessionrc"
+#ALTUSERXSESSION="{{ .chezmoi.homeDir}}/.cache/x11/Xsession"
+#ERRFILE="{{ .chezmoi.homeDir}}/.cache/x11/xsession-errors"
 
 {{ if ( eq .system "arch-laptop" ) -}}
 export GTK_IM_MODULE=fcitx

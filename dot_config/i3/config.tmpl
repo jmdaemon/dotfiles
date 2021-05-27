@@ -192,6 +192,9 @@ exec --no-startup-id xrandr --dpi 240
 exec --no-startup-id xfconf-query -c xsettings -p /Gdk/WindowScalingFactor -s 2
 {{- end }}
 #exec_always --no-startup-id setxkbmap -model pc105 -layout us,ca -variant ,, -option grp:win_space_toggle compose:ralt
+{{- if ( eq .system "arch-laptop" ) }}
+exec_always --no-startup-id autotiling
+{{- end }}
 exec_always --no-startup-id sh ~/.fehbg &
 exec_always $HOME/.config/polybar/launch.sh
 

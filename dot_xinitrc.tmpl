@@ -1,15 +1,9 @@
 #!/bin/sh
 
-#source $HOME/.profile
-#USERXSESSION="{{ .chezmoi.homeDir}}/.cache/x11/xsession"
-#USERXSESSIONRC="{{ .chezmoi.homeDir}}/.cache/x11/xsessionrc"
-#ALTUSERXSESSION="{{ .chezmoi.homeDir}}/.cache/x11/Xsession"
-#ERRFILE="{{ .chezmoi.homeDir}}/.cache/x11/xsession-errors"
-
 {{ if ( eq .system "arch-laptop" ) -}}
-export GTK_IM_MODULE=fcitx
-export QT_IM_MODULE=fcitx
-export XMODIFIERS=@im=fcitx
+export GTK_IM_MODULE=fcitx5
+export QT_IM_MODULE=fcitx5
+export XMODIFIERS=@im=fcitx5
 {{- end }}
 
 xrdb -merge ~/.Xresources
@@ -17,7 +11,7 @@ xrdb -merge ~/.Xresources
 xrandr --dpi 240
 {{- end }}
 
-{{ if ( eq .system "ubuntu-workstation" ) -}}
+{{- if ( eq .system "ubuntu-workstation" ) -}}
 rofi &
 mpd &
 picom -b

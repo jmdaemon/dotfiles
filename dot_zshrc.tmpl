@@ -18,14 +18,14 @@ HISTFILE=$HOME/.history/zsh/"{{- .system}}"/zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
 
-fpath=( ~/config/.zsh/completion $fpath "$DOTFILES/completion" )
+fpath=( $fpath "$DOTFILES/completion" )
 zstyle ':completion:*' completer _complete
 zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' '+l:|=* r:|=*'
 #autoload -Uz compinit && compinit -i
 autoload -Uz compinit && compinit -d $XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION
 zstyle ':completion:*' cache-path $XDG_CACHE_HOME/zsh/zcompcache
 
-{{- if ( eq .system "arch-laptop" ) }}
+{{ if ( eq .system "arch-laptop" ) -}}
 # https://wiki.archlinux.org/title/Zsh#On-demand_rehash
 # Automatically rehash $PATH
 zshcache_time="$(date +%s%N)"
@@ -94,7 +94,7 @@ export UPDATE_ZSH_DAYS=1
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=( git gradle-completion )
+plugins=( git gradle-completion colored-man-pages )
 #plugins+=(gradle-completion)
 
 # Added in quick hack
@@ -120,7 +120,7 @@ source $ZSH/oh-my-zsh.sh
 # export SSH_KEY_PATH="~/.ssh/rsa_id"
 #
 
-source $DOTFILES/scripts/terminal/conda-init.sh
+#source $DOTFILES/scripts/terminal/conda-init.sh
 source $DOTFILES/scripts/terminal/sdkman.sh
 source $HOME/.profile
 

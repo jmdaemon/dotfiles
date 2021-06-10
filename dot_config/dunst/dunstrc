@@ -160,7 +160,8 @@
     max_icon_size = 110
 
     # Paths to default icons.
-    icon_folders = /usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/
+    # icon_folders = /usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/
+    icon_folders = /usr/share/icons/Flat-Remix-Red-Dark/status/scalable:/usr/share/icons/Flat-Remix-Red-Dark/devices/scalable:/usr/share/icons/Flat-Remix-Red-Dark/actions/scalable:/usr/share/icons/Flat-Remix-Red-Dark/apps/scalable:/usr/share/icons/Flat-Remix-Red-Dark/categories/scalable:/usr/share/icons/Flat-Remix-Red-Dark/emblems/scalable:/usr/share/icons/Flat-Remix-Red-Dark/places/scalable
 
     ### History ###
 

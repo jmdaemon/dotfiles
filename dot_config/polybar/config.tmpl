@@ -447,7 +447,7 @@ format-warn = <ramp> <label-warn>
 
 label = %temperature%
 label-warn = %temperature%
-hwmon-path = /sys/devices/pci0000:00/0000:00:1c.4/0000:3a:00.0/hwmon/hwmon7/temp1_input
+hwmon-path = /sys/devices/pci0000:00/0000:00:1c.4/0000:3a:00.0/hwmon/hwmon8/temp1_input
 
 ramp-0 = 﨎
 ramp-font = 1
@@ -464,12 +464,12 @@ exec = python3 ~/.config/polybar/weather
 {{- end }}
 
 [settings]
-screenchange-reload = true
-compositing-background = source
-compositing-foreground = over
-compositing-overline = over
-compositing-underline = over
-compositing-border = over
+;screenchange-reload = true
+;compositing-background = source
+;compositing-foreground = over
+;compositing-overline = over
+;compositing-underline = over
+;compositing-border = over
 ;compositing-background = xor
 ;compositing-background = screen
 ;compositing-foreground = source

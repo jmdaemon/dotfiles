@@ -447,7 +447,11 @@ format-warn = <ramp> <label-warn>
 
 label = %temperature%
 label-warn = %temperature%
+{{- if ( eq .system "arch-laptop" ) }}
 hwmon-path = /sys/devices/platform/coretemp.0/hwmon/hwmon6/temp2_input
+{{- else if ( eq .system "arch-laptop" ) }}
+hwmon-path = /sys/devices/platform/coretemp.0/hwmon/hwmon6/temp2_input
+{{- end }}
 
 ramp-0 = 﨎
 ramp-font = 1
@@ -464,11 +468,11 @@ exec = python3 ~/.config/polybar/weather
 {{- end }}
 
 [settings]
-screenchange-reload = true
-compositing-background = source
-compositing-foreground = over
-compositing-overline = over
-compositing-underline = over
-compositing-border = over
+;screenchange-reload = true
+;compositing-background = source
+;compositing-foreground = over
+;compositing-overline = over
+;compositing-underline = over
+;compositing-border = over
 
 ; vim:ft=dosini 

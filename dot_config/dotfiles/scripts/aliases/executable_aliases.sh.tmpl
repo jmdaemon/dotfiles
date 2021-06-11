@@ -36,3 +36,5 @@ alias nvcent="nvidia-smi dmon -s u"
 alias pkgs="expac -H M '%m\t%n' | sort -h"
 {{- end }}
 alias conda-init="source $DOTFILES/scripts/terminal/conda-init.sh"
+# https://github.com/kovidgoyal/kitty/issues/268 - For Kitty
+alias clear="printf '\033[2J\033[3J\033[1;1H'" # Clear Terminal Scrollback

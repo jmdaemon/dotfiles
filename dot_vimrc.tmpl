@@ -109,7 +109,8 @@ filetype indent on
 set showmatch
 set laststatus=2
 set autoread
-set tags=./tags;tags;./.git/tags
+" https://stackoverflow.com/questions/58403300/vimrc-tags-option-specification-for-git-tags-files
+set tags^=.git/tags;~
 set tags+=$HOME/anaconda3/envs/fastai/lib/python3.6/site-packages/torch/tags
 set tags+=$HOME/anaconda3/envs/fastai/lib/python3.6/site-packages/torchvision/tags
 
@@ -161,8 +162,8 @@ inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
-nnoremap <Tab> gt
-nnoremap <S-Tab> gT
+nnoremap H gT
+nnoremap L gt
 vnoremap <Space> zf
 nnoremap <leader>q 0i"<Esc>Ea"<Esc>
 

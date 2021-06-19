@@ -447,11 +447,7 @@ format-warn = <ramp> <label-warn>
 
 label = %temperature%
 label-warn = %temperature%
-{{- if ( eq .system "arch-laptop" ) }}
-hwmon-path = /sys/devices/platform/coretemp.0/hwmon/hwmon6/temp2_input
-{{- else if ( eq .system "arch-laptop" ) }}
-hwmon-path = /sys/devices/platform/coretemp.0/hwmon/hwmon6/temp2_input
-{{- end }}
+hwmon-path = ${env:HWMON_PATH}
 
 ramp-0 = 﨎
 ramp-font = 1

@@ -87,14 +87,9 @@ let g:syntastic_c_compiler_options = '-std=C99'
 syntax enable
 if filereadable(expand("~/.config/nvim/vimrc_background"))
     "let base16colorspace=256
-    "set background=dark
     source ~/.config/nvim/vimrc_background
 endif
 
-"let g:gruvbox_contrast_dark="dark"
-"let g:airline_theme='gruvbox'
-"colorscheme gruvbox
-let g:gruvbox_italic=1
 set background=dark
 set termguicolors
 set softtabstop=4
@@ -188,8 +183,6 @@ autocmd BufEnter *.tpp :setlocal filetype=cpp
 
 let g:formatterpath = [ "$HOME/.config/nvim/after/ftplugin/" ]
 
-"map <C-K> :pyf /usr/share/clang/clang-format.py<cr>
-"imap <C-K> <c-o>:pyf /usr/share/clang/clang-format.py<cr>
 map <C-K> :py3f /usr/share/clang/clang-format.py<cr>
 imap <C-K> <c-o>:py3f /usr/share/clang/clang-format.py<cr>
 "au BufWrite * :Autoformat

@@ -132,3 +132,6 @@ source $HOME/.profile
 #  /usr/bin/tmux attach -t 0
 #fi 
 # vim:ft=zsh
+{{- if ( eq .system "ubuntu-workstation") }}
+if [ -e /home/jmd/.nix-profile/etc/profile.d/nix.sh ]; then . /home/jmd/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+{{- end }}

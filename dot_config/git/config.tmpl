@@ -1,6 +1,7 @@
-[user]
-	name = {{ .git.name }}
-	email = {{ .git.email }}
+[includeIf "gitdir:~/**/:~/workspace/:!~/workspace/personal"]
+  path = ~/.config/git/default
+[includeIf "gitdir:~/workspace/personal/"]
+  path = ~/.config/git/personal
 [push]
 	default = simple
 [init]

@@ -1,6 +1,7 @@
 {{- if (eq .system "ubuntu-workstation") }}
-[includeIf "gitdir:~/**/:~/workspace/:!~/workspace/personal"]
-  path = ~/.config/git/default
+[user]
+name = {{ .git.name }}
+email = {{ .git.email }}
 [includeIf "gitdir:~/workspace/personal/"]
   path = ~/.config/git/personal
 {{- else if ( eq .system "arch-laptop" ) }}

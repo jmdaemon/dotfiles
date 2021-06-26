@@ -1,5 +1,4 @@
 {{- if ( eq .system "arch-laptop" ) -}}
 .config/redshift/redshift.conf
-.config/git/default
 .config/git/personal
 {{- end }}

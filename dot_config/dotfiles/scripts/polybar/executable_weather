@@ -28,6 +28,8 @@ elif main == 'Clear':
   icon = ' '
 elif main == 'Clouds':
   icon = ' '
+elif main == 'Haze':
+  icon = ' '
 
 info = description.capitalize()
 temp = int(float(weather['main']['temp']))

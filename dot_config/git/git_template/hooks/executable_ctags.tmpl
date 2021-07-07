@@ -6,7 +6,7 @@ trap 'rm -f "$dir/$$.tags"' EXIT
 git ls-files | \
 {{- if ( eq .system "ubuntu-workstation" ) }} 
   ctags-universal --tag-relative=yes -L - -f"$dir/$$.tags" --languages=-javascript,sql
-{{- else if ( eq . system "arch-laptop" ) }}
+{{- else if ( eq .system "arch-laptop" ) }}
   ctags --tag-relative -L - -f"$dir/$$.tags" --languages=-javascript,sql
 {{- end }}
 mv "$dir/$$.tags" "$dir/tags"

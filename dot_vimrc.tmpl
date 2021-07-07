@@ -24,6 +24,7 @@ Plug 'neomake/neomake'
 Plug 'Scuilion/gradle-syntastic-plugin'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'NLKNguyen/papercolor-theme'
 Plug 'vim-syntastic/syntastic'
 Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/nerdcommenter'
@@ -51,16 +52,18 @@ Plug 'vlime/vlime', {'rtp': 'vim/'}
 "Plug 'lilydjwg/fcitx.vim'
 {{- end }}
 Plug 'sheerun/vim-polyglot'
+Plug 'liuchengxu/graphviz.vim'
 Plug 'iamcco/markdown-preview.nvim' , { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'md'] }
 Plug 'habamax/vim-asciidoctor'      , { 'for': ['adoc', 'asciidoc', 'asc'] }
 Plug 'lervag/vimtex'                , { 'for': 'tex' }
 Plug 'cespare/vim-toml'             , { 'for': 'toml'}
 Plug 'jph00/swift-apple'            , { 'for': 'swift' }
+Plug 'rust-lang/rust.vim'           , { 'for': 'rs'}
 Plug 'vim-scripts/indentpython.vim' , { 'for': 'py' }
 Plug 'leafgarland/typescript-vim'   , { 'for': 'ts' }
 Plug 'pangloss/vim-javascript'      , { 'for': 'js' }
 Plug 'MaxMEllon/vim-jsx-pretty'     , { 'for': 'jsx' }
-Plug 'rust-lang/rust.vim'           , { 'for': 'rs'}
+Plug 'aklt/plantuml-syntax'         , { 'for': ['.wsd', '.pu', '.puml', '.plantuml', '.iuml'] }
 
 call plug#end()
 

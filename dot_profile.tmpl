@@ -117,7 +117,12 @@ export EDITOR=nvim
 
 ALIAS="$XDG_CONFIG_HOME/dotfiles/scripts/aliases" 
 source $ALIAS/aliases.sh
-#source $XDG_CONFIG_HOME/dotfiles/scripts/startup/nvm.sh
+{{- if (eq .system "arch-laptop") }} 
+source $XDG_CONFIG_HOME/dotfiles/scripts/startup/nvm.sh
+{{- else if (eq .system "ubuntu-workstation") }}
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+{{- end }}
 #source $CARGO_HOME/env
 #source $XDG_CONFIG_HOME/dotfiles/scripts/terminal/fortunecow.sh
 
@@ -126,3 +131,4 @@ source $ALIAS/aliases.sh
 
 # Persistent Tmux Sessions
 #/usr/bin/tmux attach -t 0
+# vim:ft=sh

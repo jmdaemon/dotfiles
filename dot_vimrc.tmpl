@@ -54,16 +54,17 @@ Plug 'vlime/vlime', {'rtp': 'vim/'}
 Plug 'sheerun/vim-polyglot'
 Plug 'liuchengxu/graphviz.vim'
 Plug 'iamcco/markdown-preview.nvim' , { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'md'] }
+Plug 'aklt/plantuml-syntax'         , { 'for': ['.wsd', '.pu', '.puml', '.plantuml', '.iuml'] }
 Plug 'habamax/vim-asciidoctor'      , { 'for': ['adoc', 'asciidoc', 'asc'] }
 Plug 'lervag/vimtex'                , { 'for': 'tex' }
 Plug 'cespare/vim-toml'             , { 'for': 'toml'}
 Plug 'jph00/swift-apple'            , { 'for': 'swift' }
 Plug 'rust-lang/rust.vim'           , { 'for': 'rs'}
+Plug 'JuliaEditorSupport/julia-vim' , { 'for': 'jl' }
 Plug 'vim-scripts/indentpython.vim' , { 'for': 'py' }
 Plug 'leafgarland/typescript-vim'   , { 'for': 'ts' }
 Plug 'pangloss/vim-javascript'      , { 'for': 'js' }
 Plug 'MaxMEllon/vim-jsx-pretty'     , { 'for': 'jsx' }
-Plug 'aklt/plantuml-syntax'         , { 'for': ['.wsd', '.pu', '.puml', '.plantuml', '.iuml'] }
 
 call plug#end()
 

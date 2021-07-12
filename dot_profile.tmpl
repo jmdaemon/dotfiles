@@ -108,30 +108,28 @@ export JAVA_HOME=/usr/lib/jvm/java-15-openjdk
 
 export EDITOR=nvim
 export excludes="$XDG_DATA_HOME"/excludes
-export scripts="$XDG_CONFIG_HOME/dotfiles/scripts"
+export scripts="$XDG_CONFIG_HOME"/dotfiles/scripts
+export aliasd="$scripts"/aliases
+export apps="$HOME"/Workspace/apps
 export bin="$LOCAL"
 
 {{- if (eq .system "arch-laptop") }}
-# HiDPI 
+# HiDPI - These environment variables scale applications x2, but can also make some icons blurry
 # https://wiki.archlinux.org/index.php/HiDPI#GDK_3_(GTK_3)
-# Scales applications x2, but can also make some icons blurry
 #export GDK_SCALE=2
 #export GDK_DPI_SCALE=0.5
 {{- end }}
 
-ALIAS="$scripts/aliases" 
-source $ALIAS/aliases.sh
+source $aliasd/aliases.sh
 {{- if (eq .system "arch-laptop") }} 
 source $XDG_CONFIG_HOME/dotfiles/scripts/startup/nvm.sh
 {{- else if (eq .system "ubuntu-workstation") }}
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 {{- end }}
-#source $CARGO_HOME/env
-#source $XDG_CONFIG_HOME/dotfiles/scripts/terminal/fortunecow.sh
 
-#export GOPATH="$HOME/workspace/go_projects"
-#export GOBIN="$GOPATH/bin"
+source $CARGO_HOME/env
+#source $scripts/terminal/fortunecow.sh
 
 # Persistent Tmux Sessions
 #/usr/bin/tmux attach -t 0

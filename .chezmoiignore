@@ -2,3 +2,5 @@
 .config/redshift/redshift.conf
 .config/git/personal
 {{- end }}
+LICENSE
+README.md

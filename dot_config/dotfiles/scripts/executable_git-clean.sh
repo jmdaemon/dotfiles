@@ -1,9 +1,8 @@
 #!/bin/bash
 
 show_usage() {
-    echo '
-Usage: git-clean.sh [folder]
-'
+    echo 'Usage: git-clean.sh [folder]
+    '
 }
 
 folder=$1

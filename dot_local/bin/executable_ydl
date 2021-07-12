@@ -5,7 +5,7 @@ set -o errexit
 # Script to download musics on youtube
 # Dep: youtube-dl
 show_usage() {
-    echo 'Usage: ydl.sh [youtube-url]
+    echo 'Usage: ydl [youtube-url]
     '
 }
 

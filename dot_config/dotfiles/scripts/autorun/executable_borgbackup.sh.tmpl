@@ -4,7 +4,7 @@
 info() { printf "\n%s %s\n\n" "$( date )" "$*" >&2; }
 trap 'echo $( date ) Backup interrupted >&2; exit 2' INT TERM
 
-USER={{ .data.username }}
+USER={{ .chezmoi.username }}
 HOST=$(cat /etc/hostname)
 
 # Setting this, so the repo does not need to be given on the commandline:

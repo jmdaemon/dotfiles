@@ -103,5 +103,11 @@
       "disableWorkspaceFolders": true,
       "filetypes": ["go"] 
     }
-  }
+  }, 
+  "markdownlint.config": { 
+      "default": true, 
+      "line-length": false,
+      "MD007": { "indent": 4 }
+    }
 }
+

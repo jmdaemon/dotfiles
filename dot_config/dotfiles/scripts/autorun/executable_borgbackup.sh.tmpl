@@ -1,10 +1,12 @@
 #!/bin/sh
 
+log=/var/log/backups/borg
+
 # Helpers and error handling:
 info() { printf "\n%s %s\n\n" "$( date )" "$*" >&2; }
 trap 'echo $( date ) Backup interrupted >&2; exit 2' INT TERM
 
-USER={{ .chezmoi.username }}
+USER=jmd
 HOST=$(cat /etc/hostname)
 
 # Setting this, so the repo does not need to be given on the commandline:
@@ -39,7 +41,7 @@ borg create                         \
     ::'{hostname}-{now}'            \
     /etc                            \
     /home                           \
-    /root                           \
+    /root >> "$log/borg.create.log" 2>&1
 
 backup_exit=$?
 
@@ -56,7 +58,7 @@ borg prune                          \
     --show-rc                       \
     --keep-daily    7               \
     --keep-weekly   4               \
-    --keep-monthly  6               \
+    --keep-monthly  6 >> "$log/borg.prune.log" 2>&1
 
 prune_exit=$?
 
@@ -66,8 +68,8 @@ global_exit=$(( backup_exit > prune_exit ? backup_exit : prune_exit ))
 if [ ${global_exit} -eq 0 ];
 then
     info "Backup and Prune finished successfully"
-    notify-send "Borg Backup" "Backup and Prune finished successfully."
-    date +"%F %T %Z" > ${HOME}/.local/share/borg/log
+    notify-send -i "drive-optical" "Borg Backup" "Backup and Prune finished successfully."
+    date +"%F %T %Z" > "$log/borg.log"
 fi
 
 if [ ${global_exit} -eq 1 ];

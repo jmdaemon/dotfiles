@@ -18,7 +18,7 @@ def cli(version, verbose, dryrun, folder, excludes):
     no_remove = set()
     excludes_list = Path(excludes)
 
-    if (excludes_list.exists() or excludes.is_dir()):
+    if (excludes_list.exists() or excludes_list.is_dir()):
         with open(excludes) as f:
              for line in f:
                  no_remove.add(line.strip())

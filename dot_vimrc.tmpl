@@ -18,6 +18,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'kaicataldo/material.vim', { 'branch': 'main' }
+Plug 'tomasr/molokai'
 Plug 'vim-syntastic/syntastic'
 Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/nerdcommenter'
@@ -32,7 +33,8 @@ Plug 'tpope/vim-dispatch'
 Plug 'gruvbox-community/gruvbox'
 Plug 'chrisbra/unicode.vim'
 Plug 'majutsushi/tagbar'
-Plug 'tomasr/molokai'
+Plug 'sirver/ultisnips'     , { 'for': 'tex'}
+Plug 'honza/vim-snippets'   , { 'for': 'tex'}
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'tmhedberg/SimpylFold'
 Plug 'jeetsukumaran/vim-indentwise'
@@ -92,7 +94,7 @@ set softtabstop=4
 set expandtab
 set shiftwidth=4
 
-"================ UI Config ==============="
+"================ Config ==============="
 set number
 set showcmd
 set cursorline
@@ -100,14 +102,9 @@ filetype indent on
 set showmatch
 set laststatus=2
 set autoread
+set spelllang=en_ca,en_ca
 " https://stackoverflow.com/questions/58403300/vimrc-tags-option-specification-for-git-tags-files
 set tags^=.git/tags;~
-"set tags+=$HOME/anaconda3/envs/fastai/lib/python3.6/site-packages/torch/tags
-"set tags+=$HOME/anaconda3/envs/fastai/lib/python3.6/site-packages/torchvision/tags
-
-" Windows
-" set tags+=$HOME/site-packages/torch/tags
-" set tags+=$HOME/site-packages/torchvision/tags
 
 "================ Searching ==============="
 set incsearch
@@ -150,6 +147,12 @@ nnoremap H gT
 nnoremap L gt
 vnoremap <Space> zf
 nnoremap <leader>q 0i"<Esc>Ea"<Esc>
+
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+" Correct last misspelling
+inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
 
 "=============== Vim Airline =============="
 let g:airline#extensions#tabline#enabled = 1
@@ -194,20 +197,16 @@ let g:mkdp_auto_start = 1
 let g:tex_flavor = 'latex'
 
 " ============== AsciiDoctor ==============
-let g:asciidoctor_executable = 'asciidoctor -b html5' " What to use for HTML, default `asciidoctor`.
-let g:asciidoctor_extensions = ['asciidoctor-diagram', 'asciidoctor-rouge' ] " What extensions to use for HTML, default `[]`.
-"let g:asciidoctor_executable = 'asciidoctor-latex -b html' " What to use for HTML, default `asciidoctor`.
-"let g:asciidoctor_extensions = ['asciidoctor-diagram', 'asciidoctor-rouge', 'asciidoctor-latex' ] " What extensions to use for HTML, default `[]`.
+let g:asciidoctor_executable = 'asciidoctor -b html5'
+let g:asciidoctor_extensions = ['asciidoctor-diagram', 'asciidoctor-rouge' ]
 
 """ AsciiDoctor PDF
-let g:asciidoctor_pdf_executable = 'asciidoctor-pdf' " What to use for PDF, default `asciidoctor-pdf`.
-let g:asciidoctor_pdf_extensions = ['asciidoctor-diagram'] " What extensions to use for PDF, default `[]`.
+let g:asciidoctor_pdf_executable = 'asciidoctor-pdf'
+let g:asciidoctor_pdf_extensions = ['asciidoctor-diagram']
 
 """ Folding
-"let g:asciidoctor_folding = 1 " Fold sections, default `0`.
-"let g:asciidoctor_fold_options = 1 " Fold options, default `0`.
-let g:asciidoctor_folding = 0 " Fold sections, default `0`.
-let g:asciidoctor_fold_options = 0 " Fold options, default `0`.
+let g:asciidoctor_folding = 0
+let g:asciidoctor_fold_options = 0
 
 """ Syntax
 " Conceal *bold*, _italic_, `code` and urls in lists and paragraphs, default `0`.
@@ -265,7 +264,6 @@ let g:coc_global_extensions = [
             \ 'coc-html',
             \ 'coc-java', 
             \ 'coc-json', 
-            \ 'coc-julia', 
             \ 'coc-markdownlint', 
             \ 'coc-snippets', 
             \ 'coc-tsserver',

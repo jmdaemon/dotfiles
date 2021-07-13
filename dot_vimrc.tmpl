@@ -7,6 +7,8 @@ endif
 
 call plug#begin('~/.config/nvim/plugged')
 
+let g:polyglot_disabled = ['java']
+
 " NeoViM Plugins
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'sakhnik/nvim-gdb', { 'do': ':!./install.sh \| UpdateRemotePlugins' }

@@ -98,11 +98,11 @@ NPM=$NPM_DIR/bin
 RUST=$CARGO_HOME/bin
 GO=/usr/local/go/bin
 LOCAL=$HOME/.local/bin
-export PATH=$PATH:$SBIN:$NPM:$RUST:$GO:$LOCAL
+export PATH=$PATH:$SBIN:$NPM:$RUST:$GOPATH/bin:$GO:$LOCAL
 
 # Java
 OPENJDK_8=/usr/lib/jvm/java-1.8.0-openjdk-amd64
-export JAVA_HOME=/usr/lib/jvm/java-15-openjdk
+export JAVA_HOME=/usr/lib/jvm/default-runtime/
 
 #export LIBVIRT_DEFAULT_URI='qemu:///system'
 

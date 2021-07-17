@@ -1,9 +1,10 @@
 #!/bin/bash
 
 log=/var/log/backups
+config={{ .chezmoi.homedir }}"/.config/rclone/rclone.conf"
 
-local_deltalearns="$HOME/Documents/Google Drive/DeltaLearns"
-local_main="$HOME/Documents/Google Drive/Main"
+local_deltalearns="/home/jmd/Documents/Google Drive/DeltaLearns"
+local_main="/home/jmd/Documents/Google Drive/Main"
 remote_deltalearns="google-drive-local_deltalearns:/"
 remote_main="google-drive-local_main:/"
 
@@ -14,7 +15,7 @@ backup() {
     echo "Executing rclone"
 
     [[ ! -d $log ]] && sudo mkdir $log || :
-    /usr/bin/rclone sync "$local" "$remote" \
+    /usr/bin/rclone sync "$local" "$remote" --config="$config"\
         --progress \
         --update \
         --verbose \
@@ -27,6 +28,7 @@ backup() {
         --stats 1s >> "$log/gdrive.log" 2>&1
 
     notify-send -i "drive-optical" "Rclone Google Drive" "Rclone for $remote finished successfully."
+    chown -R jmd:jmd "$local"
 }
 
 backup "$remote_deltalearns" "$local_deltalearns"

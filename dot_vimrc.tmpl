@@ -16,35 +16,28 @@ Plug 'neomake/neomake'
 Plug 'Scuilion/gradle-syntastic-plugin'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'NLKNguyen/papercolor-theme'
-Plug 'kaicataldo/material.vim', { 'branch': 'main' }
-Plug 'tomasr/molokai'
+Plug 'NLKNguyen/papercolor-theme'   , { 'on': [] }
+Plug 'kaicataldo/material.vim'      , { 'on': [], 'branch': 'main'}
+Plug 'tomasr/molokai'               , { 'on': [] }
+Plug 'gruvbox-community/gruvbox'    , { 'on': [] }
+Plug 'chriskempson/base16-vim'
 Plug 'vim-syntastic/syntastic'
 Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/nerdcommenter'
-Plug 'chriskempson/base16-vim'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'numkil/ag.nvim'
-Plug 'jiangmiao/auto-pairs' , { 'on': [] }
-Plug 'tpope/vim-surround'   , { 'on': [] }
-Plug 'tpope/vim-repeat'     , { 'on': [] }
-Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-dispatch'
-Plug 'gruvbox-community/gruvbox'
 Plug 'chrisbra/unicode.vim'
 Plug 'majutsushi/tagbar'
-Plug 'sirver/ultisnips'     , { 'for': 'tex'}
-Plug 'honza/vim-snippets'   , { 'for': 'tex'}
+Plug 'honza/vim-snippets', { 'for': 'tex' }
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'tmhedberg/SimpylFold'
 Plug 'jeetsukumaran/vim-indentwise'
 Plug 'edkolev/tmuxline.vim'
 Plug 'Chiel92/vim-autoformat'
-{{- if ( eq .system "arch-laptop" ) }}
-"Plug 'lilydjwg/fcitx.vim'
-{{- end }}
+Plug 'lilydjwg/fcitx.vim', { 'on': [] }
 Plug 'sheerun/vim-polyglot'
-Plug 'liuchengxu/graphviz.vim'
+Plug 'liuchengxu/graphviz.vim'      , { 'for': ['.gv', 'dot'] }
 Plug 'iamcco/markdown-preview.nvim' , { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'md'] }
 Plug 'aklt/plantuml-syntax'         , { 'for': ['.wsd', '.pu', '.puml', '.plantuml', '.iuml'] }
 Plug 'habamax/vim-asciidoctor'      , { 'for': ['adoc', 'asciidoc', 'asc'] }
@@ -132,26 +125,19 @@ nnoremap <leader>md :MarkdownPreview<CR>
 nnoremap <leader>d :NERDTree<CR>
 
 nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
-nnoremap <leader>f :!`ctags -R -f ./.git/tags .`<CR>
+"nnoremap <leader>f :!`ctags -R -f ./.git/tags .`<CR>
+nnoremap <leader>t :!`git ctags`<CR>
 nnoremap <leader>tg :TagbarToggle <CR>
 
 " Bind \ q to toggle double quotes
 nnoremap <leader>q :cs"q <CR>
-function! s:check_back_space() abort
-    let col = col('.') - 1
-    return !col || getline('.')[col - 1]  =~ '\s'
-endfunction
-
 nnoremap H gT
 nnoremap L gt
 vnoremap <Space> zf
-nnoremap <leader>q 0i"<Esc>Ea"<Esc>
+"nnoremap <leader>q 0i"<Esc>Ea"<Esc>
 
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 " Correct last misspelling
-inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
+inoremap <leader>s <c-g>u<Esc>[s1z=`]a<c-g>u
 
 "=============== Vim Airline =============="
 let g:airline#extensions#tabline#enabled = 1
@@ -176,8 +162,10 @@ autocmd BufEnter *.sh.tmpl :setlocal filetype=sh
 
 let g:formatterpath = [ "$HOME/.config/nvim/after/ftplugin/" ]
 
-map <C-K> :py3f /usr/share/clang/clang-format.py<cr>
-imap <C-K> <c-o>:py3f /usr/share/clang/clang-format.py<cr>
+"map <C-K> :py3f /usr/share/clang/clang-format.py<cr>
+"imap <C-K> <c-o>:py3f /usr/share/clang/clang-format.py<cr>
+map <leader>cf :py3f /usr/share/clang/clang-format.py<cr>
+imap <leader>cf :py3f /usr/share/clang/clang-format.py<cr>
 "au BufWrite * :Autoformat
 
 " https://www.chezmoi.io/docs/how-to/#configure-vim-to-run-chezmoi-apply-whenever-you-save-a-dotfile
@@ -300,6 +288,7 @@ endif
 " other plugin before putting this into your config.
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
+      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
       \ <SID>check_back_space() ? "\<TAB>" :
       \ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
@@ -430,3 +419,22 @@ nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+
+" ================ COC - coc-snippets ================
+" Use <C-l> for trigger snippet expand.
+imap <C-l> <Plug>(coc-snippets-expand)
+
+" Use <C-j> for select text for visual placeholder of snippet.
+vmap <C-j> <Plug>(coc-snippets-select)
+
+" Use <C-j> for jump to next placeholder, it's default of coc.nvim
+let g:coc_snippet_next = '<c-j>'
+
+" Use <C-k> for jump to previous placeholder, it's default of coc.nvim
+let g:coc_snippet_prev = '<c-k>'
+
+" Use <C-j> for both expand and jump (make expand higher priority.)
+imap <C-j> <Plug>(coc-snippets-expand-jump)
+
+" Use <leader>x for convert visual selected code to snippet
+xmap <leader>x  <Plug>(coc-convert-snippet)

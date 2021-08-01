@@ -4,3 +4,6 @@
 {{- end }}
 LICENSE
 README.md
+**/*.md
+**/docs
+**/doc

@@ -4,6 +4,25 @@ log=/var/log/backups/borg
 
 # Helpers and error handling:
 info() { printf "\n%s %s\n\n" "$( date )" "$*" >&2; }
+notify_user() {
+    icon=$1
+    msg=$2
+    critical=$3
+
+    if [[ -z "$icon" ]]; then
+        if [[ -z "$critical" ]]; then
+            sudo -u $USER notify-send "Borg Backup" $msg
+        else
+            sudo -u $USER notify-send "Borg Backup" $msg --urgency=critical
+        fi
+    else
+        sudo -u $USER notify-send -i $icon "Borg Backup" $msg
+    fi
+
+    date +"[%F %T %Z] $msg" >> "$log/borg.log"
+    # [YYYY-MM-DD HH:MM:SS] Timezone $msg
+}
+
 trap 'echo $( date ) Backup interrupted >&2; exit 2' INT TERM
 
 USER=jmd
@@ -12,6 +31,9 @@ HOST=$(cat /etc/hostname)
 # Setting this, so the repo does not need to be given on the commandline:
 export BORG_REPO="/home/$USER/Backups/Borg/Main"
 export BORG_PASSCOMMAND="secret-tool lookup user $USER domain $HOST"
+
+# Log all output
+[[ ! -d $log ]] && sudo mkdir -p $log || :
 
 if [ -z $( eval ${BORG_PASSCOMMAND} ) ];
 then
@@ -22,7 +44,7 @@ fi
 info "Starting backup"
 
 # Notify user via notify-osd as well
-notify-send "Borg Backup" "Starting backup for $USER"
+sudo -u $USER notify-send "Borg Backup" "Starting backup for $USER"
 
 # Backup the most important directories into an archive named after
 # the machine this script is currently running on:
@@ -68,20 +90,19 @@ global_exit=$(( backup_exit > prune_exit ? backup_exit : prune_exit ))
 if [ ${global_exit} -eq 0 ];
 then
     info "Backup and Prune finished successfully"
-    notify-send -i "drive-optical" "Borg Backup" "Backup and Prune finished successfully."
-    date +"%F %T %Z" > "$log/borg.log"
+    notify_user "drive-optical" "Backup and Prune finished successfully."
 fi
 
 if [ ${global_exit} -eq 1 ];
 then
     info "Backup and/or Prune finished with a warning"
-    notify-send "Borg Backup" "Backup and/or Prune finished with a warning."
+    notify_user "Backup and/or Prune finished with a warning."
 fi
 
 if [ ${global_exit} -gt 1 ];
 then
     info "Backup and/or Prune finished with an error"
-    notify-send "Borg Backup" "Backup and/or Prune finished with an error."  --urgency=critical
+    notify_user "Backup and/or Prune finished with an error." 
 fi
 
 exit ${global_exit}

@@ -12,7 +12,7 @@ backup() {
     local=$1
     remote=$2
 
-    [[ ! -d $log ]] && sudo mkdir $log || :
+    [[ ! -d $log ]] && sudo mkdir -p $log || :
     echo "[" + $(date +"%Y-%m-%d %T") + "] Executing rclone ..." >> "$log/gdrive.log" 2>&1
 
     /usr/bin/rclone sync "$local" "$remote" --config="$config"\

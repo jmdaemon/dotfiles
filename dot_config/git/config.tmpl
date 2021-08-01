@@ -1,16 +1,18 @@
 {{- if (eq .system "ubuntu-workstation") }}
 [user]
-name = {{ .git.name }}
-email = {{ .git.email }}
+  name = {{ .git.name }}
+  email = {{ .git.email }}
 [includeIf "gitdir:~/workspace/personal/"]
   path = ~/.config/git/personal
 {{- else if ( eq .system "arch-laptop" ) }}
 [user]
-name = {{ .git.name }}
-email = {{ .git.email }}
+  name = {{ .git.name }}
+  email = {{ .git.email }}
 {{- end }}
 [push]
 	default = simple
+[pull]
+  rebase = true
 [init]
 	templatedir = ~/.config/git/git_template
 	defaultBranch = master
@@ -21,21 +23,21 @@ email = {{ .git.email }}
 	required = true
 [alias]
 	ctags = !.git/hooks/ctags
+  archive-branch = !.git/hooks/archive-branch
 [pager]
-    diff = delta
-    log = delta
-    reflog = delta
-    show = delta
+  diff = delta
+  log = delta
+  reflog = delta
+  show = delta
 [interactive]
-    diffFilter = delta --color-only
+  diffFilter = delta --color-only
 [delta]
-    line-numbers = true 
-    keep-plus-minus-markers = true
-    features = decorations
-    whitespace-error-style = 22 reverse
+  line-numbers = true 
+  keep-plus-minus-markers = true
+  features = decorations
+  whitespace-error-style = 22 reverse
 [delta "decorations"]
-    commit-decoration-style = bold yellow box ul
-    file-style = bold yellow ul
-    file-decoration-style = none
-[pull]
-    rebase = true
+  commit-decoration-style = bold yellow box ul
+  file-style = bold yellow ul
+  file-decoration-style = none
+# vim:ft=gitconfig

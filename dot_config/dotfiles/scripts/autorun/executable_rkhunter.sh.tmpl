@@ -1,0 +1,8 @@
+#!/bin/sh
+
+email="{{ .data.email }}" 
+# https://www.tecmint.com/install-rootkit-hunter-scan-for-rootkits-backdoors-in-linux/
+(/usr/local/bin/rkhunter --versioncheck
+/usr/local/bin/rkhunter --update
+/usr/local/bin/rkhunter --cronjob --report-warnings-only
+) | /bin/mail -s "Rkhunter Weekly [Arch-Laptop `date +"%F %T %Z"`]" "$email"

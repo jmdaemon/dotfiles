@@ -49,3 +49,4 @@ y
 There are more resources listed below that will help you get started setting up your own backups.
 
 [Rclone Google Drive Docs](https://rclone.org/drive/ "Rclone Docs")
+[How to Geek: Backup Google Drive](https://www.howtogeek.com/451262/how-to-use-rclone-to-back-up-to-google-drive-on-linux/ "How To Geek Article: Backup Google Drive")

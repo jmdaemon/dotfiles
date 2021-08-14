@@ -120,6 +120,7 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 #-- [ MODE ]--#
+# Modes: System, Resize, Execute, Keyboard
 
 set $mode_system System
 mode "$mode_system" {   # System: [l]ock, [e]xit/logout, [s]uspend, [h]ibernate, [r]eboot, [p]oweroff 
@@ -172,6 +173,18 @@ mode "$mode_exec" {     # Executes applications and tray indicators
         bindsym Escape mode "default"
 }
 bindsym $mod+x mode "$mode_exec"
+
+set $mode_key Keyboard
+mode "$mode_key" {     # Switches keyboard layouts
+        bindsym m exec --no-startup-id setxkbmap math; mode "default"
+        bindsym c exec --no-startup-id setxkbmap ca; mode "default"
+        bindsym u exec --no-startup-id setxkbmap us; mode "default"
+# back to normal: Enter or Escape
+        bindsym Return exec --no-startup-id setxkbmap us; mode "default"
+        bindsym Escape exec --no-startup-id setxkbmap us; mode "default"
+}
+bindsym $mod+Escape exec --no-startup-id setxkbmap us; mode "default"
+bindsym $mod+shift+u mode "$mode_key"
 
 #--[ EXEC ]--#
 

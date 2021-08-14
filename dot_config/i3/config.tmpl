@@ -135,7 +135,9 @@ mode "$mode_system" {   # System: [l]ock, [e]xit/logout, [s]uspend, [h]ibernate,
 }
 bindsym $mod+Shift+s mode "$mode_system"
 
-bindsym Print exec flameshot full -p "$HOME/Pictures/captures"
+bindsym Print exec flameshot full -p "$HOME/Pictures/Screenshots"
+bindsym $mod+Print exec flameshot screen -p "$HOME/Pictures/Screenshots"
+bindsym $mod+q exec flameshot gui -p "$HOME/Pictures/Screenshots"
 
 set $mode_resize Resize 
 mode "$mode_resize" {   # resize window (you can also use the mouse for that) 
@@ -223,3 +225,5 @@ client.unfocused        #333333 #222222 #888888 #222222 #333333
 client.urgent           #222222 #900000 #FFFFFF #900000 #222222
 client.placeholder      #000000 #0C0C0C #FFFFFF #0C0C0C #000000
 client.background       #000000
+
+# vim:ft=conf

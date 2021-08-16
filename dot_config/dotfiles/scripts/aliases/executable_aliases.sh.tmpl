@@ -30,6 +30,15 @@ alias nvcent="nvidia-smi dmon -s u"
 
 # PyPi pip3 install nvidia-ml-py3
 # Conda conda install nvidia-ml-py3 -c fastai
+apt-list() {
+    opts=$1
+    if [[ -z $opts ]]; then
+        dpkg-query -Wf '${Installed-Size}\t${Package}\n' | sort -n
+    elif [[ $opts == '-p' || $opts == '--purge' ]]; then
+        dpkg --list | grep "^rc" | cut -d " " -f 3
+    fi
+}
+
 {{- end }}
 
 {{- if (eq .system "arch-laptop" ) }}

@@ -174,7 +174,7 @@ bindsym $mod+r mode "$mode_resize"
 set $mode_exec Execute 
 mode "$mode_exec" {     # Executes applications and tray indicators
         bindsym u exec --no-startup-id udiskie -a -t -f thunar; mode "default"
-        bindsym f exec --no-startup-id fcitx -d; mode "default"
+        bindsym f exec --no-startup-id fcitx5 -d; mode "default"
         bindsym r exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent; mode "default"
         bindsym k exec --no-startup-id kdeconnect-indicator; mode "default"
         bindsym i exec --no-startup-id birdtray; mode "default"
@@ -203,7 +203,7 @@ bindsym $mod+shift+u mode "$mode_key"
 
 {{- if ( eq .system "arch-laptop" ) }}
 exec --no-startup-id nm-applet
-#exec --no-startup-id fcitx -d
+#exec --no-startup-id fcitx5 -d
 exec --no-startup-id birdtray
 {{- end }}
 exec --no-startup-id secret-tool lookup keepass Passwords | keepassxc --pw-stdin ~/.config/dotfiles/Passwords/Passwords.kdbx &
@@ -212,6 +212,9 @@ exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent       # For Redshift
 {{- else if ( eq .system "ubuntu-workstation" ) }}
 #exec --no-startup-id /usr/libexec/geoclue-2.0/demos/agent   # For Redshift
 exec --no-startup-id redshift
+{{- end }}
+{{- if ( eq .system "arch-laptop" ) }}
+exec --no-startup-id clight-gui --tray &
 {{- end }}
 exec --no-startup-id picom -bc --config ~/.config/picom/picom.conf
 exec --no-startup-id dunst

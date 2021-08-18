@@ -74,6 +74,8 @@ let g:syntastic_yaml_checkers = [ "yamllint" ]
 
 let g:syntastic_c_compiler_options = '-std=C99'
 
+let g:syntastic_mode_map = { 'passive_filetypes': ['python'] }
+
 "================== Theme ================="
 syntax enable
 if filereadable(expand("~/.config/nvim/vimrc_background"))

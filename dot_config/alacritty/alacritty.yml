@@ -1,4 +1,6 @@
 ---
+scrolling:
+  history: 10000
 font:
   normal:
     family: Inconsolata Nerd Font

@@ -141,6 +141,11 @@ vnoremap <Space> zf
 " Correct last misspelling
 inoremap <leader>s <c-g>u<Esc>[s1z=`]a<c-g>u
 
+" https://github.com/gillescastel/inkscape-figures
+" https://castel.dev/post/lecture-notes-2/
+inoremap <C-f> <Esc>: silent exec '.!inkscape-figures create "'.getline('.').'" "'.b:vimtex.root.'/figures/"'<CR><CR>:w<CR>
+nnoremap <C-f> : silent exec '!inkscape-figures edit "'.b:vimtex.root.'/figures/" > /dev/null 2>&1 &'<CR><CR>:redraw!<CR>
+
 "=============== Vim Airline =============="
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1

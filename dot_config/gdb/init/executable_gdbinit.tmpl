@@ -1,0 +1,8 @@
+set history save on
+set history size unlimited
+define init-gef-config
+source {{ .chezmoi.homeDir }}.config/gdb/init/gef/gef.py
+end
+document init-gef-config
+Initializes GEF (GDB Enhanced Features)
+end

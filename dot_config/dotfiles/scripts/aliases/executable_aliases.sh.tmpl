@@ -71,3 +71,11 @@ gdb() { # Wrapper around gdb that toggles gef configurations
 #alias gdb="exec gdb -nh -x \"\"$XDG_CONFIG_HOME\"/gdb/init/gdbinit\" \"$@\""
 #alias gef="exec gdb -nh -x \"\"$XDG_CONFIG_HOME\"/gdb/init/gdbinit\" -ex init-gef-config \"$@\""
 
+cpfp() {
+    filepath=$1
+    if [[ ! -z "$filepath" ]]; then
+        echo "$filepath" | tr -d '\n' | xclip -sel clip
+    else # Copies pwd by default
+        echo $(pwd) | tr -d '\n' | xclip -sel clip
+    fi
+}

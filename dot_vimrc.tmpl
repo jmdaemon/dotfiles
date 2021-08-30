@@ -146,6 +146,14 @@ inoremap <leader>s <c-g>u<Esc>[s1z=`]a<c-g>u
 inoremap <C-f> <Esc>: silent exec '.!inkscape-figures create "'.getline('.').'" "'.b:vimtex.root.'/figures/"'<CR><CR>:w<CR>
 nnoremap <C-f> : silent exec '!inkscape-figures edit "'.b:vimtex.root.'/figures/" > /dev/null 2>&1 &'<CR><CR>:redraw!<CR>
 
+" Sources: 
+" https://vim.fandom.com/wiki/GNU/Linux_clipboard_copy/paste_with_xclip
+" https://stackoverflow.com/questions/5240473/in-vim-with-xclip-yank-to-clipboard
+" https://vi.stackexchange.com/questions/84/how-can-i-copy-text-to-the-system-clipboard-from-vim
+" Yank to xclip (Use whichever works best)
+vnoremap <silent><Leader>y "yy <Bar> :call system('xclip -sel clip', @y)<CR>
+"map <silent><Leader>y "+y
+
 "=============== Vim Airline =============="
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1

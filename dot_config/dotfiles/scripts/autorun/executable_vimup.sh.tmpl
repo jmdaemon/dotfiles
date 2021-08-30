@@ -1,0 +1,6 @@
+#!/bin/sh
+
+HOME={{ .chezmoi.homeDir }}
+export PATH=$HOME/.local/share/nvm/versions/node/v16.6.1/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/sbin:$HOME/.local/share/npm/bin:$HOME/.local/bin
+nvim +PlugUpdate +PlugUpgrade +qall
+notify-send "Vim Plug" "Vim plugins have successfully been updated."

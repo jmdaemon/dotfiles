@@ -90,16 +90,14 @@ export QT_QPA_PLATFORMTHEME=qt5ct
 export QT_AUTO_SCREEN_SCALE_FACTOR=1
 export FONTCONFIG_PATH=/etc/fonts
 
-if which ruby >/dev/null && which gem >/dev/null; then
-    PATH="$(ruby -r rubygems -e 'puts Gem.user_dir')/bin:$PATH"
-fi
-
 SBIN=/usr/sbin
+RUBY=$HOME/.rbenv/shims
+GEM_BIN=$GEM_HOME/bin
 NPM=$NPM_DIR/bin
 RUST=$CARGO_HOME/bin
 GO=/usr/local/go/bin
 LOCAL=$HOME/.local/bin
-export PATH=$PATH:$SBIN:$NPM:$RUST:$GOPATH/bin:$GO:$LOCAL
+export PATH=$RUBY:$GEM_BIN:$PATH:$SBIN:$NPM:$RUST:$GOPATH/bin:$GO:$LOCAL
 
 # Java
 OPENJDK_8=/usr/lib/jvm/java-1.8.0-openjdk-amd64

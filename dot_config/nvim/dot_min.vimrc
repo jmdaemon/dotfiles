@@ -34,6 +34,11 @@ set expandtab
 set shiftwidth=4
 
 "================ Config ==============="
+" Sources:
+" https://www.reddit.com/r/neovim/comments/8mglne/removing_the_filename_line/
+" https://www.reddit.com/r/vim/comments/7hwhll/remove_the_bottom_status_line_in_vim_possible/
+" Note that when using inkscape shortcut manager, the popup window ocassionally fails to refresh properly.
+" These lines below remove Vim's status bar as a workaround.
 set noshowmode
 set noruler
 set laststatus=0

@@ -41,9 +41,6 @@ apt-list() {
 
 {{- end }}
 
-{{- if (eq .system "arch-laptop" ) }}
-alias pkgs="expac -H M '%m\t%n' | sort -h"
-{{- end }}
 alias conda-init="source $DOTFILES/scripts/terminal/conda-init.sh"
 {{- if (eq .terminal "kitty" ) }}
 # https://github.com/kovidgoyal/kitty/issues/268 - For Kitty
@@ -62,8 +59,11 @@ gdb() { # Wrapper around gdb that toggles gef configurations
     toggle=$1
     if [[ "$toggle" == "--gef" ]]; then
         shift # Pops --gef wrapper option
+        #exec /usr/bin/gdb -nh -x ~/.config/gdb/init/gdbinit -ex "init-gef-config" "$@"
         exec /usr/bin/gdb -nh -x "$XDG_CONFIG_HOME"/gdb/init/gdbinit -ex "init-gef-config" "$@"
     else
+        #exec /usr/bin/gdb -nh -x $XDG_CONFIG_HOME/.config/gdb/init/gdbinit "$@"
+        #exec /usr/bin/gdb -nh -x ~/.config/gdb/init/gdbinit "$@"
         exec /usr/bin/gdb -nh -x "$XDG_CONFIG_HOME"/gdb/init/gdbinit "$@"
     fi
 }
@@ -79,3 +79,15 @@ cpfp() {
         echo $(pwd) | tr -d '\n' | xclip -sel clip
     fi
 }
+
+{{- if (eq .system "arch-laptop" ) }}
+pkgs() {
+    # https://wiki.archlinux.org/title/Pacman/Tips_and_tricks
+    opts=$1
+    if [[ "$opts" == "-o" || "$opts" == "--orphans" ]]; then
+        pacman -Qtdq
+    elif [[ "$opts" == "-d" || "$opts" == "--desc" ]]; then
+        expac -H M "%011m\t%-20n\t%10d" $(comm -23 <(pacman -Qqen | sort) <({ pacman -Qqg base-devel; expac -l '\n' '%E' base; } | sort | uniq)) | sort
+    fi
+}
+{{- end }}

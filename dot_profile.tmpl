@@ -106,11 +106,14 @@ export JAVA_HOME=/usr/lib/jvm/default-runtime/
 #export LIBVIRT_DEFAULT_URI='qemu:///system'
 
 export EDITOR=nvim
+# https://tex.stackexchange.com/questions/260/how-to-set-preferred-pdf-viewer-for-texdoc-in-texlive-2010-pretest
+export PDFVIEWER=okular
 export excludes="$XDG_DATA_HOME"/excludes
 export scripts="$XDG_CONFIG_HOME"/dotfiles/scripts
 export aliasd="$scripts"/aliases
 export apps="$HOME"/Workspace/apps
 export cw="$HOME/Workspace/School/MIT OpenCourseWare"
+export pg="$HOME/Workspace/playground"
 export bin="$LOCAL"
 
 {{- if (eq .system "arch-laptop") }}

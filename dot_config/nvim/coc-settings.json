@@ -96,12 +96,15 @@
           "buildDirectory": "build" 
       }
     }, 
-
     "golang": { 
       "command": "gopls", 
       "rootPatterns": ["go.mod"], 
       "disableWorkspaceFolders": true,
       "filetypes": ["go"] 
+    },
+    "digestif":{
+      "command": "digestif",
+      "filetypes": ["tex", "plaintex", "context"]
     }
   }, 
   "markdownlint.config": { 

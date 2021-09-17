@@ -248,6 +248,9 @@ for_window [class="(?i)*nextcloud*"] floating disable
 for_window [class="plasmashell" window_type="notification"] floating enable, border none, move right 700px, move down 450px
 no_focus   [class="plasmashell" window_type="notification"]
 
+# https://www.reddit.com/r/awesomewm/comments/go4bib/floating_terminal_doesnt_spawn_centered_or_on/
+# https://www.reddit.com/r/i3wm/comments/40jqad/how_can_i_exec_as_a_floating_window/
+# https://github.com/alacritty/alacritty/issues/1238
 # For Inkscape Shortcut Manager
 for_window [class="popup-bottom-center"] floating enable
 for_window [class="popup-bottom-center"] exec ~/.config/i3/window.sh

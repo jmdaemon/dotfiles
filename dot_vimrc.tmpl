@@ -74,7 +74,9 @@ let g:syntastic_yaml_checkers = [ "yamllint" ]
 
 let g:syntastic_c_compiler_options = '-std=C99'
 
-let g:syntastic_mode_map = { 'passive_filetypes': ['python'] }
+" Disables python flake8, lacheck for tex, shellcheck for sh
+let g:syntastic_mode_map = { 'passive_filetypes': ['python', 'tex', 'sh'] }
+
 
 "================== Theme ================="
 syntax enable
@@ -139,7 +141,7 @@ vnoremap <Space> zf
 "nnoremap <leader>q 0i"<Esc>Ea"<Esc>
 
 " Correct last misspelling
-inoremap <leader>s <c-g>u<Esc>[s1z=`]a<c-g>u
+inoremap <leader>cs <c-g>u<Esc>[s1z=`]a<c-g>u
 
 " https://github.com/gillescastel/inkscape-figures
 " https://castel.dev/post/lecture-notes-2/
@@ -200,11 +202,13 @@ let g:tex_flavor = 'latex'
 
 " ============== AsciiDoctor ==============
 let g:asciidoctor_executable = 'asciidoctor -b html5'
-let g:asciidoctor_extensions = ['asciidoctor-diagram', 'asciidoctor-rouge' ]
+"let g:asciidoctor_extensions = ['asciidoctor-diagram', 'asciidoctor-rouge' ]
+"let g:asciidoctor_extensions = ['asciidoctor-rouge']
 
 """ AsciiDoctor PDF
-let g:asciidoctor_pdf_executable = 'asciidoctor-pdf'
-let g:asciidoctor_pdf_extensions = ['asciidoctor-diagram']
+"let g:asciidoctor_pdf_executable = 'asciidoctor-pdf'
+let g:asciidoctor_pdf_executable = 'asciidoctor-web-pdf'
+"let g:asciidoctor_pdf_extensions = ['asciidoctor-diagram']
 
 """ Folding
 let g:asciidoctor_folding = 0

@@ -99,6 +99,9 @@ fi
 
 plugins=( git gradle-completion colored-man-pages zsh-completions )
 
+# Automatically upgrades OMZ
+# https://stackoverflow.com/questions/11378607/oh-my-zsh-disable-would-you-like-to-check-for-updates-prompt
+export DISABLE_UPDATE_PROMPT=true
 # Added in quick hack
 source $ZSH/oh-my-zsh.sh
 # User configuration

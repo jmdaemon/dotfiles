@@ -1,4 +1,4 @@
-#!/usr/bin/python3.9
+#!/usr/bin/python
 #
 # Copyright 2012 Google Inc.
 #
@@ -151,7 +151,6 @@ def UrlEscape(text: str):
 
 def UrlUnescape(text: str):
   # See OAUTH 5.1 for a definition of which characters need to be escaped.
-  # return urllib.unquote(text)
   return urllib.parse.unquote(text)
 
 def FormatUrlParams(params):
@@ -236,25 +235,6 @@ def RefreshToken(client_id, client_secret, refresh_token):
   params['refresh_token'] = refresh_token
   params['grant_type'] = 'refresh_token'
   request_url = AccountsUrl('o/oauth2/token')
-
-  # print("Testing Testing Testing")
-  # print(f'request url: {request_url}, request body: {urllib.parse.urlencode(params).encode("utf-8")}\n')
-  # response = urllib.request.urlopen(request_url, urllib.parse.urlencode(params).encode("utf-8")).read()
-  # response = urllib.request.urlopen(request_url, urllib.parse.urlencode(params).encode("utf-8")).read()
-  # response = urllib.request.urlopen(request_url, urllib.parse.quote_plus(urllib.parse.urlencode(params))).read()
-  # response = urllib.request.urlopen(request_url,
-                                    # UrlEscape(urllib.parse.urlencode(params).encode("utf-8")).encode("utf-8")).read()
-  # response = urllib.request.urlopen(request_url, urllib.parse.urlencode(params)).read()
-  # print(f'======== Testing ========')
-  # query = UrlEscape(urllib.parse.unquote((urllib.parse.urlencode(params).encode("utf-8"))))
-  # query = urllib.parse.urlencode(params).encode("utf-8")
-  # print(f'urllib.parse.encode: {query}')
-
-  # query = UrlEscape(query)
-  # print(f'UrlEscape: {query}')
-
-  # query = query.encode("utf-8")
-  # print(f'query.encode : {query}')
 
   response = urllib.request.urlopen(request_url, urllib.parse.urlencode(params).encode("utf-8")).read()
   return json.loads(response)

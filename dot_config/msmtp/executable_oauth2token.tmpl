@@ -26,8 +26,6 @@
 
 account="$1"
 att="$2"
-#account=$1
-#att=$2
 
 HOME={{ .chezmoi.homeDir }}
 filepass="$HOME/.local/share/gpg/msmtp"
@@ -37,10 +35,6 @@ refresh_path="$filepass"/refresh2.gpg
 
 token_path="$filepass"/token.gpg
 expire_path="$filepass"/token-expire.gpg
-#echo "After path creation"
-
-#token=""
-#expire=""
 
 get_access_token() {
 	{ IFS= read -r tokenline && IFS= read -r expireline; } < \
@@ -48,47 +42,28 @@ get_access_token() {
   --client_id=$(gpg --quiet -d --batch --passphrase $att $client_id_path) \
   --client_secret=$(gpg --quiet -d --batch --passphrase $att $client_secret_path) \
   --refresh_token=$(gpg --quiet -d --batch --passphrase $att $refresh_path))
-  #<(~/.config/msmtp/oauth2.py --user=$account \
-      #--client_id=$(secret-tool lookup $att client-id) \
-      #--client_secret=$(secret-tool lookup $att client-secret) \
-      #--refresh_token=$(secret-tool lookup $att refresh))
-  #<(python3 ~/.config/msmtp/oauth2.py --user=$account \
-
-      #--generate_oauth2_token)
 
 	token=${tokenline#Access Token: }
 	expire=${expireline#Access Token Expiration Seconds: }
-
-
-
-	#token=${tokenline#Access Token: }
-	#expire=${expireline#Access Token Expiration Seconds: }
 }
 
-#token="$(secret-tool lookup $att token)"
-#expire="$(secret-tool lookup $att token-expire)"
-
-#echo "Before token assignment: $token $expire"
 if [[ -e "$token_path" ]]; then
     token="$(gpg --quiet -d --batch --passphrase $att $token_path)"
 fi
 if [[ -e "$expire_path" ]]; then
     expire="$(gpg --quiet -d --batch --passphrase $att $expire_path)"
 fi
-#echo "After token assignment: $token $expire"
 now=$(date +%s)
 
 if [[ $token && $expire && $now -lt $((expire - 60)) ]]; then
 	echo $token
 else
 	get_access_token
-  #echo $token | secret-tool store --label=msmtp-oauth2 $att token
-  #echo $token | secret-tool store --label=msmtp-oauth2 $att token
-  #echo "Execute get token thing: $token $expire"
+
   rm "$token_path"
   echo $token | gpg -c --batch --passphrase "$att" -o "$token_path"
 	expire=$((now + expire))
-  #echo $expire | secret-tool store --label=msmtp-oauth2 $att token-expire
+
   rm "$expire_path"
   echo $expire | gpg -c --batch --passphrase "$att" -o "$expire_path"
 	echo $token

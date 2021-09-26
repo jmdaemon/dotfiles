@@ -1,0 +1,37 @@
+#!/bin/sh
+#cat "$1" | sed \
+    #-e 's:&:\\&:g' \
+    #-e 's:,:\t\&\t:g' \
+    #-e 's:"::g' \
+    #-e 's/_/\\_/g'  \
+    #-e 's:$:\t\\\\:g'
+
+#echo "$1" | sed \
+    #-e 's:&:\\&:g' \
+    #-e 's:,:\t\&\t:g' \
+    #-e 's:"::g' \
+    #-e 's/_/\\_/g'  \
+    #-e 's:$:\t\\\\:g'
+
+to_latex_table() {
+    line=$1
+    echo "$line" | sed \
+    -e 's:&:\\&:g' \
+    -e 's:,:\t\&\t:g' \
+    -e 's:"::g' \
+    -e 's/_/\\_/g'  \
+    -e 's:$:\t\\\\:g'
+}
+
+if [ -p /dev/stdin ]; then
+    while IFS= read line; do # Read line by line
+            to_latex_table $line
+    done
+else
+    cat "$1" | sed \ # Read from input file
+        -e 's:&:\\&:g' \
+        -e 's:,:\t\&\t:g' \
+        -e 's:"::g' \
+        -e 's/_/\\_/g'  \
+        -e 's:$:\t\\\\:g'
+fi

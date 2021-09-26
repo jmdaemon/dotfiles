@@ -1,0 +1,9 @@
+#!/bin/bash
+
+transpose_path="transpose.py"
+fast_table_path="./fast_table.sh"
+
+truthtable() {
+    input="$1"
+    python $transpose_path "$input" | bash $fast_table_path
+}

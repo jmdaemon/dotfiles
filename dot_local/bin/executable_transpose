@@ -5,7 +5,7 @@ import pandas as pd
 import argparse
 from signal import signal, SIGPIPE, SIG_DFL
 signal(SIGPIPE, SIG_DFL)
-parser = argparse.ArgumentParser(description='Process some integers.')
+parser = argparse.ArgumentParser(description='Output transposed csv files')
 parser.add_argument('input', type=str, help='Specify csv file to transpose')
 args = parser.parse_args()
 

@@ -29,7 +29,7 @@ Plug 'numkil/ag.nvim'
 Plug 'tpope/vim-dispatch'
 Plug 'chrisbra/unicode.vim'
 Plug 'majutsushi/tagbar'
-Plug 'honza/vim-snippets', { 'for': 'tex' }
+"Plug 'honza/vim-snippets', { 'for': 'tex' }
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'tmhedberg/SimpylFold'
 Plug 'jeetsukumaran/vim-indentwise'
@@ -193,6 +193,18 @@ let g:vimtex_compiler_progname = 'nvr'
 let g:vimtex_view_general_viewer = 'okular'
 let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
 let g:vimtex_view_general_options_latexmk = '--unique'
+let g:vimtex_compiler_latexmk = {
+        \ 'build_dir' : 'build',
+        \ 'options' : [
+        \   '-pdf',
+        \   '-shell-escape',
+        \   '-verbose',
+        \   '-file-line-error',
+        \   '-synctex=1',
+        \   '-interaction=nonstopmode',
+        \ ],
+        \ }
+
 
 " MarkdownPreview
 let g:mkdp_auto_start = 1

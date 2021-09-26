@@ -1,20 +1,6 @@
 #!/usr/bin/python
 
-# tranpose.py - Transpose csv files
-
-# Transpose Files:
-# import pandas as pd
-# import argparse
-# parser = argparse.ArgumentParser(description='Process some integers.')
-# parser.add_argument('input', type=str, help='Specify csv file to transpose')
-# parser.add_argument('output', type=str, help='Output to another csv file')
-# args = parser.parse_args()
-
-# csv_input  = args.input
-# csv_output = args.output
-# pd.read_csv(csv_input, header=None).T.dropna().astype(int).to_csv(csv_output, header=False, index=False)
-
-# Transpose File & Output String
+# tranpose.py - Output transposed csv files
 import pandas as pd
 import argparse
 from signal import signal, SIGPIPE, SIG_DFL

@@ -1,9 +1,12 @@
-#!/bin/bash
+#!/bin/sh
 
-transpose_path="transpose.py"
-fast_table_path="./fast_table.sh"
+# Prerequisites
+# - transpose
+# - tbl
+transpose_path=~/.local/bin/transpose
+fast_table_path=~/.local/bin/fasttable
 
-truthtable() {
-    input="$1"
-    python $transpose_path "$input" | bash $fast_table_path
-}
+#truthtable() {
+input="$1"
+python $transpose_path "$input" | bash $fast_table_path
+#}

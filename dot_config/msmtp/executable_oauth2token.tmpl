@@ -1,0 +1,96 @@
+#!/bin/bash
+#
+# first argument: email address
+# second argument: the attribute for the keyring (values are client-id
+# client-secret, refresh, token and token-expire)
+#
+# using secret-tool to get the secrets stored in keyring
+# using oauth2 cript from google-oauth2-tools
+# (https://github.com/google/gmail-oauth2-tools/blob/master/python/oauth2.py) to
+# connect to google and obtain the oauth2 token
+#
+# client-secret, client-id and refresh should be already in the keyring, you
+# must do the first step from the comments in the oauth2.py script before using
+# this script and use secret-tool to store the attributes. You have to do that
+# only one time. After that you can use this script to get a valid token. New
+# tokens are requested if the stored token have expired.
+#
+# Note: the last step commented in the gmail-oauth2-tools script is not
+# necesary, as far as I could see it encodes the account and the token in one
+# base64 encoded string, i.e. this command recovers the token from that base64
+# string:
+# oauth2.py --generate_oauth2_string --user=$account \
+#	--access_token=${access_token} | awk 'NR==2' | base64 -d | awk '{print $2}'
+#
+# Author: Christian Tenllado
+
+account="$1"
+att="$2"
+#account=$1
+#att=$2
+
+HOME={{ .chezmoi.homeDir }}
+filepass="$HOME/.local/share/gpg/msmtp"
+client_id_path="$filepass"/client-id.gpg
+client_secret_path="$filepass"/client-secret.gpg
+refresh_path="$filepass"/refresh2.gpg
+
+token_path="$filepass"/token.gpg
+expire_path="$filepass"/token-expire.gpg
+#echo "After path creation"
+
+#token=""
+#expire=""
+
+get_access_token() {
+	{ IFS= read -r tokenline && IFS= read -r expireline; } < \
+  <(python3 ~/.config/msmtp/oauth2.py --user=$account \
+  --client_id=$(gpg --quiet -d --batch --passphrase $att $client_id_path) \
+  --client_secret=$(gpg --quiet -d --batch --passphrase $att $client_secret_path) \
+  --refresh_token=$(gpg --quiet -d --batch --passphrase $att $refresh_path))
+  #<(~/.config/msmtp/oauth2.py --user=$account \
+      #--client_id=$(secret-tool lookup $att client-id) \
+      #--client_secret=$(secret-tool lookup $att client-secret) \
+      #--refresh_token=$(secret-tool lookup $att refresh))
+  #<(python3 ~/.config/msmtp/oauth2.py --user=$account \
+
+      #--generate_oauth2_token)
+
+	token=${tokenline#Access Token: }
+	expire=${expireline#Access Token Expiration Seconds: }
+
+
+
+	#token=${tokenline#Access Token: }
+	#expire=${expireline#Access Token Expiration Seconds: }
+}
+
+#token="$(secret-tool lookup $att token)"
+#expire="$(secret-tool lookup $att token-expire)"
+
+#echo "Before token assignment: $token $expire"
+if [[ -e "$token_path" ]]; then
+    token="$(gpg --quiet -d --batch --passphrase $att $token_path)"
+fi
+if [[ -e "$expire_path" ]]; then
+    expire="$(gpg --quiet -d --batch --passphrase $att $expire_path)"
+fi
+#echo "After token assignment: $token $expire"
+now=$(date +%s)
+
+if [[ $token && $expire && $now -lt $((expire - 60)) ]]; then
+	echo $token
+else
+	get_access_token
+  #echo $token | secret-tool store --label=msmtp-oauth2 $att token
+  #echo $token | secret-tool store --label=msmtp-oauth2 $att token
+  #echo "Execute get token thing: $token $expire"
+  rm "$token_path"
+  echo $token | gpg -c --batch --passphrase "$att" -o "$token_path"
+	expire=$((now + expire))
+  #echo $expire | secret-tool store --label=msmtp-oauth2 $att token-expire
+  rm "$expire_path"
+  echo $expire | gpg -c --batch --passphrase "$att" -o "$expire_path"
+	echo $token
+fi
+# vim:ft=bash

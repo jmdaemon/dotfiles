@@ -1,0 +1,18 @@
+# Set default values for all following accounts.
+defaults
+auth oauthbearer
+tls            on
+tls_trust_file /etc/ssl/certs/ca-certificates.crt
+logfile        {{ .chezmoi.homeDir }}/.local/share/msmtp/logs/msmtp.log
+
+# Gmail
+account        gmail
+host           smtp.gmail.com
+port           587
+from           {{ .git.email }}
+user           {{ .git.email }}
+passwordeval {{ .chezmoi.homeDir }}/.config/msmtp/oauth2token {{ .git.email }} "mail-server"
+
+# Set a default account
+account default : gmail
+# vim:filetype=msmtp

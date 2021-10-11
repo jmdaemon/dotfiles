@@ -8,6 +8,8 @@
 [user]
   name = {{ .git.name }}
   email = {{ .git.email }}
+[includeIf "gitdir:~/Workspace/personal/"]
+  path = ~/.config/git/personal
 {{- end }}
 [push]
 	default = simple

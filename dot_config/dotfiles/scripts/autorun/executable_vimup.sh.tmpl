@@ -2,5 +2,10 @@
 
 HOME={{ .chezmoi.homeDir }}
 export PATH=$HOME/.local/share/nvm/versions/node/v16.6.1/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/sbin:$HOME/.local/share/npm/bin:$HOME/.local/bin
+
+# Used for notify-send
+export DISPLAY=:0.0
+export $(grep -z DBUS_SESSION_BUS_ADDRESS /proc/$(pgrep -session)/environ)
+
 nvim +PlugUpdate +PlugUpgrade +qall
 notify-send "Vim Plug" "Vim plugins have successfully been updated."

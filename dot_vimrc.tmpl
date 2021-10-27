@@ -29,12 +29,10 @@ Plug 'numkil/ag.nvim'
 Plug 'tpope/vim-dispatch'
 Plug 'chrisbra/unicode.vim'
 Plug 'majutsushi/tagbar'
-"Plug 'honza/vim-snippets', { 'for': 'tex' }
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'tmhedberg/SimpylFold'
 Plug 'jeetsukumaran/vim-indentwise'
 Plug 'edkolev/tmuxline.vim'
-Plug 'Chiel92/vim-autoformat'
 Plug 'lilydjwg/fcitx.vim', { 'on': [] }
 Plug 'sheerun/vim-polyglot'
 Plug 'liuchengxu/graphviz.vim'      , { 'for': ['.gv', 'dot'] }
@@ -127,6 +125,17 @@ nnoremap <leader>w :update<CR>
 nnoremap <leader>. :CtrlPTag<CR>
 nnoremap <leader>md :MarkdownPreview<CR>
 nnoremap <leader>d :NERDTree<CR>
+nnoremap <leader>] :noh<CR>
+nnoremap <leader>' :call VimtexConcealToggle()<CR>
+
+function! VimtexConcealToggle()
+    if &conceallevel
+        setlocal conceallevel=0
+    else
+        setlocal conceallevel=1
+    endif
+endfunction
+
 
 nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
 "nnoremap <leader>f :!`ctags -R -f ./.git/tags .`<CR>
@@ -283,7 +292,7 @@ let g:coc_global_extensions = [
             \ 'coc-java', 
             \ 'coc-json', 
             \ 'coc-markdownlint', 
-            \ 'coc-snippets', 
+            "\ 'coc-snippets', 
             \ 'coc-tsserver',
             \ 'coc-lit-html',
             \ 'coc-rls'
@@ -452,7 +461,7 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
-" ================ COC - coc-snippets ================
+" ================ coc-snippets ================
 " Use <C-l> for trigger snippet expand.
 imap <C-l> <Plug>(coc-snippets-expand)
 

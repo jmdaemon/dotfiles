@@ -221,6 +221,12 @@ let g:mkdp_auto_start = 1
 " Vimtex
 let g:tex_flavor = 'latex'
 
+" https://stackoverflow.com/questions/8300982/vim-running-slow-with-latex-files
+" https://stackoverflow.com/questions/15024035/vim-gvim-startup-very-slow-with-latex-suite
+au FileType tex setlocal nocursorline
+au FileType tex :NoMatchParen
+let g:Tex_PackagesMenu = 0
+
 " ============== AsciiDoctor ==============
 let g:asciidoctor_executable = 'asciidoctor -b html5'
 "let g:asciidoctor_extensions = ['asciidoctor-diagram', 'asciidoctor-rouge' ]

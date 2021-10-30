@@ -1,0 +1,12 @@
+#!/bin/bash
+
+sigfile="$1"
+file="$2"
+sign=~/.local/share/sig/"$sigfile"
+if [[ ! -z "$sigfile" && -z "$file" ]]; then 
+    cat "$sign"
+elif [[ ! -z "$sigfile" && ! -z "$file" ]]; then
+    #<<(cat "$sigfile") < "$file" | sponge "$file"
+    #<<<(cat "$sigfile") < "$file" | sponge "$file"
+    cat "$sign" "$file" | sponge "$file"
+fi

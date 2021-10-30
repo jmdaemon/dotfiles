@@ -124,6 +124,10 @@ export draw="$HOME/Workspace/drawing"
 export texpkg="$TEXMFHOME/tex/latex"
 export bin="$LOCAL"
 
+[[ -f "$scripts/startup/uni.sh" ]] && source "$scripts/startup/uni.sh" || :
+[[ -f "$scripts/startup/fai.sh" ]] && source "$scripts/startup/fai.sh" || :
+[[ -f "$scripts/startup/courseware.sh" ]] && source "$scripts/startup/courseware.sh" || :
+[[ -f "$scripts/startup/draw.sh" ]] && source "$scripts/startup/draw.sh" || :
 {{- if (eq .system "arch-laptop") }}
 # HiDPI - These environment variables scale applications x2, but can also make some icons blurry
 # https://wiki.archlinux.org/index.php/HiDPI#GDK_3_(GTK_3)

@@ -118,3 +118,13 @@ conda() { # Starts up conda automatically at the first call
     $conda_install/conda
 }
 {{- end }}
+
+sig() {
+    sigfile="$1"
+    file="$2"
+    if [[ ! -z "$sigfile" && -z "$file" ]]; then 
+        cat ~/.local/share/sig/"$sigfile"
+    elif [[ ! -z "$sigfile" && ! -z "$file" ]]; then
+        <<(cat "$sigfile") < "$file" | sponge "$file"
+    fi
+}

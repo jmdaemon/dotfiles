@@ -53,7 +53,11 @@
 }
 element {
     padding: 1px ;
+    {{ if ( eq .system "arch-laptop" ) -}}
     cursor:  pointer;
+    {{- else if ( eq .system "ubuntu-workstation" ) -}}
+    /*cursor:  pointer;*/
+    {{- end }}
     spacing: 5px ;
     border:  0;
 }
@@ -144,7 +148,11 @@ sidebar {
     border:       2px dash 0px 0px ;
 }
 button {
-    cursor:     pointer;
+    {{ if ( eq .system "arch-laptop" ) -}}
+    cursor:  pointer;
+    {{- else if ( eq .system "ubuntu-workstation" ) -}}
+    /*cursor:  pointer;*/
+    {{- end }}
     spacing:    0;
     text-color: var(normal-foreground);
 }
@@ -178,7 +186,11 @@ case-indicator {
 }
 entry {
     text-color:        var(normal-foreground);
-    cursor:            text;
+    {{ if ( eq .system "arch-laptop" ) -}}
+    cursor:  text;
+    {{- else if ( eq .system "ubuntu-workstation" ) -}}
+    /*cursor:  text;*/
+    {{- end }}
     spacing:           0;
     placeholder-color: rgba ( 128, 128, 128, 100 % );
     /*placeholder:       "Type to filter";*/

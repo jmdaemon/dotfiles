@@ -1,4 +1,4 @@
-#!/usr/bin/python3.9
+#!/usr/bin/python
 
 import click
 import sys
@@ -9,7 +9,6 @@ CONTEXT_SETTINGS = dict(help_option_names=['-h', '--help'])
 @click.option('-V', '--version', "version", help='Show program version', is_flag=True, default=False)
 @click.option('-v', '--verbose', "verbose", help='Show verbose output', is_flag=True, default=False)
 @click.option('-r', '--range', "slice_range", metavar="<start end>", nargs=2,
-              type=click.Tuple([int, int]),
               help='Slice between start and end (inclusive)')
 @click.argument('contents', type=str, default="")
 @click.command(options_metavar='[options]', context_settings=CONTEXT_SETTINGS)
@@ -35,10 +34,22 @@ def cli(version, verbose, contents, slice_range):
     if not output:
         return
 
-    sliced = output[start:end]
+    def stoi(s: str):
+        return int(s)
+
+    sliced = ''
+    if (end == ':' and start == ':'):
+        sliced = output
+    elif (end == ':'):
+        sliced = output[stoi(start):]
+    elif (start == ':'):
+        sliced = output[:stoi(end)]
+    else:
+        sliced = output[stoi(start):stoi(end)]
+
     if (verbose):
         print(f'output:\n {output}')
-        print(f'sliced:\n {output[start:end]}')
+        print(f'sliced:\n {sliced}')
     else:
         for line in sliced:
             print(line)

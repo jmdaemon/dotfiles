@@ -1,0 +1,37 @@
+#!/bin/bash
+
+subdir="$1"
+DEST="$2"
+opts="$3"
+
+show_usage() {
+    echo '   mksubdirs [subdir] [dest]
+    Options:
+    -r, --repeat        Makes directories with repeating numbers (L1, L2, L3 ... LN)
+
+    Examples:
+
+    Use the following command to generate
+    a directory structure like:./L1 ./L2 ./L3 ./L4 ./L5
+    mksubdirs.sh L . -r 5
+'
+}
+
+join() {
+  local IFS="$1"
+  shift
+  echo "$*"
+}
+
+if [[ -z "$DEST" || -z "$subdir" ]]; then
+    show_usage
+else
+    if [[ "$opts" == "-r" || "$opts" == "--repeat" ]]; then
+        END="$4"
+        dirnums=( $(seq 1 $END | tr '\n' ' ') )
+        directories=$(join , "${dirnums[@]}")
+        eval mkdir "$DEST/$subdir{$directories}" # Expands {}'s
+    else
+        for dir in *"$DEST"; do mkdir -- "$dir/$subdir"; done
+    fi
+fi

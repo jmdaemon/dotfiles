@@ -27,6 +27,8 @@ if [[ -z "$DEST" || -z "$subdir" ]]; then
     show_usage
 else
     if [[ "$opts" == "-r" || "$opts" == "--repeat" ]]; then
+        # Allows use to do mkdir ./L{1,2,3, ..., n}
+        # without having to type all n digits
         END="$4"
         dirnums=( $(seq 1 $END | tr '\n' ' ') )
         directories=$(join , "${dirnums[@]}")

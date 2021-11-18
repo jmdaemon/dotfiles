@@ -1,5 +1,6 @@
-# ================ TeX Snippets  ================
+# ==== TeX Snippets  ====
 
+# ==== Contexts ====
 global !p
 def math():
 	return vim.eval('vimtex#syntax#in_mathzone()') == '1'
@@ -13,35 +14,87 @@ def env(name):
 
 endglobal
 
+# ==== Shortcuts ====
 snippet beg "begin{} / end{}" bA
 \\begin{$1}
 	$0
 \\end{$1}
 endsnippet
 
-priority 100
-snippet ... "ldots" iA
-\ldots
+snippet pac "Package" b
+\usepackage{${1:package}}$0
 endsnippet
 
-snippet table "Table environment" b
-\begin{table}[${1:htpb}]
-	\centering
-	\caption{${2:caption}}
-	\label{tab:${3:label}}
-	\begin{tabular}{${5:c}}
-	$0${5/((?<=.)c|l|r)|./(?1: & )/g}
-	\end{tabular}
+snippet pacopt "Package" b
+\usepackage[${1:options}]{${2:package}}$0
+endsnippet
+
+# ==== Tables ====
+snippet inttable "Interval Table" b
+\begin{table}[htbp]
+    \centering
+    \begin{tabular}{ *{${1:4}}{cc} }
+        \toprule
+        \phantom{} & $(-\infty, ${2:$1})$ & $(${3:$2}, ${4:$3})$ & $(${4:$4}, \infty)$ \\
+        \midrule
+        $${5:$5}$ & $${6:$6}$ & $${7:$7}$ & $${8:$8}$ \\
+        $f(x)$ & d${9:$9} & ${10:$10} & ${11:$11} \\
+        \bottomrule
+    \end{tabular}
 \end{table}
 endsnippet
 
+snippet stdtable "Standard Table" b
+\begin{table}[!htbp]
+    \centering
+    \begin{tabular}{ *{${1:$1}}{cc} }
+        \toprule
+        \midrule
+        \bottomrule
+    \end{tabular}
+    \label{tab:tbl1}
+    \caption{}
+\end{table}
+endsnippet
+
+snippet ztable "Checkered Table" b
+\begin{table}[!htbp]
+    \centering
+		\rowcolors{2}{}{gray!10}
+    \begin{tabular}{ *{${1:$1}}{cc} }
+        \toprule
+        \midrule
+        \bottomrule
+    \end{tabular}
+    \label{tab:tbl1}
+    \caption{}
+\end{table}
+endsnippet
+
+## TabularX
+snippet tabxenum "Vertically Aligns Texts" b
+\noindent\begin{tabularx}{\linewidth}{@{}lX}
+    $(${1:$1})$ & ${2:2} \\
+\end{tabularx}
+endsnippet
+
+# ==== Figures ====
+snippet svgfig "Figure environment" b
+endsnippet
+
+snippet nestfig "Figure environment" b
+endsnippet
+
 snippet fig "Figure environment" b
-\begin{figure}[${1:htpb}]
-	\centering
-	${2:\includegraphics[width=0.8\textwidth]{$3}}
-	\caption{${4:$3}}
-	\label{fig:${5:${3/\W+/-/g}}}
-\end{figure}
+endsnippet
+
+# ==== Items & Enums ====
+
+snippet tabtext "Left Aligned Text Ad-hoc enum" b
+\begin{tabular}{@{}l}
+    (a) $|P(P(P(\O)))| =$ \\
+    (b) What is $P(P(P(\O)))$?
+\end{tabular}
 endsnippet
 
 snippet enum "Enumerate" bA
@@ -62,8 +115,9 @@ snippet desc "Description" b
 \end{description}
 endsnippet
 
-snippet pac "Package" b
-\usepackage[${1:options}]{${2:package}}$0
+# ==== Symbols ====
+snippet ... "ldots" b
+\ldots
 endsnippet
 
 snippet => "implies" Ai
@@ -79,6 +133,7 @@ snippet iff "iff" Ai
 \iff
 endsnippet
 
+# ==== Context Snippets ====
 snippet mk "Math" wA
 $${1}$`!p
 if t[2] and t[2][0] not in [',', '.', '?', '-', ' ']:

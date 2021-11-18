@@ -157,6 +157,12 @@ snippet ali "Align" bA
 endsnippet
 
 context "math()"
+snippet dfrac "Fraction" b
+\\dfrac{$1}{$2}$0
+endsnippet
+
+### Fractions
+context "math()"
 snippet // "Fraction" iA
 \\frac{$1}{$2}$0
 endsnippet
@@ -211,21 +217,6 @@ init_printing()
 snip.rv = eval('latex(' + match.group(1).replace('\\', '').replace('^', '**').replace('{', '(').replace('}', ')') + ')')
 `
 endsnippet
-
-#priority 1000
-#snippet math "mathematicablock" w
-#math $1 math$0
-#endsnippet
-
-#priority 10000
-#snippet 'math(.*)math' "math" wr
-#`!p
-#import subprocess
-#code = match.group(1)
-#code = 'ToString[' + code + ', TeXForm]'
-#snip.rv = subprocess.check_output(['wolframscript', '-code', code])
-#`
-#endsnippet
 
 snippet == "equals" b
 &= $1 \\\\

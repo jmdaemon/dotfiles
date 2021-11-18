@@ -1,10 +1,10 @@
-{{- if (eq .system "ubuntu-workstation") }}
+{{- if (eq .system "ubuntu-workstation") -}}
 [user]
   name = {{ .git.name }}
   email = {{ .git.email }}
 [includeIf "gitdir:~/workspace/personal/"]
   path = ~/.config/git/personal
-{{- else if ( eq .system "arch-laptop" ) }}
+{{- else if ( eq .system "arch-laptop" ) -}}
 [user]
   name = {{ .git.name }}
   email = {{ .git.email }}
@@ -29,6 +29,7 @@
   cc = !.git/hooks/commit-count
   ls = !.git/hooks/tracked
   optim = !.git/hooks/optim
+  rmignore = !.git/hooks/rmignore
 [pager]
   diff = delta
   log = delta

@@ -74,18 +74,17 @@ endsnippet
 ## TabularX
 snippet tabxenum "Vertically Aligns Texts" b
 \noindent\begin{tabularx}{\linewidth}{@{}lX}
-    $(${1:$1})$ & ${2:2} \\
+    $(${1:$1})$ & ${2:$2} \\
 \end{tabularx}
 endsnippet
 
 # ==== Figures ====
-snippet svgfig "Figure environment" b
+snippet svgfig "SVG Figure" b
+\newfig{${1:filename}}{${2:caption}}
 endsnippet
 
-snippet nestfig "Figure environment" b
-endsnippet
-
-snippet fig "Figure environment" b
+snippet subsvgfig "Nested SVG Figure" b
+\subsvg{${1:filename}}{${2:caption}}{${2:width}}
 endsnippet
 
 # ==== Items & Enums ====
@@ -134,6 +133,8 @@ snippet iff "iff" Ai
 endsnippet
 
 # ==== Context Snippets ====
+
+## Math
 snippet mk "Math" wA
 $${1}$`!p
 if t[2] and t[2][0] not in [',', '.', '?', '-', ' ']:
@@ -154,7 +155,6 @@ snippet ali "Align" bA
 	${1:${VISUAL}}
 .\end{align*}
 endsnippet
-
 
 context "math()"
 snippet // "Fraction" iA
@@ -196,7 +196,6 @@ snippet '([A-Za-z])_(\d\d)' "auto subscript2" wrA
 `!p snip.rv = match.group(1)`_{`!p snip.rv = match.group(2)`}
 endsnippet
 
-
 snippet sympy "sympyblock " w
 sympy $1 sympy$0
 endsnippet
@@ -228,7 +227,7 @@ endsnippet
 #`
 #endsnippet
 
-snippet == "equals" iA
+snippet == "equals" b
 &= $1 \\\\
 endsnippet
 

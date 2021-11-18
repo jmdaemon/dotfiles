@@ -1,12 +1,16 @@
-#!/bin/bash
+#!/bin/sh
 
-log=/var/log/backups
-config="{{ .chezmoi.homeDir }}/.config/rclone/rclone.conf"
+home={{ .chezmoi.homeDir }}
+log="$home/.history/log/backups/gdrive"
+config="$home/.config/rclone/rclone.conf"
 
-local_deltalearns="{{ .chezmoi.homeDir }}/Documents/Google Drive/DeltaLearns"
-local_main="{{ .chezmoi.homeDir }}/Documents/Google Drive/Main"
-remote_deltalearns="google-drive-local_deltalearns:/"
-remote_main="google-drive-local_main:/"
+config="$home/.config/rclone/rclone.conf"
+
+local_deltalearns="$home/Documents/Google Drive/DeltaLearns"
+local_main="$home/Documents/Google Drive/Main"
+
+remote_deltalearns="google-drive-deltalearns:/"
+remote_main="google-drive-main:/"
 
 backup() {
     local=$1
@@ -28,9 +32,8 @@ backup() {
         --stats 1s >> "$log/gdrive.log" 2>&1
 
     echo "[" + $(date +"%Y-%m-%d %T") + "] Rclone Job Finished Successfully" >> "$log/gdrive.log" 2>&1
-    sudo -u notify-send -i "drive-optical" "Rclone Google Drive" "Rclone for $remote finished successfully."
-    chown -R jmd:jmd "$local"
+    notify-send -i "drive-optical" "Rclone Google Drive" "Rclone for $remote finished successfully."
 }
 
-backup "$remote_deltalearns" "$local_deltalearns"
+#backup "$remote_deltalearns" "$local_deltalearns"
 backup "$remote_main" "$local_main" 

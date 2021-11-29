@@ -201,8 +201,8 @@ bindsym $mod+shift+u mode "$mode_key"
 
 #--[ EXEC ]--#
 
-{{- if ( eq .system "arch-laptop" ) }}
 exec --no-startup-id nm-applet
+{{- if ( eq .system "arch-laptop" ) }}
 #exec --no-startup-id fcitx5 -d
 exec --no-startup-id birdtray
 {{- end }}

@@ -192,7 +192,7 @@ snippet ali "Align" bA
 endsnippet
 
 context "math()"
-snippet dfrac "Fraction" b
+snippet dfrac "Fraction" iA
 \\dfrac{$1}{$2}$0
 endsnippet
 
@@ -253,7 +253,7 @@ snip.rv = eval('latex(' + match.group(1).replace('\\', '').replace('^', '**').re
 `
 endsnippet
 
-snippet == "equals" b
+snippet == "equals" iA
 &= $1 \\\\
 endsnippet
 
@@ -342,7 +342,7 @@ snippet part "d/dx" w
 endsnippet
 
 context "math()"
-snippet sq "\sqrt{}" iA
+snippet sq "\sqrt{}" b
 \sqrt{${1:${VISUAL}}} $0
 endsnippet
 
@@ -567,7 +567,7 @@ endsnippet
 
 
 context "math()"
-snippet cc "subset" Ai
+snippet cc "subset" b
 \subset
 endsnippet
 

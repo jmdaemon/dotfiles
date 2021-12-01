@@ -87,6 +87,32 @@ snippet tabxenum "Vertically Aligns Texts" b
 \end{tabularx}
 endsnippet
 
+snippet roster "Roster/Tabular Form" b
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{c@{\,}l@{}}
+		& $${1:}$ \\
+		& $${2:}$ \\
+		\cline{2-2}
+		$\therefore$ & $${3:}$ \\
+\end{tabular}
+endsnippet
+
+snippet wrapfigtikz "Wrap TikZ Figure" b
+\begin{minipage}{\textwidth}
+\begin{wrapfigure}{${1:L}}{${2:0.5}\textwidth}
+		\begin{tikzpicture}
+				${3:$3}
+		\end{tikzpicture}
+\end{wrapfigure}
+\end{minipage}
+endsnippet
+
+snippet tikfig "TikZ Picture" b
+\begin{tikzpicture}
+    ${1:$1}
+\end{tikzpicture}
+endsnippet
+
 # ==== Figures ====
 snippet svgfig "SVG Figure" b
 \newfig{${1:filename}}{${2:caption}}

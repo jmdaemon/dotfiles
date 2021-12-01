@@ -125,8 +125,7 @@ font-4 = Fira Code Nerd Font:style=Regular:size=10;-1
 {{- if ( eq .system "ubuntu-workstation" ) }}
 modules-left = weather
 {{- else if ( eq .system "arch-laptop" ) }}
-;modules-left = weather mpd
-modules-left = weather
+modules-left = weather mpd
 {{- end }}
 
 modules-center = i3
@@ -235,7 +234,8 @@ icon-repeat = " "
 ;icon-single = "綾"
 
 format-online-font = 5
-label-offline = "ﱙ mpd is offline"
+;label-offline = "ﱙ mpd is offline"
+label-offline = ""
 
 label-song-maxlen = -1
 label-song-ellipsis = true
@@ -491,7 +491,7 @@ interval = 60
 type = custom/script
 exec = ~/.config/polybar/polybar-protonvpn/polybar-protonvpn.sh
 click-left = exec ~/.config/polybar/polybar-protonvpn/status-notification.sh
-interval = 5
+interval = 10
 {{- end }}
 
 [settings]

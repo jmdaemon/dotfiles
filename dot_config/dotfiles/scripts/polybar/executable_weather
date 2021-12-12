@@ -1,6 +1,7 @@
 #!/usr/bin/python
 
-import urllib.request, json
+import urllib.request
+import toml
 import pathlib
 
 def read_file(fp: str) -> str:
@@ -10,18 +11,11 @@ def read_file(fp: str) -> str:
     return res
 
 
-cfg     = json.loads(read_file(pathlib.Path("~/.config/polybar/weather.json").expanduser()))
+cfg     = toml.loads(read_file(pathlib.Path("~/.config/polybar/weather.toml").expanduser()))['weather']
 api     = cfg['api']
 key     = cfg['key']
 city    = cfg['city']
 units   = cfg['units']
-
-# api='https://api.openweathermap.org/data/2.5'
-# key='49b81f56a6ae912a0d7d55f8647afd94'
-# city="6173331"
-
-# city="6113365"
-# units="metric"
 
 weather = eval(str(urllib.request.urlopen('{}/weather?appid={}&id={}&units={}'.format(api, key, city, units)).read())[2:-1])
 currWeather = weather['weather'][0]

@@ -29,6 +29,7 @@ Plug 'numkil/ag.nvim'
 Plug 'tpope/vim-dispatch'
 Plug 'chrisbra/unicode.vim'
 Plug 'majutsushi/tagbar'
+Plug 'RustemB/sixtyfps-vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'tmhedberg/SimpylFold'
 Plug 'jeetsukumaran/vim-indentwise'
@@ -188,6 +189,7 @@ autocmd BufEnter *.h :setlocal filetype=cpp
 autocmd BufEnter *.hpp :setlocal filetype=cpp
 autocmd BufEnter *.tpp :setlocal filetype=cpp
 autocmd BufEnter *.sh.tmpl :setlocal filetype=sh
+autocmd BufEnter *.60 :setlocal filetype=sixtyfps
 
 let g:formatterpath = [ "$HOME/.config/nvim/after/ftplugin/" ]
 

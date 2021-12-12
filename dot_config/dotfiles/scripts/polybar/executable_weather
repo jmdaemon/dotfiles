@@ -17,11 +17,11 @@ key     = cfg['key']
 city    = cfg['city']
 units   = cfg['units']
 
-weather = eval(str(urllib.request.urlopen('{}/weather?appid={}&id={}&units={}'.format(api, key, city, units)).read())[2:-1])
-currWeather = weather['weather'][0]
+weather = eval(str(urllib.request.urlopen(f'{api}/weather?appid={key}&id={city}&units={units}').read())[2:-1])
+current = weather['weather'][0]
 
-main = currWeather['main'] # Forecast
-description = currWeather['description']
+main    = current['main'] # Forecast
+desc    = current['description']
 icons = {
     'Drizzle'       : ' ',
     'Rain'          : ' ',
@@ -35,6 +35,6 @@ icons = {
 
 icon = icons[main] if icons[main] is not None else ''
 
-info = description.capitalize()
+info = desc.capitalize()
 temp = int(float(weather['main']['temp']))
 print('%s %s, %i °C' % (icon, main, temp))

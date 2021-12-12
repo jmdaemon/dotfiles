@@ -28,6 +28,7 @@ icons = {
     'Thunderstorm'  : ' ',
     'Snow'          : ' ',
     'Mist'          : '  ',
+    'Fog'           : ' ',
     'Clear'         : ' ',
     'Clouds'        : ' ',
     'Haze'          : ' ',

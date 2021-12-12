@@ -105,6 +105,10 @@
     "digestif":{
       "command": "digestif",
       "filetypes": ["tex", "plaintex", "context"]
+    },
+    "sixtyfps": {
+        "command": "sixtyfps-lsp",
+        "filetypes": ["sixtyfps"]
     }
   }, 
   "markdownlint.config": { 

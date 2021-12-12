@@ -119,3 +119,8 @@ conda() { # Starts up conda automatically at the first call
 }
 {{- end }}
 alias scd="xset dpms force off"
+
+reencode() {
+    input="$1"
+    ffmpeg -i "$input" "${input%.*}.mp3"
+}

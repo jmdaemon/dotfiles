@@ -22,24 +22,18 @@ currWeather = weather['weather'][0]
 
 main = currWeather['main'] # Forecast
 description = currWeather['description']
+icons = {
+    'Drizzle'       : ' ',
+    'Rain'          : ' ',
+    'Thunderstorm'  : ' ',
+    'Snow'          : ' ',
+    'Mist'          : '  ',
+    'Clear'         : ' ',
+    'Clouds'        : ' ',
+    'Haze'          : ' ',
+}
 
-icon = ''
-if main == 'Drizzle':
-  icon = ' '
-elif main == 'Rain':
-  icon = ' '
-elif main == 'Thunderstorm':
-  icon = ' '
-elif main == 'Snow':
-  icon = ' '
-elif main == 'Mist':
-  icon = '  '
-elif main == 'Clear':
-  icon = ' '
-elif main == 'Clouds':
-  icon = ' '
-elif main == 'Haze':
-  icon = ' '
+icon = icons[main] if icons[main] is not None else ''
 
 info = description.capitalize()
 temp = int(float(weather['main']['temp']))

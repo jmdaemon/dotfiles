@@ -191,6 +191,7 @@ autocmd BufEnter *.hpp :setlocal filetype=cpp
 autocmd BufEnter *.tpp :setlocal filetype=cpp
 autocmd BufEnter *.sh.tmpl :setlocal filetype=sh
 autocmd BufEnter *.60 :setlocal filetype=sixtyfps
+autocmd BufEnter *.tsx :setlocal filetype=typescript.tsx
 
 let g:formatterpath = [ "$HOME/.config/nvim/after/ftplugin/" ]
 
@@ -317,13 +318,13 @@ augroup end
 " Install these extensions if not already installed
 let g:coc_global_extensions = [
             \ 'coc-css', 
-            \ 'coc-eslint', 
             \ 'coc-html',
+            \ 'coc-eslint', 
+            \ 'coc-tsserver',
             \ 'coc-java', 
             \ 'coc-json', 
             \ 'coc-markdownlint', 
             "\ 'coc-snippets', 
-            \ 'coc-tsserver',
             \ 'coc-lit-html',
             \ 'coc-rls'
             \ ]

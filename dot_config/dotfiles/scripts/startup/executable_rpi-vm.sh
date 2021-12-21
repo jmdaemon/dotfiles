@@ -21,24 +21,14 @@ qemu-system-aarch64 \
 }
 
 start_jessie_vm() { 
-    #qemu-system-arm \ 
-        #-kernel "$VMS/qemu-rpi-kernel/$JESSIE_KERNEL" \ 
-        #-cpu arm1176 \ 
-        #-m 256 \ 
-        #-M versatilepb \ 
-        #-serial stdio \ 
-        #-append "root=/dev/sda2 rootfstype=ext4 rw" \ 
-        #-hda "$VMS/images/$JESSIE.img" \ 
-        #-nic user,hostfwd=tcp::5022-:22 \ 
-        #-no-reboot
-sudo qemu-system-arm \
-    -kernel $DIR/qemu-rpi-kernel/$JESSIE_KERNEL \
+qemu-system-arm \
+    -kernel $VMS/qemu-rpi-kernel/$JESSIE_KERNEL \
     -cpu arm1176 \
     -m 256 \
     -M versatilepb \
     -serial stdio \
     -append "root=/dev/sda2 rootfstype=ext4 rw" \
-    -hda $DIR/images/raspbian.img \
+    -hda $VMS/images/raspbian.img \
     -nic user,hostfwd=tcp::5022-:22
 }
 
@@ -49,12 +39,11 @@ show_usage() {
     echo ""
 }
 
-if [[ -z $1 ]];then 
+vm="$1"
+if [[ -z "$vm" ]];then 
     show_usage
-elif [[ $1 == "-j" || $1 == "--jessie" ]]; then
+elif [[ "$vm" == "-j" || "$vm" == "--jessie" ]]; then
     start_jessie_vm
-elif [[ $1 == "-b" || $1 == "--buster" ]]; then
+elif [[ "$vm" == "-b" || "$vm" == "--buster" ]]; then
     start_buster_vm
-else
-    show_usage
 fi

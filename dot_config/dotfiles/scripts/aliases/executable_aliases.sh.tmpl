@@ -20,6 +20,10 @@ alias lt='ls --tree'
 alias nv='nvim'
 alias xclip='xclip -selection c' # X Server copy to clipboard
 alias start_env="source $HOME/.config/dotfiles/scripts/startup/start-env.sh"
+{{- if (eq .system "arch-laptop" ) }}
+alias zhist="nvim $HOME/.history/zsh/arch-laptop/zsh_history"
+alias zhistc="cat $HOME/.history/zsh/arch-laptop/zsh_history"
+{{- end }}
 
 {{- if (eq .system "ubuntu-workstation" ) }}
 alias nvsmi="watch -n 1 nvidia-smi"

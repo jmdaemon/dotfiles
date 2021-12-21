@@ -1,20 +1,23 @@
 #!/bin/bash/
 
+# Shortcuts
+export excludes="$XDG_DATA_HOME"/excludes
+export bin="$LOCAL"
+export work="$HOME"/Workspace
+export apps="$work/apps"
+export cw="$work/School/MIT OpenCourseWare"
+export pg="$work/playground"
+export uni="$work/School/University"
+export draw="$work/drawing"
+export notes="$work/Notes"
+export texpkg="$TEXMFHOME/tex/latex"
+
 # LSD - https://github.com/Peltoche/lsd 
 alias l='ls -l'
 alias ls='lsd'
 alias la='ls -a'
 alias lla='ls -la'
 alias lt='ls --tree'
-
-# Hub - https://hub.github.com/
-#alias git=hub
-#alias gpr='git pull-request -m "$(git log -1 --pretty=%B)"'
-#clonefork() {
-#hub clone "$1"
-#cd "${1##*/}"
-#hub fork
-#}
 
 # Shortcuts
 alias nv='nvim'

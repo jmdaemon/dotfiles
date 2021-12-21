@@ -110,21 +110,13 @@ export JAVA_HOME=/usr/lib/jvm/default-runtime/
 
 #export LIBVIRT_DEFAULT_URI='qemu:///system'
 
-export EDITOR=nvim
 # https://tex.stackexchange.com/questions/260/how-to-set-preferred-pdf-viewer-for-texdoc-in-texlive-2010-pretest
+export EDITOR=nvim
 export PDFVIEWER=okular
-export excludes="$XDG_DATA_HOME"/excludes
 export scripts="$XDG_CONFIG_HOME"/dotfiles/scripts
 export aliasd="$scripts"/startup
-export apps="$HOME"/Workspace/apps
-export cw="$HOME/Workspace/School/MIT OpenCourseWare"
-export pg="$HOME/Workspace/playground"
-export uni="$HOME/Workspace/School/University"
-export draw="$HOME/Workspace/drawing"
-export notes="$HOME/Workspace/Notes"
-export texpkg="$TEXMFHOME/tex/latex"
-export bin="$LOCAL"
 
+source $aliasd/aliases.sh 
 load_alias() {
     alias_name="$1"
     [[ -f "$aliasd/$alias_name" ]] && source "$aliasd/$alias_name.sh" || :
@@ -134,6 +126,7 @@ load_alias "uni"
 load_alias "fai"
 load_alias "courseware"
 load_alias "draw"
+
 {{- if (eq .system "arch-laptop") }}
 # HiDPI - These environment variables scale applications x2, but can also make some icons blurry
 # https://wiki.archlinux.org/index.php/HiDPI#GDK_3_(GTK_3)
@@ -141,14 +134,12 @@ load_alias "draw"
 #export GDK_DPI_SCALE=0.5
 {{- end }}
 
-source $aliasd/aliases.sh
 {{- if (eq .system "arch-laptop") }} 
 source $XDG_CONFIG_HOME/dotfiles/scripts/startup/nvm.sh
 {{- else if (eq .system "ubuntu-workstation") }}
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 {{- end }}
-
 source $CARGO_HOME/env
 #source $scripts/terminal/fortunecow.sh
 

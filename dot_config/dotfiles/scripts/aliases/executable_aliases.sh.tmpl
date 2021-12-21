@@ -110,12 +110,12 @@ pkgs() {
 
 {{- if (eq .system "arch-laptop" ) }}
 conda() { # Starts up conda automatically at the first call
-    conda_install="/opt/anaconda/bin"
+    conda_install="/opt/{{- .conda -}}anaconda/bin"
     res="${CONDA_EXE}"
     if [[ -z $res ]]; then
         conda-init
     fi
-    $conda_install/conda
+    $conda_install/conda $@
 }
 {{- end }}
 alias scd="xset dpms force off"

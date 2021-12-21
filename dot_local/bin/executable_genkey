@@ -1,0 +1,19 @@
+#!/bin/bash
+
+SSH_DIR=$HOME/.ssh
+
+show_usage(){
+    echo 'genkey [rsa, ed25519, ed25519-sk] [email] [output file name]' 
+}
+
+type="$1"
+email="$2"
+output="$3"
+
+if [[ -z "$type" || -z "$email" || -z "$output" ]]; then
+
+else
+    ssh-keygen -t "$type" -C "$email" -f "$SSH_DIR/$output"
+    eval "$(ssh-agent -s)"
+    ssh-add "$SSH_DIR/$output"
+fi

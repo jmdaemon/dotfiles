@@ -19,24 +19,35 @@ alias la='ls -a'
 alias lla='ls -la'
 alias lt='ls --tree'
 
-# Shortcuts
+# Aliases
 alias nv='nvim'
 alias xclip='xclip -sel clip' # X Server copy to clipboard
 alias start_env="source $HOME/.config/dotfiles/scripts/startup/start-env.sh"
+alias scd="xset dpms force off"
 {{- if (eq .system "arch-laptop" ) }}
 alias zhist="nvim $HOME/.history/zsh/arch-laptop/zsh_history"
 alias zhistc="cat $HOME/.history/zsh/arch-laptop/zsh_history"
 {{- end }}
-
+alias conda-init="source $DOTFILES/scripts/terminal/conda-init.sh"
+{{- if (eq .terminal "kitty" ) }}
+# https://github.com/kovidgoyal/kitty/issues/268 - For Kitty
+alias clear="printf '\033[2J\033[3J\033[1;1H'" # Clear Terminal Scrollback
+{{- end }}
+alias yarn='yarn --use-yarnrc "$XDG_CONFIG_HOME/yarn/config"'
+#alias npm-list=`ls -l $(npm root -g) | cut -d ' ' -f 12`
+alias pipup='pip3 list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip3 install -U --user'
 {{- if (eq .system "ubuntu-workstation" ) }}
 alias nvsmi="watch -n 1 nvidia-smi"
 alias nvsmc="nvidia-smi --query-gpu=timestamp,pstate,temperature.gpu,utilization.gpu,utilization.memory,memory.total,memory.free,memory.used --format=csv -l 1"
 alias nvhelp="nvidia-smi --help-query-gpu"
 alias nvmem="nvidia-smi --query-gpu=timestamp,memory.used,memory.total --format=csv -l 1"
 alias nvcent="nvidia-smi dmon -s u"
-
 # PyPi pip3 install nvidia-ml-py3
 # Conda conda install nvidia-ml-py3 -c fastai
+{{- end }}
+
+# Functions
+{{- if (eq .system "ubuntu-workstation" ) }}
 apt-list() {
     opts=$1
     if [[ -z "$opts" ]]; then
@@ -49,26 +60,35 @@ apt-list() {
 }
 
 aptup() {
-    if [[ ! -z /usr/bin/apt-fast ]]; then
-        sudo apt-fast update -y
-        sudo apt-fast upgrade -y
-        sudo apt-fast autoremove
-    else
-        sudo apt update -y
-        sudo apt upgrade -y
-        sudo apt autoremove
+    apt_bin="apt"
+    [[ ! -z /usr/bin/apt-fast ]] && apt_bin="apt-fast" || :
+    sudo ${apt_bin} update -y
+    sudo ${apt_bin} upgrade -y
+    sudo ${apt_bin} autoremove
+}
+{{- else if (eq .system "arch-laptop" ) }}
+pkgs() {
+    # https://wiki.archlinux.org/title/Pacman/Tips_and_tricks
+    opts=$1
+    if [[ "$opts" == "-o" || "$opts" == "--orphans" ]]; then
+        pacman -Qtdq
+    elif [[ "$opts" == "-d" || "$opts" == "--desc" ]]; then
+        expac -H M "%011m\t%-20n\t%10d" "$(comm -23 <(pacman -Qqen | sort) <({ pacman -Qqg base-devel; expac -l '\n' '%E' base; } | sort | uniq))" | sort
+    elif [[ "$opts" == "-s" || "$opts" == "--size" ]]; then
+        expac -H M '%m\t%n' | sort -h
     fi
 }
+{{- end }}
 
-{{- end }}
-alias conda-init="source $DOTFILES/scripts/terminal/conda-init.sh"
-{{- if (eq .terminal "kitty" ) }}
-# https://github.com/kovidgoyal/kitty/issues/268 - For Kitty
-alias clear="printf '\033[2J\033[3J\033[1;1H'" # Clear Terminal Scrollback
-{{- end }}
-alias yarn='yarn --use-yarnrc "$XDG_CONFIG_HOME/yarn/config"'
-#alias npm-list=`ls -l $(npm root -g) | cut -d ' ' -f 12`
-alias pipup='pip3 list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip3 install -U --user'
+conda() { # Starts up conda automatically at the first call
+    {{- if (eq .system "arch-laptop" ) }}
+    conda_install="/opt/{{- .conda -}}/bin"
+    {{- else if (eq .system "ubuntu-workstation" ) }}
+    conda_install="$HOME/{{- .conda -}}/bin"
+    {{- end }}
+    res="${CONDA_EXE}"
+    [[ -z $res ]] && conda-init || $conda_install/conda $@
+}
 
 count() {
     text=$1
@@ -79,11 +99,8 @@ gdb() { # Wrapper around gdb that toggles gef configurations
     toggle=$1
     if [[ "$toggle" == "--gef" ]]; then
         shift # Pops --gef wrapper option
-        #exec /usr/bin/gdb -nh -x ~/.config/gdb/init/gdbinit -ex "init-gef-config" "$@"
         exec /usr/bin/gdb -nh -x "$XDG_CONFIG_HOME"/gdb/init/gdbinit -ex "init-gef-config" "$@"
     else
-        #exec /usr/bin/gdb -nh -x $XDG_CONFIG_HOME/.config/gdb/init/gdbinit "$@"
-        #exec /usr/bin/gdb -nh -x ~/.config/gdb/init/gdbinit "$@"
         exec /usr/bin/gdb -nh -x "$XDG_CONFIG_HOME"/gdb/init/gdbinit "$@"
     fi
 }
@@ -99,43 +116,20 @@ cpfp() {
         pwd | tr -d '\n' | xclip -sel clip
     fi
 }
-{{ if (eq .system "arch-laptop" ) }}
-pkgs() {
-    # https://wiki.archlinux.org/title/Pacman/Tips_and_tricks
-    opts=$1
-    if [[ "$opts" == "-o" || "$opts" == "--orphans" ]]; then
-        pacman -Qtdq
-    elif [[ "$opts" == "-d" || "$opts" == "--desc" ]]; then
-        expac -H M "%011m\t%-20n\t%10d" "$(comm -23 <(pacman -Qqen | sort) <({ pacman -Qqg base-devel; expac -l '\n' '%E' base; } | sort | uniq))" | sort
-    elif [[ "$opts" == "-s" || "$opts" == "--size" ]]; then
-        expac -H M '%m\t%n' | sort -h
-    fi
-}
-{{- end }}
-{{ if (eq .system "arch-laptop" ) }}
-conda() { # Starts up conda automatically at the first call
-    conda_install="/opt/{{- .conda -}}/bin"
-    res="${CONDA_EXE}"
-    if [[ -z $res ]]; then
-        conda-init
-    fi
-    $conda_install/conda $@
-}
-{{- end }}
-alias scd="xset dpms force off"
-
-reencode() {
-    input="$1"
-    ffmpeg -i "$input" "${input%.*}.mp3"
-}
-
-pypiload() {
-    python3 -m build
-    python3 -m twine upload dist/*
-}
 
 cpy() { # xclip alias but strips newline
     while read -r data; do
         echo "${data}" | tr -d '\n' | xclip -sel clip
     done
+}
+
+reencode() { # Reencodes .mp3 files via ffmpeg
+    input="$1"
+    ffmpeg -i "$input" "${input%.*}.mp3"
+    rm "$input"
+}
+
+pypiload() { # Builds and uploads pypi packages
+    python3 -m build
+    python3 -m twine upload dist/*
 }

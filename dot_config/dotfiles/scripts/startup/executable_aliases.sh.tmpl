@@ -18,11 +18,14 @@ alias ls='lsd'
 alias la='ls -a'
 alias lla='ls -la'
 alias lt='ls --tree'
+alias tree='ls --tree'
 
 # Aliases
 alias nv='nvim'
 alias xclip='xclip -sel clip' # X Server copy to clipboard
 alias start_env="source $HOME/.config/dotfiles/scripts/startup/start-env.sh"
+alias szsh="source ~/.zshrc"
+alias spro="source ~/.profile"
 alias scd="xset dpms force off"
 {{- if (eq .system "arch-laptop" ) }}
 alias zhist="nvim $HOME/.history/zsh/arch-laptop/zsh_history"
@@ -112,7 +115,7 @@ cpfp() {
     filepath=$1
     if [[ -n "$filepath" ]]; then
         echo "$filepath" | tr -d '\n' | xclip -sel clip
-    else # Copies pwd by default
+    else # Copies cwd by default
         pwd | tr -d '\n' | xclip -sel clip
     fi
 }
@@ -126,7 +129,7 @@ cpy() { # xclip alias but strips newline
 reencode() { # Reencodes .mp3 files via ffmpeg
     input="$1"
     ffmpeg -i "$input" "${input%.*}.mp3"
-    rm "$input"
+    [[ ! -e "$input" ]] && rm "$input" || :
 }
 
 pypiload() { # Builds and uploads pypi packages

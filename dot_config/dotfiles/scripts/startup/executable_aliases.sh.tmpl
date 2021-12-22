@@ -132,7 +132,7 @@ reencode() { # Reencodes .mp3 files via ffmpeg
     [[ ! -e "$input" ]] && rm "$input" || :
 }
 
-pypiload() { # Builds and uploads pypi packages
+piload() { # Builds and uploads pypi packages
     python3 -m build
     python3 -m twine upload dist/*
 }

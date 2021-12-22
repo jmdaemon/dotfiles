@@ -21,7 +21,7 @@ alias lt='ls --tree'
 
 # Shortcuts
 alias nv='nvim'
-alias xclip='xclip -selection c' # X Server copy to clipboard
+alias xclip='xclip -sel clip' # X Server copy to clipboard
 alias start_env="source $HOME/.config/dotfiles/scripts/startup/start-env.sh"
 {{- if (eq .system "arch-laptop" ) }}
 alias zhist="nvim $HOME/.history/zsh/arch-laptop/zsh_history"
@@ -61,7 +61,6 @@ aptup() {
 }
 
 {{- end }}
-
 alias conda-init="source $DOTFILES/scripts/terminal/conda-init.sh"
 {{- if (eq .terminal "kitty" ) }}
 # https://github.com/kovidgoyal/kitty/issues/268 - For Kitty
@@ -100,8 +99,7 @@ cpfp() {
         pwd | tr -d '\n' | xclip -sel clip
     fi
 }
-
-{{- if (eq .system "arch-laptop" ) }}
+{{ if (eq .system "arch-laptop" ) }}
 pkgs() {
     # https://wiki.archlinux.org/title/Pacman/Tips_and_tricks
     opts=$1
@@ -114,10 +112,9 @@ pkgs() {
     fi
 }
 {{- end }}
-
-{{- if (eq .system "arch-laptop" ) }}
+{{ if (eq .system "arch-laptop" ) }}
 conda() { # Starts up conda automatically at the first call
-    conda_install="/opt/{{- .conda -}}anaconda/bin"
+    conda_install="/opt/{{- .conda -}}/bin"
     res="${CONDA_EXE}"
     if [[ -z $res ]]; then
         conda-init
@@ -130,4 +127,15 @@ alias scd="xset dpms force off"
 reencode() {
     input="$1"
     ffmpeg -i "$input" "${input%.*}.mp3"
+}
+
+pypiload() {
+    python3 -m build
+    python3 -m twine upload dist/*
+}
+
+cpy() { # xclip alias but strips newline
+    while read -r data; do
+        echo "${data}" | tr -d '\n' | xclip -sel clip
+    done
 }

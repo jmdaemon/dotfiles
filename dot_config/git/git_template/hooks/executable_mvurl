@@ -1,0 +1,5 @@
+#!/bin/bash
+
+old="$1"
+new="$2"
+git remote set-url origin $(git remote get-url origin | sed "s/$old/$new/g")

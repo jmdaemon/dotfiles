@@ -480,7 +480,7 @@ exec = python3 ~/.config/polybar/weather
 [module/agenda]
 type = custom/script
 ; Show the next event and forget cache automatically every 60 minutes
-exec = i3-agenda -c ~/.config/i3/i3-agenda/google_credentials.json -ttl 60
+exec = i3-agenda -cd ~/.config/polybar/i3-agenda -c ~/.config/polybar/i3-agenda/google_credentials.json -ttl 60
 ; left click to launch Google Calendar
 click-left = firefox https://calendar.google.com/calendar/r/day
 ; right click force update the cache, if for example you just added a new event

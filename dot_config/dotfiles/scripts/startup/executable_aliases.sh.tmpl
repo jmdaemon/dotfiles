@@ -90,7 +90,8 @@ conda() { # Starts up conda automatically at the first call
     conda_install="$HOME/{{- .conda -}}3/bin"
     {{- end }}
     res="${CONDA_EXE}"
-    [[ -z $res ]] && conda-init || $conda_install/conda $@
+    [[ -z $res ]] && conda-init || :
+    $conda_install/conda $@
 }
 
 count() {

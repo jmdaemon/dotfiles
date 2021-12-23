@@ -7,7 +7,7 @@ conda_path='/opt/{{- .conda -}}3'
 conda_path='/opt/{{- .conda -}}'
 {{- end }}
 {{- else if ( eq .system "ubuntu-workstation" ) }}
-conda_path='$HOME/{{- .conda -}}'
+conda_path="$HOME/{{- .conda -}}3"
 {{- end }}
 
 __conda_setup="$("$conda_path/bin/conda" 'shell.zsh' 'hook' 2> /dev/null)"

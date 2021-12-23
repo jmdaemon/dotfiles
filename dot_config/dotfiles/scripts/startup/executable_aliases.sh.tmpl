@@ -85,7 +85,7 @@ pkgs() {
 
 conda() { # Starts up conda automatically at the first call
     {{- if (eq .system "arch-laptop" ) }}
-    conda_install="/opt/{{- .conda -}}/bin"
+    conda_install="/opt/{{- .conda -}}3/bin"
     {{- else if (eq .system "ubuntu-workstation" ) }}
     conda_install="$HOME/{{- .conda -}}3/bin"
     {{- end }}

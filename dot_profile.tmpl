@@ -118,8 +118,8 @@ export aliasd="$scripts"/startup
 
 source $aliasd/aliases.sh 
 load_alias() {
-    alias_name="$1"
-    [[ -f "$aliasd/$alias_name" ]] && source "$aliasd/$alias_name.sh" || :
+    alias_name="$1.sh"
+    [[ -f "$aliasd/$alias_name" ]] && source "$aliasd/$alias_name" || :
 }
 
 load_alias "uni"

@@ -87,7 +87,7 @@ conda() { # Starts up conda automatically at the first call
     {{- if (eq .system "arch-laptop" ) }}
     conda_install="/opt/{{- .conda -}}/bin"
     {{- else if (eq .system "ubuntu-workstation" ) }}
-    conda_install="$HOME/{{- .conda -}}/bin"
+    conda_install="$HOME/{{- .conda -}}3/bin"
     {{- end }}
     res="${CONDA_EXE}"
     [[ -z $res ]] && conda-init || $conda_install/conda $@

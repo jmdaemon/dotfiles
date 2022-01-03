@@ -1,12 +1,8 @@
 #!/bin/bash/
 
-{{- if ( eq .system "arch-laptop" ) }}
 {{- if ( eq .conda "miniconda" ) }}
 conda_path='/opt/{{- .conda -}}3'
 {{- else }}
-conda_path='/opt/{{- .conda -}}'
-{{- end }}
-{{- else if ( eq .system "ubuntu-workstation" ) }}
 conda_path="$HOME/{{- .conda -}}3"
 {{- end }}
 

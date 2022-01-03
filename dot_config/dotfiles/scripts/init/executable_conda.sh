@@ -1,9 +1,18 @@
 #!/bin/bash
 
+# Test for read/write perms
+conda_install=$(dirname $(dirname $CONDA_EXE))
+if [[ ! -w $CONDA_EXE ]]; then
+    sudo chown -R $USER:$USER "$conda_install"
+else
+    echo "Missing read/write permissions to $conda_install"
+    return
+fi
+
 # Helpers
 is_installed() {
     pkg="$1"
-    return conda list -n base | grep -e ^"$pkg"
+    return $(conda list -n base | grep -e ^"$pkg")
 }
 
 install() {
@@ -17,7 +26,7 @@ clone_ifnot_exists() {
 }
 
 # Installation
-[[ -z $(is_installed mamba) ]] && conda install -yq mamba || :
+[[ -z $(is_installed mamba) ]] && conda install -yq mamba -n base -c conda-forge || :
 conda activate mamba
 
 install pytorch

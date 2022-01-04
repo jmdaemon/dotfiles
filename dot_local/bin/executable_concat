@@ -1,0 +1,23 @@
+#!/bin/bash
+
+s1="$1"
+s2="$2"
+
+if [[ -z $1 || -z $s2 ]]; then
+    echo "      Usage: join [str1] [str2]
+
+        Example:
+        ./join A "$(seq 1 5)"
+
+        A1 A2 A3 A4 A5
+    "
+
+join() {
+  local IFS="$1"
+  shift
+  echo "$*"
+}
+
+seqs=( $(echo "$s2" | tr '\n' ' ') )
+fnames=$(join , "${seqs[@]}")
+eval "echo $s1{$fnames}"

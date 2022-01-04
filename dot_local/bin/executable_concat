@@ -3,7 +3,13 @@
 s1="$1"
 s2="$2"
 
-if [[ -z $1 || -z $s2 ]]; then
+join() {
+  local IFS="$1"
+  shift
+  echo "$*"
+}
+
+show_usage() {
     echo "      Usage: join [str1] [str2]
 
         Example:
@@ -11,13 +17,14 @@ if [[ -z $1 || -z $s2 ]]; then
 
         A1 A2 A3 A4 A5
     "
-
-join() {
-  local IFS="$1"
-  shift
-  echo "$*"
 }
 
-seqs=( $(echo "$s2" | tr '\n' ' ') )
-fnames=$(join , "${seqs[@]}")
-eval "echo $s1{$fnames}"
+if [[ -z $s1 || -z $s2 ]]; then
+    show_usage
+elif [[ "$s1" == "-h" || "$s1" == "--help" || "$s2" == "-h" || "$s2" == "-help" ]]; then
+    show_usage
+else
+    seqs=( $(echo "$s2" | tr '\n' ' ') )
+    fnames=$(join , "${seqs[@]}")
+    eval "echo $s1{$fnames}"
+fi

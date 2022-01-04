@@ -2,6 +2,7 @@
 
 s1="$1"
 s2="$2"
+opt="$3"
 
 join() {
   local IFS="$1"
@@ -26,5 +27,12 @@ elif [[ "$s1" == "-h" || "$s1" == "--help" || "$s2" == "-h" || "$s2" == "-help" 
 else
     seqs=( $(echo "$s2" | tr '\n' ' ') )
     fnames=$(join , "${seqs[@]}")
-    eval "echo $s1{$fnames}"
+
+    if [[ "$3" == "-a" || "$3" == "--append" ]]; then
+        eval "echo $s1{$fnames}"
+    elif [[ "$3" == "-p" || "$3" == "--prepend" ]]; then
+        eval "echo {$fnames}$s1"
+    else 
+        eval "echo $s1{$fnames}"
+    fi
 fi

@@ -22,11 +22,15 @@ alias tree='ls --tree'
 
 # Aliases
 alias nv='nvim'
+{{- if (eq .dsp "wayland" ) }}
 alias xclip='xclip -sel clip' # X Server copy to clipboard
+{{- end }}
 alias start_env="source $HOME/.config/dotfiles/scripts/startup/start-env.sh"
 alias szsh="source ~/.zshrc"
 alias spro="source ~/.profile"
+{{- if (eq .dsp "wayland" ) }}
 alias scd="xset dpms force off"
+{{- end }}
 {{- if (eq .system "arch-laptop" ) }}
 alias zhist="nvim $HOME/.history/zsh/arch-laptop/zsh_history"
 alias zhistc="cat $HOME/.history/zsh/arch-laptop/zsh_history"

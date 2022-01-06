@@ -2,6 +2,12 @@
 .config/redshift/redshift.conf
 .config/git/personal
 {{- end }}
+{{- if ( eq .dsp "wayland" ) -}}
+.config/i3/*
+.config/polybar/*
+.config/picom/*
+.config/xfce4/*
+{{- end }}
 LICENSE
 README.md
 **/*.md

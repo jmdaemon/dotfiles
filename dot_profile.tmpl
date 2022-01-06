@@ -91,7 +91,7 @@ export CARGO_HOME="$XDG_DATA_HOME"/cargo
 export KONAN_DATA_DIR="$XDG_CACHE_HOME"/konan
 
 # QT Theming
-export QT_QPA_PLATFORMTHEME=qt5ct
+export QT_QPA_PLATFORMTHEME=qt6ct
 export QT_AUTO_SCREEN_SCALE_FACTOR=1
 export FONTCONFIG_PATH=/etc/fonts
 
@@ -142,6 +142,12 @@ source $XDG_CONFIG_HOME/dotfiles/scripts/startup/nvm.sh
 {{- end }}
 source $CARGO_HOME/env
 #source $scripts/terminal/fortunecow.sh
+
+{{- if (eq .dsp "wayland") }} 
+# Enable Wayland
+# export MOZ_ENABLE_WAYLAND=1
+#source $scripts/terminal/fortunecow.sh
+{{- end }}
 
 # Persistent Tmux Sessions
 #/usr/bin/tmux attach -t 0

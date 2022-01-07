@@ -22,13 +22,13 @@ alias tree='ls --tree'
 
 # Aliases
 alias nv='nvim'
-{{- if (eq .dsp "wayland" ) }}
+{{- if (eq .dsp "x11" ) }}
 alias xclip='xclip -sel clip' # X Server copy to clipboard
 {{- end }}
 alias start_env="source $HOME/.config/dotfiles/scripts/startup/start-env.sh"
 alias szsh="source ~/.zshrc"
 alias spro="source ~/.profile"
-{{- if (eq .dsp "wayland" ) }}
+{{- if (eq .dsp "x11" ) }}
 alias scd="xset dpms force off"
 {{- end }}
 {{- if (eq .system "arch-laptop" ) }}
@@ -129,7 +129,7 @@ cpy() { # xclip alias but strips newline
 
 reencode() { # Reencodes .mp3 files via ffmpeg
     input="$1"
-    ffmpeg -i "$input" "${input%.*}.mp3"
+    ffmpeg -i "$input" "${input%.*}.mp3" $@
     [[ ! -e "$input" ]] && rm "$input" || :
 }
 

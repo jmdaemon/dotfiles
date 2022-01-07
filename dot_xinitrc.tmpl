@@ -1,5 +1,6 @@
 #!/bin/sh
 
+{{- if ( eq .dsp "x11" ) }}
 {{ if ( eq .system "arch-laptop" ) -}}
 export GTK_IM_MODULE=fcitx5
 export QT_IM_MODULE=fcitx5
@@ -18,5 +19,9 @@ mpd &
 picom -b
 bash ~/.config/polybar/launch.sh
 {{- end }}
+{{- end }}
 source ~/.profile
+{{- if ( eq .dsp "x11" ) }}
 exec i3
+{{- end }}
+# vim:ft=sh

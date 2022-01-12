@@ -121,10 +121,13 @@ cpfp() {
     fi
 }
 
-cpy() { # xclip alias but strips newline
+cpy() { # xclip alias but strips all trailing newlines
+    VAR=""
     while read -r data; do
-        echo "${data}" | tr -d '\n' | xclip -sel clip
+        VAR+="$data\n"
     done
+    CLEANED=$(echo $VAR | sed -rz 's/^\n+//; s/\n+$/\n/g') # Strips trailing newlines
+    printf "%b" "$CLEANED" | xclip -sel clip
 }
 
 reencode() { # Reencodes .mp3 files via ffmpeg

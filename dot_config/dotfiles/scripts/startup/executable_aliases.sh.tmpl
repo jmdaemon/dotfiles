@@ -28,6 +28,7 @@ alias xclip='xclip -sel clip' # X Server copy to clipboard
 alias start_env="source $HOME/.config/dotfiles/scripts/startup/start-env.sh"
 alias szsh="source ~/.zshrc"
 alias spro="source ~/.profile"
+alias kzom="kill $(ps -A -ostat,ppid | awk '/[zZ]/ && !a[$2]++ {print $2}')"
 {{- if (eq .dsp "x11" ) }}
 alias scd="xset dpms force off"
 {{- end }}
@@ -139,4 +140,10 @@ reencode() { # Reencodes .mp3 files via ffmpeg
 piload() { # Builds and uploads pypi packages
     python3 -m build
     python3 -m twine upload dist/*
+}
+
+clean() {
+    directory="$1"
+    if [[ "$directory" == "cfg" ]]; then
+    fi
 }

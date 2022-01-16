@@ -144,6 +144,15 @@ piload() { # Builds and uploads pypi packages
 
 clean() {
     directory="$1"
+    cleanbin="$HOME/.local/bin/clean"
     if [[ "$directory" == "cfg" ]]; then
+        #clean $HOME.local/share/excludes/XDG-CONFIG.exclude.list ~/.config $@
+        shift
+        $cleanbin $excludes/XDG-CONFIG.exclude.list $XDG_CONFIG_HOME $@
+    elif [[ "$directory" == "data" ]]; then
+        shift
+        $cleanbin $excludes/XDG-DATA.exclude.list $XDG_DATA_HOME $@
+    else
+        $cleanbin $@
     fi
 }

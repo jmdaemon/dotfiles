@@ -6,7 +6,7 @@
      id="window">
     <group
        id="task"
-       taskset="1" />
+       taskset="2" />
     <group
        id="menu"
        state="1" />
@@ -124,9 +124,7 @@
       <eventcontext
          id="rect"
          style="fill:blue;"
-         usecurrent="1"
-         width="153.977"
-         height="91.6758" />
+         usecurrent="1" />
       <eventcontext
          id="3dbox"
          style="stroke:none;stroke-linejoin:round;"
@@ -161,9 +159,7 @@
          style="fill:red;"
          end="0"
          start="0"
-         usecurrent="1"
-         rx="102.34"
-         ry="108.522" />
+         usecurrent="1" />
       <eventcontext
          id="star"
          magnitude="5"
@@ -398,6 +394,10 @@
        id="paintbucket"
        style="fill:#a0a0a0;stroke:none;"
        usecurrent="1" />
+    <eventcontext
+       id="marker"
+       selcue="1"
+       gradientdrag="1" />
   </group>
   <group
      id="palette">
@@ -518,7 +518,8 @@
   </group>
   <group
      id="colorselector"
-     page="0" />
+     page="0"
+     switcher="1" />
   <group
      id="embedded">
     <group
@@ -563,7 +564,7 @@
     <group
        id="preferences"
        state="1"
-       page="24" />
+       page="26" />
     <group
        id="gradienteditor" />
     <group
@@ -575,7 +576,7 @@
        path="">
       <group
          id="exportarea"
-         value="custom" />
+         value="page" />
       <group
          id="defaultxdpi" />
     </group>
@@ -862,7 +863,7 @@
     <group
        id="svgoutput"
        disable_optimizations="0"
-       usenamedcolors="1"
+       usenamedcolors="0"
        numericprecision="8"
        minimumexponent="-8"
        inlineattrs="0"
@@ -890,7 +891,7 @@
        value="1" />
     <group
        id="iconrender"
-       named_nodelay="1" />
+       named_nodelay="0" />
     <group
        id="autosave"
        enable="1"
@@ -924,29 +925,51 @@
        colorsontop="0"
        partialdynamic="0" />
     <group
-       id="boot"
-       theme="system">
+       id="boot">
       <group
          id="shown"
-         ver1.1.1="1" />
+         ver1.1.1="1"
+         ver1.2-dev="1" />
     </group>
     <group
        id="rendering" />
     <group
-       id="savedialogposition"
-       value="0" />
-    <group
-       id="commandpalette">
-      <group
-         id="showfullactionname"
-         value="1" />
-    </group>
+       id="snapping"
+       snap-global-toggle="1"
+       snap-bbox="1"
+       snap-bbox-edge="1"
+       snap-bbox-corner="1"
+       snap-bbox-edge-midpoint="0"
+       snap-bbox-center="0"
+       simple-snap-bbox="1"
+       snap-node-category="1"
+       snap-path="1"
+       snap-path-intersection="1"
+       snap-node-cusp="1"
+       snap-node-smooth="1"
+       snap-line-midpoint="1"
+       snap-line-tangential="1"
+       snap-line-perpendicular="1"
+       simple-snap-nodes="1"
+       snap-alignment="0"
+       snap-alignment-self="0"
+       snap-distribution="0"
+       simple-snap-alignment="0"
+       snap-others="1"
+       snap-object-midpoint="0"
+       snap-rotation-center="0"
+       snap-text-baseline="1"
+       snap-path-mask="1"
+       snap-path-clip="1"
+       snap-page-border="0"
+       snap-grid="1"
+       snap-guide="1" />
   </group>
   <group
      id="extensions" />
   <group
      id="desktop"
-     style="stroke-width:1.12629921">
+     style="">
     <group
        width="640"
        height="480"
@@ -974,11 +997,16 @@
      id="toolbox"
      icononly="1"
      secondary="3"
-     small="3">
+     small="3"
+     simplesnap="0">
     <group
        id="tools"
        icononly="1"
-       small="3" />
+       small="3"
+       iconsize="48" />
+    <group
+       id="controlbars"
+       iconsize="48" />
   </group>
   <group
      id="iconpreview"
@@ -1059,12 +1087,11 @@
      symbolicIcons="1"
      preferDarkTheme="0"
      darkTheme="0"
-     symbolicDefaultBaseColors="1"
-     symbolicDefaultHighColors="1"
      menuIcons_canvas="0"
      menuIcons_layers="0"
      menuIcons_objects="0"
-     menuIcons="0">
+     narrowSpinButton="1"
+     fontscale="110">
     <group
        id="Flat-Remix-Red-Dark"
        symbolicBaseColor="1549888767"
@@ -1072,4 +1099,6 @@
        symbolicWarningColor="4252827903"
        symbolicErrorColor="3205961727" />
   </group>
+  <group
+     id="statusbar" />
 </inkscape>

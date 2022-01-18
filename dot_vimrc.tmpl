@@ -208,7 +208,7 @@ autocmd BufWritePost ~/.local/share/chezmoi/* ! chezmoi apply --source-path %
 let g:vimtex_compiler_progname = 'nvr'
 let g:vimtex_view_general_viewer = 'okular'
 let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
-let g:vimtex_view_general_options_latexmk = '--unique'
+let g:vimtex_compiler_method = 'latexmk'
 let g:vimtex_compiler_latexmk = {
         \ 'build_dir' : 'build',
         \ 'options' : [
@@ -221,6 +221,14 @@ let g:vimtex_compiler_latexmk = {
         \ ],
         \ }
 
+" Vimtex
+let g:tex_flavor = 'latex'
+
+" https://stackoverflow.com/questions/8300982/vim-running-slow-with-latex-files
+" https://stackoverflow.com/questions/15024035/vim-gvim-startup-very-slow-with-latex-suite
+au FileType tex setlocal nocursorline
+au FileType tex :NoMatchParen
+let g:Tex_PackagesMenu = 0
 
 " MarkdownPreview
 let g:mkdp_auto_start = 1
@@ -242,15 +250,6 @@ let g:mkdp_preview_options = {
     \ }
 let g:mkdp_markdown_css = ''
 let g:mkdp_highlight_css = ''
-
-" Vimtex
-let g:tex_flavor = 'latex'
-
-" https://stackoverflow.com/questions/8300982/vim-running-slow-with-latex-files
-" https://stackoverflow.com/questions/15024035/vim-gvim-startup-very-slow-with-latex-suite
-au FileType tex setlocal nocursorline
-au FileType tex :NoMatchParen
-let g:Tex_PackagesMenu = 0
 
 " ============== AsciiDoctor ==============
 let g:asciidoctor_executable = 'asciidoctor -b html5'

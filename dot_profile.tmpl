@@ -52,6 +52,9 @@ export NPM_DIR="$XDG_DATA_HOME"/npm
 export NPM_CONFIG_CACHE=$XDG_CACHE_HOME/npm
 export NPM_CONFIG_TMP=$XDG_RUNTIME_DIR_HOME/npm
 export NODE_PATH="$NODE_PATH:$NPM_DIR/lib/node_modules"
+export YARN_DIR="$XDG_DATA_HOME"/yarn
+export YARN_RC_FILENAME="$YARN_DIR"/yarnrc.yml
+export NODE_OPTIONS=--openssl-legacy-provider
 
 export RBENV_ROOT="$XDG_CONFIG_HOME/rbenv"
 
@@ -97,12 +100,13 @@ export FONTCONFIG_PATH=/etc/fonts
 
 SBIN=/usr/sbin
 RUBY=$HOME/.rbenv/shims
+YARN=$YARN_DIR/bin
 GEM_BIN=$GEM_HOME/bin
 NPM=$NPM_DIR/bin
 RUST=$CARGO_HOME/bin
 GO=/usr/local/go/bin
 LOCAL=$HOME/.local/bin
-export PATH=$RUBY:$GEM_BIN:$PATH:$SBIN:$NPM:$RUST:$GOPATH/bin:$GO:$LOCAL
+export PATH=$RUBY:$GEM_BIN:$PATH:$SBIN:$YARN_DIR:$NPM:$RUST:$GOPATH/bin:$GO:$LOCAL
 
 # Java
 OPENJDK_8=/usr/lib/jvm/java-1.8.0-openjdk-amd64

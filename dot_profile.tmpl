@@ -120,6 +120,9 @@ export PDFVIEWER=okular
 export scripts="$XDG_CONFIG_HOME"/dotfiles/scripts
 export aliasd="$scripts"/startup
 
+export ANDROID_SDK_ROOT="/opt/android-sdk"
+export ANDROID_AVD_HOME="~/.config/android/avd"
+
 source $aliasd/aliases.sh 
 load_alias() {
     alias_name="$1.sh"

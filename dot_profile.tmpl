@@ -108,8 +108,13 @@ LOCAL=$HOME/.local/bin
 export PATH=$RUBY:$GEM_BIN:$PATH:$SBIN:$YARN_DIR:$NPM:$RUST:$GOPATH/bin:$GO:$LOCAL
 
 # Java
+
 OPENJDK_8=/usr/lib/jvm/java-1.8.0-openjdk-amd64
+{{- if (eq .system "arch-laptop") }}
 export JAVA_HOME=/usr/lib/jvm/default-runtime/
+{{- else if (eq .system "ubuntu-workstation") }}
+export JAVA_HOME=/usr/lib/jvm/default-java/
+{{- end }}
 
 #export LIBVIRT_DEFAULT_URI='qemu:///system'
 

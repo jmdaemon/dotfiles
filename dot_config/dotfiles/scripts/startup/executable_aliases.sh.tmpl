@@ -32,10 +32,8 @@ alias kzom="kill $(ps -A -ostat,ppid | awk '/[zZ]/ && !a[$2]++ {print $2}')"
 {{- if (eq .dsp "x11" ) }}
 alias scd="xset dpms force off"
 {{- end }}
-{{- if (eq .system "arch-laptop" ) }}
-alias zhist="nvim $HOME/.history/zsh/arch-laptop/zsh_history"
-alias zhistc="cat $HOME/.history/zsh/arch-laptop/zsh_history"
-{{- end }}
+alias zhist="nvim $HOME/.history/zsh/{{ .system }}/zsh_history"
+alias zhistc="cat $HOME/.history/zsh/{{ .system }}/zsh_history"
 alias conda-init="source $DOTFILES/scripts/terminal/conda-init.sh"
 {{- if (eq .terminal "kitty" ) }}
 # https://github.com/kovidgoyal/kitty/issues/268 - For Kitty

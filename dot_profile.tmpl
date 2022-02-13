@@ -113,7 +113,7 @@ OPENJDK_8=/usr/lib/jvm/java-1.8.0-openjdk-amd64
 {{- if (eq .system "arch-laptop") }}
 export JAVA_HOME=/usr/lib/jvm/default-runtime/
 {{- else if (eq .system "ubuntu-workstation") }}
-export JAVA_HOME=/usr/lib/jvm/default-java/
+export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
 {{- end }}
 
 #export LIBVIRT_DEFAULT_URI='qemu:///system'

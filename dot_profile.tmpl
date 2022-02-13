@@ -144,10 +144,11 @@ load_alias "draw"
 {{- if (eq .system "arch-laptop") }} 
 source $XDG_CONFIG_HOME/dotfiles/scripts/startup/nvm.sh
 {{- else if (eq .system "ubuntu-workstation") }}
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # Load nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # Load shell completions for nvm
 {{- end }}
-source $CARGO_HOME/env
+eval "$(rbenv init -)" # Load rbenv
+source $CARGO_HOME/env # Load cargo
 #source $scripts/terminal/fortunecow.sh
 
 {{- if (eq .dsp "wayland") }} 

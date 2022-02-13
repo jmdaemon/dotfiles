@@ -29,6 +29,7 @@ alias start_env="source $HOME/.config/dotfiles/scripts/startup/start-env.sh"
 alias szsh="source ~/.zshrc"
 alias spro="source ~/.profile"
 alias kzom="kill $(ps -A -ostat,ppid | awk '/[zZ]/ && !a[$2]++ {print $2}')"
+alias expnode="export NODE_OPTIONS=--openssl-legacy-provider"
 {{- if (eq .dsp "x11" ) }}
 alias scd="xset dpms force off"
 {{- end }}

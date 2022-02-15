@@ -1,2 +1,6 @@
 #!/bin/sh
-git filter-repo --mailmap ~/.config/git/git-filter-repo/config $@
+
+cfg="$1"
+[[ -z "$cfg" ]] && echo "Usage: git mask [cfg] [options]" && exit 1 || :
+shift
+git filter-repo --mailmap ~/.config/git/git-filter-repo/"$cfg".cfg $@

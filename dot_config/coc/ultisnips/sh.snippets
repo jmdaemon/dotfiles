@@ -122,3 +122,17 @@ $1() { # Wrapper around gdb that toggles gef configurations
     fi
 }
 endsnippet
+
+snippet newuser "Snippet for adding a new user" b
+[[ $(grep -c "^${$1}:" /etc/passwd) == 0 ]] && sudo useradd -m "$1" || :
+endsnippet
+
+snippet addkey "Snippet for securely adding gpg keys" i
+if [[ ! -e "/etc/apt/trusted.gpg.d/${1:pkg}.gpg/$1") ]]; then
+    wget -O - "${2:url}" > "$1.key"
+    gpg --no-default-keyring --keyring "./$1_keyring.gpg" --import "$1.key"
+    gpg --no-default-keyring --keyring "./$1_keyring.gpg" --export > "./$1.gpg"
+    sudo mv "./$1.gpg" "/etc/apt/trusted.gpg.d/elasticsearch.gpg/}$1"
+    rm "$1.key $1_keyring.gpg" "$1_keyring.gpg\~"
+fi
+endsnippet

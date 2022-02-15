@@ -34,6 +34,13 @@ snippet shbang "" i
 
 endsnippet
 
+snippet nullarg "Description" i
+if [[ -z "$1" ]]; then
+    $2
+fi
+endsnippet
+
+
 snippet checknullargs "Add nullchecks for args" b
 if [[ -z "$1" ]]; then
 	$2
@@ -147,4 +154,35 @@ endsnippet
 
 snippet pkginstall "Install packages" i
 sudo ${1:"$apt"} install -y ${2:pkgs}
+endsnippet
+
+snippet cloneif "Clones a repo if it doesn't exist locally" b
+clone_ifnot_exists() {
+    repo="\$1"
+    [[ -d "$repo" ]] && git clone ${1:url} || :
+}
+endsnippet
+
+snippet sedrep "Replace $1 with $2" i
+sed "s/$1/$2/${3:g} $4"
+endsnippet
+
+snippet info "Displays a help message" b
+info() { echo "${1:{$(date)} $*" 1>&2; }
+endsnippet
+
+snippet notifyuser "Sends desktop notification to user" b
+sudo -u $USER notify-send "$1" "$2"
+endsnippet
+
+snippet notifyusericon "Sends desktop notification to user with icon" b
+sudo -u $USER notify-send -i "$1" "$2" "$3"
+endsnippet
+
+snippet datefmt "Date formatted as: [YYYY-MM-DD HH:MM:SS TZ]" i
+date +"[%F %T %Z]${1: msg}"
+endsnippet
+
+snippet expandalias "Expand aliases" b
+shopt -s expand_aliases
 endsnippet

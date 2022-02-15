@@ -44,6 +44,7 @@ export GOPATH="$XDG_DATA_HOME"/go
 export GEM_HOME="$XDG_DATA_HOME"/gem
 export GEM_SPEC_CACHE="$XDG_CACHE_HOME"/gem   
 export RUSTUP_HOME="$XDG_DATA_HOME"/rustup 
+export RUSTC_WRAPPER="sccache" # Cache bin
 export _JAVA_OPTIONS=-"Djava.util.prefs.userRoot=$XDG_CONFIG_HOME/java -Djavafx.cachedir=$XDG_CONFIG_HOME/openjfx"
 export JULIA_DEPOT_PATH="$XDG_DATA_HOME/julia:$JULIA_DEPOT_PATH"
 

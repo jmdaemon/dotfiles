@@ -11,6 +11,7 @@ export uni="$work/School/University"
 export draw="$work/drawing"
 export notes="$work/Notes"
 export texpkg="$TEXMFHOME/tex/latex"
+export snips="$HOME/.config/coc/ultisnips"
 
 # LSD - https://github.com/Peltoche/lsd 
 alias l='ls -l'
@@ -35,7 +36,6 @@ alias scd="xset dpms force off"
 {{- end }}
 alias zhist="nvim $HOME/.history/zsh/{{ .system }}/zsh_history"
 alias zhistc="cat $HOME/.history/zsh/{{ .system }}/zsh_history"
-alias snips="$HOME/.config/coc/ultisnips"
 alias conda-init="source $DOTFILES/scripts/terminal/conda-init.sh"
 {{- if (eq .terminal "kitty" ) }}
 # https://github.com/kovidgoyal/kitty/issues/268 - For Kitty

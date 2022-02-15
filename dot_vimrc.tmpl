@@ -37,6 +37,7 @@ Plug 'tpope/vim-surround'
 Plug 'edkolev/tmuxline.vim'
 Plug 'lilydjwg/fcitx.vim', { 'on': [] }
 Plug 'sheerun/vim-polyglot'
+Plug 'editorconfig/editorconfig-vim'
 Plug 'liuchengxu/graphviz.vim'      , { 'for': ['.gv', 'dot'] }
 Plug 'iamcco/markdown-preview.nvim' , { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'md'] }
 Plug 'aklt/plantuml-syntax'         , { 'for': ['.wsd', '.pu', '.puml', '.plantuml', '.iuml'] }
@@ -63,20 +64,24 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-"let g:syntastic_java_checker = ['javac']
 
+" Java
+"let g:syntastic_java_checker = ['javac']
 let g:syntastic_java_checkers=['java']
 let g:syntastic_java_javac_config_file_enabled = 1
 "let g:syntastic_java__checkstyle_classpath="./syntactic_javac_config"
 
+
+" C/C++
+let g:syntastic_c_compiler_options = '-std=C99'
 let g:syntastic_cpp_compiler_options = '-std=c++17x'
+
+" YAML
 let g:syntastic_yaml_checkers = [ "yamllint" ]
 
-let g:syntastic_c_compiler_options = '-std=C99'
-
+" Python
 " Disables python flake8, lacheck for tex, shellcheck for sh
 let g:syntastic_mode_map = { 'passive_filetypes': ['python', 'tex', 'sh'] }
-
 
 "================== Theme ================="
 syntax enable

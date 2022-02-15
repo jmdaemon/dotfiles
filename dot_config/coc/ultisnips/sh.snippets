@@ -136,3 +136,15 @@ if [[ ! -e "/etc/apt/trusted.gpg.d/${1:pkg}.gpg/$1") ]]; then
     rm "$1.key $1_keyring.gpg" "$1_keyring.gpg\~"
 fi
 endsnippet
+
+snippet arg "Sets a function argument" i
+${1:var}="$1"
+endsnippet
+
+snippet aptaddlist "Adds a source to apt" i
+[[ ! -e "/etc/apt/sources.list.d/$1.list" ]] && echo "deb $2/apt stable main" | sudo tee -a /etc/apt/sources.list.d/$1.list || :
+endsnippet
+
+snippet pkginstall "Install packages" i
+sudo ${1:"$apt"} install -y ${2:pkgs}
+endsnippet

@@ -1,0 +1,124 @@
+# A valid snippet should starts with:
+#
+#		snippet trigger_word [ "description" [ options ] ]
+#
+# and end with:
+#
+#		endsnippet
+#
+# Snippet options:
+#
+#		b - Beginning of line.
+#		i - In-word expansion.
+#		w - Word boundary.
+#		r - Regular expression
+#		e - Custom context snippet
+#		A - Snippet will be triggered automatically, when condition matches.
+#
+# Basic example:
+#
+#		snippet emitter "emitter properties" b
+#		private readonly ${1} = new Emitter<$2>()
+#		public readonly ${1/^_(.*)/$1/}: Event<$2> = this.$1.event
+#		endsnippet
+#
+# Online reference: https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt
+
+snippet bashbang "" b
+#!/bin/bash
+
+endsnippet
+
+snippet shbang "" i
+#!/bin/sh
+
+endsnippet
+
+snippet checknullargs "Add nullchecks for args" b
+if [[ -z "$1" ]]; then
+	$2
+fi
+endsnippet
+
+snippet show_usagefn "Print script help message" b
+show_usage() {
+	echo "Usage: $1 [$2] "
+}
+endsnippet
+
+snippet show_usage "Print script help message" i
+	echo "Usage: $1 [$2] "
+endsnippet
+
+snippet log "Document scripts with useful log message" b
+log() {
+  echo "== $* ==" 1>&2
+  echo 1>&2
+}
+endsnippet
+
+snippet installfn "Install package if not available" b
+install() {
+    pkg="\$1"
+    if [[ -e "$(command -v "$pkg")" ]]; then
+        sudo "$apt" install -y "$pkg"
+        ${1:log Installing "$pkg"}
+    fi
+}
+endsnippet
+
+snippet install "Install package if not available" b
+[[ -e "$(command -v "${1:$pkg}")" ]] && sudo "${2:$apt}" install -y "$pkg" || :
+endsnippet
+
+snippet aptset "Toggles between apt-fast or apt" i
+apt=""
+[[ -e $(command -v apt-fast) ]] && apt="apt-fast" || apt="apt"
+${1:log Using $apt}
+endsnippet
+
+snippet copy "Copies to xclip" i
+[[ $(command -v xclip) ]] && cat "$1" | xclip -sel clip || :
+endsnippet
+
+snippet cmdexists "If command exists then A else B" i
+[[ $(command -v $1) ]] && $2 || $3:
+endsnippet
+
+snippet fileexists "If file exists then A else B" i
+[[ -e "$1" && $2 || ${3:\:}
+endsnippet
+
+snippet notexists "If file does not exists then A else B" i
+[[ -n "$1" && $2 || ${3:\:}
+endsnippet
+
+snippet direxists "If file exists then A else B" i
+[[ -d "$1" && $2 || ${3:\:}
+endsnippet
+
+snippet dirnotexists "If file exists then A else B" i
+[[ ! -d "$1" && $2 || ${3:\:}
+endsnippet
+
+snippet vercmp "Compare semver versions of packages" i
+$1v="$($1 -v)"
+requiredver="$2"
+if [ "$(printf '%s\n' "$requiredver" "$1" | sort -V | head -n1)" = "$requiredver" ]; then
+	${3:\:}
+else
+	${4:\:}
+fi
+endsnippet
+
+snippet wrapper "Wrap a fn/cmd/alias" b
+$1() { # Wrapper around gdb that toggles gef configurations
+    toggle="\$1"
+    if [[ "$toggle" == "$2" ]]; then
+        shift # Pop wrapper option
+				$4 "\$@"
+    else
+				$5 "\$@"
+    fi
+}
+endsnippet

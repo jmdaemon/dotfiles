@@ -134,10 +134,11 @@ load_alias() {
     [[ -f "$aliasd/$alias_name" ]] && source "$aliasd/$alias_name" || :
 }
 
+load_alias "cw"
 load_alias "uni"
 load_alias "fai"
-load_alias "cw"
 load_alias "draw"
+load_alias "book"
 
 {{- if (eq .system "arch-laptop") }}
 # HiDPI - These environment variables scale applications x2, but can also make some icons blurry

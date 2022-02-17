@@ -214,6 +214,10 @@ autocmd BufWritePost ~/.local/share/chezmoi/* ! chezmoi apply --source-path %
 
 "================ LISP ================"
 
+" To switch to the REPL in Swank        type: ^C ,
+" To switch back to the file to edit    type: ^C w
+" To execute commands you can type: <leader> <letter>
+" https://kovisoft.github.io/slimv-tutorial/tutorial.html
 let g:slimv_swank_cmd = '! {{ .terminal }} -e sbcl --load ~/.config/nvim/plugged/slimv/slime/start-swank.lisp &'
 let g:lisp_rainbow=1
 let g:paredit_mode=0

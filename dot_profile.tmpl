@@ -25,6 +25,7 @@ export OCTAVE_HISTFILE=$HISTORY_DIR/octave/"{{ .system }}"/octave_history
 export LESSHISTFILE="$HISTORY_DIR/less/{{ .system }}"/less_history
 export NODE_REPL_HISTORY="$HISTORY_DIR"/nodejs/"{{ .system }}"/node_repl_history
 export SQLITE_HISTORY="$HISTORY_DIR"/sqlite3/"{{ .system }}"/sqlite_history
+export REDISCLI_HISTFILE="$HISTORY_DIR"/redis/rediscli_history
 
 # RC Files
 export OCTAVE_SITE_INITFILE="$XDG_CONFIG_HOME/octave/octaverc"
@@ -85,6 +86,7 @@ export WEECHAT_HOME=$XDG_CONFIG_HOME/weechat/
 export KDEHOME="$XDG_CONFIG_HOME"/kde
 export KDEWM="/usr/bin/i3"
 export CONAN_USER_HOME="$XDG_CONFIG_HOME/conan"
+export REDISCLI_RCFILE="$XDG_CONFIG_HOME"/redis/redisclirc
 
 # Applications - Data
 export MACHINE_STORAGE_PATH="$XDG_DATA_HOME"/docker-machine 

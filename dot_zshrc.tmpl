@@ -22,6 +22,11 @@ fpath=( $fpath "$DOTFILES/completion" )
 zstyle ':completion:*' completer _complete
 zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' '+l:|=* r:|=*'
 zstyle ':completion:*' cache-path $XDG_CACHE_HOME/zsh/zcompcache
+setopt SHARE_HISTORY # Share history between all sessions.
+
+# ZSH Hooks
+
+# Set crash dump directory to ~/.cache/zsh
 #autoload -Uz compinit && compinit -i
 autoload -Uz compinit && compinit -d $XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION
 
@@ -42,6 +47,27 @@ rehash_precmd() { # Automatically rehash $PATH
 
 add-zsh-hook -Uz precmd rehash_precmd
 {{- end }}
+
+# Archives history when it gets too big.
+archive_history() {
+    emulate -L zsh
+    # If we are not about to exceed 10,000 lines
+    if [[ $(wc -l $HISTFILE) < 10000 ]]; then
+        print -sr -- "${1%%$'\n'}"
+        fc -p
+        #fc -p $HISTFILE
+    fi
+    if [[ $(wc -l $HISTFILE) > 9999 ]]; then
+        current_date=$(date -u +'%Y-%m-%d %H:%M:%S')
+        mv $HISTFILE "$HOME/.history/zsh/{{ .system }}/${current_date}-zsh_history"
+        touch $HISTFILE
+        print -sr -- "${1%%$'\n'}"
+        #fc -p $HISTFILE
+        fc -p
+    fi
+}
+
+add-zsh-hook -Uz zshaddhistory archive_history
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load

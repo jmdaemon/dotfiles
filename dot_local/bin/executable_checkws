@@ -1,0 +1,42 @@
+#!/bin/bash
+
+autocheck=1
+if [[ "$1" == "--ac" ]]; then
+    autocheck=0
+    shift
+fi
+
+urls=($@)
+
+for i in "${urls[@]}"
+do
+    echo "var ws = new Websocket(${i});"
+    echo "$i"
+    if [[ $autocheck == 1 ]]; then
+        response=$(
+        curl --include \
+             --no-buffer \
+             --header "Connection: Upgrade" \
+             --header "Upgrade: websocket" \
+             --header "Host: ${i%:}" \
+             --header "Origin: ${i%:}" \
+             --header "Sec-WebSocket-Version: 13" \
+             --write-out '%{http_code}' \
+             --silent --output /dev/null \
+             "$i"
+     )
+    if [[ "$response" == 101 || "$response" == 200 ]]; then
+        echo "Websocket open on $i"
+    fi
+    else
+        curl --include \
+             --no-buffer \
+             --header "Connection: Upgrade" \
+             --header "Upgrade: websocket" \
+             --header "Host: ${i%:}" \
+             --header "Origin: ${i%:}" \
+             --header "Sec-WebSocket-Version: 13" \
+             "$i"
+        echo ""
+    fi
+done

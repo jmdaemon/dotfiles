@@ -57,6 +57,7 @@ export YARN_DIR="$XDG_DATA_HOME"/yarn
 export YARN_RC_FILENAME="$YARN_DIR"/yarnrc.yml
 export GHCUP_USE_XDG_DIRS="$XDG_DATA_HOME/ghcup"
 export STACK_ROOT="$XDG_DATA_HOME"/stack
+export ROSWELL_HOME="$XDG_DATA_HOME"/roswell
 
 export RBENV_ROOT="$XDG_CONFIG_HOME/rbenv"
 
@@ -165,7 +166,7 @@ load_alias "book"
 #export GDK_DPI_SCALE=0.5
 {{- end }}
 
-{{ if (eq .system "arch-laptop") }} 
+{{- if (eq .system "arch-laptop") }} 
 source $XDG_CONFIG_HOME/dotfiles/scripts/startup/nvm.sh
 {{- else if (eq .system "ubuntu-workstation") }}
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # Load nvm

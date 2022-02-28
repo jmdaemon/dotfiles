@@ -222,6 +222,10 @@ let g:slimv_swank_cmd = '! {{ .terminal }} -e sbcl --load ~/.config/nvim/plugged
 let g:lisp_rainbow=1
 let g:paredit_mode=0
 let g:paredit_electric_return=1
+" For Ros
+"let g:slimv_swank_cmd = \"!ros -e '(ql:quickload :swank) (swank:create-server)' wait &\"
+"let g:slimv_lisp = 'ros run'
+"let g:slimv_impl = 'sbcl'
 
 "============ LaTeX & Markdown =============
 let g:vimtex_compiler_progname = 'nvr'
@@ -346,7 +350,8 @@ let g:coc_global_extensions = [
             "\ 'coc-snippets', 
             \ 'coc-lit-html',
             \ 'coc-rls',
-            \ 'coc-yaml'
+            \ 'coc-yaml',
+            \ 'coc-cl'
             \ ]
 
 " TextEdit might fail if hidden is not set.

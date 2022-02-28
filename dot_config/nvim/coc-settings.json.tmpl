@@ -17,7 +17,7 @@
             ],
             "initializationOptions": {
                 "cache": {
-                    "directory": "~/.cache/ccls"
+                    "directory": "{{ .chezmoi.homeDir }}/.cache/ccls"
                 },
                 "compilationDatabaseDirectory": "build"
             }
@@ -150,6 +150,6 @@
         "MD022": false,
         "MD032": false
     },
-    "rust.target_dir": "/home/jmd/Workspace/apps/rust/target"
+    "rust.target_dir": "{{ .chezmoi.homeDir }}/Workspace/apps/rust/target"
     //"coc.preferences.formatOnSaveFiletypes": [ "javascript", "typescript", "css", "markdown" ]
 }

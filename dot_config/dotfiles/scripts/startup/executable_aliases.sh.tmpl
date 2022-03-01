@@ -173,3 +173,12 @@ testregex() {
         printf '%s\n' "$1" | grep -Eoe "$line"
     done
 }
+
+massrep() { # Mass replace
+    pattern="$1"
+    replace_with="$2"
+    directory="$3"
+    if [[ ! -z "$pattern" && ! -z "$replace_with" && ! -z "$directory" ]]; then
+        grep -rl "$pattern" "$directory" | xargs sed -i "s/$pattern/$replace_with/g"
+    fi
+}

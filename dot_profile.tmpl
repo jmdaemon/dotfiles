@@ -60,6 +60,9 @@ export GHCUP_USE_XDG_DIRS="$XDG_DATA_HOME/ghcup"
 export STACK_ROOT="$XDG_DATA_HOME"/stack
 export CABAL_CONFIG="$XDG_CONFIG_HOME"/cabal/config
 export CABAL_DIR="$XDG_CACHE_HOME"/cabal
+
+export CABAL_CONFIG="$XDG_CONFIG_HOME"/cabal/config
+export CABAL_DIR="$XDG_CACHE_HOME"/cabal
 export ROSWELL_HOME="$XDG_DATA_HOME"/roswell
 export HEX_HOME="$XDG_DATA_HOME"/hex
 export MIX_HOME="$XDG_DATA_HOME"/mix
@@ -128,8 +131,8 @@ GO=/usr/local/go/bin
 GOLOCAL=$GOPATH/bin
 
 # Haskell
-CABAL=$HOME/.cabal/bin
-GHCUP=$HOME/.ghcup/bin
+CABAL=$CABAL_DIR/bin
+GHCUP=$GHCUP_USE_XDG_DIRS/bin
 
 export PATH=$RUBY:$GEM_BIN:$PATH:$SBIN:$YARN_DIR:$NPM:$RUST:$GOLOCAL:$GO:$CABAL:$GHCUP:$LOCAL
 

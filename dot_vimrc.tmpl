@@ -38,6 +38,7 @@ Plug 'edkolev/tmuxline.vim'
 Plug 'lilydjwg/fcitx.vim', { 'on': [] }
 Plug 'sheerun/vim-polyglot'
 Plug 'editorconfig/editorconfig-vim'
+Plug 'kovisoft/slimv'
 Plug 'liuchengxu/graphviz.vim'      , { 'for': ['.gv', 'dot'] }
 Plug 'iamcco/markdown-preview.nvim' , { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'md'] }
 Plug 'habamax/vim-asciidoctor'      , { 'for': ['adoc', 'asciidoc', 'asc'] }
@@ -46,7 +47,6 @@ Plug 'cespare/vim-toml'             , { 'for': 'toml'}
 Plug 'jph00/swift-apple'            , { 'for': 'swift' }
 Plug 'rust-lang/rust.vim'           , { 'for': 'rs'}
 Plug 'JuliaEditorSupport/julia-vim' , { 'for': 'jl'}
-Plug 'kovisoft/slimv'
 Plug 'vim-scripts/indentpython.vim' , { 'for': 'py' }
 Plug 'leafgarland/typescript-vim'   , { 'for': 'ts' }
 Plug 'pangloss/vim-javascript'      , { 'for': 'js' }
@@ -145,7 +145,6 @@ function! VimtexConcealToggle()
     endif
 endfunction
 
-
 nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
 "nnoremap <leader>f :!`ctags -R -f ./.git/tags .`<CR>
 nnoremap <leader>t :!`git ctags`<CR>
@@ -204,11 +203,8 @@ autocmd FileType *.tex set filetype=latex
 
 let g:formatterpath = [ "$HOME/.config/nvim/after/ftplugin/" ]
 
-"map <C-K> :py3f /usr/share/clang/clang-format.py<cr>
-"imap <C-K> <c-o>:py3f /usr/share/clang/clang-format.py<cr>
 map <leader>cf :py3f /usr/share/clang/clang-format.py<cr>
 imap <leader>cf :py3f /usr/share/clang/clang-format.py<cr>
-"au BufWrite * :Autoformat
 
 " https://www.chezmoi.io/docs/how-to/#configure-vim-to-run-chezmoi-apply-whenever-you-save-a-dotfile
 autocmd BufWritePost ~/.local/share/chezmoi/* ! chezmoi apply --source-path %
@@ -228,7 +224,7 @@ let g:paredit_electric_return=1
 "let g:slimv_lisp = 'ros run'
 "let g:slimv_impl = 'sbcl'
 
-"============ LaTeX & Markdown =============
+" ============ LaTeX ============= "
 let g:vimtex_compiler_progname = 'nvr'
 let g:vimtex_view_general_viewer = 'okular'
 let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
@@ -254,7 +250,7 @@ au FileType tex setlocal nocursorline
 au FileType tex :NoMatchParen
 let g:Tex_PackagesMenu = 0
 
-" MarkdownPreview
+" ============ Markdown ============= "
 let g:mkdp_auto_start = 1
 let g:mkdp_auto_close = 1
 let g:mkdp_refresh_slow = 0
@@ -277,13 +273,9 @@ let g:mkdp_highlight_css = ''
 
 " ============== AsciiDoctor ==============
 let g:asciidoctor_executable = 'asciidoctor -b html5'
-"let g:asciidoctor_extensions = ['asciidoctor-diagram', 'asciidoctor-rouge' ]
-"let g:asciidoctor_extensions = ['asciidoctor-rouge']
 
 """ AsciiDoctor PDF
-"let g:asciidoctor_pdf_executable = 'asciidoctor-pdf'
 let g:asciidoctor_pdf_executable = 'asciidoctor-web-pdf'
-"let g:asciidoctor_pdf_extensions = ['asciidoctor-diagram']
 
 """ Folding
 let g:asciidoctor_folding = 0
@@ -357,10 +349,6 @@ let g:coc_global_extensions = [
 
 " TextEdit might fail if hidden is not set.
 set hidden
-
-" Some servers have issues with backup files, see #649.
-"set nobackup
-"set nowritebackup
 
 " Give more space for displaying messages.
 set cmdheight=2

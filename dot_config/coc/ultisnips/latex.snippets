@@ -46,7 +46,7 @@ snippet template "Basic Template" iA
 \usepackage{$1}
 
 \begin{document}
-	$2
+	${2:}
 \end{document}
 endsnippet
 
@@ -62,7 +62,7 @@ endsnippet
 
 snippet beg "begin{} / end{}" bA
 \\begin{$1}
-	$0
+	${2:}
 \\end{$1}
 endsnippet
 
@@ -743,5 +743,8 @@ snippet DD "D" iA
 \mathbb{D}
 endsnippet
 
-# vim:ft=snippets
+snippet nl "Inserts align characters" iA
+& ${1:${VISUAL}} \\\ $0
+endsnippet
 
+# vim:ft=snippets

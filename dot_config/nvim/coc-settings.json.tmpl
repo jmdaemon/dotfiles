@@ -147,6 +147,7 @@
             "filetypes": ["haskell", "lhaskell", "hs"]
         }
     },
+    // Markdown
     "markdownlint.config": {
         "default": true,
         "line-length": false,
@@ -156,11 +157,14 @@
         "MD022": false,
         "MD032": false
     },
+    // Rust
+    "rust-client.enable": false, // Disable rls
     "rust.target_dir": "{{ .chezmoi.homeDir }}/Workspace/apps/rust/target",
 
     // Java
     "java.import.gradle.enabled": true,
     "java.configuration.updateBuildConfiguration": "automatic"
+
     //"coc.preferences.formatOnSaveFiletypes": [ "javascript", "typescript", "css", "markdown" ]
 }
 // vim:ft=jsonc

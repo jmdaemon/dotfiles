@@ -190,7 +190,7 @@ let airline#extensions#tmuxline#snapshot_file = "~/.config/tmux/tmux-status.conf
 setlocal foldmethod=expr
 let g:autoformat_remove_trailing_spaces = 1
 
-au BufNewFile,BufRead *tsx,*ts,*.js,*.html,*.css: set tabstop=2 softtabstop=2 shiftwidth=2
+au BufNewFile,BufRead *.tsx,*.ts,*.js,*.html,*.css: set tabstop=2 softtabstop=2 shiftwidth=2
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 

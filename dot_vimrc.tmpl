@@ -39,6 +39,7 @@ Plug 'lilydjwg/fcitx.vim', { 'on': [] }
 Plug 'sheerun/vim-polyglot'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'kovisoft/slimv'
+Plug 'Chiel92/vim-autoformat'
 Plug 'liuchengxu/graphviz.vim'      , { 'for': ['.gv', 'dot'] }
 Plug 'iamcco/markdown-preview.nvim' , { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'md'] }
 Plug 'habamax/vim-asciidoctor'      , { 'for': ['adoc', 'asciidoc', 'asc'] }
@@ -136,6 +137,7 @@ nnoremap <leader>md :MarkdownPreview<CR>
 nnoremap <leader>d :NERDTree<CR>
 nnoremap <leader>] :noh<CR>
 nnoremap <leader>' :call VimtexConcealToggle()<CR>
+nnoremap <leader>af :Autoformat<CR>
 
 function! VimtexConcealToggle()
     if &conceallevel

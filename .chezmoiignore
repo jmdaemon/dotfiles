@@ -14,3 +14,8 @@ README.md
 **/*.md
 **/docs
 **/doc
+{{- if ( eq .yarnv "1" ) -}}
+./.yarnrc.yml
+{{- else if ( eq .yarnv "2" ) -}}
+./.yarnrc
+{{- end }}

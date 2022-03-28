@@ -219,7 +219,7 @@ autocmd BufWritePost ~/.local/share/chezmoi/* ! chezmoi apply --source-path %
 " https://kovisoft.github.io/slimv-tutorial/tutorial.html
 let g:slimv_swank_cmd = '! {{ .terminal }} -e sbcl --load ~/.config/nvim/plugged/slimv/slime/start-swank.lisp &'
 let g:lisp_rainbow=1
-let g:paredit_mode=0
+let g:paredit_mode=1
 let g:paredit_electric_return=1
 " For Ros
 "let g:slimv_swank_cmd = \"!ros -e '(ql:quickload :swank) (swank:create-server)' wait &\"

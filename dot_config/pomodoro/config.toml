@@ -1,0 +1,15 @@
+[config]
+shortbreak = 10
+longbreak = 30
+intervals = [
+20, 20, 20, 20
+]
+units = "minutes"
+
+# For quick debugging
+#shortbreak = 2
+#longbreak = 2
+#intervals = [
+#4, 4, 4, 4,
+#]
+#units = "seconds"

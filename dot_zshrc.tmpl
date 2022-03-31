@@ -29,11 +29,11 @@ setopt SHARE_HISTORY # Share history between all sessions.
 # Set crash dump directory to ~/.cache/zsh
 #autoload -Uz compinit && compinit -i
 autoload -Uz compinit && compinit -d $XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION
+autoload -Uz add-zsh-hook
 
 {{ if ( eq .system "arch-laptop" ) -}}
 # https://wiki.archlinux.org/title/Zsh#On-demand_rehash
 zshcache_time="$(date +%s%N)"
-autoload -Uz add-zsh-hook
 
 rehash_precmd() { # Automatically rehash $PATH
   if [[ -a /var/cache/zsh/pacman ]]; then

@@ -129,6 +129,81 @@ snippet ztable "Checkered Table" b
 \end{table}
 endsnippet
 
+snippet multi-math-table "Create a table that can contain multiple math tables" b
+\begin{table}[!htb]
+	\caption{$1}
+	\centering
+	% $2
+	\begin{subtable}{$4\linewidth}
+		\centering
+		\caption{$3}
+		\label{tbl:$4}
+		$\begin{array}{ *{$5}{c} }
+			% $5 centered columns
+			\toprule \\\
+			$6 \\\
+			\midrule \\\
+			$7 \\\
+			\bottomrule
+		\end{array}$
+	\end{subtable}%
+\end{table}
+endsnippet
+
+snippet multi-table "Create a table that can contain multiple tables" b
+\begin{table}[!htb]
+	\caption{$1}
+	\centering
+	% $2
+	\begin{subtable}{$4\linewidth}
+		\centering
+		\caption{$3}
+		\label{tbl:$4}
+		\begin{tabular}{ *{$5}{c} }
+			% $5 centered columns
+			\toprule \\\
+			$6 \\\
+			\midrule \\\
+			$7 \\\
+			\bottomrule
+		\end{tabular}
+	\end{subtable}%
+\end{table}
+endsnippet
+
+snippet submathtable "" b
+\begin{subtable}{$1\linewidth}
+	\centering
+	\caption{$2}
+	\label{tbl:$3}
+	$\begin{array}{ *{$4}{c} }
+		% $4 centered columns
+		\toprule \\\
+		$5 \\\
+		\midrule \\\
+		$6 \\\
+		\bottomrule
+	\end{array}$
+\end{subtable}%
+endsnippet
+
+snippet subtable "" b
+\begin{subtable}{$1\linewidth}
+	\centering
+	\caption{$2}
+	\label{tbl:$3}
+	\begin{tabular}{ *{$4}{c} }
+		% $4 centered columns
+		\toprule \\\
+		$5 \\\
+		\midrule \\\
+		$6 \\\
+		\bottomrule
+	\end{tabular}
+\end{subtable}%
+endsnippet
+
+
 ## TabularX
 snippet tabxenum "Vertically Aligns Texts" b
 \noindent\begin{tabularx}{\linewidth}{@{}lX}

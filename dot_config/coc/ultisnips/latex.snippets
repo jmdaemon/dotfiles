@@ -120,8 +120,11 @@ endsnippet
 snippet ztable "Checkered Table" b
 \begin{table}[!htbp]
     \centering
+		% Alternate between white, grey for tables
+		% every 2 rows with grey on the second row
 		\rowcolors{2}{}{gray!10}
     \begin{tabular}{ *{${1:$1}}{cc} }
+				% $1 Columns
         \toprule
         \midrule
         \bottomrule

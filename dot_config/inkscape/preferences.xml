@@ -398,6 +398,9 @@
        id="marker"
        selcue="1"
        gradientdrag="1" />
+    <group
+       id="geometric"
+       mode="drag" />
   </group>
   <group
      id="palette">
@@ -564,7 +567,7 @@
     <group
        id="preferences"
        state="1"
-       page="26" />
+       page="24" />
     <group
        id="gradienteditor" />
     <group
@@ -609,7 +612,8 @@
        id="debug"
        redirect="0" />
     <group
-       id="clonetiler" />
+       id="clonetiler"
+       dotrace="0" />
     <group
        id="gridtiler" />
     <group
@@ -658,7 +662,8 @@
        add-label-comments="0" />
   </group>
   <group
-     id="options">
+     id="options"
+     rotationlock="1">
     <group
        id="renderingcache"
        size="512" />
@@ -925,11 +930,14 @@
        colorsontop="0"
        partialdynamic="0" />
     <group
-       id="boot">
+       id="boot"
+       theme="colorful">
       <group
          id="shown"
          ver1.1.1="1"
-         ver1.2-dev="1" />
+         ver1.2-dev="1"
+         ver1.1.2="1"
+         ver1.3-dev="1" />
     </group>
     <group
        id="rendering" />
@@ -964,9 +972,15 @@
        snap-page-border="0"
        snap-grid="1"
        snap-guide="1" />
+    <group
+       id="font"
+       unitType="2" />
   </group>
   <group
-     id="extensions" />
+     id="extensions"
+     org.inkscape.output.png.inkscape.png_bitdepth="99"
+     org.inkscape.output.png.inkscape.png_compression="6"
+     org.inkscape.output.png.inkscape.png_antialias="2" />
   <group
      id="desktop"
      style="">
@@ -997,13 +1011,17 @@
      id="toolbox"
      icononly="1"
      secondary="3"
-     small="3"
-     simplesnap="0">
+     simplesnap="0"
+     small="3">
     <group
        id="tools"
        icononly="1"
        small="3"
-       iconsize="48" />
+       iconsize="48"
+       width="56">
+      <group
+         id="buttons" />
+    </group>
     <group
        id="controlbars"
        iconsize="48" />
@@ -1082,15 +1100,19 @@
   <group
      id="theme"
      defaultPreferDarkTheme="0"
-     defaultGtkTheme="Flat-Remix-GTK-Red-Light"
-     defaultIconTheme="Flat-Remix-Red-Dark"
-     symbolicIcons="1"
+     narrowSpinButton="1"
      preferDarkTheme="0"
      darkTheme="0"
+     gtkTheme="Adwaita"
+     iconTheme="multicolor"
+     symbolicIcons="0"
+     symbolicDefaultBaseColors="1"
+     symbolicDefaultHighColors="0"
+     defaultGtkTheme="Flat-Remix-GTK-Red-Light"
+     defaultIconTheme="Flat-Remix-Red-Light"
      menuIcons_canvas="0"
      menuIcons_layers="0"
      menuIcons_objects="0"
-     narrowSpinButton="1"
      fontscale="110">
     <group
        id="Flat-Remix-Red-Dark"
@@ -1098,7 +1120,19 @@
        symbolicSuccessColor="1035239167"
        symbolicWarningColor="4252827903"
        symbolicErrorColor="3205961727" />
+    <group
+       id="Flat-Remix-Red-Light"
+       symbolicBaseColor="1549888767"
+       symbolicSuccessColor="1035239167"
+       symbolicWarningColor="4252827903"
+       symbolicErrorColor="3205961727" />
   </group>
   <group
-     id="statusbar" />
+     id="statusbar">
+    <group
+       id="visibility" />
+  </group>
+  <group
+     id="live_effects"
+     flattening="0" />
 </inkscape>

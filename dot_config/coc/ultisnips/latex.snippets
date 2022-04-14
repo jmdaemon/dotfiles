@@ -216,6 +216,13 @@ snippet tabxenum "Vertically Aligns Texts" b
 \end{tabularx}
 endsnippet
 
+# This is useful for propositions
+snippet tabxtext "Indents a body of text" b
+\begin{tabularx}{${1:0.80\linewidth}}{@{}lX}
+	& $2 \\\
+\end{tabularx}
+endsnippet
+
 snippet roster "Roster/Tabular Form" b
 \renewcommand{\arraystretch}{1.5}
 \begin{tabular}{c@{\,}l@{}}

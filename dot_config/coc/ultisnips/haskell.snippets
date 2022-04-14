@@ -1,0 +1,42 @@
+# A valid snippet should starts with:
+#
+#		snippet trigger_word [ "description" [ options ] ]
+#
+# and end with:
+#
+#		endsnippet
+#
+# Snippet options:
+#
+#		b - Beginning of line.
+#		i - In-word expansion.
+#		w - Word boundary.
+#		r - Regular expression
+#		e - Custom context snippet
+#		A - Snippet will be triggered automatically, when condition matches.
+#
+# Basic example:
+#
+#		snippet emitter "emitter properties" b
+#		private readonly ${1} = new Emitter<$2>()
+#		public readonly ${1/^_(.*)/$1/}: Event<$2> = this.$1.event
+#		endsnippet
+#
+# Online reference: https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt
+
+snippet split-delim "Splits a string into a list using any delimeter" i
+-- | Splits a string into a list using any delimeter
+-- | Example: split "-" string
+split :: String -> String -> [String\]
+split _ "" = [\]
+split delim str =
+split' "" str [\]
+where
+	dl = length delim
+
+	split' :: String -> String -> [String\] -> [String\]
+	split' h t f
+	| dl > length t = f ++ [h ++ t\]
+	| delim == take dl t = split' "" (drop dl t) (f ++ [h\])
+	| otherwise = split' (h ++ take 1 t) (drop 1 t) f
+endsnippet

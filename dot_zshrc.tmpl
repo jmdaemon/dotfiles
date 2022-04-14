@@ -21,8 +21,10 @@ SAVEHIST=10000
 fpath=( $fpath "$DOTFILES/completion" )
 zstyle ':completion:*' completer _complete
 zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' '+l:|=* r:|=*'
+zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path $XDG_CACHE_HOME/zsh/zcompcache
 setopt SHARE_HISTORY # Share history between all sessions.
+setopt EXTENDED_HISTORY # Record timestamp of command
 
 # ZSH Hooks
 

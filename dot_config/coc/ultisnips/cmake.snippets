@@ -1,0 +1,76 @@
+# A valid snippet should starts with:
+#
+#		snippet trigger_word [ "description" [ options ] ]
+#
+# and end with:
+#
+#		endsnippet
+#
+# Snippet options:
+#
+#		b - Beginning of line.
+#		i - In-word expansion.
+#		w - Word boundary.
+#		r - Regular expression
+#		e - Custom context snippet
+#		A - Snippet will be triggered automatically, when condition matches.
+#
+# Basic example:
+#
+#		snippet emitter "emitter properties" b
+#		private readonly ${1} = new Emitter<$2>()
+#		public readonly ${1/^_(.*)/$1/}: Event<$2> = this.$1.event
+#		endsnippet
+#
+# Online reference: https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt
+
+snippet statlibmod "Creates a static library module" b
+# ================ $1 Library ================
+set(INCLUDES_DIR "\${PROJECT_SOURCE_DIR}/include")
+set(LIBRARY_HEADERS \${INCLUDES_DIR}/$2)
+set(TARGET ${3:mylib})
+
+add_library(\${TARGET})
+target_sources(\${TARGET}
+	PRIVATE ${4:MyLib.cpp}
+	PUBLIC  \${LIBRARY_HEADERS}
+)
+
+target_include_directories(\${TARGET} PUBLIC \${LIBRARY_HEADERS})
+target_link_libraries(\${TARGET} PRIVATE $5)
+target_compile_features(\${TARGET} PUBLIC cxx_std_20)
+
+source_group(
+	TREE "${6:\$\{INCLUDES_DIR\}}"
+	PREFIX "Header Files"
+	FILES \${FILE_LIBRARY_HEADERS})
+endsnippet
+
+snippet statsharedlib "Create a static and shared library" i
+make_static_shared_lib(
+	NAME $1
+	CSTANDARD ${2:\$\{CSTANDARD\}}
+	HEADERS $3
+	SOURCES $4
+	DEPS ${5:fmt})
+endsnippet
+
+snippet newtestmod "Makes a new test" b
+# ================ $1 Tests ================
+set($2 $3)
+add_executable($2 $4)
+target_compile_features($2 PRIVATE $5)
+
+target_link_libraries($2 PRIVATE ${6:fmt})
+target_include_directories($2 PUBLIC ${DOCTEST_INCLUDE_DIR})
+add_test(NAME $3 COMMAND $2)
+endsnippet
+
+snippet newtest "Makes a new test" i
+make_test(
+	NAME $1
+	CSTANDARD ${2:\$\{CSTANDARD\}}
+	HEADERS ${3:\$\{DOCTEST_INCLUDE_DIR\}}
+	SOURCES $4
+	DEPS $5)
+endsnippet

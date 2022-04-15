@@ -19,3 +19,8 @@ fi
 unset __conda_setup
 # If condarc is not yet created, run:
 #conda config --set auto_activate_base False
+
+# Load mamba
+if [ -f "$conda_path/etc/profile.d/mamba.sh" ]; then
+    . "$conda_path/etc/profile.d/mamba.sh"
+fi

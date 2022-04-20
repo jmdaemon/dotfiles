@@ -2,6 +2,7 @@
 [user]
   name = {{ .git.name }}
   email = {{ .git.email }}
+	signingkey = 5B3AE73F7980EE81
 [includeIf "gitdir:~/workspace/personal/"]
   path = ~/.config/git/personal
 {{- else if ( eq .system "arch-laptop" ) -}}

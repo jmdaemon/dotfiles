@@ -163,6 +163,9 @@ load_alias() {
     [[ -f "$aliasd/$alias_name" ]] && source "$aliasd/$alias_name" || :
 }
 
+# Make GPG Key available to current shell
+export GPG_TTY=$(tty)
+
 load_alias "cw"
 load_alias "uni"
 load_alias "fai"

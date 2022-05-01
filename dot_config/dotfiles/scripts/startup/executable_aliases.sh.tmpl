@@ -41,6 +41,7 @@ alias conda-init="source $DOTFILES/scripts/terminal/conda-init.sh"
 # https://github.com/kovidgoyal/kitty/issues/268 - For Kitty
 alias clear="printf '\033[2J\033[3J\033[1;1H'" # Clear Terminal Scrollback
 {{- end }}
+{{- if (eq .system "arch-laptop" ) }}
 # Yarn 2
 yarnv="$(yarn -v)"
 requiredver="2.0.0"
@@ -49,7 +50,9 @@ if [ "$(printf '%s\n' "$requiredver" "$yarnv" | sort -V | head -n1)" = "$require
 else
     alias yarn='yarn --use-yarnrc "$XDG_CONFIG_HOME/yarn/config"'
 fi
+{{- else if (eq .system "ubuntu-workstation" ) }}
 alias yarn='yarn --use-yarnrc "$XDG_CONFIG_HOME/yarn/config"'
+{{- end }}
 #alias npm-list=`ls -l $(npm root -g) | cut -d ' ' -f 12`
 alias pipup='pip3 list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip3 install -U --user'
 alias npmup='source ~/.config/dotfiles/scripts/autorun/npmup.sh'

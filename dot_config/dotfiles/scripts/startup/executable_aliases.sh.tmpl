@@ -208,4 +208,9 @@ update() {
     source "$autorun"/vimup.sh  # Update all vim plugins
     source "$autorun"/sdkup.sh  # Update all sdkman packages (gradle)
     source "$autorun"/rustup.sh # Update all rust cargo packages
+    {{- if (eq .system "arch-laptop" ) }}
+    yay -Syu
+    {{- else if (eq .system "ubuntu-workstation" ) }}
+    aptup
+    {{- end }}
 }

@@ -1,4 +1,4 @@
 #!/bin/bash
 
 # Update Sdkman's local cache and Sdkman version
-echo "-y" | sdk update
+echo "y" | sdk update

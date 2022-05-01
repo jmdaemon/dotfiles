@@ -215,3 +215,7 @@ update() {
     aptup
     {{- end }}
 }
+
+ccd() { # Chezmoi CD
+    cd $(chezmoi source-path)
+}

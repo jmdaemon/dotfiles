@@ -54,6 +54,7 @@ alias yarn='yarn --use-yarnrc "$XDG_CONFIG_HOME/yarn/config"'
 alias pipup='pip3 list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip3 install -U --user'
 alias npmup='source ~/.config/dotfiles/scripts/autorun/npmup.sh'
 alias vimup='nvim +PlugUpdate +PlugUpgrade +qall'
+alias cz=chezmoi
 {{- if (eq .system "ubuntu-workstation" ) }}
 alias nvsmi="watch -n 1 nvidia-smi"
 alias nvsmc="nvidia-smi --query-gpu=timestamp,pstate,temperature.gpu,utilization.gpu,utilization.memory,memory.total,memory.free,memory.used --format=csv -l 1"

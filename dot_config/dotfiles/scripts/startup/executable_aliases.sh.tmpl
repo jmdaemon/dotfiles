@@ -199,3 +199,13 @@ sccache_restart() {
     sccache --stop-server
     sccache --start-server
 }
+
+# Update the system's packages
+update() {
+    autorun=~/.config/dotfiles/scripts/autorun
+    source "$autorun"/npmup.sh  # Update all npm packages
+    source "$autorun"/pipup.sh  # Update all pip packages
+    source "$autorun"/vimup.sh  # Update all vim plugins
+    source "$autorun"/sdkup.sh  # Update all sdkman packages (gradle)
+    source "$autorun"/rustup.sh # Update all rust cargo packages
+}

@@ -44,3 +44,15 @@ I make use of a lot of different programs including but not limited to:
 
 I also make use of a lot of aliases, custom bash functions and executables which you can find in
 `~/.config/dotfiles/scripts/{aliases/startup}`
+
+## Installation
+
+To install my dotfiles:
+``` bash
+sh -c "$(curl -fsLS chezmoi.io/get)" -- init --apply jmdaemon
+```
+
+To update your dotfiles:
+```
+chezmoi update
+```

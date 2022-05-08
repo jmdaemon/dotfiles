@@ -229,3 +229,9 @@ perm() {
     file="$1"
     stat -c "%a %n" $file
 }
+
+aursubmod() {
+    # Add an aur repository as a git submodule
+    repo_name="$1"
+    git submodule add ssh://aur@aur.archlinux.org/$repo_name aur.archlinux.org/$repo_name
+}

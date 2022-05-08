@@ -1,0 +1,95 @@
+# A valid snippet should starts with:
+#
+#		snippet trigger_word [ "description" [ options ] ]
+#
+# and end with:
+#
+#		endsnippet
+#
+# Snippet options:
+#
+#		b - Beginning of line.
+#		i - In-word expansion.
+#		w - Word boundary.
+#		r - Regular expression
+#		e - Custom context snippet
+#		A - Snippet will be triggered automatically, when condition matches.
+#
+# Basic example:
+#
+#		snippet emitter "emitter properties" b
+#		private readonly ${1} = new Emitter<$2>()
+#		public readonly ${1/^_(.*)/$1/}: Event<$2> = this.$1.event
+#		endsnippet
+#
+# Online reference: https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt
+
+snippet myname "" i
+Joseph Diza
+endsnippet
+
+snippet myemail "" i
+josephm.diza@gmail.com
+endsnippet
+
+snippet main "" b
+# Maintainer: $1 <$2>
+endsnippet
+
+snippet contrib "" b
+# contributor: $1 <$2>
+endsnippet
+
+snippet python-pkgbuild-git "PKGBUILD template for a python package" b
+pkgname=python-$1-git
+pkgver=$2
+pkgrel=1
+arch=('any')
+pkgdesc='$3'
+url='$4'
+license=('$5')
+depends=('$6')
+optdepends=($7)
+makedepends=('python-setuptools' $8)
+source=("$$pkgname::git+$9")
+provides=(python-$1)
+conflicts=(python-$1)
+sha512sums=("SKIP")
+
+build() {
+  cd "$$pkgname"
+  python setup.py build
+}
+
+package() {
+  cd "$$pkgname"
+  python setup.py install --root "$$pkgdir" --optimize=1
+}
+endsnippet
+
+snippet pkgbuild-git "General purpose PKGBUILD for git releases" b
+pkgname=$1-git
+pkgver=$2
+pkgrel=1
+arch=('any')
+pkgdesc='$3' 
+url='$4'
+license=('${5:GPL}')
+depends=('$6')
+optdepends=()
+makedepends=('$7')
+source=("$$pkgname::git+$8")
+provides=($1)
+conflicts=($1)
+sha512sums=("SKIP")
+
+build() {
+  cd "$$pkgname"
+	$9
+}
+
+package() {
+  cd "$$pkgname"
+	$10
+}
+endsnippet

@@ -31,3 +31,46 @@ parser.add_argument('${2:}')
 args = parser.parse_args()
 $2  = args.$2
 endsnippet
+
+snippet setup.py "Description" b
+from setuptools import find_packages, setup
+
+with open('README.md', 'r', encoding='utf-8') as fh:
+	long_description = fh.read()
+
+def get_data_files():
+		data_files = [
+				('share/doc/$1', ['README.md', 'LICENSE']),
+		]
+		return data_files
+
+setup(
+	name='$1',
+	license='${2:GPL-3.0}',
+	author='$3',
+	author_email='$4',
+	description='$5',
+	long_description=long_description,
+	long_description_content_type='text/markdown',
+	url='$6',
+	data_files=get_data_files(),
+	project_urls={
+		'Bug Tracker': '$6/issues',
+	},
+	classifiers=[
+		'Programming Language :: Python :: 3',
+		'Operating System :: OS Independent'
+	],
+	package_dir={'': 'src'},
+	packages=find_packages(where='src'),
+	python_requires='>=3.10',
+	py_modules=[$7],
+	install_requires=[$8],
+	entry_points={
+		'console_scripts': [
+			'$9',
+		],
+	},
+	test_suite='tests',
+)
+endsnippet

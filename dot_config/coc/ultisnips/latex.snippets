@@ -852,3 +852,26 @@ endsnippet
 snippet uline "Underline some text" b
 \underline{$1}
 endsnippet
+
+snippet coverpage "Cover page template" b
+% Main cover page
+\begin{titlepage}
+	\begin{center}
+		\vspace*{1cm}
+			
+		\Huge
+		\textbf{$1}
+			
+		\vspace{0.5cm}
+		\LARGE
+		$2
+			
+		\vspace{1.5cm}
+			
+		\textbf{$3}
+			
+		\vfill
+			
+	\end{center}
+\end{titlepage}
+endsnippet

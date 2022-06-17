@@ -36,7 +36,7 @@ margin-bottom = 5
 
 [bar/topbar]
 width = 100%
-{{- if ( eq .system "ubuntu-workstation" ) }}
+{{- if ( eq .system "ubuntu-workstation" "arch-asus" ) }}
 height = 24
 {{- else if ( eq .system "arch-laptop" ) }}
 height = 40
@@ -62,7 +62,7 @@ padding-right = 5
 module-margin-left = 2
 module-margin-right = 2
 
-{{- if ( eq .system "ubuntu-workstation" ) }}
+{{- if ( eq .system "ubuntu-workstation" "arch-asus" ) }}
 font-0 = Inconsolata Nerd Font:style=Bold:size=14;6
 {{- else if ( eq .system "arch-laptop" ) }}
 font-0 = Inconsolata Nerd Font:style=Bold:size=12;6
@@ -71,7 +71,7 @@ font-2 = Material Design Icons:style=Regular:12;6
 font-3 = Font Awesome 5 Free:style=Regular:size=12;6
 {{- end }}
 
-{{- if ( eq .system "ubuntu-workstation" ) }}
+{{- if ( eq .system "ubuntu-workstation" "arch-asus" ) }}
 modules-right = pulseaudio eth date
 {{- else if ( eq .system "arch-laptop" ) }}
 modules-right = protonvpn xbacklight pulseaudio xkeyboard wlan battery date 
@@ -88,7 +88,7 @@ cursor-scroll = ns-resize
 
 [bar/bottombar]
 width = 100%
-{{- if ( eq .system "ubuntu-workstation" ) }}
+{{- if ( eq .system "ubuntu-workstation" "arch-asus" ) }}
 height = 24
 {{- else if ( eq .system "arch-laptop" ) }}
 height = 40
@@ -112,7 +112,7 @@ padding-right = 5
 module-margin-left = 2
 module-margin-right = 2
 
-{{- if ( eq .system "ubuntu-workstation" ) }}
+{{- if ( eq .system "ubuntu-workstation" "arch-asus" ) }}
 font-0 = Inconsolata Nerd Font:style=Bold:size=14;0
 {{- else if ( eq .system "arch-laptop" ) }}
 font-0 = Inconsolata Nerd Font:style=Bold:size=12;0

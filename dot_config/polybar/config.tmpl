@@ -36,8 +36,10 @@ margin-bottom = 5
 
 [bar/topbar]
 width = 100%
-{{- if ( eq .system "ubuntu-workstation" "arch-asus" ) }}
+{{- if ( eq .system "ubuntu-workstation"  ) }}
 height = 24
+{{- else if ( eq .system "arch-asus" ) }}
+height = 30
 {{- else if ( eq .system "arch-laptop" ) }}
 height = 40
 {{- end }}
@@ -49,6 +51,8 @@ tray-scale = 1.0
 {{- if ( eq .system "arch-laptop" ) }}
 tray-maxsize = 666
 dpi=240
+{{- else if ( eq .system "arch-asus" ) }}
+tray-maxsize = 24
 {{- end }}
 
 background = ${colors.top-background}
@@ -62,8 +66,13 @@ padding-right = 5
 module-margin-left = 2
 module-margin-right = 2
 
-{{- if ( eq .system "ubuntu-workstation" "arch-asus" ) }}
+{{- if ( eq .system "ubuntu-workstation"  ) }}
 font-0 = Inconsolata Nerd Font:style=Bold:size=14;6
+{{- else if ( eq .system "arch-asus" ) }}
+font-0 = Inconsolata Nerd Font:style=Bold:size=20;6
+font-1 = Monaco for Powerline:style=Regular:size=20;6
+font-2 = Material Design Icons:style=Regular:20;6
+font-3 = Font Awesome 5 Free:style=Regular:size=20;6
 {{- else if ( eq .system "arch-laptop" ) }}
 font-0 = Inconsolata Nerd Font:style=Bold:size=12;6
 font-1 = Monaco for Powerline:style=Regular:size=12;6
@@ -71,9 +80,9 @@ font-2 = Material Design Icons:style=Regular:12;6
 font-3 = Font Awesome 5 Free:style=Regular:size=12;6
 {{- end }}
 
-{{- if ( eq .system "ubuntu-workstation" "arch-asus" ) }}
+{{- if ( eq .system "ubuntu-workstation") }}
 modules-right = pulseaudio eth date
-{{- else if ( eq .system "arch-laptop" ) }}
+{{- else if ( eq .system "arch-laptop" "arch-asus" ) }}
 modules-right = protonvpn xbacklight pulseaudio xkeyboard wlan battery date 
 {{- end }}
 
@@ -88,8 +97,10 @@ cursor-scroll = ns-resize
 
 [bar/bottombar]
 width = 100%
-{{- if ( eq .system "ubuntu-workstation" "arch-asus" ) }}
+{{- if ( eq .system "ubuntu-workstation" ) }}
 height = 24
+{{- else if ( eq .system "arch-asus" ) }}
+height = 30
 {{- else if ( eq .system "arch-laptop" ) }}
 height = 40
 {{- end }}
@@ -112,8 +123,14 @@ padding-right = 5
 module-margin-left = 2
 module-margin-right = 2
 
-{{- if ( eq .system "ubuntu-workstation" "arch-asus" ) }}
+{{- if ( eq .system "ubuntu-workstation"  ) }}
 font-0 = Inconsolata Nerd Font:style=Bold:size=14;0
+{{- else if ( eq .system "arch-asus" ) }}
+font-0 = Inconsolata Nerd Font:style=Bold:size=20;6
+font-1 = Monaco for Powerline:style=Regular:size=20;0
+font-2 = Material Design Icons:style=Regular:size=20;0
+font-3 = Font Awesome 5 Free:style=Solid:size=20;0
+font-4 = Fira Code Nerd Font:style=Regular:size=18;-1
 {{- else if ( eq .system "arch-laptop" ) }}
 font-0 = Inconsolata Nerd Font:style=Bold:size=12;0
 font-1 = Monaco for Powerline:style=Regular:size=12;0
@@ -124,7 +141,7 @@ font-4 = Fira Code Nerd Font:style=Regular:size=10;-1
 
 {{- if ( eq .system "ubuntu-workstation" ) }}
 modules-left = weather
-{{- else if ( eq .system "arch-laptop" ) }}
+{{- else if ( eq .system "arch-laptop" "arch-asus" ) }}
 modules-left = weather mpd
 {{- end }}
 
@@ -138,7 +155,7 @@ cursor-scroll = ns-resize
 override-redirect = true
 wm-restack = i3
 
-{{ if ( eq .system "arch-laptop" ) -}}
+{{ if ( eq .system "arch-laptop" "arch-asus" ) -}}
 [module/xwindow]
 type = internal/xwindow
 label = %title:0:30:...%
@@ -249,7 +266,7 @@ bar-indicator-font = 5
 bar-empty-font = 5
 bar-fill-font = 5
 
-{{ if ( eq .system "arch-laptop" ) -}}
+{{ if ( eq .system "arch-laptop" "arch-asus" ) -}}
 [module/xbacklight]
 type = internal/xbacklight
 
@@ -288,7 +305,7 @@ format-prefix = "﬙ "
 format-prefix-foreground = ${bar/bottombar.foreground}
 label = %percentage_used%%
 
-{{- if ( eq .system "arch-laptop" ) }}
+{{- if ( eq .system "arch-laptop" "arch-asus" ) }}
 [module/wlan]
 type = internal/network
 interface = wlp58s0
@@ -396,7 +413,7 @@ bar-volume-empty-font = 2
 bar-volume-empty-foreground = ${bar/topbar.foreground}
 click-middle = pavucontrol
 
-{{ if ( eq .system "arch-laptop" ) -}}
+{{ if ( eq .system "arch-laptop" "arch-asus" ) -}}
 [module/battery]
 type = internal/battery
 battery = BAT0
@@ -456,7 +473,7 @@ format-warn = <ramp> <label-warn>
 
 label = %temperature%
 label-warn = %temperature%
-{{- if ( eq .system "arch-laptop" ) }}
+{{- if ( eq .system "arch-laptop" "arch-asus" ) }}
 hwmon-path = ${env:HWMON_PATH}
 {{- else if ( eq .system "ubuntu-workstation" ) }}
 hwmon-path = /sys/devices/platform/coretemp.0/hwmon/hwmon1/temp2_input 
@@ -470,13 +487,13 @@ ramp-foreground = ${bar/bottombar.foreground}
 type = custom/script
 interval = 10
 format = <label>
-{{- if ( eq .system "arch-laptop" ) }}
+{{- if ( eq .system "arch-laptop" "arch-asus") }}
 exec = ~/.config/polybar/weather
 {{- else if ( eq .system "ubuntu-workstation" ) }}
 exec = python3 ~/.config/polybar/weather
 {{- end }}
 
-{{ if ( eq .system "arch-laptop" ) -}}
+{{ if ( eq .system "arch-laptop" "arch-asus") -}}
 [module/agenda]
 type = custom/script
 ; Show the next event and forget cache automatically every 60 minutes

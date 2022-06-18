@@ -1,7 +1,7 @@
 #!/bin/sh
 
 {{- if ( eq .dsp "x11" ) }}
-{{ if ( eq .system "arch-laptop" ) -}}
+{{ if ( eq .system "arch-laptop" "arch-asus") -}}
 export GTK_IM_MODULE=fcitx5
 export QT_IM_MODULE=fcitx5
 export XMODIFIERS=@im=fcitx5
@@ -11,6 +11,8 @@ export GLFW_IM_MODULE=ibus # For kitty
 xrdb -merge ~/.Xresources
 {{- if (eq .system "arch-laptop" ) }}
 xrandr --dpi 240
+{{- else if (eq .system "arch-asus") }}
+xrandr --dpi 144
 {{- end }}
 
 {{- if ( eq .system "ubuntu-workstation" ) }}
@@ -19,7 +21,7 @@ mpd &
 picom -b
 bash ~/.config/polybar/launch.sh
 {{- end }}
-{{- if ( eq .system "arch-laptop" ) }}
+{{- if ( eq .system "arch-laptop" "arch-asus" ) }}
 source ~/.profile
 {{- end }}
 {{- end }}

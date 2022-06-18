@@ -61,7 +61,13 @@ archive_history() {
     fi
     if [[ $(wc -l $HISTFILE) > 9999 ]]; then
         current_date=$(date -u +'%Y-%m-%d %H:%M:%S')
-        mv $HISTFILE "$HOME/.history/zsh/{{ .system }}/${current_date}-zsh_history"
+        # Make history folder for different system if it doesn't exist
+        histfolder="$HOME/.history/zsh/{{ .system }}"
+        if [[ ! -d $histfolder ]]; then
+            mkdir -p $histfolder
+        fi
+        # Archive old history file
+        mv $HISTFILE "$histfolder/${current_date}-zsh_history"
         touch $HISTFILE
         print -sr -- "${1%%$'\n'}"
         #fc -p $HISTFILE

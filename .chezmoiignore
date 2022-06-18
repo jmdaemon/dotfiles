@@ -9,6 +9,7 @@
 .config/xfce4/*
 .xinitrc
 {{- end }}
+root
 LICENSE
 README.md
 Config.md

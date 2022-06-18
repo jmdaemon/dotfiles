@@ -228,8 +228,13 @@ exec_always $HOME/.config/polybar/launch.sh
 
 #--[ GAPS and BORDERS ]--#
 
+{{- if ( eq .system "arch-laptop" "ubuntu-workstation") }}
 gaps inner 10
 gaps outer 15
+{{- else if ( eq .system "arch-asus" ) }}
+gaps inner 15
+gaps outer 25
+{{- end }}
 
 #smart_borders enable
 new_window none

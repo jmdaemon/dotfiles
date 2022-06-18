@@ -18,7 +18,15 @@ font:
     family: Inconsolata Nerd Font
     style: Bold Italic
 {{- if (eq .dsp "x11") }} 
+{{- if (eq .system "ubuntu-workstation" "arch-laptop") }} 
   size: 12
+{{- else if (eq .system "arch-asus" ) }} 
+  size: 7
+{{- end }}
 {{- else if (eq .dsp "wayland") }} 
+{{- if (eq .system "ubuntu-workstation" "arch-laptop") }} 
   size: 13.5
+{{- else if (eq .system "arch-asus" ) }} 
+  size: 8.5
+{{- end }}
 {{- end }}

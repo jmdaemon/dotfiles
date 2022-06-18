@@ -66,6 +66,7 @@ export ghcappdata="$XDG_CONFIG_HOME/ghc"
 
 export RBENV_ROOT="$XDG_CONFIG_HOME/rbenv"
 export BUNDLE_PATH="$XDG_DATA_HOME"/bundle
+export LUAROCKS_SYSCONFDIR="$XDG_CONFIG_HOME"/luarocks
 
 # TeX Live
 export TEXMFHOME=$XDG_DATA_HOME/texmf
@@ -134,14 +135,19 @@ GOLOCAL=$GOPATH/bin
 CABAL=$CABAL_DIR/bin
 GHCUP=$GHCUP_USE_XDG_DIRS/bin
 
-export PATH=$RUBY:$GEM_BIN:$PATH:$SBIN:$USRLOCAL:$YARN_DIR:$NPM:$RUST:$GOLOCAL:$GO:$CABAL:$GHCUP:$LOCAL
+# Lua
+# Load the luarocks paths
+eval $(luarocks path | head -n 2)
+LUA=$HOME/.luarocks/bin
+
+export PATH=$LUA:$RUBY:$GEM_BIN:$PATH:$SBIN:$USRLOCAL:$YARN_DIR:$NPM:$RUST:$GOLOCAL:$GO:$CABAL:$GHCUP:$LOCAL
 
 # Common Lisp
 export QL=/usr/lib/quicklisp/setup.lisp
 
 # Java
 OPENJDK_8=/usr/lib/jvm/java-1.8.0-openjdk-amd64
-{{- if (eq .system "arch-laptop") }}
+{{- if (eq .system "arch-laptop" "arch-asus" ) }}
 export JAVA_HOME=/usr/lib/jvm/default-runtime/
 {{- else if (eq .system "ubuntu-workstation") }}
 export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64

@@ -53,24 +53,22 @@ add-zsh-hook -Uz precmd rehash_precmd
 # Archives history when it gets too big.
 archive_history() {
     emulate -L zsh
+    # Make history folder for different system if it doesn't exist
+    histfolder="$HOME/.history/zsh/{{ .system }}"
+    if [[ ! -d $histfolder ]]; then
+        mkdir -p $histfolder
+    fi
     # If we are not about to exceed 10,000 lines
     if [[ $(wc -l $HISTFILE) < 10000 ]]; then
         print -sr -- "${1%%$'\n'}"
         fc -p
-        #fc -p $HISTFILE
     fi
     if [[ $(wc -l $HISTFILE) > 9999 ]]; then
         current_date=$(date -u +'%Y-%m-%d %H:%M:%S')
-        # Make history folder for different system if it doesn't exist
-        histfolder="$HOME/.history/zsh/{{ .system }}"
-        if [[ ! -d $histfolder ]]; then
-            mkdir -p $histfolder
-        fi
         # Archive old history file
         mv $HISTFILE "$histfolder/${current_date}-zsh_history"
         touch $HISTFILE
         print -sr -- "${1%%$'\n'}"
-        #fc -p $HISTFILE
         fc -p
     fi
 }

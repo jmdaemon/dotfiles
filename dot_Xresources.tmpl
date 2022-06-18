@@ -1,5 +1,7 @@
 {{- if (eq .system "arch-laptop" ) }}
 Xft.dpi: 220
+{{- else if (eq .system "arch-asus" ) }}
+Xft.dpi: 144
 {{- end }}
 Xft.hinting: 1
 Xft.antialias: 1

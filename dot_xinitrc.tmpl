@@ -11,8 +11,6 @@ export GLFW_IM_MODULE=ibus # For kitty
 xrdb -merge ~/.Xresources
 {{- if (eq .system "arch-laptop" ) }}
 xrandr --dpi 240
-{{- else if (eq .system "arch-asus") }}
-xrandr --dpi 144
 {{- end }}
 
 {{- if ( eq .system "ubuntu-workstation" ) }}

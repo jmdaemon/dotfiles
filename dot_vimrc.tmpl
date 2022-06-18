@@ -53,6 +53,9 @@ Plug 'vim-scripts/indentpython.vim' , { 'for': 'py' }
 Plug 'leafgarland/typescript-vim'   , { 'for': 'ts' }
 Plug 'pangloss/vim-javascript'      , { 'for': 'js' }
 Plug 'MaxMEllon/vim-jsx-pretty'     , { 'for': 'jsx' }
+" My Local Plugins
+" These are Vim plugins that I have developed
+Plug '~/Workspace/apps/vimscript/vim-alphasort'
 
 call plug#end()
 
@@ -178,6 +181,12 @@ vnoremap <silent><Leader>y "yy <Bar> :call system('xclip -sel clip', @y)<CR>
 
 nmap <M-s> <Plug>MarkdownPreviewStop
 nmap <C-p> <Plug>MarkdownPreviewToggle
+
+"vmap <expr><F5> :call alphasort#SortImports(<args>)<CR>
+"vmap <expr><F5> :call alphasort#SortImports(<args>)<CR>
+"vmap <expr><F5> :alphasort#SortImports(<args>)<CR>
+"vmap <expr><F5> :alphasort#SortImports(<expr>)<CR>
+vnoremap <F5> :SortImports<CR>
 
 "=============== Vim Airline =============="
 let g:airline#extensions#tabline#enabled = 1

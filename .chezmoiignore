@@ -11,6 +11,7 @@
 {{- end }}
 LICENSE
 README.md
+Config.md
 **/*.md
 **/docs
 **/doc

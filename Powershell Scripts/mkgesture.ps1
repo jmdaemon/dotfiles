@@ -1,6 +1,7 @@
 param(
-    [Parameter()]
-    [String]$i
+    [String]$volume="None",
+    [Parameter(Mandatory=$true)][String]$i
+
 )
 # mcode.ps1 - Encodes any audio file to .wav with increases volume
 
@@ -11,9 +12,11 @@ param(
 
 # This does not require a fully qualified path
 $base = [io.path]::GetFileNameWithoutExtension($i)
-Write-Output $base
+Write-Output "Re-encoding $base"
 
-# Converting
-# volume=2.5 : Increases volume by 250%
-# -r 44100   : Sets the audio frequency to 44.1hz
-ffmpeg -i "$i" -filter:a "volume=2.5" -r 44100 "${base}.wav"
+# Re-encode audio to WAV format, with audio bitrate of 44.1Hz and optional volume increase
+if($volume -eq "None") {
+    ffmpeg -i "$i" -ar 44100 "${base}.wav"
+} else {
+    ffmpeg -i "$i" -filter:a "volume=${volume}" -ar 44100 "${base}.wav"
+}

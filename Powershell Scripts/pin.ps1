@@ -1,11 +1,18 @@
-Set-StrictMode -Off
-$to_pin=@(
+# pin.ps1 - Adds folders and files to File Explorer's "Quick Access"
 
+Set-StrictMode -Off
+param(
+    [Parameter(Mandatory=$true)][String]$input
 )
+
+# Read the file into an array
+[String[]]$to_pin = Get-Content -Path $input
+
+# Log message to console
 echo "The following will be pinned to Quick Access:"
 $to_pin | ForEach-Object {$_}
 
-# Pin to Quick Access
+# Initialize the object
 #$o = New-Object -ComObject shell.application
 $output = $null
 $output = New-Object -Com shell.application -Verbose
@@ -14,10 +21,12 @@ if ($output -eq $null) {
     Exit
 }
 
+# Exit if there are no folders to add
 if ($to_pin -eq $null) {
     Echo "No file paths to process. Exiting..."
- }
+}
 
+# Pin to Quick Access
 ForEach($fp in $to_pin) {
     if ( $fp -eq $null ) {
         Echo "Null Value in Array, Exiting Script"
@@ -34,5 +43,3 @@ ForEach($fp in $to_pin) {
     Write-Host ($o | Format-Table | Out-String)
     $o.InvokeVerb("pintohome")
 }
-
-#$o.NameSpace("E:\Program Files (x86)\Steam\userdata\287639416\760\remote\4000\screenshots").Self.InvokeVerb("pintohome")

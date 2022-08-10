@@ -305,10 +305,15 @@ format-prefix = "﬙ "
 format-prefix-foreground = ${bar/bottombar.foreground}
 label = %percentage_used%%
 
-{{- if ( eq .system "arch-laptop" "arch-asus" ) }}
+{{ if ( eq .system "arch-laptop" "arch-asus" ) }}
 [module/wlan]
 type = internal/network
+
+{{- if ( eq .system "arch-asus"  ) }}
+interface = wlo1
+{{- else if ( eq .system "arch-laptop" ) }}
 interface = wlp58s0
+{{- end }}
 interval = 3.0
 
 ; --- Nerd Font Version ---

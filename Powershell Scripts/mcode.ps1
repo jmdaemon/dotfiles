@@ -1,4 +1,4 @@
-# mcode.ps1 - Encodes any audio file to .wav with increases volume
+# mcode.ps1 - Rencodes any audio file to .wav with increases volume using Ffmpeg
 
 param(
     [String]$volume="None",

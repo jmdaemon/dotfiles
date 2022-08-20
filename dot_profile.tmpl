@@ -159,6 +159,10 @@ export PDFVIEWER=okular
 export scripts="$XDG_CONFIG_HOME"/dotfiles/scripts
 export aliasd="$scripts"/startup
 
+# Export maintainer name and email for use in packaging
+export MAINTAINER_NAME=$(git config --get user.name)
+export MAINTAINER_EMAIL=$(git config --get user.email)
+
 export ANDROID_SDK_ROOT="/opt/android-sdk"
 export ANDROID_AVD_HOME="~/.config/android/avd"
 export ANDROID_NDK_HOME=/opt/android-ndk

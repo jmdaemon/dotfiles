@@ -23,3 +23,7 @@ _color/**/*
 {{- else if ( eq .yarnv "2" ) -}}
 .yarnrc
 {{- end }}
+
+{{ if (not ( eq .system "windows-desktop" )) -}}
+Powershell Scripts
+{{- end }}

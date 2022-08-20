@@ -102,7 +102,8 @@ pkgs() {
 }
 {{- end }}
 
-conda() { # Starts up conda automatically at the first call
+conda() {
+    # Starts up conda automatically at the first call
     conda_install="/opt/{{- .conda -}}3/bin"
     res="${CONDA_EXE}"
     [[ -z $res ]] && conda-init || :
@@ -110,11 +111,13 @@ conda() { # Starts up conda automatically at the first call
 }
 
 count() {
+    # Count the number of characters in a line
     text=$1
     printf "%s" "$text" | wc -m
 }
 
-gdb() { # Wrapper around gdb that toggles gef configurations
+gdb() {
+    # Wrapper around gdb that toggles gef configurations
     toggle=$1
     if [[ "$toggle" == "--gef" ]]; then
         shift # Pops --gef wrapper option
@@ -128,6 +131,7 @@ gdb() { # Wrapper around gdb that toggles gef configurations
 #alias gef="exec gdb -nh -x \"\"$XDG_CONFIG_HOME\"/gdb/init/gdbinit\" -ex init-gef-config \"$@\""
 
 cpfp() {
+    # Copies the current working directory to the clipboard
     filepath=$1
     if [[ -n "$filepath" ]]; then
         echo "$filepath" | tr -d '\n' | xclip -sel clip
@@ -136,7 +140,8 @@ cpfp() {
     fi
 }
 
-cpy() { # xclip alias but strips all trailing newlines
+cpy() {
+    # xclip alias but strips all trailing newlines
     VAR=""
     while read -r data; do
         VAR+="$data\n"
@@ -145,18 +150,21 @@ cpy() { # xclip alias but strips all trailing newlines
     printf "%b" "$CLEANED" | xclip -sel clip
 }
 
-reencode() { # Reencodes .mp3 files via ffmpeg
+reencode() {
+    # Reencodes .mp3 files via ffmpeg
     input="$1"
     ffmpeg -i "$input" "${input%.*}.mp3" $@
     [[ ! -e "$input" ]] && rm "$input" || :
 }
 
-piload() { # Builds and uploads pypi packages
+piload() {
+    # Builds and uploads pypi packages
     python3 -m build
     python3 -m twine upload dist/*
 }
 
 clean() {
+    # Removes untracked configuration files that are in ~/.config, ~/.local/share/
     directory="$1"
     cleanbin="$HOME/.local/bin/clean"
     if [[ "$directory" == "cfg" ]]; then
@@ -172,6 +180,7 @@ clean() {
 }
 
 testregex() {
+    # Evaulate regular expressions and view matches
     # Note that you can also use `pcretest`
     [ "$#" -eq 1 ] || return 1
     while IFS= read -r line; do
@@ -180,6 +189,8 @@ testregex() {
 }
 
 sedall() {
+    # Mass text substitution in a given directory
+    # Usage: sedall "$directory" "$match" "$replace_with"
     directory="$1"
     match="$2"
     replace="$3"
@@ -190,7 +201,9 @@ sedall() {
     find "$directory" -type f -exec sed -i -e "s/$match/$replace/g" {} \;
 }
 
-massrep() { # Mass replace
+massrep() {
+    # Mass replace a text pattern in a given directory
+    # Usage: massrep "$pattern" "$replacement" "$directory"
     pattern="$1"
     replace_with="$2"
     directory="$3"
@@ -199,8 +212,8 @@ massrep() { # Mass replace
     fi
 }
 
-# Restarts sccache
 sccache_restart() {
+    # Restarts sccache
     sccache --stop-server
     sccache --start-server
 }
@@ -220,7 +233,8 @@ update() {
     {{- end }}
 }
 
-ccd() { # Chezmoi CD
+ccd() {
+    # Shortcut to change directory to chezmoi path
     cd $(chezmoi source-path)
 }
 

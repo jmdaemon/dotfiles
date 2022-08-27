@@ -1,0 +1,140 @@
+# A valid snippet should starts with:
+#
+#		snippet trigger_word [ "description" [ options ] ]
+#
+# and end with:
+#
+#		endsnippet
+#
+# Snippet options:
+#
+#		b - Beginning of line.
+#		i - In-word expansion.
+#		w - Word boundary.
+#		r - Regular expression
+#		e - Custom context snippet
+#		A - Snippet will be triggered automatically, when condition matches.
+#
+# Basic example:
+#
+#		snippet emitter "emitter properties" b
+#		private readonly ${1} = new Emitter<$2>()
+#		public readonly ${1/^_(.*)/$1/}: Event<$2> = this.$1.event
+#		endsnippet
+#
+# Online reference: https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt
+
+snippet meson_project "Initial meson.build project setup" b
+project('$1', '$2',
+version: '${3:0.1.0}')
+
+# Dependencies
+dep_$4 = dependency('$4')
+deps = [ dep_$4 ]
+
+inc = include_directories('include')
+
+subdir('src')
+$5
+endsnippet
+
+snippet dep "Specify meson dependencies" b
+dep_$1 = dependency('$1')
+endsnippet
+
+snippet dec_dep "Declare a meson dependency" b
+dep_$1 = declare_dependency(
+		link_with: $1,
+		include_directories: inc)
+endsnippet
+
+snippet single-source-ver "Single source project version" b
+# Single source project version
+project_version = meson.project_version().split('.')
+
+conf_data = configuration_data()
+conf_data.set('CMAKE_PROJECT_VERSION_MAJOR', project_version[0])
+conf_data.set('CMAKE_PROJECT_VERSION_MINOR', project_version[1])
+conf_data.set('CMAKE_PROJECT_VERSION_PATCH', project_version[2])
+
+configure_file(input : 'include/version.h.in',
+			output : 'version.h',
+			configuration : conf_data)
+endsnippet
+
+snippet dep_utility "Declare utility dependency" b
+proj_utility = subproject('utility')
+dep_utility = proj_utility.get_variable('dep_utility')
+endsnippet
+
+snippet project "Make meson project" b
+project('$1', '${2:c}',
+version: '${3:0.1.0}',
+subproject_dir: 'meson-subprojects')
+endsnippet
+
+snippet logc "Add log.c dependency" b
+# Log.c
+src_logc = 'log.c/src'
+logc = shared_library('logc',
+src_logc / 'log.c',
+include_directories: [inc, src_logc])
+
+dep_logc = declare_dependency(
+link_with: logc,
+include_directories: [inc, src_logc])
+endsnippet
+
+snippet tomlc99 "Add tomlc99 dependency" b
+# Tomlc99
+src_tomlc99 = 'tomlc99'
+tomlc99 = shared_library('tomlc99',
+src_tomlc99 / 'toml.c',
+include_directories: [inc, src_tomlc99])
+
+dep_tomlc99 = declare_dependency(
+link_with: tomlc99,
+include_directories: [inc, src_tomlc99])
+endsnippet
+
+snippet make_ssl "Make shared static library" b
+$1 = shared_library('$1',
+$1_srcs,
+include_directories: inc,
+dependencies: [deps])
+
+$1_static = static_library('$1',
+$1_srcs,
+include_directories: inc,
+dependencies: [deps])
+
+dep_$1 = declare_dependency(
+		link_with: [ $1, deps ],
+		include_directories: inc)
+endsnippet
+
+snippet sharedlib "Make shared library target" b
+$1 = shared_library('$1',
+$1_srcs,
+include_directories: inc,
+dependencies: [deps])
+
+dep_$1 = declare_dependency(
+		link_with: [ $1, deps ],
+		include_directories: inc)
+endsnippet
+
+snippet staticlib "Make static library target" b
+$1_static = static_library('$1',
+$1_srcs,
+include_directories: inc,
+dependencies: [deps])
+endsnippet
+
+snippet make_bin "Make bianry executable target" b
+$1_bin = executable('$1',
+[ $1_srcs, '${2:main.c}' ],
+include_directories: inc,
+dependencies: [deps],
+link_with: $1)
+endsnippet

@@ -34,6 +34,7 @@
   mask = !.git/hooks/mask
   mvurl = !.git/hooks/mvurl
   upmod = !git submodule foreach git pull origin master
+  tree = !git log --graph --pretty=oneline --abbrev-commit
 [pager]
   diff = delta
   log = delta

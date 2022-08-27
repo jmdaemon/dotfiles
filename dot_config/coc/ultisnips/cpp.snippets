@@ -25,3 +25,13 @@
 # Online reference: https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt
 
 extends h
+
+snippet ut_doctest_main "Doctest unit test" b
+#define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
+#include "doctest.h"
+#include "$1"
+
+TEST_CASE("$2") { 
+	REQUIRE($3);
+}
+endsnippet

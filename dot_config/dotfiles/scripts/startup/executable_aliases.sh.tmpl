@@ -255,3 +255,21 @@ ffmpegvol() {
     audio_file="$1"
     ffmpeg -i $audio_file -filter:a volumedetect -f null /dev/null 2>&1 | grep "mean_volume\|max_volume" | cut -d ' ' -f5
 }
+
+gccmake() {
+    # Create CMake Makefile GCC releases
+    cmake --preset gcc-release-unix-makefiles
+    cd build/gcc-release-unix-makefiles
+    make
+    ctest -V
+    sudo cpack .
+}
+
+gccninja() {
+    # Create CMake Ninja GCC releases
+    cmake --preset gcc-release-ninja
+    cd build/gcc-release-ninja
+    ninja
+    ctest -V
+    sudo cpack .
+}

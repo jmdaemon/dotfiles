@@ -7,7 +7,7 @@ to the boot partition again.
 
 ### Requirements
 
-- GParted Live Usb or any other Live Usb equivalent.
+- GParted Live USB or any other Live USB equivalent.
 
 To repair, boot up GParted, open up the terminal and run:
 
@@ -67,3 +67,16 @@ sudo grub-mkconfig -o /boot/grub/grub.cfg
 ```
 
 Now you can boot up to your favorite distribution.
+
+## Repairing Windows Boot Partition
+
+### Requirements
+
+- Windows Live USB
+
+Boot up into your Windows Live USB, open up the Command Prompt and run:
+
+``` ps
+bootrec.exe /FixBoot
+bootrec.exe /RebuildBcd
+```

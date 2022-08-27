@@ -74,3 +74,31 @@ make_test(
 	SOURCES $4
 	DEPS $5)
 endsnippet
+
+snippet unit_test "Unit test format" b
+# Unit Tests
+set(HEADERS \${INCLUDES_DIR} \${DOCTEST_INCLUDE_DIR})
+set(TARGET $1)
+
+# Add unit tests
+set(TEST_NAME test-\${TARGET})
+add_executable(\${TEST_NAME} $2)
+target_include_directories(\${TEST_NAME} PUBLIC \${HEADERS})
+target_link_libraries(\${TEST_NAME} PRIVATE \${PKG_DEPENDS} doctest $3)
+add_test(NAME \${TEST_NAME} COMMAND \${TEST_NAME})
+
+if (DISCOVER_TESTS)
+	# Include doctest cmake module
+	include(\${DOCTEST_SOURCE_DIR}/scripts/cmake/doctest.cmake)
+
+	# Discover unit tests
+	doctest_discover_tests(\${TEST_NAME})
+endif()
+endsnippet
+
+snippet inst "Install a target" b
+install(TARGETS ${INS_TARGET}
+		DESTINATION lib
+		PUBLIC_HEADER DESTINATION include
+		COMPONENT lib)
+endsnippet

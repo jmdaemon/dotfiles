@@ -190,7 +190,7 @@ load_alias "book"
 #export GDK_DPI_SCALE=0.5
 {{- end }}
 
-{{- if (eq .system "arch-laptop") }} 
+{{- if (eq .system "arch-laptop" "arch-asus") }} 
 source $XDG_CONFIG_HOME/dotfiles/scripts/startup/nvm.sh
 {{- else if (eq .system "ubuntu-workstation") }}
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # Load nvm

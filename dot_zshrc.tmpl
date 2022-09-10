@@ -33,7 +33,7 @@ setopt EXTENDED_HISTORY # Record timestamp of command
 autoload -Uz compinit && compinit -d $XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION
 autoload -Uz add-zsh-hook
 
-{{ if ( eq .system "arch-laptop" ) -}}
+{{ if ( eq .system "arch-laptop" "arch-asus") -}}
 # https://wiki.archlinux.org/title/Zsh#On-demand_rehash
 zshcache_time="$(date +%s%N)"
 

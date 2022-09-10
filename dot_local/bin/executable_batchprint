@@ -1,0 +1,13 @@
+#!/bin/bash
+
+printer="$1"
+directory="$2"
+
+#files=$(ls "$directory")
+
+#for file in "${files[@]}"
+for file in "$directory"/*
+do
+    lpr -P "$printer" "$file"
+done
+

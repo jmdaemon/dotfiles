@@ -118,12 +118,12 @@ count() {
 
 gdb() {
     # Wrapper around gdb that toggles gef configurations
-    toggle=$1
+    toggle="$1"
     if [[ "$toggle" == "--gef" ]]; then
         shift # Pops --gef wrapper option
-        exec /usr/bin/gdb -nh -x "$XDG_CONFIG_HOME"/gdb/init/gdbinit -ex "init-gef-config" "$@"
+        /usr/bin/gdb -nx -x "$XDG_CONFIG_HOME"/gdb/init/gdbinit -ex "init-gef-config" "$@"
     else
-        exec /usr/bin/gdb -nh -x "$XDG_CONFIG_HOME"/gdb/init/gdbinit "$@"
+        /usr/bin/gdb -nx -x "$XDG_CONFIG_HOME"/gdb/init/gdbinit "$@"
     fi
 }
 # Or optionally use these aliases

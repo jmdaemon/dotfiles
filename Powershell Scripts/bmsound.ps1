@@ -44,7 +44,11 @@ if ($o -ne "None") {
 }
 else {
     $parent_dir = (get-item $d).parent.FullName
-    $output_dir = "${parent_dir}\output"
+    if ($parent_dir -eq $null) {
+        $output_dir = "output"
+    } else {
+        $output_dir = "${parent_dir}\output"
+    }
 }
 
 # Make the new directory, if it doesn't already exist
@@ -54,41 +58,55 @@ if (Test-Path $output_dir) {
     new-item $output_dir -itemtype directory
 }
 
-# Exclude files from output
-$COMMA_SEPARATED = ','
-$exclude_files = @()
-$match = $e | Select-String -Pattern $COMMA_SEPARATED
+if (Test-Path $d -PathType Container) {
+    # Exclude files from output
+    $COMMA_SEPARATED = ','
+    $exclude_files = @()
+    $match = $e | Select-String -Pattern $COMMA_SEPARATED
 
-if ($match -ne $null) {
-    $exclude_files = $e.Split($COMMA_SEPARATED)
-} else {
-    $exclude_files += $e
-}
-Write-Output $exclude_files
-
-# Batch encode all the files
-$files = Get-ChildItem "$d"
-
-foreach ($f in $files) {
-    $filename = $f.FullName
-    $stem = [System.Io.Path]::GetFileNameWithoutExtension($f)
-    $ext = [System.IO.Path]::GetExtension($f)
-    $output = "${stem}${output_fmt}${ext}"
-
-    $output_file = ""
-    if ($output_dir -ne "") {
-        $output_file = "${output_dir}\${output}"
+    if ($match -ne $null) {
+        $exclude_files = $e.Split($COMMA_SEPARATED)
     } else {
-        $output_file = $output
+        $exclude_files += $e
     }
+    Write-Output $exclude_files
 
-    log_args $v $filename $output_file
+    # Batch encode all the files
+    $files = Get-ChildItem "$d"
 
-    # Skip excluded files
-    foreach ($exclude in $exclude_files) {
-        Write-Output "exclude: $exclude"
-        if ("${stem}${ext}" -ne $exclude) {
-            encode $v $filename $output_file
+    foreach ($f in $files) {
+        $filename = $f.FullName
+        $stem = [System.Io.Path]::GetFileNameWithoutExtension($f)
+        $ext = [System.IO.Path]::GetExtension($f)
+        $output = "${stem}${output_fmt}${ext}"
+
+        $output_file = ""
+        if ($output_dir -ne "") {
+            $output_file = "${output_dir}\${output}"
+        } else {
+            $output_file = $output
         }
+
+        log_args $v $filename $output_file
+
+        # Skip excluded files
+        foreach ($exclude in $exclude_files) {
+            Write-Output "exclude: $exclude"
+            if ("${stem}${ext}" -ne $exclude) {
+                encode $v $filename $output_file
+            }
+        }
+    }
+} else {
+    # Assume -d is a list of sounds separated by newlines
+    [String[]]$lines = Get-Content -Path "$d"
+
+    # Set-Location -Path $output_dir
+    cd $output_dir
+    # chdir $output_dir
+    if ($v -eq "None") {
+        foreach ($line in $lines) { gtts "$line" }
+    } else {
+        foreach ($line in $lines) { gtts "$line" -r -vol "${v}"}
     }
 }

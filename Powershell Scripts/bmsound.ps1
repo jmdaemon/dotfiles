@@ -5,7 +5,7 @@
 #   bmound.ps1 -v "20dB" -e "exclude_file1,exclude_file2" -d "sounds" -o "sounds-20dB"
 
 param(
-    [String]$excludes="None",
+    [String]$e="None",
     [String]$o="None",
     [String]$v="None",
     [Parameter(Mandatory=$true)][String]$d
@@ -18,9 +18,15 @@ function encode ($volume, $i, $o) {
         Write-Output "ffmpeg -ar 44100 -i \"$i\" \"$o\""
         ffmpeg -i "$i" -ar 44100  "$o"
     } else {
-        Write-Output "ffmpeg -ar 44100 -i "$i" -filter:a \"volume=${volume}\" \"$o\""
+        Write-Output "ffmpeg -ar 44100 -i '$i' -filter:a 'volume=${volume}' '$o'"
         ffmpeg -i "$i" -ar 44100 -filter:a "volume=${volume}" "$o"
     }
+}
+
+function log_args($volume, $filename, $output_file) {
+    Write-Output "volume: ${volume}"
+    Write-OUtput "filename: ${filename}"
+    Write-Output "output_file: ${output_file}"
 }
 
 # Files with a volume boost get renamed with a -${volume} name. E.g
@@ -38,23 +44,51 @@ if ($o -ne "None") {
 }
 else {
     $parent_dir = (get-item $d).parent.FullName
-    $output_dir = "${parent_dir}/output"
+    $output_dir = "${parent_dir}\output"
 }
 
-# Make the new directory
-new-item $output_dir -itemtype directory
+# Make the new directory, if it doesn't already exist
+if (Test-Path $output_dir) {
+    Write-Output "Folder Exists: $output_dir"
+} else {
+    new-item $output_dir -itemtype directory
+}
+
+# Exclude files from output
+$COMMA_SEPARATED = ','
+$exclude_files = @()
+$match = $e | Select-String -Pattern $COMMA_SEPARATED
+
+if ($match -ne $null) {
+    $exclude_files = $e.Split($COMMA_SEPARATED)
+} else {
+    $exclude_files += $e
+}
+Write-Output $exclude_files
 
 # Batch encode all the files
 $files = Get-ChildItem "$d"
-foreach ($f in $files){
+
+foreach ($f in $files) {
     $filename = $f.FullName
     $stem = [System.Io.Path]::GetFileNameWithoutExtension($f)
     $ext = [System.IO.Path]::GetExtension($f)
     $output = "${stem}${output_fmt}${ext}"
 
-    $output_file = "${output_dir}/${output}"
-    Write-Output("volume: ${v}")
-    Write-Output("filename: ${filename}")
-    Write-Output("output: ${output}")
-    encode $v $filename $output_file
+    $output_file = ""
+    if ($output_dir -ne "") {
+        $output_file = "${output_dir}\${output}"
+    } else {
+        $output_file = $output
+    }
+
+    log_args $v $filename $output_file
+
+    # Skip excluded files
+    foreach ($exclude in $exclude_files) {
+        Write-Output "exclude: $exclude"
+        if ("${stem}${ext}" -ne $exclude) {
+            encode $v $filename $output_file
+        }
+    }
 }

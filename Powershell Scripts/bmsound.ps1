@@ -3,6 +3,7 @@
 #   bmound.ps1 -d "inputs" -o "output_directory"
 #   bmound.ps1 -e "exclude_file1,exclude_file2" -d "inputs"
 #   bmound.ps1 -v "20dB" -e "exclude_file1,exclude_file2" -d "sounds" -o "sounds-20dB"
+#   bmound.ps1 -d "inputs.txt" -v "20dB"
 
 param(
     [String]$e="None",
@@ -101,9 +102,7 @@ if (Test-Path $d -PathType Container) {
     # Assume -d is a list of sounds separated by newlines
     [String[]]$lines = Get-Content -Path "$d"
 
-    # Set-Location -Path $output_dir
     cd $output_dir
-    # chdir $output_dir
     if ($v -eq "None") {
         foreach ($line in $lines) { gtts "$line" }
     } else {

@@ -26,7 +26,7 @@ function encode ($volume, $i, $o) {
 
 function log_args($volume, $filename, $output_file) {
     Write-Output "volume: ${volume}"
-    Write-OUtput "filename: ${filename}"
+    Write-Output "filename: ${filename}"
     Write-Output "output_file: ${output_file}"
 }
 

@@ -102,10 +102,12 @@ if (Test-Path $d -PathType Container) {
     # Assume -d is a list of sounds separated by newlines
     [String[]]$lines = Get-Content -Path "$d"
 
+    $cwd = Get-Location
     cd $output_dir
     if ($v -eq "None") {
         foreach ($line in $lines) { gtts "$line" }
     } else {
         foreach ($line in $lines) { gtts "$line" -r -vol "${v}"}
     }
+    cd $cwd
 }

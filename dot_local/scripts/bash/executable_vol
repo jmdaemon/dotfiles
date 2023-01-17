@@ -2,36 +2,35 @@
 
 # Show the mean and max volume of a file
 
-#vol() {
-    #input="$1"
-    #output="-i ""$input"" -filter:a volumedetect -f null /dev/null 2>&1"
-    #if [[ $input -eq "-f" || $input -eq "--full" ]]; then
-        #ffmpeg ${output}
-    #else
-        #ffmpeg "$output" | grep "mean_volume\|max_volume" | cut -d ' ' -f5
-    #fi
-#}
-
-#vol "$1"
-
-#input="$1"
-#output="-i $input -filter:a volumedetect -f null /dev/null 2>&1"
-#ffmpeg "$output"
-
-#output="-i "$input" -filter:a volumedetect -f null /dev/null 2>&1"
-#echo $output | xargs ffmpeg
-
-#options=('-i' "$input" '-filter:a' 'volumedetect' '-f' 'null' '/dev/null 2>&1')
-#ffmpeg "${options[@]}"
-
-#vol() {
+show_full_output=false # False
 input="$1"
-options=('-i' "$input" '-filter:a' 'volumedetect' '-f' 'null' '/dev/null 2>&1')
-if [[ $input -eq "-f" || $input -eq "--full" ]]; then
-    ffmpeg "${options[@]}"
-else
-    ffmpeg "${options[@]}" | grep "mean_volume\|max_volume" | cut -d ' ' -f5
+
+# Toggle between full output and shortened outputs
+if [[ "$input" == "-f" ]]  ||  [[ "$input" == "--full" ]]; then
+    echo "Showing full output"
+    show_full_output=true
+    shift
+fi
+
+#vol() {
+    # Show the mean and max volume of a file
+    #show_full_output=$1
+    #$file=$2
+file="$1"
+if [[ ! -z $file ]]; then
+    options=('-i' "$file" '-filter:a' 'volumedetect' '-f' 'null' '/dev/null 2>&1')
+    if [ "$show_full_output" = true ]; then
+        ffmpeg "${options[@]}"
+    else
+        #ffmpeg "${options[@]}" | grep "mean_volume\|max_volume" | cut -d ' ' -f5
+        #ffmpeg "${options[@]}" "${added_opts[@]}"
+        added_opts=('|' 'grep "mean_volume\|max_volume"' '|' "cut -d ' ' -f5")
+        ffmpeg -i "$file" -filter:a volumedetect -f null /dev/null 2>&1 | grep "mean_volume\|max_volume" | cut -d ' ' -f5
+    fi
 fi
 #}
 
-#vol "$@"
+#for file in "$@"
+#do
+    #vol $show_full_output "$file"
+#done

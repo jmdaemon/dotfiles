@@ -1,7 +1,0 @@
-#!/usr/bin/python
-# EASY-INSTALL-DEV-SCRIPT: 'dxp==0.1.1','dxp'
-__requires__ = 'dxp==0.1.1'
-__import__('pkg_resources').require('dxp==0.1.1')
-__file__ = '/home/jmd/Workspace/apps/py/dxp/scripts/dxp'
-with open(__file__) as f:
-    exec(compile(f.read(), __file__, 'exec'))

@@ -1,0 +1,4 @@
+#!/usr/bin/bash
+
+input="$1"
+ffmpeg -i $input -filter:a volumedetect -f null /dev/null 2>&1

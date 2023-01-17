@@ -1,4 +1,37 @@
 #!/usr/bin/bash
 
+# Show the mean and max volume of a file
+
+#vol() {
+    #input="$1"
+    #output="-i ""$input"" -filter:a volumedetect -f null /dev/null 2>&1"
+    #if [[ $input -eq "-f" || $input -eq "--full" ]]; then
+        #ffmpeg ${output}
+    #else
+        #ffmpeg "$output" | grep "mean_volume\|max_volume" | cut -d ' ' -f5
+    #fi
+#}
+
+#vol "$1"
+
+#input="$1"
+#output="-i $input -filter:a volumedetect -f null /dev/null 2>&1"
+#ffmpeg "$output"
+
+#output="-i "$input" -filter:a volumedetect -f null /dev/null 2>&1"
+#echo $output | xargs ffmpeg
+
+#options=('-i' "$input" '-filter:a' 'volumedetect' '-f' 'null' '/dev/null 2>&1')
+#ffmpeg "${options[@]}"
+
+#vol() {
 input="$1"
-ffmpeg -i $input -filter:a volumedetect -f null /dev/null 2>&1
+options=('-i' "$input" '-filter:a' 'volumedetect' '-f' 'null' '/dev/null 2>&1')
+if [[ $input -eq "-f" || $input -eq "--full" ]]; then
+    ffmpeg "${options[@]}"
+else
+    ffmpeg "${options[@]}" | grep "mean_volume\|max_volume" | cut -d ' ' -f5
+fi
+#}
+
+#vol "$@"

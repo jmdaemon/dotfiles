@@ -1,5 +1,11 @@
 # Recover
 
+## Booting From Grub Shell
+
+Requirements:
+- The EFI system partition is still intact.
+- The boot
+
 ## Reparing Grub Boot Loader / Repairing Linux EFI Partitions
 
 To repair grub, we more or less go through the entire process of installing grub

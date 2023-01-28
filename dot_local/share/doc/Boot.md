@@ -1,17 +1,71 @@
-# Recover
+# Boot
+
+A handy document reference for Boot recovery.
+Included are instructions for repairing the Grub boot loader,
+booting from the Grub shell, using custom Grub fonts in your configuration,
+and repairing the Windows Bootloader.
 
 ## Booting From Grub Shell
 
 Requirements:
-- The EFI system partition is still intact.
-- The boot
+- The EFI system partition must not be corrupted.
+- The EFI boot files themselves must be available and in good working condition.
 
-## Reparing Grub Boot Loader / Repairing Linux EFI Partitions
+### Windows
+
+```grub
+insmod part_gpt
+insmod chain
+set root=(hd0,gpt1)
+chainloader /EFI/Microsoft/Boot/bootmgfw.efi
+boot
+```
+
+- Replace `(hd0,gpt1)` with whatever equivalent `(drive,partition)` your Windows
+installation is on.
+
+### Linux
+
+Booting a Linux distribution from the grub shell is more or less similar:
+
+```grub
+insmod part_gpt
+insmod linux
+insmod normal
+set root=(hd0,gpt1)
+normal
+```
+
+- Replace `(hd0,gpt1)` with whatever equivalent `(drive,partition)` your Linux
+distribution is on.
+
+In more advanced cases you may have to load the Linux kernel:
+
+```grub
+set root=(hd0,gpt1)
+linux /boot/vmlinuz-$VERSION$-generic root=/dev/sda1
+initrd /boot/initrd.img-$VERSION$-generic
+boot
+```
+
+- Replace `$VERSION$` with the versions you have available in `/boot`
+- `/dev/sda1` Corresponds to your root file system. You can find this by using `ls`
+    and remembering the mapping:
+    - `(hd0,1)`: `/dev/sda1`
+    - `(hd1,1)`: `/dev/sdb1`
+
+### Grub Shell Notes
+
+- Grub Shell supports `ls`, use this to double check which drive you're booting from.
+- Grub shell also supports tab completion.
+- You can omit the `gpt1`, `msdos1` labels and directly use them: `1` instead of `gpt1`.
+
+## Repairing Grub Boot Loader / Repairing Linux EFI Partitions
 
 To repair grub, we more or less go through the entire process of installing grub
 to the boot partition again.
 
-### Requirements
+Requirements:
 
 - GParted Live USB or any other Live USB equivalent.
 
@@ -49,7 +103,7 @@ sudo grub-install --target=x86_64-efi \
                   --recheck
 ```
 
-#### Generating Custom Grub Fonts
+### Generating Custom Grub Fonts
 
 To generate custom grub fonts (and grub fonts of bigger sizes) for your grub config, you can run:
 
@@ -59,12 +113,12 @@ sudo grub-mkfont /usr/share/fonts/TTF/DejaVuSansMono.ttf \
             -s 20 -o /boot/grub/fonts/DejaVuSansMono20.pf2
 ```
 
-#### Custom boot menu entries
+### Custom boot menu entries
 
 To add custom boot menu entries, you can put your files in `/etc/grub.d/40_custom` or in
 `/boot/grub/custom.cfg`.
 
-#### Building the Grub Config
+### Building the Grub Config
 
 Now you can build the grub config files with:
 

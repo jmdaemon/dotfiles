@@ -9,6 +9,59 @@
 <!--3. [Third Example](#third-example)-->
 <!--4. [Fourth Example](#fourth-examplehttpwwwfourthexamplecom)-->
 
+## Migrating Data
+
+### Migrating Folders & Files
+
+If migrating using a Linux distribution, you can move your files around using
+
+```bash
+rsync -v -a -X -U -N -H 
+# -v: Enable verbose information
+# -a: Preserve mostly everything (see manpage for unpreserved attributes)
+# -X: Preserve Extended Attributes
+# -U: Preserve Atimes
+# -N: Preserve Crtimes
+# -H: Preserve hardlinks
+```
+
+If migrating on Windows between drives, you can:
+1. Make a zip of the directories, copy and extract onto the new drive.
+    This preserves the metadata of the files.
+
+```ps1
+# Create a zip file with the contents of C:\Stuff\
+Compress-Archive -Path C:\Stuff -DestinationPath archive.zip
+
+# Add more files to the zip file
+# (Existing files in the zip file with the same name are replaced)
+Compress-Archive -Path C:\OtherStuff\*.txt -Update -DestinationPath archive.zip
+
+# Extract the zip file to C:\Destination\
+Expand-Archive -Path archive.zip -DestinationPath C:\Destination
+```
+
+See [here](https://stackoverflow.com/questions/1153126/how-to-create-a-zip-archive-with-powershell) for more information.
+
+## Migrating Partitions
+
+If the partitions are still intact and not damaged, then you can just use GParted's
+equivalent disk cloning facilities.
+
+These include:
+- ntfsclone
+- dd
+
+To migrate/recover partitions (that are partially damaged) you can use `ddrescue`:
+
+```bash
+sudo ddrescue -f -d /dev/src1 /dev/dest1 "$(date --iso-8601)-rescue.log"
+# -f: Force
+# -d: Use direct disk access
+```
+
+If you specify the log file then you can resume the `ddrescue` (after you Ctrl-C).
+
 ## Hibernation
 
 ### Windows Hibernation

@@ -164,6 +164,12 @@ TODO
 
 ## Drive Health
 
+To check up on your drives and partitions you can use the following commands (Linux):
+
+```bash
+lsblk /dev/sda1
+```
+
 ### Smartmontools
 
 To check your drive health using `smartmontools`, install the package for your system.

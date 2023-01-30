@@ -2,12 +2,9 @@
 
 ## Table of Contents
 1. [Hibernation](#hibernation)
-2. [Data Sharing](#sharing-data-between-windows-and-linux)
-3. [Backups](#backups)
-<!--1. [Example](#example)-->
-<!--2. [Example2](#example2)-->
-<!--3. [Third Example](#third-example)-->
-<!--4. [Fourth Example](#fourth-examplehttpwwwfourthexamplecom)-->
+2. [Migrating](#migrating-data)
+3. [Data Sharing](#sharing-data-between-windows-and-linux)
+4. [Backups](#backups)
 
 ## Migrating Data
 

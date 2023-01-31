@@ -16,3 +16,8 @@
 deb http://deb.debian.org/debian bullseye main contrib non-free
 deb-src http://deb.debian.org/debian bullseye main contrib non-free
 ```
+
+### Useful Packages
+
+- `ddrutility`: Utilities for working with `ddrescue`
+    - Provides `ddru_ntfs_findbad` and `ddru_findbad` which allows you to find affected files from the bad sectors/blocks.

@@ -4,9 +4,10 @@
 1. [Hibernation](#hibernation)
 2. [Migrating](#migrating-data)
 3. [Recovery](#recovering-files)
-4. [Drive Health](#drive-health)
-5. [Data Sharing](#sharing-data-between-windows-and-linux)
-6. [Backups](#backups)
+4. [Repairing](#repairing)
+5. [Drive Health](#drive-health)
+6. [Data Sharing](#sharing-data-between-windows-and-linux)
+7. [Backups](#backups)
 
 ## Hibernation
 
@@ -162,6 +163,27 @@ To recover files from partially damaged drives, you can use `ddrescue` above in 
 
 TODO
 
+## Repairing
+
+In some cases it may be required for you to repair the drive partitions/filesystems.
+
+On Linux you can repair the file system with:
+
+```bash
+e2fsck /dev/sda1
+```
+
+On Windows (or any NTFS partition), you will need to run:
+
+```bash
+chkdsk D: /f
+chkdsk D: /r
+```
+
+Where `D:` is your affected drive.
+
+Note that you should not attempt to use `ntfsfix` as you can potentially lose data on your partition.
+
 ## Drive Health
 
 To check up on your drives and partitions you can use the following commands (Linux):
@@ -180,6 +202,18 @@ smartctl -a /dev/sda1
 ```
 
 Where `/dev/sda1` corresponds to your partition.
+
+## ddrutility
+
+`ddrutility` is a suite of utilities for working with `ddrescue`.
+
+With this package installed you can search for affected files from bad sectors/blocks using the following:
+
+```bash
+ddru_ntfs_findbad /dev/sda1
+# or
+ddru_findbad /dev/sda1
+```
 
 ## Backups
 

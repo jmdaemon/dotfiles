@@ -2,6 +2,21 @@
 
 Information regarding the hardware of drives and general computer storage.
 
+1. [Sizes](#sizes)
+2. [UPS](#ups)
+3. [SSD](#ssd)
+4. [HDD](#hdd)
+5. [Drive Reviews](#drive-reviews)
+
+## Sizes
+
+Actual drive sizes may seem smaller than that of the posted manufacturer size.
+
+```txt
+1 MB    = 1000 B
+1 MiB   = 1024 B
+```
+
 ## Power Outages
 
 Power outages can play a big role in the lifespan of your hardware.
@@ -15,14 +30,33 @@ and protects your data from corruption and data loss.
 
 Suggested Links:
 
-## Sizes
+## SSD
 
-Actual drive sizes may seem smaller than that of the posted manufacturer size.
+A solid state drive is similar to a HDD with the exception of the following:
+- SSDS have faster reads/writes than HDD.
+- SSDS are also generally more expensive.
+- SSDS don't yet come in huge sizes (and if they do, expect to pay a premium).
 
-```txt
-1 MB    = 1000 B
-1 MiB   = 1024 B
-```
+Pros:
+    - Good for booting up from (Fast to read)
+    - Good for loading games/applications from (Due to the fast reads).
+    - Better than HDDs for any kind of file disk access case.
+
+Cons:
+    - Potential for slowdown if you abuse the drive with too many writes.
+
+Suggested Links:
+
+## HDD
+
+A hard disk drive is a standard storage medium. HDDs:
+- Come in huge sizes of up to 10TB
+- Are cheaper than SSDs.
+
+Pros:
+    - Good for backups (If you have a lot to store).
+
+Suggested Links:
 
 ## Drive Reviews
 

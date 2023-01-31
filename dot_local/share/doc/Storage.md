@@ -169,9 +169,17 @@ In some cases it may be required for you to repair the drive partitions/filesyst
 
 On Linux you can repair the file system with:
 
+## Fsck
+
 ```bash
+fsck /dev/sda1
+# or
 e2fsck /dev/sda1
 ```
+
+Note that this only works on `ext2/ext3/ext4/` partitions. For NTFS partitions see below section on chkdsk.
+
+## Chkdsk
 
 On Windows (or any NTFS partition), you will need to run:
 
@@ -180,9 +188,14 @@ chkdsk D: /f
 chkdsk D: /r
 ```
 
-Where `D:` is your affected drive.
+Where `D:` is your affected drive. Note that on Windows, partitions (of drives) are labeled with a letter like
+`E:`, `F:`, etc, so be sure to not run `chkdsk` on your good/functioning drive.
 
-Note that you should not attempt to use `ntfsfix` as you can potentially lose data on your partition.
+**Note:** You should not attempt to use `ntfsfix` on Linux on an NTFS partition as you can potentially lose data on your partition.
+**Note:** You should also refrain from interrupting `chkdsk` after running. `chkdsk` isn't intended to be interrupted,
+and its possible that you could incur data corruption/loss as a result of either killing the process or otherwise interrupting it.
+
+It's recommended not to run `chkdsk` with the `/r` or `/b` options it will take significantly longer to run otherwise.
 
 ## Drive Health
 

@@ -115,6 +115,12 @@ rsync -v -a -X -U -N -H
 # -U: Preserve Atimes
 # -N: Preserve Crtimes
 # -H: Preserve hardlinks
+# -P: Keep partially transferred files, and include a progress bar
+
+# or 
+rsync -vaXUNH 
+# Note: Not all file systems support crtime so you may have to do
+rsync -vaXUHP 
 ```
 
 If migrating on Windows between drives, you can:

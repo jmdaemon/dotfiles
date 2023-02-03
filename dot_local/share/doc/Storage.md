@@ -229,10 +229,13 @@ Where `/dev/sda1` corresponds to your partition.
 With this package installed you can search for affected files from bad sectors/blocks using the following:
 
 ```bash
-ddru_ntfs_findbad /dev/sda1
+ddru_ntfs_findbad /dev/sda1 rescue.log
+
 # or
-ddru_findbad /dev/sda1
+ddru_findbad /dev/sda1 rescue.log
 ```
+
+Note that `ddru_findbad` doesn't quite seem to work too well on GPT disks.
 
 ## Backups
 

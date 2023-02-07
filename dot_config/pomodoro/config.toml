@@ -1,4 +1,8 @@
-[config]
+[pomodoro]
+#config = "testing"
+config = "default"
+
+[default]
 shortbreak = 10
 longbreak = 30
 intervals = [
@@ -7,9 +11,10 @@ intervals = [
 units = "minutes"
 
 # For quick debugging
-#shortbreak = 2
-#longbreak = 2
-#intervals = [
-#4, 4, 4, 4,
-#]
-#units = "seconds"
+[testing]
+shortbreak = 2
+longbreak = 2
+intervals = [
+4, 4, 4, 4,
+]
+units = "seconds"

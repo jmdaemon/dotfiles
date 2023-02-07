@@ -1,17 +1,10 @@
 #!/bin/bash/
 
 # Shortcuts
-export excludes="$XDG_DATA_HOME"/excludes
-export bin="$LOCAL"
-export work="$HOME"/Workspace
-export apps="$work/apps"
-export cw="$work/School/MIT OpenCourseWare"
-export pg="$work/playground"
-export uni="$work/School/University"
-export draw="$work/drawing"
-export notes="$work/Notes"
+#export excludes="$XDG_DATA_HOME"/excludes
+#export bin="$LOCAL"
+#export work="$HOME"/Workspace
 export texpkg="$TEXMFHOME/tex/latex"
-export snips="$HOME/.config/coc/ultisnips"
 
 # LSD - https://github.com/Peltoche/lsd 
 alias l='ls -l'
@@ -88,7 +81,7 @@ aptup() {
     sudo ${apt_bin} upgrade -y
     sudo ${apt_bin} autoremove
 }
-{{- else if (eq .system "arch-laptop" ) }}
+{{- else if (eq .system "arch-laptop" "arch-asus") }}
 pkgs() {
     # https://wiki.archlinux.org/title/Pacman/Tips_and_tricks
     opts=$1
@@ -121,47 +114,16 @@ gdb() {
     toggle="$1"
     if [[ "$toggle" == "--gef" ]]; then
         shift # Pops --gef wrapper option
-        /usr/bin/gdb -nx -x "$XDG_CONFIG_HOME"/gdb/init/gdbinit -ex "init-gef-config" "$@"
+        # /usr/bin/gdb -nx -x "$XDG_CONFIG_HOME"/gdb/init/gdbinit -ex "init-gef-config" "$@"
+        /usr/bin/gdb -ex "init-gef-config" "$@"
     else
-        /usr/bin/gdb -nx -x "$XDG_CONFIG_HOME"/gdb/init/gdbinit "$@"
+        # /usr/bin/gdb -nx -x "$XDG_CONFIG_HOME"/gdb/init/gdbinit "$@"
+        /usr/bin/gdb "$@"
     fi
 }
 # Or optionally use these aliases
 #alias gdb="exec gdb -nh -x \"\"$XDG_CONFIG_HOME\"/gdb/init/gdbinit\" \"$@\""
 #alias gef="exec gdb -nh -x \"\"$XDG_CONFIG_HOME\"/gdb/init/gdbinit\" -ex init-gef-config \"$@\""
-
-cpfp() {
-    # Copies the current working directory to the clipboard
-    filepath=$1
-    if [[ -n "$filepath" ]]; then
-        echo "$filepath" | tr -d '\n' | xclip -sel clip
-    else # Copies cwd by default
-        pwd | tr -d '\n' | xclip -sel clip
-    fi
-}
-
-cpy() {
-    # xclip alias but strips all trailing newlines
-    VAR=""
-    while read -r data; do
-        VAR+="$data\n"
-    done
-    CLEANED=$(echo $VAR | sed -rz 's/^\n+//; s/\n+$/\n/g') # Strips trailing newlines
-    printf "%b" "$CLEANED" | xclip -sel clip
-}
-
-reencode() {
-    # Reencodes .mp3 files via ffmpeg
-    input="$1"
-    ffmpeg -i "$input" "${input%.*}.mp3" $@
-    [[ ! -e "$input" ]] && rm "$input" || :
-}
-
-piload() {
-    # Builds and uploads pypi packages
-    python3 -m build
-    python3 -m twine upload dist/*
-}
 
 clean() {
     # Removes untracked configuration files that are in ~/.config, ~/.local/share/
@@ -179,44 +141,12 @@ clean() {
     fi
 }
 
-regeval() {
-    # Evaulate regular expressions and view matches
-    # Note that you can also use `pcretest`
-    [ "$#" -eq 1 ] || return 1
-    while IFS= read -r line; do
-        printf '%s\n' "$1" | grep -Eoe "$line"
-    done
-}
-
-mtsed() {
-    # Mass text substitution in a given directory
-    # Usage: sedall "$directory" "$match" "$replace_with"
-    directory="$1"
-    match="$2"
-    replace="$3"
-    if [[ -z "$directory" || -z "$match" || -z "$replace" ]]; then
-        echo "Usage: sedall [directory] [match] [replace]"
-        return
-    fi
-    find "$directory" -type f -exec sed -i -e "s/$match/$replace/g" {} \;
-}
-
-mtrep() {
-    # Mass replace a text pattern in a given directory
-    # Usage: massrep "$pattern" "$replacement" "$directory"
-    pattern="$1"
-    replace_with="$2"
-    directory="$3"
-    if [[ ! -z "$pattern" && ! -z "$replace_with" && ! -z "$directory" ]]; then
-        grep -rl "$pattern" "$directory" | xargs sed -i "s/$pattern/$replace_with/g"
-    fi
-}
-
 sccache_restart() {
     # Restarts sccache
     sccache --stop-server
     sccache --start-server
 }
+alias sccache_neverexit='SCCACHE_IDLE_TIMEOUT=0 sccache --start-server &> /dev/null'
 
 # Update the system's packages
 update() {
@@ -238,38 +168,8 @@ ccd() {
     cd $(chezmoi source-path)
 }
 
-perm() {
-    # Show the octal permissions for a file
-    file="$1"
-    stat -c "%a %n" $file
-}
-
 aursubmod() {
     # Add an aur repository as a git submodule
     repo_name="$1"
     git submodule add ssh://aur@aur.archlinux.org/$repo_name aur.archlinux.org/$repo_name
-}
-
-ffmpegvol() {
-    # Show the mean and max volume of a file
-    audio_file="$1"
-    ffmpeg -i $audio_file -filter:a volumedetect -f null /dev/null 2>&1 | grep "mean_volume\|max_volume" | cut -d ' ' -f5
-}
-
-gccmake() {
-    # Create CMake Makefile GCC releases
-    cmake --preset gcc-release-unix-makefiles
-    cd build/gcc-release-unix-makefiles
-    make
-    ctest -V
-    sudo cpack .
-}
-
-gccninja() {
-    # Create CMake Ninja GCC releases
-    cmake --preset gcc-release-ninja
-    cd build/gcc-release-ninja
-    ninja
-    ctest -V
-    sudo cpack .
 }

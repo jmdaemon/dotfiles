@@ -2,8 +2,10 @@
 [user]
   name = {{ .git.name }}
   email = {{ .git.email }}
-[includeIf "gitdir:~/workspace/personal/"]
+[includeIf "gitdir:~/Workspace/horse/Projects/sfilly/"]
   path = ~/.config/git/personal
+[includeIf "gitdir:~/Workspace/horse/Projects/bmare/"]
+  path = ~/.config/git/bmare
 {{- else if ( eq .system "arch-laptop" "arch-asus" ) -}}
 [user]
   name = {{ .git.name }}

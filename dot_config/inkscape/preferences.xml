@@ -124,7 +124,9 @@
       <eventcontext
          id="rect"
          style="fill:blue;"
-         usecurrent="1" />
+         usecurrent="1"
+         width="229.069410909821"
+         height="518.033975916588" />
       <eventcontext
          id="3dbox"
          style="stroke:none;stroke-linejoin:round;"
@@ -567,7 +569,7 @@
     <group
        id="preferences"
        state="1"
-       page="24" />
+       page="25" />
     <group
        id="gradienteditor" />
     <group
@@ -702,7 +704,7 @@
        value="4.0" />
     <group
        id="grabsize"
-       value="3" />
+       value="2" />
     <group
        id="displayprofile"
        enable="0"
@@ -931,13 +933,14 @@
        partialdynamic="0" />
     <group
        id="boot"
-       theme="colorful">
+       theme="custom">
       <group
          id="shown"
          ver1.1.1="1"
          ver1.2-dev="1"
          ver1.1.2="1"
-         ver1.3-dev="1" />
+         ver1.3-dev="1"
+         ver1.2.1="1" />
     </group>
     <group
        id="rendering" />
@@ -947,7 +950,7 @@
        snap-bbox="1"
        snap-bbox-edge="1"
        snap-bbox-corner="1"
-       snap-bbox-edge-midpoint="0"
+       snap-bbox-edge-midpoint="1"
        snap-bbox-center="0"
        simple-snap-bbox="1"
        snap-node-category="1"
@@ -964,7 +967,7 @@
        snap-distribution="0"
        simple-snap-alignment="0"
        snap-others="1"
-       snap-object-midpoint="0"
+       snap-object-midpoint="1"
        snap-rotation-center="0"
        snap-text-baseline="1"
        snap-path-mask="1"
@@ -983,7 +986,7 @@
      org.inkscape.output.png.inkscape.png_antialias="2" />
   <group
      id="desktop"
-     style="">
+     style="fill:#ffff00">
     <group
        width="640"
        height="480"
@@ -1016,15 +1019,15 @@
     <group
        id="tools"
        icononly="1"
-       small="3"
-       iconsize="48"
+       small="0"
+       iconsize="32"
        width="56">
       <group
          id="buttons" />
     </group>
     <group
        id="controlbars"
-       iconsize="48" />
+       iconsize="32" />
   </group>
   <group
      id="iconpreview"
@@ -1100,20 +1103,20 @@
   <group
      id="theme"
      defaultPreferDarkTheme="0"
+     defaultIconTheme="Flat-Remix-Red-Light"
+     defaultGtkTheme="Flat-Remix-GTK-Red-Light"
      narrowSpinButton="1"
      preferDarkTheme="0"
      darkTheme="0"
+     symbolicIcons="1"
+     symbolicDefaultBaseColors="0"
+     symbolicDefaultHighColors="0"
      gtkTheme="Adwaita"
      iconTheme="multicolor"
-     symbolicIcons="0"
-     symbolicDefaultBaseColors="1"
-     symbolicDefaultHighColors="0"
-     defaultGtkTheme="Flat-Remix-GTK-Red-Light"
-     defaultIconTheme="Flat-Remix-Red-Light"
      menuIcons_canvas="0"
      menuIcons_layers="0"
      menuIcons_objects="0"
-     fontscale="110">
+     fontscale="100">
     <group
        id="Flat-Remix-Red-Dark"
        symbolicBaseColor="1549888767"
@@ -1126,6 +1129,12 @@
        symbolicSuccessColor="1035239167"
        symbolicWarningColor="4252827903"
        symbolicErrorColor="3205961727" />
+    <group
+       id="multicolor"
+       symbolicBaseColor="255"
+       symbolicSuccessColor="10029823"
+       symbolicWarningColor="4279865599"
+       symbolicErrorColor="10086143" />
   </group>
   <group
      id="statusbar">

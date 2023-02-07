@@ -23,73 +23,6 @@
                 "compilationDatabaseDirectory": "build"
             }
         },
-        "python": {
-            "command": "python",
-            "args": [
-                "-mpyls",
-                "-vv",
-                "--log-file",
-                "/tmp/lsp_python.log"
-            ],
-            "trace.server": "verbose",
-            "filetypes": [
-                "python"
-            ],
-            "settings": {
-                "pyls": {
-                    "enable": true,
-                    "trace": {
-                        "server": "verbose"
-                    },
-                    "commandPath": "",
-                    "configurationSources": [
-                        "pycodestyle"
-                    ],
-                    "plugins": {
-                        "jedi_completion": {
-                            "enabled": true
-                        },
-                        "jedi_hover": {
-                            "enabled": true
-                        },
-                        "jedi_references": {
-                            "enabled": true
-                        },
-                        "jedi_signature_help": {
-                            "enabled": true
-                        },
-                        "jedi_symbols": {
-                            "enabled": true,
-                            "all_scopes": true
-                        },
-                        "mccabe": {
-                            "enabled": true,
-                            "threshold": 15
-                        },
-                        "preload": {
-                            "enabled": true
-                        },
-                        "pycodestyle": {
-                            "enabled": true
-                        },
-                        "pydocstyle": {
-                            "enabled": false,
-                            "match": "(?!test_).*\\.py",
-                            "matchDir": "[^\\.].*"
-                        },
-                        "pyflakes": {
-                            "enabled": true
-                        },
-                        "rope_completion": {
-                            "enabled": true
-                        },
-                        "yapf": {
-                            "enabled": true
-                        }
-                    }
-                }
-            }
-        },
         "bash": {
             "command": "bash-language-server",
             "args": [
@@ -151,7 +84,29 @@
             "command": "java",
             "args" : ["-jar", "/home/jmd/.local/share/langserver/groovy-language-server/build/libs/groovy-language-server-all.jar"],
             "filetypes": ["groovy"]
-        }
+        },
+      "purescript": {
+        "command": "purescript-language-server",
+        "args": ["--stdio"],
+        "filetypes": ["purescript"],
+        "rootPatterns": ["bower.json", "psc-package.json", "spago.dhall"]
+      }
+          //"coc-cl": {
+            //"module": "./lib/index.js",
+            //"filetypes": ["lisp"]
+            //"command": "./lib/index.js",
+            //"args": ["--node-ipc"],
+            //"filetypes": ["lisp"],
+            //"trace.server": "verbose",
+            //"rootPatterns": ["root.yml"],
+            // Used for debugging NodeJS
+            // "execArgv": ["--nolazy", "--inspect-brk=6045"],
+            //"initializationOptions": {
+            //},
+            //"settings": {
+              //"validate": true
+            //}
+          //}
     },
     // Markdown
     "markdownlint.config": {
@@ -163,9 +118,12 @@
         "MD022": false,
         "MD032": false
     },
+    // Don't skip the first suggestion in coc.nvim tab completion
+    "suggest.noselect": true,
+
     // Rust
     "rust-client.enable": false, // Disable rls
-    "rust.target_dir": "{{ .chezmoi.homeDir }}/Workspace/apps/rust/target",
+    "rust-analyzer.checkOnSave.command": "clippy",
 
     // Java
     "java.format.enabled": true,
@@ -174,8 +132,14 @@
     "java.import.gradle.enabled": true,
     "java.configuration.updateBuildConfiguration": "automatic",
 
-    // Don't skip the first suggestion in coc.nvim tab completion
-    "suggest.noselect": true
+    // Common Lisp
+    //"lisp.enabled": true,
+    //"lisp.serverPath": "cl-lsp",
+    //"lisp.serverArguments": [],
+    //"lisp.toolchain": "",
+    //"lisp.maxNumberOfProblems": 100,
+    //"lisp.trace.server": "",
+
     //"coc.preferences.formatOnSaveFiletypes": [ "javascript", "typescript", "css", "markdown" ]
 }
 // vim:ft=jsonc

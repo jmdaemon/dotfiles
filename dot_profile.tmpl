@@ -184,6 +184,9 @@ load_alias "fai"
 load_alias "draw"
 load_alias "book"
 
+# Load all shortpath completions here
+source $XDG_CONFIG_HOME/shortpaths/commpletions/bash/shortpaths.sh
+
 {{- if (eq .system "arch-laptop") }}
 # HiDPI - These environment variables scale applications x2, but can also make some icons blurry
 # https://wiki.archlinux.org/index.php/HiDPI#GDK_3_(GTK_3)

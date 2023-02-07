@@ -43,7 +43,7 @@ def env(name):
 endglobal
 
 # ==== Shortcuts ====
-snippet template "Basic Template" iA
+snippet template "Basic Template" b
 \documentclass{article}
 \usepackage{$1}
 
@@ -52,7 +52,7 @@ snippet template "Basic Template" iA
 \end{document}
 endsnippet
 
-snippet temnotes "General Notes Template" iA
+snippet temnotes "General Notes Template" b
 \documentclass{article}
 \usepackage{$1}
 
@@ -117,14 +117,11 @@ snippet stdtable "Standard Table" b
 \end{table}
 endsnippet
 
-snippet ztable "Checkered Table" b
+snippet ztable "Checkered Table. Alternates white and grey every second row" b
 \begin{table}[!htbp]
     \centering
-		% Alternate between white, grey for tables
-		% every 2 rows with grey on the second row
-		\rowcolors{2}{}{gray!10}
+    \rowcolors{2}{}{gray!10}
     \begin{tabular}{ *{${1:$1}}{cc} }
-				% $1 Columns
         \toprule
         \midrule
         \bottomrule
@@ -327,13 +324,13 @@ snippet ali "Align" bA
 endsnippet
 
 context "math()"
-snippet dfrac "Fraction" iA
+snippet dfrac "Fraction" b
 \\dfrac{$1}{$2}$0
 endsnippet
 
 ### Fractions
 context "math()"
-snippet // "Fraction" iA
+snippet // "Fraction" b
 \\frac{$1}{$2}$0
 endsnippet
 
@@ -388,21 +385,21 @@ snip.rv = eval('latex(' + match.group(1).replace('\\', '').replace('^', '**').re
 `
 endsnippet
 
-snippet == "equals" iA
+snippet == "equals" b
 &= $1 \\\\
 endsnippet
 
-snippet != "equals" iA
+snippet != "equals" b
 \neq
 endsnippet
 
 context "math()"
-snippet ceil "ceil" iA
+snippet ceil "ceil" b
 \left\lceil $1 \right\rceil $0
 endsnippet
 
 context "math()"
-snippet floor "floor" iA
+snippet floor "floor" b
 \left\lfloor $1 \right\rfloor$0
 endsnippet
 
@@ -415,7 +412,7 @@ snippet bmat "bmat" b
 endsnippet
 
 context "math()"
-snippet () "left( right)" iA
+snippet () "left( right)" b
 \left( ${1:${VISUAL}} \right) $0
 endsnippet
 
@@ -443,12 +440,12 @@ snippet lr[ "left[ right]" i
 \left[ ${1:${VISUAL}} \right] $0
 endsnippet
 
-snippet lra "leftangle rightangle" iA
+snippet lra "leftangle rightangle" b
 \left<${1:${VISUAL}} \right>$0
 endsnippet
 
 context "math()"
-snippet conj "conjugate" iA
+snippet conj "conjugate" b
 \overline{$1}$0
 endsnippet
 
@@ -482,30 +479,30 @@ snippet sq "\sqrt{}" b
 endsnippet
 
 context "math()"
-snippet sr "^2" iA
+snippet sr "^2" b
 ^2
 endsnippet
 
 context "math()"
-snippet cb "^3" iA
+snippet cb "^3" b
 ^3
 endsnippet
 
 context "math()"
-snippet td "to the ... power" iA
+snippet td "to the ... power" b
 ^{$1}$0
 endsnippet
 
 context "math()"
-snippet rd "to the ... power" iA
+snippet rd "to the ... power" b
 ^{($1)}$0
 endsnippet
 
-snippet __ "subscript" iA
+snippet __ "subscript" b
 _{$1}$0
 endsnippet
 
-snippet ooo "\infty" iA
+snippet ooo "\infty" b
 \infty
 endsnippet
 
@@ -513,66 +510,66 @@ snippet rij "mrij" i
 (${1:x}_${2:n})_{${3:$2}\\in${4:\\N}}$0
 endsnippet
 
-snippet <= "leq" iA
+snippet <= "leq" b
 \le
 endsnippet
 
-snippet >= "geq" iA
+snippet >= "geq" b
 \ge
 endsnippet
 
 context "math()"
-snippet EE "geq" iA
+snippet EE "geq" b
 \exists
 endsnippet
 
 context "math()"
-snippet AA "forall" iA
+snippet AA "forall" b
 \forall
 endsnippet
 
 context "math()"
-snippet xnn "xn" iA
+snippet xnn "xn" b
 x_{n}
 endsnippet
 
 context "math()"
-snippet ynn "yn" iA
+snippet ynn "yn" b
 y_{n}
 endsnippet
 
 
 context "math()"
-snippet xii "xi" iA
+snippet xii "xi" b
 x_{i}
 endsnippet
 
 context "math()"
-snippet yii "yi" iA
+snippet yii "yi" b
 y_{i}
 endsnippet
 
 context "math()"
-snippet xjj "xj" iA
+snippet xjj "xj" b
 x_{j}
 endsnippet
 
 context "math()"
-snippet yjj "yj" iA
+snippet yjj "yj" b
 y_{j}
 endsnippet
 
 context "math()"
-snippet xp1 "x" iA
+snippet xp1 "x" b
 x_{n+1}
 endsnippet
 
 context "math()"
-snippet xmm "x" iA
+snippet xmm "x" b
 x_{m}
 endsnippet
 
-snippet R0+ "R0+" iA
+snippet R0+ "R0+" b
 \\R_0^+
 endsnippet
 
@@ -599,31 +596,31 @@ $0
 endsnippet
 
 context "math()"
-snippet mcal "mathcal" iA
+snippet mcal "mathcal" b
 \mathcal{$1}$0
 endsnippet
 
-snippet lll "l" iA
+snippet lll "l" b
 \ell
 endsnippet
 
 context "math()"
-snippet nabl "nabla" iA
+snippet nabl "nabla" b
 \nabla
 endsnippet
 
 context "math()"
-snippet xx "cross" iA
+snippet xx "cross" b
 \times
 endsnippet
 
 priority 100
-snippet ** "cdot" iA
+snippet ** "cdot" b
 \cdot
 endsnippet
 
 context "math()"
-snippet norm "norm" iA
+snippet norm "norm" b
 \|$1\|$0
 endsnippet
 
@@ -648,46 +645,46 @@ endsnippet
 
 priority 100
 context "math()"
-snippet -> "to" iA
+snippet -> "to" b
 \to
 endsnippet
 
 priority 200
 context "math()"
-snippet <-> "leftrightarrow" iA
+snippet <-> "leftrightarrow" b
 \leftrightarrow
 endsnippet
 
 context "math()"
-snippet !> "mapsto" iA
+snippet !> "mapsto" b
 \mapsto
 endsnippet
 
 context "math()"
-snippet invs "inverse" iA
+snippet invs "inverse" b
 ^{-1}
 endsnippet
 
 context "math()"
-snippet compl "complement" iA
+snippet compl "complement" b
 ^{c}
 endsnippet
 
 context "math()"
-snippet \\\ "setminus" iA
+snippet \\\ "setminus" b
 \setminus
 endsnippet
 
-snippet >> ">>" iA
+snippet >> ">>" b
 \gg
 endsnippet
 
-snippet << "<<" iA
+snippet << "<<" b
 \ll
 endsnippet
 
 
-snippet ~~ "~" iA
+snippet ~~ "~" b
 \sim
 endsnippet
 
@@ -696,7 +693,7 @@ snippet set "set" wA
 \\{$1\\} $0
 endsnippet
 
-snippet || "mid" iA
+snippet || "mid" b
  \mid
 endsnippet
 
@@ -706,56 +703,56 @@ snippet cc "subset" b
 \subset
 endsnippet
 
-snippet notin "not in " iA
+snippet notin "not in " b
 \not\in
 endsnippet
 
 context "math()"
-snippet inn "in " iA
+snippet inn "in " b
 \in
 endsnippet
 
-snippet NN "n" iA
+snippet NN "n" b
 \N
 endsnippet
 
-snippet Nn "cap" iA
+snippet Nn "cap" b
 \cap
 endsnippet
 
-snippet UU "cup" iA
+snippet UU "cup" b
 \cup
 endsnippet
 
-snippet uuu "bigcup" iA
+snippet uuu "bigcup" b
 \bigcup_{${1:i \in ${2: I}}} $0
 endsnippet
 
-snippet nnn "bigcap" iA
+snippet nnn "bigcap" b
 \bigcap_{${1:i \in ${2: I}}} $0
 endsnippet
 
-snippet OO "emptyset" iA
+snippet OO "emptyset" b
 \O
 endsnippet
 
-snippet RR "real" iA
+snippet RR "real" b
 \R
 endsnippet
 
-snippet QQ "Q" iA
+snippet QQ "Q" b
 \Q
 endsnippet
 
-snippet ZZ "Z" iA
+snippet ZZ "Z" b
 \Z
 endsnippet
 
-snippet <! "normal" iA
+snippet <! "normal" b
 \triangleleft
 endsnippet
 
-snippet <> "hokje" iA
+snippet <> "hokje" b
 \diamond
 endsnippet
 
@@ -766,7 +763,7 @@ _\text{$1} $0
 endsnippet
 
 context "math()"
-snippet tt "text" iA
+snippet tt "text" b
 \text{$1}$0
 endsnippet
 
@@ -777,58 +774,58 @@ snippet case "cases" wA
 \end{cases}
 endsnippet
 
-snippet SI "SI" iA
+snippet SI "SI" b
 \SI{$1}{$2}
 endsnippet
 
-snippet bigfun "Big function" iA
+snippet bigfun "Big function" b
 \begin{align*}
 	$1: $2 &\longrightarrow $3 \\\\
 	$4 &\longmapsto $1($4) = $0
 .\end{align*}
 endsnippet
 
-snippet cvec "column vector" iA
+snippet cvec "column vector" b
 \begin{pmatrix} ${1:x}_${2:1}\\\\ \vdots\\\\ $1_${2:n} \end{pmatrix}
 endsnippet
 
 priority 10
 context "math()"
-snippet "bar" "bar" riA
+snippet "bar" "bar" rb
 \overline{$1}$0
 endsnippet
 
 priority 100
 context "math()"
-snippet "([a-zA-Z])bar" "bar" riA
+snippet "([a-zA-Z])bar" "bar" rb
 \overline{`!p snip.rv=match.group(1)`}
 endsnippet
 
 priority 10
 context "math()"
-snippet "hat" "hat" riA
+snippet "hat" "hat" rb
 \hat{$1}$0
 endsnippet
 
 priority 100
 context "math()"
-snippet "([a-zA-Z])hat" "hat" riA
+snippet "([a-zA-Z])hat" "hat" rb
 \hat{`!p snip.rv=match.group(1)`}
 endsnippet
 
-snippet letw "let omega" iA
+snippet letw "let omega" b
 Let $\Omega \subset \C$ be open.
 endsnippet
 
-snippet HH "H" iA
+snippet HH "H" b
 \mathbb{H}
 endsnippet
 
-snippet DD "D" iA
+snippet DD "D" b
 \mathbb{D}
 endsnippet
 
-snippet nnl "Inserts align characters" iA
+snippet nnl "Inserts align characters" b
 & ${1:${VISUAL}} \\\ $0
 endsnippet
 
@@ -874,4 +871,16 @@ snippet coverpage "Cover page template" b
 			
 	\end{center}
 \end{titlepage}
+endsnippet
+
+snippet newdef "Create a new definition" b
+\begin{definition}[$1]\label{def:$1}
+$2
+\end{definition}
+endsnippet
+
+snippet newquest "Create a new question" b
+\begin{question}[$1]
+	$2
+\end{question}
 endsnippet

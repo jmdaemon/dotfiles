@@ -1,0 +1,16 @@
+#!/bin/bash
+
+mtsed() {
+    # Mass text substitution in a given directory
+    # Usage: sedall "$directory" "$match" "$replace_with"
+    directory="$1"
+    match="$2"
+    replace="$3"
+    if [[ -z "$directory" || -z "$match" || -z "$replace" ]]; then
+        echo "Usage: sedall [directory] [match] [replace]"
+        return
+    fi
+    find "$directory" -type f -exec sed -i -e "s/$match/$replace/g" {} \;
+}
+
+mtsed $@

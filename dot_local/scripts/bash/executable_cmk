@@ -1,0 +1,55 @@
+#!/bin/bash
+
+cmk() {
+    buildgen="$1"
+    buildcfg="$2"
+    buildsys="$3"
+
+    if [[ $buildgen == "cmake" ]]; then
+        # Shorthand aliases for building c/c++ cmake projects
+        # Usage: cmk cmake release ninja
+        preset=""
+        builddir=""
+        buildtool=""
+        buildroot="build/cmake"
+        if [[ $buildsys == "ninja" ]]; then
+            preset=gcc-$buildcfg-ninja
+            builddir=$buildroot/gcc-$buildcfg-ninja
+            buildtool=ninja
+        elif [[ $buildsys == "make" ]]; then
+            preset=gcc-$buildcfg-unix-makefiles
+            builddir=$buildroot/gcc-$buildcfg-unix-makefiles
+            buildtool=make
+        fi
+        #builddir="build/cmake/$preset"
+
+        # Create new release
+        # To make a new release normally:
+        # cmake --preset gcc-release-ninja && cd build/cmake/gcc-release-ninja && ninja
+        # ctest -V
+        # sudo cpack .
+        cmake --preset $preset && cd $builddir && $buildtool
+        if [[ $buildcfg == "debug" ]]; then
+            ctest -V
+        elif [[ $buildcfg == "release" ]]; then
+            sudo cpack .
+        fi
+    elif [[ $buildgen == "meson" ]]; then
+        builddir=build/meson/$buildcfg
+        meson setup $builddir --buildtype $buildcfg --reconfigure
+        cd $builddir
+        meson compile
+        
+        if [[ $buildcfg == "debug" ]]; then
+            meson test
+        elif [[ $buildcfg == "release" ]]; then
+            # TODO: Package releases
+            ;
+        fi
+    elif [[ $buildgen == "make" ]]; then
+        target_type=$buildsys
+        make $buildcfg $target_type
+    fi
+}
+
+cmk $@

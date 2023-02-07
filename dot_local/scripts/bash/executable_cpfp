@@ -1,0 +1,13 @@
+#!/bin/bash
+
+cpfp() {
+    # Copies the current working directory to the clipboard
+    filepath=$1
+    if [[ -n "$filepath" ]]; then
+        echo "$filepath" | tr -d '\n' | xclip -sel clip
+    else # Copies cwd by default
+        pwd | tr -d '\n' | xclip -sel clip
+    fi
+}
+
+cpfp $@

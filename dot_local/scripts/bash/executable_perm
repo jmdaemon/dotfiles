@@ -1,0 +1,9 @@
+#!/bin/bash
+
+perm() {
+    # Show the octal permissions for a file
+    file="$1"
+    stat -c "%a %n" $file
+}
+
+perm $@

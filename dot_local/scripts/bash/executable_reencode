@@ -1,0 +1,10 @@
+#!/bin/bash
+
+reencode() {
+    # Reencodes .mp3 files via ffmpeg
+    input="$1"
+    ffmpeg -i "$input" "${input%.*}.mp3" $@
+    [[ ! -e "$input" ]] && rm "$input" || :
+}
+
+reencode $@

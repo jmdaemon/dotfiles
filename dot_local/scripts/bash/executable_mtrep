@@ -1,0 +1,14 @@
+#!/bin/bash
+
+mtrep() {
+    # Mass replace a text pattern in a given directory
+    # Usage: massrep "$pattern" "$replacement" "$directory"
+    pattern="$1"
+    replace_with="$2"
+    directory="$3"
+    if [[ ! -z "$pattern" && ! -z "$replace_with" && ! -z "$directory" ]]; then
+        grep -rl "$pattern" "$directory" | xargs sed -i "s/$pattern/$replace_with/g"
+    fi
+}
+
+mtrep $@

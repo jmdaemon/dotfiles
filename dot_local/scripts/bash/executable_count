@@ -1,0 +1,9 @@
+#!/bin/bash
+
+count() {
+    # Count the number of characters in a line
+    text=$1
+    printf "%s" "$text" | wc -m
+}
+
+count $@

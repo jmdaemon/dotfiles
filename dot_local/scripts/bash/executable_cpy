@@ -1,0 +1,13 @@
+#!/bin/bash
+
+cpy() {
+    # xclip alias but strips all trailing newlines
+    VAR=""
+    while read -r data; do
+        VAR+="$data\n"
+    done
+    CLEANED=$(echo $VAR | sed -rz 's/^\n+//; s/\n+$/\n/g') # Strips trailing newlines
+    printf "%b" "$CLEANED" | xclip -sel clip
+}
+
+cpy $@

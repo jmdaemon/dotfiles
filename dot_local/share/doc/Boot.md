@@ -83,6 +83,8 @@ sudo mount --bind /proc /mnt/proc &&
 sudo mount --bind /sys /mnt/sys
 # [Required for UEFI partitions] Mount efivarfs
 sudo mount -t efivarfs efivarfs /mnt/sys/firmware/efi/efivars
+# [Optional] Mount Swap
+sudo swapon /dev/[your swap partition]
 sudo chroot /mnt
 ```
 

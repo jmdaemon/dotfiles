@@ -1,0 +1,1181 @@
+diff --git a/.Xresources b/.Xresources
+old mode 100664
+new mode 100644
+diff --git a/.bash_profile b/.bash_profile
+old mode 100664
+new mode 100644
+diff --git a/.bashrc b/.bashrc
+old mode 100664
+new mode 100644
+diff --git a/.cargo b/.cargo
+old mode 40775
+new mode 40755
+diff --git a/.cargo/config b/.cargo/config
+old mode 100664
+new mode 100644
+diff --git a/.config b/.config
+old mode 40775
+new mode 40755
+diff --git a/.config/Dharkael b/.config/Dharkael
+old mode 40775
+new mode 40755
+diff --git a/.config/Dharkael/flameshot.ini b/.config/Dharkael/flameshot.ini
+old mode 100775
+new mode 100755
+diff --git a/.config/alacritty b/.config/alacritty
+old mode 40775
+new mode 40755
+diff --git a/.config/alacritty/alacritty.yml b/.config/alacritty/alacritty.yml
+old mode 100664
+new mode 100644
+diff --git a/.config/clight b/.config/clight
+old mode 40775
+new mode 40755
+diff --git a/.config/clight-gui b/.config/clight-gui
+old mode 40775
+new mode 40755
+diff --git a/.config/clight-gui/clight-gui.conf b/.config/clight-gui/clight-gui.conf
+old mode 100664
+new mode 100644
+diff --git a/.config/clight/clight.conf b/.config/clight/clight.conf
+old mode 100664
+new mode 100644
+diff --git a/.config/coc b/.config/coc
+old mode 40775
+new mode 40755
+diff --git a/.config/coc/ultisnips b/.config/coc/ultisnips
+old mode 40775
+new mode 40755
+diff --git a/.config/coc/ultisnips/PKGBUILD.snippets b/.config/coc/ultisnips/PKGBUILD.snippets
+old mode 100664
+new mode 100644
+diff --git a/.config/coc/ultisnips/all.snippets b/.config/coc/ultisnips/all.snippets
+old mode 100664
+new mode 100644
+diff --git a/.config/coc/ultisnips/c.snippets b/.config/coc/ultisnips/c.snippets
+old mode 100664
+new mode 100644
+diff --git a/.config/coc/ultisnips/cmake.snippets b/.config/coc/ultisnips/cmake.snippets
+old mode 100664
+new mode 100644
+diff --git a/.config/coc/ultisnips/cpp.snippets b/.config/coc/ultisnips/cpp.snippets
+old mode 100664
+new mode 100644
+diff --git a/.config/coc/ultisnips/gitignore.snippets b/.config/coc/ultisnips/gitignore.snippets
+old mode 100664
+new mode 100644
+diff --git a/.config/coc/ultisnips/h.snippets b/.config/coc/ultisnips/h.snippets
+old mode 100664
+new mode 100644
+diff --git a/.config/coc/ultisnips/haskell.snippets b/.config/coc/ultisnips/haskell.snippets
+old mode 100664
+new mode 100644
+diff --git a/.config/coc/ultisnips/java.snippets b/.config/coc/ultisnips/java.snippets
+old mode 100664
+new mode 100644
+diff --git a/.config/coc/ultisnips/javascript.snippets b/.config/coc/ultisnips/javascript.snippets
+old mode 100664
+new mode 100644
+diff --git a/.config/coc/ultisnips/latex.snippets b/.config/coc/ultisnips/latex.snippets
+old mode 100664
+new mode 100644
+diff --git a/.config/coc/ultisnips/meson.snippets b/.config/coc/ultisnips/meson.snippets
+old mode 100664
+new mode 100644
+diff --git a/.config/coc/ultisnips/python.snippets b/.config/coc/ultisnips/python.snippets
+old mode 100664
+new mode 100644
+diff --git a/.config/coc/ultisnips/react.snippets b/.config/coc/ultisnips/react.snippets
+old mode 100664
+new mode 100644
+diff --git a/.config/coc/ultisnips/sh.snippets b/.config/coc/ultisnips/sh.snippets
+old mode 100664
+new mode 100644
+diff --git a/.config/coc/ultisnips/typescript.snippets b/.config/coc/ultisnips/typescript.snippets
+old mode 100664
+new mode 100644
+diff --git a/.config/conda b/.config/conda
+old mode 40775
+new mode 40755
+diff --git a/.config/conda/condarc b/.config/conda/condarc
+old mode 100775
+new mode 100755
+diff --git a/.config/dotfiles b/.config/dotfiles
+old mode 40775
+new mode 40755
+diff --git a/.config/dotfiles/scripts b/.config/dotfiles/scripts
+old mode 40775
+new mode 40755
+diff --git a/.config/dotfiles/scripts/autorun b/.config/dotfiles/scripts/autorun
+old mode 40775
+new mode 40755
+diff --git a/.config/dotfiles/scripts/autorun/borgbackup-user.sh b/.config/dotfiles/scripts/autorun/borgbackup-user.sh
+old mode 100775
+new mode 100755
+diff --git a/.config/dotfiles/scripts/autorun/conda-clean.sh b/.config/dotfiles/scripts/autorun/conda-clean.sh
+old mode 100775
+new mode 100755
+diff --git a/.config/dotfiles/scripts/autorun/gdrive-backup.sh b/.config/dotfiles/scripts/autorun/gdrive-backup.sh
+old mode 100775
+new mode 100755
+diff --git a/.config/dotfiles/scripts/autorun/install_conda_drivers.sh b/.config/dotfiles/scripts/autorun/install_conda_drivers.sh
+old mode 100775
+new mode 100755
+diff --git a/.config/dotfiles/scripts/autorun/npmup.sh b/.config/dotfiles/scripts/autorun/npmup.sh
+old mode 100775
+new mode 100755
+diff --git a/.config/dotfiles/scripts/autorun/pipup.sh b/.config/dotfiles/scripts/autorun/pipup.sh
+old mode 100775
+new mode 100755
+diff --git a/.config/dotfiles/scripts/autorun/rkhunter.sh b/.config/dotfiles/scripts/autorun/rkhunter.sh
+old mode 100775
+new mode 100755
+diff --git a/.config/dotfiles/scripts/autorun/rustup.sh b/.config/dotfiles/scripts/autorun/rustup.sh
+old mode 100775
+new mode 100755
+diff --git a/.config/dotfiles/scripts/autorun/sdkup.sh b/.config/dotfiles/scripts/autorun/sdkup.sh
+old mode 100775
+new mode 100755
+diff --git a/.config/dotfiles/scripts/autorun/vimup.sh b/.config/dotfiles/scripts/autorun/vimup.sh
+old mode 100775
+new mode 100755
+diff --git a/.config/dotfiles/scripts/init b/.config/dotfiles/scripts/init
+old mode 40775
+new mode 40755
+diff --git a/.config/dotfiles/scripts/init/android-studio.sh b/.config/dotfiles/scripts/init/android-studio.sh
+old mode 100775
+new mode 100755
+diff --git a/.config/dotfiles/scripts/init/asciidoctor.sh b/.config/dotfiles/scripts/init/asciidoctor.sh
+old mode 100775
+new mode 100755
+diff --git a/.config/dotfiles/scripts/init/conda.sh b/.config/dotfiles/scripts/init/conda.sh
+old mode 100775
+new mode 100755
+diff --git a/.config/dotfiles/scripts/init/gef.sh b/.config/dotfiles/scripts/init/gef.sh
+old mode 100775
+new mode 100755
+diff --git a/.config/dotfiles/scripts/init/gpgkeys.sh b/.config/dotfiles/scripts/init/gpgkeys.sh
+old mode 100775
+new mode 100755
+diff --git a/.config/dotfiles/scripts/init/gradle-completion.sh b/.config/dotfiles/scripts/init/gradle-completion.sh
+old mode 100775
+new mode 100755
+diff --git a/.config/dotfiles/scripts/init/grub.sh b/.config/dotfiles/scripts/init/grub.sh
+old mode 100775
+new mode 100755
+diff --git a/.config/dotfiles/scripts/init/haskell.sh b/.config/dotfiles/scripts/init/haskell.sh
+old mode 100775
+new mode 100755
+diff --git a/.config/dotfiles/scripts/init/jupyter.sh b/.config/dotfiles/scripts/init/jupyter.sh
+old mode 100775
+new mode 100755
+diff --git a/.config/dotfiles/scripts/init/langserver.sh b/.config/dotfiles/scripts/init/langserver.sh
+old mode 100775
+new mode 100755
+diff --git a/.config/dotfiles/scripts/init/libreoffice-calc.sh b/.config/dotfiles/scripts/init/libreoffice-calc.sh
+old mode 100775
+new mode 100755
+diff --git a/.config/dotfiles/scripts/init/lightdm.sh b/.config/dotfiles/scripts/init/lightdm.sh
+old mode 100775
+new mode 100755
+diff --git a/.config/dotfiles/scripts/init/npm.sh b/.config/dotfiles/scripts/init/npm.sh
+old mode 100664
+new mode 100644
+diff --git a/.config/dotfiles/scripts/init/pip.sh b/.config/dotfiles/scripts/init/pip.sh
+old mode 100664
+new mode 100644
+diff --git a/.config/dotfiles/scripts/init/pkghook.sh b/.config/dotfiles/scripts/init/pkghook.sh
+old mode 100775
+new mode 100755
+diff --git a/.config/dotfiles/scripts/init/qemu-raspbian.sh b/.config/dotfiles/scripts/init/qemu-raspbian.sh
+old mode 100775
+new mode 100755
+diff --git a/.config/dotfiles/scripts/init/ruby.sh b/.config/dotfiles/scripts/init/ruby.sh
+old mode 100775
+new mode 100755
+diff --git a/.config/dotfiles/scripts/init/rust.sh b/.config/dotfiles/scripts/init/rust.sh
+old mode 100775
+new mode 100755
+diff --git a/.config/dotfiles/scripts/init/sbcl.sh b/.config/dotfiles/scripts/init/sbcl.sh
+old mode 100775
+new mode 100755
+diff --git a/.config/dotfiles/scripts/init/sdkman.sh b/.config/dotfiles/scripts/init/sdkman.sh
+old mode 100775
+new mode 100755
+diff --git a/.config/dotfiles/scripts/init/setsshkeyperms.sh b/.config/dotfiles/scripts/init/setsshkeyperms.sh
+old mode 100775
+new mode 100755
+diff --git a/.config/dotfiles/scripts/init/sshkeygen.sh b/.config/dotfiles/scripts/init/sshkeygen.sh
+old mode 100775
+new mode 100755
+diff --git a/.config/dotfiles/scripts/init/xdg-init.sh b/.config/dotfiles/scripts/init/xdg-init.sh
+old mode 100775
+new mode 100755
+diff --git a/.config/dotfiles/scripts/polybar b/.config/dotfiles/scripts/polybar
+old mode 40775
+new mode 40755
+diff --git a/.config/dotfiles/scripts/polybar/launch.sh b/.config/dotfiles/scripts/polybar/launch.sh
+old mode 100775
+new mode 100755
+diff --git a/.config/dotfiles/scripts/polybar/openweathermap-detailed.sh b/.config/dotfiles/scripts/polybar/openweathermap-detailed.sh
+old mode 100775
+new mode 100755
+diff --git a/.config/dotfiles/scripts/polybar/weather b/.config/dotfiles/scripts/polybar/weather
+old mode 100775
+new mode 100755
+diff --git a/.config/dotfiles/scripts/startup b/.config/dotfiles/scripts/startup
+old mode 40775
+new mode 40755
+diff --git a/.config/dotfiles/scripts/startup/aliases.sh b/.config/dotfiles/scripts/startup/aliases.sh
+old mode 100775
+new mode 100755
+index 569dcf0c8340eb2659f8c14361fd3591d9ff990d..9c8dcd8e82d8e84f3202b9a23c97a85bc58579da
+--- a/.config/dotfiles/scripts/startup/aliases.sh
++++ b/.config/dotfiles/scripts/startup/aliases.sh
+@@ -16,13 +16,11 @@ alias tree='ls --tree'
+ 
+ # Aliases
+ alias nv='nvim'
+-alias xclip='xclip -sel clip' # X Server copy to clipboard
+ alias start_env="source $HOME/.config/dotfiles/scripts/startup/start-env.sh"
+ alias szsh="source ~/.zshrc"
+ alias spro="source ~/.profile"
+ alias kzom="kill $(ps -A -ostat,ppid | awk '/[zZ]/ && !a[$2]++ {print $2}')"
+ alias expnode="export NODE_OPTIONS=--openssl-legacy-provider"
+-alias scd="xset dpms force off"
+ alias zhist="nvim $HOME/.history/zsh/ubuntu-workstation/zsh_history"
+ alias zhistc="cat $HOME/.history/zsh/ubuntu-workstation/zsh_history"
+ alias conda-init="source $DOTFILES/scripts/terminal/conda-init.sh"
+diff --git a/.config/dotfiles/scripts/startup/nvm.sh b/.config/dotfiles/scripts/startup/nvm.sh
+old mode 100775
+new mode 100755
+diff --git a/.config/dotfiles/scripts/startup/rpi-vm.sh b/.config/dotfiles/scripts/startup/rpi-vm.sh
+old mode 100775
+new mode 100755
+diff --git a/.config/dotfiles/scripts/startup/start-env.sh b/.config/dotfiles/scripts/startup/start-env.sh
+old mode 100775
+new mode 100755
+diff --git a/.config/dotfiles/scripts/terminal b/.config/dotfiles/scripts/terminal
+old mode 40775
+new mode 40755
+diff --git a/.config/dotfiles/scripts/terminal/base16.sh b/.config/dotfiles/scripts/terminal/base16.sh
+old mode 100775
+new mode 100755
+diff --git a/.config/dotfiles/scripts/terminal/conda-init.sh b/.config/dotfiles/scripts/terminal/conda-init.sh
+old mode 100775
+new mode 100755
+diff --git a/.config/dotfiles/scripts/terminal/fortune-cow.sh b/.config/dotfiles/scripts/terminal/fortune-cow.sh
+old mode 100775
+new mode 100755
+diff --git a/.config/dotfiles/scripts/terminal/prompt b/.config/dotfiles/scripts/terminal/prompt
+old mode 40775
+new mode 40755
+diff --git a/.config/dotfiles/scripts/terminal/prompt/gruvbox_256.sh b/.config/dotfiles/scripts/terminal/prompt/gruvbox_256.sh
+old mode 100664
+new mode 100644
+diff --git a/.config/dotfiles/scripts/terminal/prompt/zprompt.zsh b/.config/dotfiles/scripts/terminal/prompt/zprompt.zsh
+old mode 100775
+new mode 100755
+diff --git a/.config/dotfiles/scripts/terminal/sdkman.sh b/.config/dotfiles/scripts/terminal/sdkman.sh
+old mode 100775
+new mode 100755
+diff --git a/.config/dunst b/.config/dunst
+old mode 40775
+new mode 40755
+diff --git a/.config/dunst/dunstrc b/.config/dunst/dunstrc
+old mode 100664
+new mode 100644
+diff --git a/.config/fontconfig b/.config/fontconfig
+old mode 40775
+new mode 40755
+diff --git a/.config/fontconfig/fonts.conf b/.config/fontconfig/fonts.conf
+old mode 100664
+new mode 100644
+diff --git a/.config/gdb b/.config/gdb
+old mode 40775
+new mode 40755
+diff --git a/.config/gdb/init b/.config/gdb/init
+old mode 40775
+new mode 40755
+diff --git a/.config/gdb/init/gdbinit b/.config/gdb/init/gdbinit
+old mode 100775
+new mode 100755
+diff --git a/.config/ghc b/.config/ghc
+old mode 40775
+new mode 40755
+diff --git a/.config/ghc/ghci.conf b/.config/ghc/ghci.conf
+old mode 100664
+new mode 100644
+diff --git a/.config/git b/.config/git
+old mode 40775
+new mode 40755
+diff --git a/.config/git/config b/.config/git/config
+old mode 100664
+new mode 100644
+diff --git a/.config/git/git_template b/.config/git/git_template
+old mode 40775
+new mode 40755
+diff --git a/.config/git/git_template/hooks b/.config/git/git_template/hooks
+old mode 40775
+new mode 40755
+diff --git a/.config/git/git_template/hooks/archive-branch b/.config/git/git_template/hooks/archive-branch
+old mode 100775
+new mode 100755
+diff --git a/.config/git/git_template/hooks/commit-count b/.config/git/git_template/hooks/commit-count
+old mode 100775
+new mode 100755
+diff --git a/.config/git/git_template/hooks/ctags b/.config/git/git_template/hooks/ctags
+old mode 100775
+new mode 100755
+diff --git a/.config/git/git_template/hooks/mask b/.config/git/git_template/hooks/mask
+old mode 100775
+new mode 100755
+diff --git a/.config/git/git_template/hooks/mvurl b/.config/git/git_template/hooks/mvurl
+old mode 100775
+new mode 100755
+diff --git a/.config/git/git_template/hooks/optim b/.config/git/git_template/hooks/optim
+old mode 100775
+new mode 100755
+diff --git a/.config/git/git_template/hooks/post-checkout b/.config/git/git_template/hooks/post-checkout
+old mode 100775
+new mode 100755
+diff --git a/.config/git/git_template/hooks/post-commit b/.config/git/git_template/hooks/post-commit
+old mode 100775
+new mode 100755
+diff --git a/.config/git/git_template/hooks/post-merge b/.config/git/git_template/hooks/post-merge
+old mode 100775
+new mode 100755
+diff --git a/.config/git/git_template/hooks/post-rewrite b/.config/git/git_template/hooks/post-rewrite
+old mode 100775
+new mode 100755
+diff --git a/.config/git/git_template/hooks/rmignore b/.config/git/git_template/hooks/rmignore
+old mode 100775
+new mode 100755
+diff --git a/.config/git/git_template/hooks/tracked b/.config/git/git_template/hooks/tracked
+old mode 100775
+new mode 100755
+diff --git a/.config/git/personal b/.config/git/personal
+old mode 100664
+new mode 100644
+diff --git a/.config/i3 b/.config/i3
+old mode 40775
+new mode 40755
+diff --git a/.config/inkscape b/.config/inkscape
+old mode 40775
+new mode 40755
+diff --git a/.config/inkscape-shortcut-manager b/.config/inkscape-shortcut-manager
+old mode 40775
+new mode 40755
+diff --git a/.config/inkscape-shortcut-manager/config.py b/.config/inkscape-shortcut-manager/config.py
+old mode 100664
+new mode 100644
+diff --git a/.config/inkscape/preferences.default.xml b/.config/inkscape/preferences.default.xml
+old mode 100664
+new mode 100644
+diff --git a/.config/inkscape/preferences.xml b/.config/inkscape/preferences.xml
+old mode 100664
+new mode 100644
+diff --git a/.config/kitty b/.config/kitty
+old mode 40775
+new mode 40755
+diff --git a/.config/kitty/kitty.conf b/.config/kitty/kitty.conf
+old mode 100664
+new mode 100644
+diff --git a/.config/mpd b/.config/mpd
+old mode 40775
+new mode 40755
+diff --git a/.config/mpd/mpd.conf b/.config/mpd/mpd.conf
+old mode 100775
+new mode 100755
+diff --git a/.config/msmtp b/.config/msmtp
+old mode 40775
+new mode 40755
+diff --git a/.config/msmtp/oauth2.py b/.config/msmtp/oauth2.py
+old mode 100775
+new mode 100755
+diff --git a/.config/msmtp/oauth2token b/.config/msmtp/oauth2token
+old mode 100775
+new mode 100755
+diff --git a/.config/ncmpcpp b/.config/ncmpcpp
+old mode 40775
+new mode 40755
+diff --git a/.config/ncmpcpp/config b/.config/ncmpcpp/config
+old mode 100664
+new mode 100644
+diff --git a/.config/npm b/.config/npm
+old mode 40775
+new mode 40755
+diff --git a/.config/npm/npmrc b/.config/npm/npmrc
+old mode 100664
+new mode 100644
+diff --git a/.config/nvim b/.config/nvim
+old mode 40775
+new mode 40755
+diff --git a/.config/nvim/.min.vimrc b/.config/nvim/.min.vimrc
+old mode 100664
+new mode 100644
+diff --git a/.config/nvim/after b/.config/nvim/after
+old mode 40775
+new mode 40755
+diff --git a/.config/nvim/after/ftplugin b/.config/nvim/after/ftplugin
+old mode 40775
+new mode 40755
+diff --git a/.config/nvim/after/ftplugin/asciidoctor.vim b/.config/nvim/after/ftplugin/asciidoctor.vim
+old mode 100664
+new mode 100644
+diff --git a/.config/nvim/after/ftplugin/c.vim b/.config/nvim/after/ftplugin/c.vim
+old mode 100664
+new mode 100644
+diff --git a/.config/nvim/after/ftplugin/cls.vim b/.config/nvim/after/ftplugin/cls.vim
+old mode 100664
+new mode 100644
+diff --git a/.config/nvim/after/ftplugin/cpp.vim b/.config/nvim/after/ftplugin/cpp.vim
+old mode 100664
+new mode 100644
+diff --git a/.config/nvim/after/ftplugin/h.vim b/.config/nvim/after/ftplugin/h.vim
+old mode 100664
+new mode 100644
+diff --git a/.config/nvim/after/ftplugin/hpp.vim b/.config/nvim/after/ftplugin/hpp.vim
+old mode 100664
+new mode 100644
+diff --git a/.config/nvim/after/ftplugin/java.vim b/.config/nvim/after/ftplugin/java.vim
+old mode 100664
+new mode 100644
+diff --git a/.config/nvim/after/ftplugin/kotlin.vim b/.config/nvim/after/ftplugin/kotlin.vim
+old mode 100664
+new mode 100644
+diff --git a/.config/nvim/after/ftplugin/markdown.vim b/.config/nvim/after/ftplugin/markdown.vim
+old mode 100664
+new mode 100644
+diff --git a/.config/nvim/after/ftplugin/python.vim b/.config/nvim/after/ftplugin/python.vim
+old mode 100664
+new mode 100644
+diff --git a/.config/nvim/after/ftplugin/tex.vim b/.config/nvim/after/ftplugin/tex.vim
+old mode 100664
+new mode 100644
+diff --git a/.config/nvim/after/ftplugin/xml.vim b/.config/nvim/after/ftplugin/xml.vim
+old mode 100664
+new mode 100644
+diff --git a/.config/nvim/after/ftplugin/yaml.vim b/.config/nvim/after/ftplugin/yaml.vim
+old mode 100664
+new mode 100644
+diff --git a/.config/nvim/coc-settings.json b/.config/nvim/coc-settings.json
+old mode 100664
+new mode 100644
+index 73f9a7454650a677c33a59f51eef15ef0414aead..d15801950cccfa5977238186d1c32ea84f966103
+--- a/.config/nvim/coc-settings.json
++++ b/.config/nvim/coc-settings.json
+@@ -131,7 +131,6 @@     "java.import.maven.enabled": true,
+     "java.maven.downloadSources": true,
+     "java.import.gradle.enabled": true,
+     "java.configuration.updateBuildConfiguration": "automatic",
+-    "snippets.ultisnips.pythonPrompt": false,
+ 
+     // Common Lisp
+     //"lisp.enabled": true,
+diff --git a/.config/picom b/.config/picom
+old mode 40775
+new mode 40755
+diff --git a/.config/polybar b/.config/polybar
+old mode 40775
+new mode 40755
+diff --git a/.config/pomodoro b/.config/pomodoro
+old mode 40775
+new mode 40755
+diff --git a/.config/pomodoro/config.toml b/.config/pomodoro/config.toml
+old mode 100664
+new mode 100644
+diff --git a/.config/pycodestyle b/.config/pycodestyle
+old mode 100664
+new mode 100644
+diff --git a/.config/redshift b/.config/redshift
+old mode 40775
+new mode 40755
+diff --git a/.config/redshift/redshift.conf b/.config/redshift/redshift.conf
+old mode 100664
+new mode 100644
+diff --git a/.config/rofi b/.config/rofi
+old mode 40775
+new mode 40755
+diff --git a/.config/rofi/config.rasi b/.config/rofi/config.rasi
+old mode 100664
+new mode 100644
+diff --git a/.config/rofi/firewatch.rasi b/.config/rofi/firewatch.rasi
+old mode 100664
+new mode 100644
+diff --git a/.config/tmux b/.config/tmux
+old mode 40775
+new mode 40755
+diff --git a/.config/tmux/tmux.conf b/.config/tmux/tmux.conf
+old mode 100664
+new mode 100644
+diff --git a/.config/tmux/tmux.conf.local b/.config/tmux/tmux.conf.local
+old mode 100664
+new mode 100644
+diff --git a/.config/xfce4 b/.config/xfce4
+old mode 40775
+new mode 40755
+diff --git a/.fehbg b/.fehbg
+old mode 100775
+new mode 100755
+diff --git a/.haskeline b/.haskeline
+old mode 100664
+new mode 100644
+diff --git a/.local b/.local
+old mode 40775
+new mode 40755
+diff --git a/.local/scripts b/.local/scripts
+old mode 40775
+new mode 40755
+diff --git a/.local/scripts/bash b/.local/scripts/bash
+old mode 40775
+new mode 40755
+diff --git a/.local/scripts/bash/addgrp b/.local/scripts/bash/addgrp
+old mode 100775
+new mode 100755
+diff --git a/.local/scripts/bash/batchprint b/.local/scripts/bash/batchprint
+old mode 100775
+new mode 100755
+diff --git a/.local/scripts/bash/checkws b/.local/scripts/bash/checkws
+old mode 100775
+new mode 100755
+diff --git a/.local/scripts/bash/cmk b/.local/scripts/bash/cmk
+old mode 100775
+new mode 100755
+diff --git a/.local/scripts/bash/concat b/.local/scripts/bash/concat
+old mode 100775
+new mode 100755
+diff --git a/.local/scripts/bash/count b/.local/scripts/bash/count
+old mode 100775
+new mode 100755
+diff --git a/.local/scripts/bash/cpfp b/.local/scripts/bash/cpfp
+old mode 100775
+new mode 100755
+diff --git a/.local/scripts/bash/cpy b/.local/scripts/bash/cpy
+old mode 100775
+new mode 100755
+diff --git a/.local/scripts/bash/fasttable b/.local/scripts/bash/fasttable
+old mode 100775
+new mode 100755
+diff --git a/.local/scripts/bash/find_file b/.local/scripts/bash/find_file
+old mode 100775
+new mode 100755
+diff --git a/.local/scripts/bash/genkey b/.local/scripts/bash/genkey
+old mode 100775
+new mode 100755
+diff --git a/.local/scripts/bash/git-clean b/.local/scripts/bash/git-clean
+old mode 100775
+new mode 100755
+diff --git a/.local/scripts/bash/mksubdirs b/.local/scripts/bash/mksubdirs
+old mode 100775
+new mode 100755
+diff --git a/.local/scripts/bash/mtrep b/.local/scripts/bash/mtrep
+old mode 100775
+new mode 100755
+diff --git a/.local/scripts/bash/mtsed b/.local/scripts/bash/mtsed
+old mode 100775
+new mode 100755
+diff --git a/.local/scripts/bash/perm b/.local/scripts/bash/perm
+old mode 100775
+new mode 100755
+diff --git a/.local/scripts/bash/piload b/.local/scripts/bash/piload
+old mode 100775
+new mode 100755
+diff --git a/.local/scripts/bash/reencode b/.local/scripts/bash/reencode
+old mode 100775
+new mode 100755
+diff --git a/.local/scripts/bash/regeval b/.local/scripts/bash/regeval
+old mode 100775
+new mode 100755
+diff --git a/.local/scripts/bash/sig b/.local/scripts/bash/sig
+old mode 100775
+new mode 100755
+diff --git a/.local/scripts/bash/vid2gif b/.local/scripts/bash/vid2gif
+old mode 100775
+new mode 100755
+diff --git a/.local/scripts/bash/vol b/.local/scripts/bash/vol
+old mode 100775
+new mode 100755
+diff --git a/.local/scripts/bash/ydl b/.local/scripts/bash/ydl
+old mode 100775
+new mode 100755
+diff --git a/.local/scripts/powershell b/.local/scripts/powershell
+old mode 40775
+new mode 40755
+diff --git a/.local/scripts/powershell/bmsound.ps1 b/.local/scripts/powershell/bmsound.ps1
+old mode 100664
+new mode 100644
+diff --git a/.local/scripts/powershell/bmv.ps1 b/.local/scripts/powershell/bmv.ps1
+old mode 100664
+new mode 100644
+diff --git a/.local/scripts/powershell/findnullfiles.ps1 b/.local/scripts/powershell/findnullfiles.ps1
+old mode 100664
+new mode 100644
+diff --git a/.local/scripts/powershell/mcode.ps1 b/.local/scripts/powershell/mcode.ps1
+old mode 100664
+new mode 100644
+diff --git a/.local/scripts/powershell/msound.ps1 b/.local/scripts/powershell/msound.ps1
+old mode 100664
+new mode 100644
+diff --git a/.local/scripts/powershell/pin.ps1 b/.local/scripts/powershell/pin.ps1
+old mode 100664
+new mode 100644
+diff --git a/.local/scripts/powershell/vol.ps1 b/.local/scripts/powershell/vol.ps1
+old mode 100664
+new mode 100644
+diff --git a/.local/scripts/powershell/volboost.ps1 b/.local/scripts/powershell/volboost.ps1
+old mode 100664
+new mode 100644
+diff --git a/.local/scripts/python b/.local/scripts/python
+old mode 40775
+new mode 40755
+diff --git a/.local/scripts/python/clean b/.local/scripts/python/clean
+old mode 100775
+new mode 100755
+diff --git a/.local/scripts/python/mcping b/.local/scripts/python/mcping
+old mode 100775
+new mode 100755
+diff --git a/.local/scripts/python/slice b/.local/scripts/python/slice
+old mode 100775
+new mode 100755
+diff --git a/.local/scripts/python/transpose b/.local/scripts/python/transpose
+old mode 100775
+new mode 100755
+diff --git a/.local/scripts/python/transpose-file b/.local/scripts/python/transpose-file
+old mode 100775
+new mode 100755
+diff --git a/.local/scripts/python/truthtable b/.local/scripts/python/truthtable
+old mode 100775
+new mode 100755
+diff --git a/.local/share b/.local/share
+old mode 40775
+new mode 40755
+diff --git a/.local/share/doc b/.local/share/doc
+old mode 40775
+new mode 40755
+diff --git a/.local/share/doc/LaTeX b/.local/share/doc/LaTeX
+old mode 40775
+new mode 40755
+diff --git a/.local/share/doc/LaTeX/List of Greek letters and math symbols - Overleaf, Online LaTeX Editor.html b/.local/share/doc/LaTeX/List of Greek letters and math symbols - Overleaf, Online LaTeX Editor.html
+old mode 100664
+new mode 100644
+diff --git a/.local/share/doc/LaTeX/List of Greek letters and math symbols.png b/.local/share/doc/LaTeX/List of Greek letters and math symbols.png
+old mode 100664
+new mode 100644
+diff --git a/.local/share/doc/LaTeX/List of LaTeX mathematical symbols - OeisWiki.html b/.local/share/doc/LaTeX/List of LaTeX mathematical symbols - OeisWiki.html
+old mode 100664
+new mode 100644
+diff --git a/.local/share/doc/LaTeX/List of LaTeX mathematical symbols OesisWiki.png b/.local/share/doc/LaTeX/List of LaTeX mathematical symbols OesisWiki.png
+old mode 100664
+new mode 100644
+diff --git a/.local/share/doc/gdb.txt b/.local/share/doc/gdb.txt
+old mode 100664
+new mode 100644
+diff --git a/.local/share/excludes b/.local/share/excludes
+old mode 40775
+new mode 40755
+diff --git a/.local/share/excludes/XDG-CONFIG.exclude.list b/.local/share/excludes/XDG-CONFIG.exclude.list
+old mode 100664
+new mode 100644
+diff --git a/.local/share/excludes/XDG-DATA.exclude.list b/.local/share/excludes/XDG-DATA.exclude.list
+old mode 100664
+new mode 100644
+diff --git a/.local/share/excludes/borg.exclude.list b/.local/share/excludes/borg.exclude.list
+old mode 100664
+new mode 100644
+diff --git a/.profile b/.profile
+old mode 100664
+new mode 100644
+index 55af81d09abd1c1ab20b191569a34107550a4bd6..8f604915b08463a7d6127a739e4ff949bf04b7d3
+--- a/.profile
++++ b/.profile
+@@ -137,8 +137,8 @@ GHCUP=$GHCUP_USE_XDG_DIRS/bin
+ 
+ # Lua
+ # Load the luarocks paths
+-# eval $(luarocks path | head -n 2)
+-# LUA=$HOME/.luarocks/bin
++eval $(luarocks path | head -n 2)
++LUA=$HOME/.luarocks/bin
+ 
+ #
+ # Local Scripting Directories
+@@ -189,12 +189,15 @@ load_alias "draw"
+ load_alias "book"
+ 
+ # Load all shortpath completions here
+-[ -s "$XDG_CONFIG_HOME/shortpaths/commpletions/bash/shortpaths.sh" ] && source $XDG_CONFIG_HOME/shortpaths/commpletions/bash/shortpaths.sh
++source $XDG_CONFIG_HOME/shortpaths/commpletions/bash/shortpaths.sh
+ [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # Load nvm
+ [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # Load shell completions for nvm
+ 
+ eval "$(rbenv init -)" # Load rbenv
+ source $CARGO_HOME/env # Load cargo
++#source $scripts/terminal/fortunecow.sh 
++# Enable Wayland
++# export MOZ_ENABLE_WAYLAND=1
+ #source $scripts/terminal/fortunecow.sh
+ 
+ # Persistent Tmux Sessions
+diff --git a/.vimrc b/.vimrc
+old mode 100664
+new mode 100644
+diff --git a/.zshrc b/.zshrc
+old mode 100664
+new mode 100644
+diff --git a/a b/a
+index e7332449f6785e3cd9e5417cd677671891e892ee..ad91f4ab608fec4f7969cc9d991e23c627a1359b 100644
+--- a/a
++++ b/a
+@@ -1,228 +1,223 @@
+-00:00.0 Host bridge: Intel Corporation Xeon E3-1200 v6/7th Gen Core Processor Host Bridge/DRAM Registers (rev 05)
+-	Subsystem: Micro-Star International Co., Ltd. [MSI] Device 7a63
+-	Flags: bus master, fast devsel, latency 0
+-	Capabilities: <access denied>
+-	Kernel driver in use: skl_uncore
+-
+-00:01.0 PCI bridge: Intel Corporation 6th-10th Gen Core Processor PCIe Controller (x16) (rev 05) (prog-if 00 [Normal decode])
+-	Subsystem: Micro-Star International Co., Ltd. [MSI] Device 7a63
+-	Flags: bus master, fast devsel, latency 0, IRQ 120
+-	Bus: primary=00, secondary=01, subordinate=01, sec-latency=0
+-	I/O behind bridge: e000-efff [size=4K] [16-bit]
+-	Memory behind bridge: de000000-df0fffff [size=17M] [32-bit]
+-	Prefetchable memory behind bridge: c0000000-d1ffffff [size=288M] [32-bit]
+-	Capabilities: <access denied>
+-	Kernel driver in use: pcieport
+-
+-00:01.1 PCI bridge: Intel Corporation Xeon E3-1200 v5/E3-1500 v5/6th Gen Core Processor PCIe Controller (x8) (rev 05) (prog-if 00 [Normal decode])
+-	Subsystem: Micro-Star International Co., Ltd. [MSI] Device 7a63
+-	Flags: bus master, fast devsel, latency 0, IRQ 121
+-	Bus: primary=00, secondary=02, subordinate=02, sec-latency=0
+-	I/O behind bridge: d000-dfff [size=4K] [16-bit]
+-	Memory behind bridge: dc000000-dd0fffff [size=17M] [32-bit]
+-	Prefetchable memory behind bridge: a0000000-b1ffffff [size=288M] [32-bit]
+-	Capabilities: <access denied>
+-	Kernel driver in use: pcieport
+-
+-00:08.0 System peripheral: Intel Corporation Xeon E3-1200 v5/v6 / E3-1500 v5 / 6th/7th/8th Gen Core Processor Gaussian Mixture Model
+-	Subsystem: Micro-Star International Co., Ltd. [MSI] Device 7a63
+-	Flags: fast devsel, IRQ 255
+-	Memory at df452000 (64-bit, non-prefetchable) [disabled] [size=4K]
+-	Capabilities: <access denied>
+-
+-00:14.0 USB controller: Intel Corporation 200 Series/Z370 Chipset Family USB 3.0 xHCI Controller (prog-if 30 [XHCI])
+-	Subsystem: Micro-Star International Co., Ltd. [MSI] Device 7a63
+-	Flags: bus master, medium devsel, latency 0, IRQ 127
+-	Memory at df430000 (64-bit, non-prefetchable) [size=64K]
+-	Capabilities: <access denied>
+-	Kernel driver in use: xhci_hcd
+-	Kernel modules: xhci_pci
+-
+-00:14.2 Signal processing controller: Intel Corporation 200 Series PCH Thermal Subsystem
+-	Subsystem: Micro-Star International Co., Ltd. [MSI] Device 7a63
+-	Flags: fast devsel, IRQ 255
+-	Memory at df451000 (64-bit, non-prefetchable) [size=4K]
+-	Capabilities: <access denied>
+-
+-00:15.0 Signal processing controller: Intel Corporation 200 Series PCH Serial IO I2C Controller #0
+-	Subsystem: Micro-Star International Co., Ltd. [MSI] Device 7a63
+-	Flags: bus master, fast devsel, latency 0, IRQ 16
+-	Memory at df450000 (64-bit, non-prefetchable) [size=4K]
+-	Capabilities: <access denied>
+-	Kernel driver in use: intel-lpss
+-	Kernel modules: intel_lpss_pci
+-
+-00:15.1 Signal processing controller: Intel Corporation 200 Series PCH Serial IO I2C Controller #1
+-	Subsystem: Micro-Star International Co., Ltd. [MSI] Device 7a63
+-	Flags: bus master, fast devsel, latency 0, IRQ 17
+-	Memory at df44f000 (64-bit, non-prefetchable) [size=4K]
+-	Capabilities: <access denied>
+-	Kernel driver in use: intel-lpss
+-	Kernel modules: intel_lpss_pci
+-
+-00:16.0 Communication controller: Intel Corporation 200 Series PCH CSME HECI #1
+-	Subsystem: Micro-Star International Co., Ltd. [MSI] Device 7a63
+-	Flags: bus master, fast devsel, latency 0, IRQ 140
+-	Memory at df44e000 (64-bit, non-prefetchable) [size=4K]
+-	Capabilities: <access denied>
+-	Kernel driver in use: mei_me
+-	Kernel modules: mei_me
+-
+-00:17.0 SATA controller: Intel Corporation 200 Series PCH SATA controller [AHCI mode] (prog-if 01 [AHCI 1.0])
+-	Subsystem: Micro-Star International Co., Ltd. [MSI] Device 7a63
+-	Flags: bus master, 66MHz, medium devsel, latency 0, IRQ 126
+-	Memory at df448000 (32-bit, non-prefetchable) [size=8K]
+-	Memory at df44d000 (32-bit, non-prefetchable) [size=256]
+-	I/O ports at f050 [size=8]
+-	I/O ports at f040 [size=4]
+-	I/O ports at f020 [size=32]
+-	Memory at df44c000 (32-bit, non-prefetchable) [size=2K]
+-	Capabilities: <access denied>
+-	Kernel driver in use: ahci
+-
+-00:1c.0 PCI bridge: Intel Corporation 200 Series PCH PCI Express Root Port #1 (rev f0) (prog-if 00 [Normal decode])
+-	Subsystem: Micro-Star International Co., Ltd. [MSI] Device 7a63
+-	Flags: bus master, fast devsel, latency 0, IRQ 122
+-	Bus: primary=00, secondary=03, subordinate=03, sec-latency=0
+-	I/O behind bridge: [disabled] [16-bit]
+-	Memory behind bridge: [disabled] [32-bit]
+-	Prefetchable memory behind bridge: [disabled] [64-bit]
+-	Capabilities: <access denied>
+-	Kernel driver in use: pcieport
+-
+-00:1c.4 PCI bridge: Intel Corporation 200 Series PCH PCI Express Root Port #5 (rev f0) (prog-if 00 [Normal decode])
+-	Subsystem: Micro-Star International Co., Ltd. [MSI] Device 7a63
+-	Flags: bus master, fast devsel, latency 0, IRQ 123
+-	Bus: primary=00, secondary=04, subordinate=04, sec-latency=0
+-	I/O behind bridge: [disabled] [16-bit]
+-	Memory behind bridge: df300000-df3fffff [size=1M] [32-bit]
+-	Prefetchable memory behind bridge: [disabled] [64-bit]
+-	Capabilities: <access denied>
+-	Kernel driver in use: pcieport
+-
+-00:1c.6 PCI bridge: Intel Corporation 200 Series PCH PCI Express Root Port #7 (rev f0) (prog-if 00 [Normal decode])
+-	Subsystem: Micro-Star International Co., Ltd. [MSI] Device 7a63
+-	Flags: bus master, fast devsel, latency 0, IRQ 124
+-	Bus: primary=00, secondary=05, subordinate=05, sec-latency=0
+-	I/O behind bridge: [disabled] [16-bit]
+-	Memory behind bridge: df200000-df2fffff [size=1M] [32-bit]
+-	Prefetchable memory behind bridge: [disabled] [64-bit]
+-	Capabilities: <access denied>
+-	Kernel driver in use: pcieport
+-
+-00:1d.0 PCI bridge: Intel Corporation 200 Series PCH PCI Express Root Port #9 (rev f0) (prog-if 00 [Normal decode])
+-	Subsystem: Micro-Star International Co., Ltd. [MSI] Device 7a63
+-	Flags: bus master, fast devsel, latency 0, IRQ 125
+-	Bus: primary=00, secondary=06, subordinate=06, sec-latency=0
+-	I/O behind bridge: [disabled] [16-bit]
+-	Memory behind bridge: df100000-df1fffff [size=1M] [32-bit]
+-	Prefetchable memory behind bridge: [disabled] [64-bit]
+-	Capabilities: <access denied>
+-	Kernel driver in use: pcieport
+-
+-00:1e.0 Signal processing controller: Intel Corporation 200 Series/Z370 Chipset Family Serial IO UART Controller #0
+-	Subsystem: Micro-Star International Co., Ltd. [MSI] Device 7a63
+-	Flags: bus master, fast devsel, latency 0, IRQ 20
+-	Memory at df44b000 (64-bit, non-prefetchable) [size=4K]
+-	Capabilities: <access denied>
+-	Kernel driver in use: intel-lpss
+-	Kernel modules: intel_lpss_pci
+-
+-00:1f.0 ISA bridge: Intel Corporation 200 Series PCH LPC Controller (Z270)
+-	Subsystem: Micro-Star International Co., Ltd. [MSI] Device 7a63
+-	Flags: bus master, medium devsel, latency 0
+-
+-00:1f.2 Memory controller: Intel Corporation 200 Series/Z370 Chipset Family Power Management Controller
+-	Subsystem: Micro-Star International Co., Ltd. [MSI] Device 7a63
+-	Flags: fast devsel
+-	Memory at df444000 (32-bit, non-prefetchable) [disabled] [size=16K]
+-
+-00:1f.3 Audio device: Intel Corporation 200 Series PCH HD Audio
+-	Subsystem: Micro-Star International Co., Ltd. [MSI] Device da63
+-	Flags: bus master, fast devsel, latency 32, IRQ 141
+-	Memory at df440000 (64-bit, non-prefetchable) [size=16K]
+-	Memory at df420000 (64-bit, non-prefetchable) [size=64K]
+-	Capabilities: <access denied>
+-	Kernel driver in use: snd_hda_intel
+-	Kernel modules: snd_hda_intel, snd_soc_avs
+-
+-00:1f.4 SMBus: Intel Corporation 200 Series/Z370 Chipset Family SMBus Controller
+-	Subsystem: Micro-Star International Co., Ltd. [MSI] Device 7a63
+-	Flags: medium devsel, IRQ 16
+-	Memory at df44a000 (64-bit, non-prefetchable) [size=256]
+-	I/O ports at f000 [size=32]
+-	Kernel driver in use: i801_smbus
+-	Kernel modules: i2c_i801
+-
+-00:1f.6 Ethernet controller: Intel Corporation Ethernet Connection (2) I219-V
+-	Subsystem: Micro-Star International Co., Ltd. [MSI] Device 7a63
+-	Flags: bus master, fast devsel, latency 0, IRQ 142
+-	Memory at df400000 (32-bit, non-prefetchable) [size=128K]
+-	Capabilities: <access denied>
+-	Kernel driver in use: e1000e
+-	Kernel modules: e1000e
+-
+-01:00.0 VGA compatible controller: NVIDIA Corporation GP106 [GeForce GTX 1060 3GB] (rev a1) (prog-if 00 [VGA controller])
+-	Subsystem: Micro-Star International Co., Ltd. [MSI] Device 3285
+-	Flags: bus master, fast devsel, latency 0, IRQ 138
+-	Memory at de000000 (32-bit, non-prefetchable) [size=16M]
+-	Memory at c0000000 (64-bit, prefetchable) [size=256M]
+-	Memory at d0000000 (64-bit, prefetchable) [size=32M]
+-	I/O ports at e000 [size=128]
+-	Expansion ROM at 000c0000 [disabled] [size=128K]
+-	Capabilities: <access denied>
+-	Kernel driver in use: nouveau
+-	Kernel modules: nouveau, nvidia_drm, nvidia
+-
+-01:00.1 Audio device: NVIDIA Corporation GP106 High Definition Audio Controller (rev a1)
+-	Subsystem: Micro-Star International Co., Ltd. [MSI] Device 3285
+-	Flags: bus master, fast devsel, latency 0, IRQ 17
+-	Memory at df080000 (32-bit, non-prefetchable) [size=16K]
+-	Capabilities: <access denied>
+-	Kernel driver in use: snd_hda_intel
+-	Kernel modules: snd_hda_intel
+-
+-02:00.0 VGA compatible controller: NVIDIA Corporation GP104 [GeForce GTX 1070] (rev a1) (prog-if 00 [VGA controller])
+-	Subsystem: eVga.com. Corp. Device 5173
+-	Flags: bus master, fast devsel, latency 0, IRQ 139
+-	Memory at dc000000 (32-bit, non-prefetchable) [size=16M]
+-	Memory at a0000000 (64-bit, prefetchable) [size=256M]
+-	Memory at b0000000 (64-bit, prefetchable) [size=32M]
+-	I/O ports at d000 [size=128]
+-	Expansion ROM at dd000000 [disabled] [size=512K]
+-	Capabilities: <access denied>
+-	Kernel driver in use: nouveau
+-	Kernel modules: nouveau, nvidia_drm, nvidia
+-
+-02:00.1 Audio device: NVIDIA Corporation GP104 High Definition Audio Controller (rev a1)
+-	Subsystem: eVga.com. Corp. Device 5173
+-	Flags: bus master, fast devsel, latency 0, IRQ 18
+-	Memory at dd080000 (32-bit, non-prefetchable) [size=16K]
+-	Capabilities: <access denied>
+-	Kernel driver in use: snd_hda_intel
+-	Kernel modules: snd_hda_intel
+-
+-04:00.0 USB controller: ASMedia Technology Inc. ASM2142/ASM3142 USB 3.1 Host Controller (prog-if 30 [XHCI])
+-	Subsystem: Micro-Star International Co., Ltd. [MSI] Device 7a63
+-	Flags: bus master, fast devsel, latency 0, IRQ 16
+-	Memory at df300000 (64-bit, non-prefetchable) [size=32K]
+-	Capabilities: <access denied>
+-	Kernel driver in use: xhci_hcd
+-	Kernel modules: xhci_pci
+-
+-05:00.0 Network controller: Intel Corporation Wi-Fi 6 AX210/AX211/AX411 160MHz (rev 1a)
+-	Subsystem: Intel Corporation Wi-Fi 6 AX210 160MHz
+-	Flags: bus master, fast devsel, latency 0, IRQ 18
+-	Memory at df200000 (64-bit, non-prefetchable) [size=16K]
+-	Capabilities: <access denied>
+-	Kernel driver in use: iwlwifi
+-	Kernel modules: iwlwifi
+-
+-06:00.0 Non-Volatile memory controller: Samsung Electronics Co Ltd NVMe SSD Controller SM981/PM981/PM983 (prog-if 02 [NVM Express])
+-	Subsystem: Samsung Electronics Co Ltd SSD 970 EVO
+-	Flags: bus master, fast devsel, latency 0, IRQ 16, NUMA node 0
+-	Memory at df100000 (64-bit, non-prefetchable) [size=16K]
+-	Capabilities: <access denied>
+-	Kernel driver in use: nvme
+-	Kernel modules: nvme
+-
++ M .Xresources
++ M .bash_profile
++ M .bashrc
++ M .cargo
++ M .cargo/config
++ M .config
++ M .config/Dharkael
++ M .config/Dharkael/flameshot.ini
++ M .config/alacritty
++MM .config/alacritty/alacritty.yml
++ M .config/clight
++ M .config/clight-gui
++ M .config/clight-gui/clight-gui.conf
++ M .config/clight/clight.conf
++ M .config/coc
++ M .config/coc/ultisnips
++ M .config/coc/ultisnips/PKGBUILD.snippets
++ M .config/coc/ultisnips/all.snippets
++ M .config/coc/ultisnips/c.snippets
++ M .config/coc/ultisnips/cmake.snippets
++ M .config/coc/ultisnips/cpp.snippets
++ M .config/coc/ultisnips/gitignore.snippets
++ M .config/coc/ultisnips/h.snippets
++ M .config/coc/ultisnips/haskell.snippets
++ M .config/coc/ultisnips/java.snippets
++ M .config/coc/ultisnips/javascript.snippets
++ M .config/coc/ultisnips/latex.snippets
++ M .config/coc/ultisnips/meson.snippets
++ M .config/coc/ultisnips/python.snippets
++ M .config/coc/ultisnips/react.snippets
++ M .config/coc/ultisnips/sh.snippets
++ M .config/coc/ultisnips/typescript.snippets
++ M .config/conda
++ M .config/conda/condarc
++ M .config/dotfiles
++ M .config/dotfiles/scripts
++ M .config/dotfiles/scripts/autorun
++ M .config/dotfiles/scripts/autorun/borgbackup-user.sh
++ M .config/dotfiles/scripts/autorun/conda-clean.sh
++ M .config/dotfiles/scripts/autorun/gdrive-backup.sh
++ M .config/dotfiles/scripts/autorun/install_conda_drivers.sh
++ M .config/dotfiles/scripts/autorun/npmup.sh
++ M .config/dotfiles/scripts/autorun/pipup.sh
++ M .config/dotfiles/scripts/autorun/rkhunter.sh
++ M .config/dotfiles/scripts/autorun/rustup.sh
++ M .config/dotfiles/scripts/autorun/sdkup.sh
++ M .config/dotfiles/scripts/autorun/vimup.sh
++ M .config/dotfiles/scripts/init
++ M .config/dotfiles/scripts/init/android-studio.sh
++ M .config/dotfiles/scripts/init/asciidoctor.sh
++ M .config/dotfiles/scripts/init/conda.sh
++ M .config/dotfiles/scripts/init/gef.sh
++ M .config/dotfiles/scripts/init/gpgkeys.sh
++ M .config/dotfiles/scripts/init/gradle-completion.sh
++ M .config/dotfiles/scripts/init/grub.sh
++ M .config/dotfiles/scripts/init/haskell.sh
++ M .config/dotfiles/scripts/init/jupyter.sh
++ M .config/dotfiles/scripts/init/langserver.sh
++ M .config/dotfiles/scripts/init/libreoffice-calc.sh
++ M .config/dotfiles/scripts/init/lightdm.sh
++ M .config/dotfiles/scripts/init/npm.sh
++ M .config/dotfiles/scripts/init/pip.sh
++ M .config/dotfiles/scripts/init/pkghook.sh
++ M .config/dotfiles/scripts/init/qemu-raspbian.sh
++ M .config/dotfiles/scripts/init/ruby.sh
++ M .config/dotfiles/scripts/init/rust.sh
++ M .config/dotfiles/scripts/init/sbcl.sh
++ M .config/dotfiles/scripts/init/sdkman.sh
++ M .config/dotfiles/scripts/init/setsshkeyperms.sh
++ M .config/dotfiles/scripts/init/sshkeygen.sh
++ M .config/dotfiles/scripts/init/xdg-init.sh
++ M .config/dotfiles/scripts/polybar
++ M .config/dotfiles/scripts/polybar/launch.sh
++ M .config/dotfiles/scripts/polybar/openweathermap-detailed.sh
++ M .config/dotfiles/scripts/polybar/weather
++ M .config/dotfiles/scripts/startup
++ M .config/dotfiles/scripts/startup/aliases.sh
++ M .config/dotfiles/scripts/startup/nvm.sh
++ M .config/dotfiles/scripts/startup/rpi-vm.sh
++ M .config/dotfiles/scripts/startup/start-env.sh
++ M .config/dotfiles/scripts/terminal
++ M .config/dotfiles/scripts/terminal/base16.sh
++ M .config/dotfiles/scripts/terminal/conda-init.sh
++ M .config/dotfiles/scripts/terminal/fortune-cow.sh
++ M .config/dotfiles/scripts/terminal/prompt
++ M .config/dotfiles/scripts/terminal/prompt/gruvbox_256.sh
++ M .config/dotfiles/scripts/terminal/prompt/zprompt.zsh
++ M .config/dotfiles/scripts/terminal/sdkman.sh
++ M .config/dunst
++ M .config/dunst/dunstrc
++ M .config/fontconfig
++ M .config/fontconfig/fonts.conf
++ M .config/gdb
++ M .config/gdb/init
++ M .config/gdb/init/gdbinit
++ M .config/ghc
++ M .config/ghc/ghci.conf
++ M .config/git
++ M .config/git/config
++ M .config/git/git_template
++ M .config/git/git_template/hooks
++ M .config/git/git_template/hooks/archive-branch
++ M .config/git/git_template/hooks/commit-count
++ M .config/git/git_template/hooks/ctags
++ M .config/git/git_template/hooks/mask
++ M .config/git/git_template/hooks/mvurl
++ M .config/git/git_template/hooks/optim
++ M .config/git/git_template/hooks/post-checkout
++ M .config/git/git_template/hooks/post-commit
++ M .config/git/git_template/hooks/post-merge
++ M .config/git/git_template/hooks/post-rewrite
++ M .config/git/git_template/hooks/rmignore
++ M .config/git/git_template/hooks/tracked
++ M .config/git/personal
++ M .config/i3
++ M .config/inkscape
++ M .config/inkscape-shortcut-manager
++ M .config/inkscape-shortcut-manager/config.py
++ M .config/inkscape/preferences.default.xml
++ M .config/inkscape/preferences.xml
++ M .config/kitty
++ M .config/kitty/kitty.conf
++ M .config/mpd
++ M .config/mpd/mpd.conf
++ M .config/msmtp
++ M .config/msmtp/oauth2.py
++ M .config/msmtp/oauth2token
++ M .config/ncmpcpp
++ M .config/ncmpcpp/config
++ M .config/npm
++ M .config/npm/npmrc
++ M .config/nvim
++ M .config/nvim/.min.vimrc
++ M .config/nvim/after
++ M .config/nvim/after/ftplugin
++ M .config/nvim/after/ftplugin/asciidoctor.vim
++ M .config/nvim/after/ftplugin/c.vim
++ M .config/nvim/after/ftplugin/cls.vim
++ M .config/nvim/after/ftplugin/cpp.vim
++ M .config/nvim/after/ftplugin/h.vim
++ M .config/nvim/after/ftplugin/hpp.vim
++ M .config/nvim/after/ftplugin/java.vim
++ M .config/nvim/after/ftplugin/kotlin.vim
++ M .config/nvim/after/ftplugin/markdown.vim
++ M .config/nvim/after/ftplugin/python.vim
++ M .config/nvim/after/ftplugin/tex.vim
++ M .config/nvim/after/ftplugin/xml.vim
++ M .config/nvim/after/ftplugin/yaml.vim
++MM .config/nvim/coc-settings.json
++ M .config/picom
++ M .config/polybar
++ M .config/pomodoro
++ M .config/pomodoro/config.toml
++ M .config/pycodestyle
++ M .config/redshift
++ M .config/redshift/redshift.conf
++ M .config/rofi
++MM .config/rofi/config.rasi
++ M .config/rofi/firewatch.rasi
++ M .config/tmux
++ M .config/tmux/tmux.conf
++ M .config/tmux/tmux.conf.local
++ M .config/xfce4
++ M .fehbg
++ M .haskeline
++ M .local
++ M .local/scripts
++ M .local/scripts/bash
++ M .local/scripts/bash/addgrp
++ M .local/scripts/bash/batchprint
++ M .local/scripts/bash/checkws
++ M .local/scripts/bash/cmk
++ M .local/scripts/bash/concat
++ M .local/scripts/bash/count
++ M .local/scripts/bash/cpfp
++ M .local/scripts/bash/cpy
++ M .local/scripts/bash/fasttable
++ M .local/scripts/bash/find_file
++ M .local/scripts/bash/genkey
++ M .local/scripts/bash/git-clean
++ M .local/scripts/bash/mksubdirs
++ M .local/scripts/bash/mtrep
++ M .local/scripts/bash/mtsed
++ M .local/scripts/bash/perm
++ M .local/scripts/bash/piload
++ M .local/scripts/bash/reencode
++ M .local/scripts/bash/regeval
++ M .local/scripts/bash/sig
++ M .local/scripts/bash/vid2gif
++ M .local/scripts/bash/vol
++ M .local/scripts/bash/ydl
++ M .local/scripts/powershell
++ M .local/scripts/powershell/bmsound.ps1
++ M .local/scripts/powershell/bmv.ps1
++ M .local/scripts/powershell/findnullfiles.ps1
++ M .local/scripts/powershell/mcode.ps1
++ M .local/scripts/powershell/msound.ps1
++ M .local/scripts/powershell/pin.ps1
++ M .local/scripts/powershell/vol.ps1
++ M .local/scripts/powershell/volboost.ps1
++ M .local/scripts/python
++ M .local/scripts/python/clean
++ M .local/scripts/python/mcping
++ M .local/scripts/python/slice
++ M .local/scripts/python/transpose
++ M .local/scripts/python/transpose-file
++ M .local/scripts/python/truthtable
++ M .local/share
++ M .local/share/doc
++ M .local/share/doc/LaTeX
++ M .local/share/doc/LaTeX/List of Greek letters and math symbols - Overleaf, Online LaTeX Editor.html
++ M .local/share/doc/LaTeX/List of Greek letters and math symbols.png
++ M .local/share/doc/LaTeX/List of LaTeX mathematical symbols - OeisWiki.html
++ M .local/share/doc/LaTeX/List of LaTeX mathematical symbols OesisWiki.png
++ M .local/share/doc/gdb.txt
++ M .local/share/excludes
++ M .local/share/excludes/XDG-CONFIG.exclude.list
++ M .local/share/excludes/XDG-DATA.exclude.list
++ M .local/share/excludes/borg.exclude.list
++MM .profile
++ M .vimrc
++ M .zshrc
++ D a

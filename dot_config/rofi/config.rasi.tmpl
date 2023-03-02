@@ -1,11 +1,7 @@
 configuration { 
   modi: "window,drun,ssh,combi";
-  {{- if ( eq .system "ubuntu-workstation" ) }}
-  theme: "firewatch";
-  {{- else if ( eq .system "arch-laptop" ) }}
+  {{- if ( eq .system "arch-laptop" ) }}
 	dpi: 156;
   {{- end }}
 }
-{{ if ( eq .system "arch-laptop" "arch-asus") }}
 @theme "firewatch"
-{{- end }}

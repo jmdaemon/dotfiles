@@ -193,7 +193,8 @@ load_alias "draw"
 load_alias "book"
 
 # Load all shortpath completions here
-source $XDG_CONFIG_HOME/shortpaths/commpletions/bash/shortpaths.sh
+[ -s "$XDG_CONFIG_HOME/shortpaths/commpletions/bash/shortpaths.sh" ] && source $XDG_CONFIG_HOME/shortpaths/commpletions/bash/shortpaths.sh
+
 
 {{- if (eq .system "arch-laptop") }}
 # HiDPI - These environment variables scale applications x2, but can also make some icons blurry

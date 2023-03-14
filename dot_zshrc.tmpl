@@ -1,44 +1,65 @@
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
-
 export DOTFILES="$HOME/.config/dotfiles"
 export ZDOTDIR=$DOTFILES/zsh
 
-# https://github.com/ohmyzsh/ohmyzsh/issues/7332#issuecomment-593308026
-skip_global_compinit=1
-ZSH_CACHE_DIR=$HOME/.cache/zsh
-ZSH_COMPDUMP="${ZSH_CACHE_DIR}/zsh/zcompdump-${HOST/.*/}-${ZSH_VERSION}"
-
-# Path to your oh-my-zsh installation.
-export ZSH="$HOME/.config/zsh/oh-my-zsh"
+#
+# Shell Theme & Prompt
+#
 source $DOTFILES/scripts/terminal/base16.sh
 source $DOTFILES/scripts/terminal/prompt/zprompt.zsh
 
-HISTDIR=$HOME/.history/"{{- .system}}"/zsh
-HISTFILE="$HISTDIR"/zsh_history
-HISTSIZE=10000
-SAVEHIST=10000
-
+# Shell Completions
 fpath=( $fpath "$DOTFILES/completion" )
 zstyle ':completion:*' completer _complete
 zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' '+l:|=* r:|=*'
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path $XDG_CACHE_HOME/zsh/zcompcache
-setopt SHARE_HISTORY # Share history between all sessions.
-setopt EXTENDED_HISTORY # Record timestamp of command
 
-# ZSH Hooks
+# Share history between all sessions.
+setopt SHARE_HISTORY 
+
+# Record timestamp of command
+setopt EXTENDED_HISTORY
+
+#
+# History
+#
+HISTDIR=$HOME/.history/"{{- .system}}"/zsh
+HISTFILE="$HISTDIR"/zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+
+# Ignore duplicate history entries
+setopt HIST_EXPIRE_DUPS_FIRST
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_IGNORE_SPACE
+setopt HIST_FIND_NO_DUPS
+setopt HIST_SAVE_NO_DUPS
+
+#
+# Coredumps
+#
+# https://github.com/ohmyzsh/ohmyzsh/issues/7332#issuecomment-593308026
+skip_global_compinit=1
+ZSH_CACHE_DIR=$HOME/.cache/zsh
+ZSH_COMPDUMP="${ZSH_CACHE_DIR}/zsh/zcompdump-${HOST/.*/}-${ZSH_VERSION}"
 
 # Set crash dump directory to ~/.cache/zsh
-#autoload -Uz compinit && compinit -i
 autoload -Uz compinit && compinit -d $XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION
+
+# Use ZSH hooks
 autoload -Uz add-zsh-hook
+
+#
+# Hooks
+#
 
 {{ if ( eq .system "arch-laptop" "arch-asus") -}}
 # https://wiki.archlinux.org/title/Zsh#On-demand_rehash
 zshcache_time="$(date +%s%N)"
 
-rehash_precmd() { # Automatically rehash $PATH
+# Automatically rehash $PATH
+rehash_precmd() {
   if [[ -a /var/cache/zsh/pacman ]]; then
     local paccache_time="$(date -r /var/cache/zsh/pacman +%s%N)"
     if (( zshcache_time < paccache_time )); then
@@ -51,16 +72,16 @@ rehash_precmd() { # Automatically rehash $PATH
 add-zsh-hook -Uz precmd rehash_precmd
 {{- end }}
 
-# Archives history when it gets too big.
+# Archive history when it gets too big.
 archive_history() {
     emulate -L zsh
-    # Make history folder for different system if it doesn't exist
-    #HISTDIR=$HOME/.history/"{{- .system}}"/zsh
+    # Make HISTDIR if it doesn't already exist
     if [[ ! -d "$HISTDIR" ]]; then
         mkdir -p "$HISTDIR"
     fi
     # If we are not about to exceed 10,000 lines
     if [[ $(wc -l $HISTFILE) < 10000 ]]; then
+        # Write to history
         print -sr -- "${1%%$'\n'}"
     fi
     if [[ $(wc -l $HISTFILE) > 9999 ]]; then
@@ -75,6 +96,13 @@ archive_history() {
 }
 
 add-zsh-hook -Uz zshaddhistory archive_history
+
+#
+# Plugins
+#
+
+# Oh-My-Zsh
+export OMZ="$HOME/.config/zsh/oh-my-zsh"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -118,7 +146,7 @@ export UPDATE_ZSH_DAYS=1
 # see 'man strftime' for details.
 # HIST_STAMPS="mm/dd/yyyy"
 
-# Would you like to use another custom folder than $ZSH/custom?
+# Would you like to use another custom folder than $OMZ/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
 # Which plugins would you like to load?
@@ -126,8 +154,8 @@ export UPDATE_ZSH_DAYS=1
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-if [ -z "$ZSH/custom/plugins/zsh-completions" ]; then
-  git clone https://github.com/zsh-users/zsh-completions "$ZSH/custom/plugins/zsh-completions"
+if [ -z "$OMZ/custom/plugins/zsh-completions" ]; then
+  git clone https://github.com/zsh-users/zsh-completions "$OMZ/custom/plugins/zsh-completions"
 fi
 
 plugins=( git gradle-completion colored-man-pages zsh-completions )
@@ -136,7 +164,7 @@ plugins=( git gradle-completion colored-man-pages zsh-completions )
 # https://stackoverflow.com/questions/11378607/oh-my-zsh-disable-would-you-like-to-check-for-updates-prompt
 export DISABLE_UPDATE_PROMPT=true
 # Added in quick hack
-source $ZSH/oh-my-zsh.sh
+source $OMZ/oh-my-zsh.sh
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"

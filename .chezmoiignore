@@ -1,20 +1,27 @@
 {{- if ( eq .system "arch-laptop"  ) -}}
 .config/redshift/redshift.conf
 .config/git/personal
-{{- end }}
+{{- end -}}
+
 {{- if ( eq .dsp "wayland" ) -}}
 .config/i3/*
 .config/polybar/*
 .config/picom/*
 .config/xfce4/*
 .xinitrc
-{{- end }}
-{{- if ( eq .dsp "x11" ) -}}
+{{- else if ( eq .dsp "x11" ) -}}
 .config/sway
 .config/hypr
 .config/waybar
 .fehbg
+{{- end -}}
+
+{{ if ( eq .yarnv "1" ) }}
+.yarnrc.yml
+{{- else if ( eq .yarnv "2" ) -}}
+.yarnrc
 {{- end }}
+
 root
 LICENSE
 README.md
@@ -25,12 +32,3 @@ Config.md
 **/doc
 _color/
 _color/**/*
-{{ if ( eq .yarnv "1" ) }}
-.yarnrc.yml
-{{- else if ( eq .yarnv "2" ) -}}
-.yarnrc
-{{- end }}
-
-{{ if (not ( eq .system "windows-desktop" )) -}}
-Powershell Scripts
-{{- end }}

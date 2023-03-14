@@ -13,6 +13,7 @@
 .config/sway
 .config/hypr
 .config/waybar
+.fehbg
 {{- end }}
 root
 LICENSE

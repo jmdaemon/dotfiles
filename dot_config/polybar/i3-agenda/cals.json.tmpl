@@ -1,0 +1,4 @@
+{{- $secrets := joinPath .chezmoi.homeDir ".config/chezmoi/secrets.json" -}}
+{ 
+    "school": {{ output "jq" ".cals" $secrets | trim }}
+}

@@ -9,11 +9,11 @@
 .config/picom/*
 .config/xfce4/*
 .xinitrc
-{{- else if ( eq .dsp "x11" ) -}}
+.fehbg
+{{- else if ( eq .dsp "xorg" ) -}}
 .config/sway
 .config/hypr
 .config/waybar
-.fehbg
 {{- end -}}
 
 {{ if ( eq .yarnv "1" ) }}

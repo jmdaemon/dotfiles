@@ -7,13 +7,14 @@ export XDG_CACHE_HOME="$HOME/.cache"
 
 # History 
 HISTORY_DIR="$HOME/.history"
-export GDBHISTFILE=$HISTORY_DIR/gdb/"{{ .system }}"/gdb_history
-export PYTHONHISTFILE=$HISTORY_DIR/python/"{{ .system }}"/python_history
-export OCTAVE_HISTFILE=$HISTORY_DIR/octave/"{{ .system }}"/octave_history
-export LESSHISTFILE="$HISTORY_DIR/less/{{ .system }}"/less_history
-export NODE_REPL_HISTORY="$HISTORY_DIR"/nodejs/"{{ .system }}"/node_repl_history
-export SQLITE_HISTORY="$HISTORY_DIR"/sqlite3/"{{ .system }}"/sqlite_history
-export REDISCLI_HISTFILE="$HISTORY_DIR"/redis/rediscli_history
+export HISTORY_DIR_USER=$HISTORY_DIR/"{{ .system }}"
+export GDBHISTFILE="$HISTORY_DIR_USER"/gdb_history
+export PYTHONHISTFILE="$HISTORY_DIR_USER"/python_history
+export OCTAVE_HISTFILE="$HISTORY_DIR_USER"/octave_history
+export LESSHISTFILE="$HISTORY_DIR_USER"/less_history
+export NODE_REPL_HISTORY="$HISTORY_DIR_USER"/node_repl_history
+export SQLITE_HISTORY="$HISTORY_DIR_USER"/sqlite_history
+export REDISCLI_HISTFILE="$HISTORY_DIR_USER"/redis/rediscli_history
 
 # RC Files
 export OCTAVE_SITE_INITFILE="$XDG_CONFIG_HOME/octave/octaverc"

@@ -1,3 +1,4 @@
+{{- $secrets := joinPath .chezmoi.homeDir ".config/chezmoi/secrets.json" -}}
 [user]
-name = {{ .git.personal.name }}
-email = {{ .git.personal.email }}
+name = {{ output "jq" ".git.personal.name" $secrets | trim }}
+email = {{ output "jq" ".git.personal.email" $secrets | trim }}

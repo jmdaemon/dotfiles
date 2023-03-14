@@ -1,16 +1,14 @@
-{{- if (eq .system "ubuntu-workstation") -}}
+{{- $secrets := joinPath .chezmoi.homeDir ".config/chezmoi/secrets.json" -}}
 [user]
-  name = {{ .git.name }}
-  email = {{ .git.email }}
+  name = {{ output "jq" ".git.main.name" $secrets | trim }}
+  email = {{ output "jq" ".git.main.email" $secrets | trim }}
+{{- if ( eq .system "arch-laptop" "arch-asus" ) }}
+	signingkey = 5B3AE73F7980EE81
 [includeIf "gitdir:~/Workspace/horse/Projects/sfilly/"]
   path = ~/.config/git/personal
 [includeIf "gitdir:~/Workspace/horse/Projects/bmare/"]
   path = ~/.config/git/bmare
-{{- else if ( eq .system "arch-laptop" "arch-asus" ) -}}
-[user]
-  name = {{ .git.name }}
-  email = {{ .git.email }}
-	signingkey = 5B3AE73F7980EE81
+{{- else if (eq .system "ubuntu-workstation") -}}
 [includeIf "gitdir:~/Workspace/personal/"]
   path = ~/.config/git/personal
 {{- end }}

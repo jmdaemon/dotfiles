@@ -1,6 +1,7 @@
+{{- $secrets := joinPath .chezmoi.homeDir ".config/chezmoi/secrets.json" -}}
 #!/bin/sh
 
-email="{{ .git.email }}" 
+email={{ output "jq" ".git.main.email" $secrets | trim}}
 # https://www.tecmint.com/install-rootkit-hunter-scan-for-rootkits-backdoors-in-linux/
 #title=$(echo "Rkhunter Weekly [Arch-Laptop" ; date +"%F %T %Z"; printf %s "]" )
 #echo "Testing" | /bin/mail -s "$title" "$email"

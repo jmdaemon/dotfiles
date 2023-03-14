@@ -1,3 +1,5 @@
+{{- $secrets := joinPath .chezmoi.homeDir ".config/chezmoi/secrets.json" -}}
+{{- $email := output "jq" ".git.main.email" $secrets | trim -}}
 # Set default values for all following accounts.
 defaults
 auth oauthbearer
@@ -9,9 +11,9 @@ logfile        {{ .chezmoi.homeDir }}/.local/share/msmtp/logs/msmtp.log
 account        gmail
 host           smtp.gmail.com
 port           587
-from           {{ .git.email }}
-user           {{ .git.email }}
-passwordeval {{ .chezmoi.homeDir }}/.config/msmtp/oauth2token {{ .git.email }} "mail-server"
+from           {{ $email }}
+user           {{ $email }}
+passwordeval {{ .chezmoi.homeDir }}/.config/msmtp/oauth2token {{ $email }} "mail-server"
 
 # Set a default account
 account default : gmail

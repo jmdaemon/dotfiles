@@ -3,7 +3,7 @@
 {{- $wallpaper      := joinPath $backgrounds "Flat Colors/DpvywNN.jpg" -}}
 {{- $terminal       := "alacritty" -}}
 {{- $conda          := "miniconda" -}}
-{{- $dsp            := promptStringOnce . "dsp" "Set Display Server Protocol: [x11, wayland]: " -}}
+{{- $dsp            := promptStringOnce . "dsp" "Set Display Server Protocol: [xorg, wayland]: " -}}
 {{- $yarnv          := "3" -}}
 [data]
     system="{{ $system }}"

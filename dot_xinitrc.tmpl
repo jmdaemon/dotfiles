@@ -1,6 +1,6 @@
 #!/bin/sh
 
-{{- if ( eq .dsp "x11" ) }}
+{{- if ( eq .dsp "xorg" ) }}
 {{ if ( eq .system "arch-laptop" "arch-asus") -}}
 export GTK_IM_MODULE=fcitx5
 export QT_IM_MODULE=fcitx5
@@ -23,7 +23,7 @@ bash ~/.config/polybar/launch.sh
 source ~/.profile
 {{- end }}
 {{- end }}
-{{- if ( eq .dsp "x11" ) }}
+{{- if ( eq .dsp "xorg" ) }}
 exec i3
 {{- end }}
 # vim:ft=sh

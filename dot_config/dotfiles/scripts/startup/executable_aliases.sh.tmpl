@@ -18,7 +18,7 @@ alias cloc='tokei'
 
 # Aliases
 alias nv='nvim'
-{{- if (eq .dsp "x11" ) }}
+{{- if (eq .dsp "xorg" ) }}
 alias xclip='xclip -sel clip' # X Server copy to clipboard
 {{- end }}
 alias start_env="source $HOME/.config/dotfiles/scripts/startup/start-env.sh"
@@ -26,7 +26,7 @@ alias szsh="source ~/.zshrc"
 alias spro="source ~/.profile"
 alias kzom="kill $(ps -A -ostat,ppid | awk '/[zZ]/ && !a[$2]++ {print $2}')"
 alias expnode="export NODE_OPTIONS=--openssl-legacy-provider"
-{{- if (eq .dsp "x11" ) }}
+{{- if (eq .dsp "xorg" ) }}
 alias scd="xset dpms force off"
 {{- end }}
 alias zhist="nvim $HOME/.history/zsh/{{ .system }}/zsh_history"

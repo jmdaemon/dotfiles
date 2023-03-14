@@ -14,12 +14,6 @@ zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path $XDG_CACHE_HOME/zsh/zcompcache
 
-# Share history between all sessions.
-setopt SHARE_HISTORY 
-
-# Record timestamp of command
-setopt EXTENDED_HISTORY
-
 #
 # History
 #
@@ -27,6 +21,12 @@ HISTDIR=$HOME/.history/"{{- .system}}"/zsh
 HISTFILE="$HISTDIR"/zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
+
+# Share history between all sessions.
+setopt SHARE_HISTORY 
+
+# Record timestamp of command
+setopt EXTENDED_HISTORY
 
 # Ignore duplicate history entries
 setopt HIST_EXPIRE_DUPS_FIRST
@@ -186,7 +186,6 @@ source $OMZ/oh-my-zsh.sh
 # export SSH_KEY_PATH="~/.ssh/rsa_id"
 #
 
-#source $DOTFILES/scripts/terminal/conda-init.sh
 source $DOTFILES/scripts/terminal/sdkman.sh
 source $HOME/.profile
 
@@ -195,7 +194,9 @@ source $HOME/.profile
 #  /usr/bin/tmux new -s 0
 #  /usr/bin/tmux attach -t 0
 #fi 
-# vim:ft=zsh
 {{- if ( eq .system "ubuntu-workstation") }}
-if [ -e /home/jmd/.nix-profile/etc/profile.d/nix.sh ]; then . /home/jmd/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+if [ -e "$HOME.nix-profile/etc/profile.d/nix.sh" ]; then
+    . "$HOME.nix-profile/etc/profile.d/nix.sh";
+fi
 {{- end }}
+# vim:ft=zsh

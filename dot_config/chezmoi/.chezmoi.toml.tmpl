@@ -1,0 +1,15 @@
+{{- $system         := promptStringOnce . "system" "Set System Config: [ubuntu-workstation, arch-laptop, arch-asus]: " -}}
+{{- $backgrounds    := joinPath .chezmoi.homeDir "Pictures/Backgrounds" -}}
+{{- $wallpaper      := joinPath $backgrounds "Flat Colors/DpvywNN.jpg" -}}
+{{- $terminal       := "alacritty" -}}
+{{- $conda          := "miniconda" -}}
+{{- $dsp            := promptStringOnce . "dsp" "Set Display Server Protocol: [x11, wayland]: " -}}
+{{- $yarnv          := "3" -}}
+[data]
+    system="{{ $system }}"
+    backgrounds="{{ $backgrounds }}"
+    wallpaper="{{ $wallpaper }}"
+    terminal="{{ $terminal }}"
+    conda="{{ $conda }}"
+    dsp="{{ $dsp }}"
+    yarnv="{{ $yarnv }}"

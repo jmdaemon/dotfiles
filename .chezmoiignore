@@ -9,6 +9,11 @@
 .config/xfce4/*
 .xinitrc
 {{- end }}
+{{- if ( eq .dsp "x11" ) -}}
+.config/sway
+.config/hypr
+.config/waybar
+{{- end }}
 root
 LICENSE
 README.md

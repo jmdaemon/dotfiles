@@ -8,7 +8,6 @@
 .config/polybar/*
 .config/picom/*
 .config/xfce4/*
-.xinitrc
 .fehbg
 {{- else if ( eq .dsp "xorg" ) -}}
 .config/sway

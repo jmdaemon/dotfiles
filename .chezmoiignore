@@ -3,6 +3,10 @@
 .config/git/personal
 {{- end -}}
 
+{{- if ( eq .system "arch-laptop" "arch-asus" ) -}}
+.config/mamba/mambarc
+{{- end -}}
+
 {{- if ( eq .dsp "wayland" ) -}}
 .config/i3/*
 .config/polybar/*

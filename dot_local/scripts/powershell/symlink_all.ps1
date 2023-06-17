@@ -15,12 +15,21 @@ function tuple([string] $item1, [string] $item2) {
 #'C:\Program Files (x86)\Steam\userdata\287639416\ugmsgcache')))
 #)
 
-$links = @(
-    @('I:\Program Files (x86)\Steam\userdata\287639416\ugc', 'C:\Program Files (x86)\Steam\userdata\287639416\ugc')
-    , @('I:\Program Files (x86)\Steam\userdata\287639416\ugmsgcache', 'C:\Program Files (x86)\Steam\userdata\287639416\ugmsgcache')
-)
+
+#$links = @(
+#    @('I:\Program Files (x86)\Steam\userdata\287639416\ugc', 'C:\Program Files (x86)\Steam\userdata\287639416\ugc')
+#    , @('I:\Program Files (x86)\Steam\userdata\287639416\ugmsgcache', 'C:\Program Files (x86)\Steam\userdata\287639416\ugmsgcache')
+#)
 #$links.Add((tuple('I:\Program Files (x86)\Steam\userdata\287639416\ugmsgcache',
 #'C:\Program Files (x86)\Steam\userdata\287639416\ugmsgcache')))
+
+
+$links = @{
+    'I:\Program Files (x86)\Steam\userdata\287639416\ugc' = 'C:\Program Files (x86)\Steam\userdata\287639416\ugc'
+    'I:\Program Files (x86)\Steam\userdata\287639416\ugmsgcache' = 'C:\Program Files (x86)\Steam\userdata\287639416\ugmsgcache'
+}
+#    , @('I:\Program Files (x86)\Steam\userdata\287639416\ugmsgcache', 'C:\Program Files (x86)\Steam\userdata\287639416\ugmsgcache')
+#)
 
 
 # Create a symlink
@@ -60,21 +69,27 @@ function create_symlink([string] $src, $dest) {
 }
 
 # Log Paths
-function log_paths([string] $src, [string]$dest) {
-    echo "Source: $src"
-    echo "Dest: $dest"
+function log_paths([string] $src, [string] $dest) {
+    echo "Source: ${src}"
+    echo "Dest: ${dest}"
     echo ""
 }
 
 # Symlink all our desired links
-foreach ($link in $links) {
+foreach ($link in $links.GetEnumerator()) {
     
     #$src = $link.Item1
     #$dest = $link.Item2
     #($src, $dest) = ($link.Item1, $link.Item2)
     # ($src, $dest) = ($link[0], $link[1])
-    $src = $link.Get(0)
-    $dest = $link.Get(1)
-    log_paths($src, $dest)
-    create_symlink($src, $dest)
+    #$src = $link.Get(0)
+    #$dest = $link.Get(1)
+
+    #Write-Host "$($link.Name) : $($link.Value)"
+
+    #$src = $link.Name
+    #$dest = $link.Value
+    log_paths $link.Name $link.Value
+
+    # create_symlink($src, $dest)
 }

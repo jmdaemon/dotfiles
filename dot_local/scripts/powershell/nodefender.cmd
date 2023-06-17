@@ -1,0 +1,1 @@
+powershell -windowstyle hidden "H:\Workspace\VSCodium\chezmoi\dot_local\scripts\powershell"

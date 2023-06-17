@@ -1,69 +1,42 @@
 
 # Note: Super user/Admin privileges are required
-
-# Helper function to make tuples
-function tuple([string] $item1, [string] $item2) {
-    return [Tuple]::Create($item1, $item2)
-}
-
-#$links = New-Object 'Collections.Generic.List[Tuple[string,string]]'
-
-#$links = @(
-    # $src, $dest
-#$links.Add([Tuple]::Create('I:\Program Files (x86)\Steam\userdata\287639416\ugc','C:\Program Files (x86)\Steam\userdata\287639416\ugc'))
-#$links.Add((tuple('I:\Program Files (x86)\Steam\userdata\287639416\ugmsgcache',
-#'C:\Program Files (x86)\Steam\userdata\287639416\ugmsgcache')))
-#)
-
-
-#$links = @(
-#    @('I:\Program Files (x86)\Steam\userdata\287639416\ugc', 'C:\Program Files (x86)\Steam\userdata\287639416\ugc')
-#    , @('I:\Program Files (x86)\Steam\userdata\287639416\ugmsgcache', 'C:\Program Files (x86)\Steam\userdata\287639416\ugmsgcache')
-#)
-#$links.Add((tuple('I:\Program Files (x86)\Steam\userdata\287639416\ugmsgcache',
-#'C:\Program Files (x86)\Steam\userdata\287639416\ugmsgcache')))
-
-
 $links = @{
     'I:\Program Files (x86)\Steam\userdata\287639416\ugc' = 'C:\Program Files (x86)\Steam\userdata\287639416\ugc'
-    'I:\Program Files (x86)\Steam\userdata\287639416\ugmsgcache' = 'C:\Program Files (x86)\Steam\userdata\287639416\ugmsgcache'
+    'I:\Program Files (x86)\Steam\userdata\287639416\ugcmsgcache' = 'C:\Program Files (x86)\Steam\userdata\287639416\ugcmsgcache'
 }
-#    , @('I:\Program Files (x86)\Steam\userdata\287639416\ugmsgcache', 'C:\Program Files (x86)\Steam\userdata\287639416\ugmsgcache')
-#)
-
 
 # Create a symlink
-function ln ([string]$src, [string]$dest) {
+function ln ([string] $src, [string] $dest) {
     New-Item -Path $dest -ItemType SymbolicLink -Value $src
 }
 
 # Check if a path exists
-function exists([string]$path) {
+function exists([string] $path) {
     return Test-Path -Path $path
 }
 
 # Get parent directory of a path
-function get_parent_dir([string]$path) {
+function get_parent_dir([string] $path) {
     return (get-item $path).parent
 }
 
 # Create a directory with all its subdirectories
-function mkdirs([string]$path) {
+function mkdirs([string] $path) {
     mkdir -p $path
 }
 
 # Creates the symlink if $src exists and $dest does not
 function create_symlink([string] $src, $dest) {
-    if (exists($src) AND not exists($dest)) {
+    if ((exists $src) -and (-not (exists $dest))) {
         # Create all parent directories if they don't exist
-        $parent = get_parent_dir($dest)
-        if (-not(exists($parent))) {
-            mkdirs($parent)
+        $parent = get_parent_dir $dest
+        if (-not(exists $parent)) {
+            mkdirs $parent
         }
         # Create symlink
         echo "Symlinking $src -> $dest"
-        ln($src, $dest)
-    } elif (exists($desc)) {
+        ln $src $dest
+    } elseif (exists $dest) {
         echo "$desc already exists"
     }
 }
@@ -87,9 +60,9 @@ foreach ($link in $links.GetEnumerator()) {
 
     #Write-Host "$($link.Name) : $($link.Value)"
 
-    #$src = $link.Name
-    #$dest = $link.Value
-    log_paths $link.Name $link.Value
+    $src = $link.Name
+    $dest = $link.Value
+    #log_paths $link.Name $link.Value
 
-    # create_symlink($src, $dest)
+    create_symlink $src $dest
 }

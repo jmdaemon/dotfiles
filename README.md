@@ -1,11 +1,11 @@
 # Setup
 
+My dotfiles setup for Arch Linux and Windows, managed by [chezmoi](https://github.com/twpayne/chezmoi).
+
 ## Table of Contents
 
 1. [Arch Linux](#arch-linux)
 2. [Install](#install)
-
-My dotfiles setup, managed by [chezmoi](https://github.com/twpayne/chezmoi).
 
 ## Arch Linux
 

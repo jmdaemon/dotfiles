@@ -1,5 +1,8 @@
 # Setup
 
+1. [Arch Linux](#arch-linux)
+2. [Install](#install)
+
 My dotfiles setup, managed by [chezmoi](https://github.com/twpayne/chezmoi).
 
 ## Arch Linux
@@ -38,7 +41,7 @@ Additional applications I use are:
 I also make use of a lot of aliases, custom bash functions and executables which you can find in
 `~/.config/dotfiles/scripts/{aliases/startup}`
 
-## Installation
+## Install
 
 To install:
 ``` bash

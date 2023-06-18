@@ -1,4 +1,5 @@
 apps.tgn
+themes.tgn
 {{- if ( eq .os "linux" ) -}}
 Microsoft.PowerShell_profile.ps1
 {{- end -}}

@@ -1,5 +1,7 @@
 # Setup
 
+## Table of Contents
+
 1. [Arch Linux](#arch-linux)
 2. [Install](#install)
 

@@ -29,7 +29,7 @@ These are the applications I use.
 | Vector Graphics Editor            | `inkscape`       |                     |
 | Raster Graphics Editor            | `krita`          |                     |
 
-- **Note:** \*I use the [sway-nvidia](https://aur.archlinux.org/packages/sway-nvidia) package as I have to have compatibility with NVidia drivers.
+- **\*Note:** I use the [sway-nvidia](https://aur.archlinux.org/packages/sway-nvidia) package as I have to have compatibility with NVidia drivers.
 
 Additional applications I use are:
 - `micromamba`

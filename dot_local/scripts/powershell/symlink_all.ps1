@@ -1,9 +1,27 @@
 # Creates all symlinks defined in $links
 
 # Note: Super user/Admin privileges are required
-$links = @{
-    'I:\Program Files (x86)\Steam\userdata\287639416\ugc' = 'C:\Program Files (x86)\Steam\userdata\287639416\ugc'
-    'I:\Program Files (x86)\Steam\userdata\287639416\ugcmsgcache' = 'C:\Program Files (x86)\Steam\userdata\287639416\ugcmsgcache'
+
+# You can define symlinks two ways:
+# 1. Directly with
+#$links = @{
+#    '[src]' = '[dest]'
+#}
+# 2. Adding an entry to the `symlinks.csv` file in $SYMLINKS_APTH
+# Note: The csv delimeter is '|'
+# Src|Dest
+# [src]|[dest]
+
+$SYMLINKS_PATH = "symlinks.csv"
+
+# Parse the symlinks csv file into a powershell hashtable
+function create_links_hashtable([string] $path) {
+    $symlinks_csv = Import-Csv -Path $SYMLINKS_PATH -Delimiter "|"
+    $links = @{}
+    foreach($record in $symlinks_csv) {
+        $links[$record.Src] = $record.Dest
+    }
+    return $links
 }
 
 # Create a symlink
@@ -46,6 +64,11 @@ function create_symlink([string] $src, $dest) {
         echo "$dest already exists"
     }
 }
+
+# Main
+
+# Import our symlinks data
+$links = create_links_hashtable $SYMLINKS_PATH
 
 # Symlink all our desired links
 foreach ($link in $links.GetEnumerator()) {

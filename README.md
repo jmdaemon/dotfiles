@@ -57,8 +57,10 @@ Some additional apps I use are:
 - `element`
 - `pipewire` and `pulseaudio`
 
-- **Note:** I make use of a lot of file path aliases generated via a program I made called `shortpath`.
-- **Note:** My executable scripts can be found in `~/.local/scripts`. My setup scripts are in `~/.config/dotfiles/scripts`
+**Note:**
+
+- I make use of a lot of file path aliases generated via a program I made called `shortpath`.
+- My executable scripts can be found in `~/.local/scripts`. My setup scripts are in `~/.config/dotfiles/scripts`
 
 ## Install
 

@@ -53,7 +53,7 @@
 }
 element {
     padding: 1px ;
-    {{ if ( eq .system "arch-laptop" ) -}}
+    {{ if .hidpi -}}
     cursor:  pointer;
     {{- else if ( eq .system "linux-desktop" ) -}}
     /*cursor:  pointer;*/
@@ -148,7 +148,7 @@ sidebar {
     border:       2px dash 0px 0px ;
 }
 button {
-    {{ if ( eq .system "arch-laptop" ) -}}
+    {{ if .hidpi -}}
     cursor:  pointer;
     {{- else if ( eq .system "linux-desktop" ) -}}
     /*cursor:  pointer;*/
@@ -186,7 +186,7 @@ case-indicator {
 }
 entry {
     text-color:        var(normal-foreground);
-    {{ if ( eq .system "arch-laptop" ) -}}
+    {{ if .hidpi -}}
     cursor:  text;
     {{- else if ( eq .system "linux-desktop" ) -}}
     /*cursor:  text;*/

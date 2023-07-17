@@ -202,23 +202,24 @@ bindsym $mod+shift+u mode "$mode_key"
 #--[ EXEC ]--#
 
 exec --no-startup-id nm-applet
-{{- if ( eq .system "arch-laptop" ) }}
-#exec --no-startup-id fcitx5 -d
-exec --no-startup-id birdtray
-{{- end }}
 exec --no-startup-id secret-tool lookup keepass Passwords | keepassxc --pw-stdin ~/.config/dotfiles/Passwords/Passwords.kdbx &
-{{- if ( eq .system "arch-laptop" ) }}
-exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent       # For Redshift
-{{- else if ( eq .system "linux-desktop" ) }}
-#exec --no-startup-id /usr/libexec/geoclue-2.0/demos/agent   # For Redshift
+
+###
+# Redshift
+###
+# If you have GPS enabled you can use geoclue:
+# exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent       # For Redshift
+# or
+# exec --no-startup-id /usr/libexec/geoclue-2.0/demos/agent   # For Redshift
 exec --no-startup-id redshift
-{{- end }}
-{{- if ( eq .system "arch-laptop" ) }}
-exec --no-startup-id clight -c ~/.config/clight/clight.conf
-{{- end }}
+
+###
+# Clight Adaptive Brightness
+###
+# exec --no-startup-id clight -c ~/.config/clight/clight.conf
 exec --no-startup-id picom -bc --config ~/.config/picom/picom.conf
 exec --no-startup-id dunst
-{{- if ( eq .system "arch-laptop" ) }} 
+{{- if .hidpi }} 
 exec --no-startup-id xrandr --dpi 240
 exec --no-startup-id xfconf-query -c xsettings -p /Gdk/WindowScalingFactor -s 2
 {{- end }}
@@ -228,7 +229,7 @@ exec_always $HOME/.config/polybar/launch.sh
 
 #--[ GAPS and BORDERS ]--#
 
-{{- if ( eq .system "arch-laptop" "linux-desktop") }}
+{{- if ( eq .system "linux-desktop") }}
 gaps inner 10
 gaps outer 15
 {{- else if ( eq .system "linux-laptop" ) }}

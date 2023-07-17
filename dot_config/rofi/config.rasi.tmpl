@@ -1,6 +1,6 @@
 configuration { 
   modi: "window,drun,ssh,combi";
-  {{- if ( eq .system "arch-laptop" ) }}
+  {{ if .hidpi }}
 	dpi: 156;
   {{- end }}
 }

@@ -18,13 +18,13 @@ font:
     family: monospace
     style: Bold Italic 
 {{- if (eq .dsp "xorg") }} 
-{{- if (eq .system "linux-desktop" "arch-laptop") }} 
+{{- if any (eq .system "linux-desktop") .hidpi }} 
   size: 12
 {{- else if (eq .system "linux-laptop" ) }} 
   size: 9
 {{- end }}
 {{- else if (eq .dsp "wayland") }} 
-{{- if (eq .system "linux-desktop" "arch-laptop") }} 
+{{- if any (eq .system "linux-desktop") .hidpi }} 
   size: 11
 {{- else if (eq .system "linux-laptop" ) }} 
   size: 10.5

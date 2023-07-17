@@ -145,11 +145,7 @@ export QL=/usr/lib/quicklisp/setup.lisp
 
 # Java
 OPENJDK_8=/usr/lib/jvm/java-1.8.0-openjdk-amd64
-{{- if (eq .system "arch-laptop" "linux-laptop" ) }}
 export JAVA_HOME=/usr/lib/jvm/default-runtime/
-{{- else if (eq .system "linux-desktop") }}
-export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
-{{- end }}
 
 # https://tex.stackexchange.com/questions/260/how-to-set-preferred-pdf-viewer-for-texdoc-in-texlive-2010-pretest
 export EDITOR=nvim
@@ -184,15 +180,14 @@ load_alias "book"
 # Load all shortpath completions here
 [ -s "$XDG_CONFIG_HOME/shortpaths/commpletions/bash/shortpaths.sh" ] && source $XDG_CONFIG_HOME/shortpaths/commpletions/bash/shortpaths.sh
 
-
-{{- if (eq .system "arch-laptop") }}
+{{- if .hidpi }}
 # HiDPI - These environment variables scale applications x2, but can also make some icons blurry
 # https://wiki.archlinux.org/index.php/HiDPI#GDK_3_(GTK_3)
 #export GDK_SCALE=2
 #export GDK_DPI_SCALE=0.5
 {{- end }}
 
-{{- if (eq .system "arch-laptop" "linux-laptop") }} 
+{{- if (eq .system "linux-laptop") }} 
 source $XDG_CONFIG_HOME/dotfiles/scripts/startup/nvm.sh
 {{- else if (eq .system "linux-desktop") }}
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # Load nvm
@@ -203,12 +198,7 @@ eval "$(rbenv init -)" # Load rbenv
 source $CARGO_HOME/env # Load cargo
 #source $scripts/terminal/fortunecow.sh
 
-{{- if (eq .dsp "wayland") }} 
-# Enable Wayland
-# export MOZ_ENABLE_WAYLAND=1
-#source $scripts/terminal/fortunecow.sh
-{{- end }}
-
 # Persistent Tmux Sessions
 #/usr/bin/tmux attach -t 0
+
 # vim:ft=sh

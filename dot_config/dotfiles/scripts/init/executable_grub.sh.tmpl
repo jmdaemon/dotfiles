@@ -2,17 +2,17 @@
 
 ## https://wiki.archlinux.org/index.php/GRUB
 WALLPAPER={{- .backgrounds}}/mbjtwkC.png
-{{- if ( eq .system "arch-laptop" ) }}
+{{- if .hidpi }}
 FONT=/boot/grub/fonts/DejaVuSansMono36.pf2
-{{- else if ( eq .system "linux-desktop" ) }}
+{{- else }}
 FONT=/boot/grub/fonts/DejaVuSansMono18.pf2
 {{- end }}
 DEFAULT_GRUB=/etc/default/grub
 
 make_bigger_font() {
-    {{- if ( eq .system "arch-laptop" ) }} 
+    {{- if .hidpi }} 
     sudo grub2-mkfont -s 36 -o $FONT /usr/share/fonts/dejavu/DejaVuSansMono.ttf
-    {{- else if ( eq .system "linux-desktop" ) }}
+    {{- else }}
     sudo grub-mkfont -s 18 -o $FONT /usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf
     {{- end }}
 }
@@ -63,9 +63,4 @@ elif [[ $1 == "-a" || $1 == "--all" ]]; then
 else 
     show_usage
 fi
-
-{{- if ( eq .system "linux-desktop" ) }}
-sudo update-grub
-{{- else if ( eq .system "arch-laptop" ) }}
 sudo grub-mkconfig -o /boot/grub/grub.cfg
-{{- end }}

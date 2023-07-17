@@ -19,16 +19,14 @@ alias cloc='tokei'
 # Aliases
 alias nv='nvim'
 {{- if (eq .dsp "xorg" ) }}
-alias xclip='xclip -sel clip' # X Server copy to clipboard
+alias xclip='xclip -sel clip'   # X Server copy to clipboard
+alias scd='xset dpms force off' # Turn off monitor/screen immediately
 {{- end }}
 alias start_env="source $HOME/.config/dotfiles/scripts/startup/start-env.sh"
 alias szsh="source ~/.zshrc"
 alias spro="source ~/.profile"
 alias kzom="kill $(ps -A -ostat,ppid | awk '/[zZ]/ && !a[$2]++ {print $2}')"
 alias expnode="export NODE_OPTIONS=--openssl-legacy-provider"
-{{- if (eq .dsp "xorg" ) }}
-alias scd="xset dpms force off"
-{{- end }}
 alias zhist="nvim $HOME/.history/zsh/{{ .system }}/zsh_history"
 alias zhistc="cat $HOME/.history/zsh/{{ .system }}/zsh_history"
 alias conda-init="source $DOTFILES/scripts/terminal/conda-init.sh"
@@ -36,16 +34,7 @@ alias conda-init="source $DOTFILES/scripts/terminal/conda-init.sh"
 # https://github.com/kovidgoyal/kitty/issues/268 - For Kitty
 alias clear="printf '\033[2J\033[3J\033[1;1H'" # Clear Terminal Scrollback
 {{- end }}
-{{- if (eq .system "arch-laptop" ) }}
-# Yarn 2
-yarnv="$(yarn -v)"
-requiredver="2.0.0"
-if [ "$(printf '%s\n' "$requiredver" "$yarnv" | sort -V | head -n1)" = "$requiredver" ]; then
-    :
-else
-    alias yarn='yarn --use-yarnrc "$XDG_CONFIG_HOME/yarn/config"'
-fi
-{{- else if (eq .system "linux-desktop" ) }}
+{{- if (eq .system "linux-desktop" ) }}
 alias yarn='yarn --use-yarnrc "$XDG_CONFIG_HOME/yarn/config"'
 {{- end }}
 #alias npm-list=`ls -l $(npm root -g) | cut -d ' ' -f 12`
@@ -83,7 +72,7 @@ aptup() {
     sudo ${apt_bin} upgrade -y
     sudo ${apt_bin} autoremove
 }
-{{- else if (eq .system "arch-laptop" "linux-laptop") }}
+{{- else if (eq .system "linux-laptop") }}
 pkgs() {
     # https://wiki.archlinux.org/title/Pacman/Tips_and_tricks
     opts=$1
@@ -158,8 +147,8 @@ update() {
     source "$autorun"/vimup.sh  # Update all vim plugins
     source "$autorun"/sdkup.sh  # Update all sdkman packages (gradle)
     source "$autorun"/rustup.sh # Update all rust cargo packages
-    {{- if (eq .system "arch-laptop" ) }}
-    yay -Syu
+    {{- if (eq .system "linux-laptop" ) }}
+    paru -Syu
     {{- else if (eq .system "linux-desktop" ) }}
     aptup
     {{- end }}

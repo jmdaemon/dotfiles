@@ -40,7 +40,7 @@ width = 100%
 height = 24
 {{- else if ( eq .system "linux-laptop" ) }}
 height = 30
-{{- else if ( eq .system "arch-laptop" ) }}
+{{- else if .hidpi }}
 height = 40
 {{- end }}
 offset-x = 0
@@ -48,7 +48,7 @@ offset-y = 0
 radius = 0.0
 fixed-center = true
 tray-scale = 1.0
-{{- if ( eq .system "arch-laptop" ) }}
+{{- if .hidpi }}
 tray-maxsize = 666
 dpi=240
 {{- else if ( eq .system "linux-laptop" ) }}
@@ -73,7 +73,7 @@ font-0 = Inconsolata Nerd Font:style=Bold:size=18;6
 font-1 = Monaco for Powerline:style=Regular:size=18;6
 font-2 = Material Design Icons:style=Regular:18;6
 font-3 = Font Awesome 5 Free:style=Regular:size=18;6
-{{- else if ( eq .system "arch-laptop" ) }}
+{{- else if .hidpi }}
 font-0 = Inconsolata Nerd Font:style=Bold:size=12;6
 font-1 = Monaco for Powerline:style=Regular:size=12;6
 font-2 = Material Design Icons:style=Regular:12;6
@@ -82,7 +82,7 @@ font-3 = Font Awesome 5 Free:style=Regular:size=12;6
 
 {{- if ( eq .system "linux-desktop") }}
 modules-right = pulseaudio eth date
-{{- else if ( eq .system "arch-laptop" "linux-laptop" ) }}
+:{- else if ( eq .system "linux-laptop" ) }}
 modules-right = protonvpn xbacklight pulseaudio xkeyboard wlan battery date 
 {{- end }}
 
@@ -101,14 +101,14 @@ width = 100%
 height = 24
 {{- else if ( eq .system "linux-laptop" ) }}
 height = 30
-{{- else if ( eq .system "arch-laptop" ) }}
+{{- else if .hidpi }}
 height = 40
 {{- end }}
 offset-x = 0
 offset-y = 0
 fixed-center = true
 bottom = true
-{{- if ( eq .system "arch-laptop" ) }}
+{{- if .hidpi }}
 dpi=240
 {{- end }}
 
@@ -131,7 +131,7 @@ font-1 = Monaco for Powerline:style=Regular:size=18;0
 font-2 = Material Design Icons:style=Regular:size=18;0
 font-3 = Font Awesome 5 Free:style=Solid:size=18;0
 font-4 = Fira Code Nerd Font:style=Regular:size=16;-1
-{{- else if ( eq .system "arch-laptop" ) }}
+{{- else if .hidpi }}
 font-0 = Inconsolata Nerd Font:style=Bold:size=12;0
 font-1 = Monaco for Powerline:style=Regular:size=12;0
 font-2 = Material Design Icons:style=Regular:size=12;0
@@ -141,7 +141,7 @@ font-4 = Fira Code Nerd Font:style=Regular:size=10;-1
 
 {{- if ( eq .system "linux-desktop" ) }}
 modules-left = weather
-{{- else if ( eq .system "arch-laptop" "linux-laptop" ) }}
+{{- else if ( eq .system "linux-laptop" ) }}
 modules-left = weather mpd
 {{- end }}
 
@@ -155,7 +155,7 @@ cursor-scroll = ns-resize
 override-redirect = true
 wm-restack = i3
 
-{{ if ( eq .system "arch-laptop" "linux-laptop" ) -}}
+{{ if ( eq .system "linux-laptop" ) -}}
 [module/xwindow]
 type = internal/xwindow
 label = %title:0:30:...%
@@ -266,7 +266,7 @@ bar-indicator-font = 5
 bar-empty-font = 5
 bar-fill-font = 5
 
-{{ if ( eq .system "arch-laptop" "linux-laptop" ) -}}
+{{ if ( eq .system "linux-laptop" ) -}}
 [module/xbacklight]
 type = internal/xbacklight
 
@@ -305,13 +305,13 @@ format-prefix = "﬙ "
 format-prefix-foreground = ${bar/bottombar.foreground}
 label = %percentage_used%%
 
-{{ if ( eq .system "arch-laptop" "linux-laptop" ) }}
+{{ if ( eq .system "linux-laptop" ) }}
 [module/wlan]
 type = internal/network
 
 {{- if ( eq .system "linux-laptop"  ) }}
 interface = wlo1
-{{- else if ( eq .system "arch-laptop" ) }}
+{{- else if .hidpi }}
 interface = wlp58s0
 {{- end }}
 interval = 3.0
@@ -418,7 +418,7 @@ bar-volume-empty-font = 2
 bar-volume-empty-foreground = ${bar/topbar.foreground}
 click-middle = pavucontrol
 
-{{ if ( eq .system "arch-laptop" "linux-laptop" ) -}}
+{{ if ( eq .system "linux-laptop" ) -}}
 [module/battery]
 type = internal/battery
 battery = BAT0
@@ -478,7 +478,7 @@ format-warn = <ramp> <label-warn>
 
 label = %temperature%
 label-warn = %temperature%
-{{- if ( eq .system "arch-laptop" "linux-laptop" ) }}
+{{- if ( eq .system "linux-laptop" ) }}
 hwmon-path = ${env:HWMON_PATH}
 {{- else if ( eq .system "linux-desktop" ) }}
 hwmon-path = /sys/devices/platform/coretemp.0/hwmon/hwmon1/temp2_input 
@@ -492,13 +492,13 @@ ramp-foreground = ${bar/bottombar.foreground}
 type = custom/script
 interval = 10
 format = <label>
-{{- if ( eq .system "arch-laptop" "linux-laptop") }}
+{{- if ( eq .system "linux-laptop") }}
 exec = ~/.config/polybar/weather
 {{- else if ( eq .system "linux-desktop" ) }}
 exec = python3 ~/.config/polybar/weather
 {{- end }}
 
-{{ if ( eq .system "arch-laptop" "linux-laptop") -}}
+{{ if ( eq .system "linux-laptop") -}}
 [module/agenda]
 type = custom/script
 ; Show the next event and forget cache automatically every 60 minutes

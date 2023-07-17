@@ -54,7 +54,7 @@ autoload -Uz add-zsh-hook
 # Hooks
 #
 
-{{ if ( eq .system "arch-laptop" "linux-laptop") -}}
+{{ if ( eq ".chezmoi.osRelease.name" "Arch Linux" ) -}}
 # https://wiki.archlinux.org/title/Zsh#On-demand_rehash
 zshcache_time="$(date +%s%N)"
 

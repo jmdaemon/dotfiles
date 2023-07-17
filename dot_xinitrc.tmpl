@@ -13,13 +13,13 @@ xrdb -merge ~/.Xresources
 xrandr --dpi 240
 {{- end }}
 
-{{- if ( eq .system "ubuntu-workstation" ) }}
+{{- if ( eq .system "linux-desktop" ) }}
 rofi &
 mpd &
 picom -b
 bash ~/.config/polybar/launch.sh
 {{- end }}
-{{- if ( eq .system "arch-laptop" "arch-asus" "ubuntu-workstation" ) }}
+{{- if ( eq .system "arch-laptop" "arch-asus" "linux-desktop" ) }}
 source ~/.profile
 {{- end }}
 exec i3

@@ -88,7 +88,7 @@ set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
 
-{{- if ( eq .system "ubuntu-workstation" ) }}
+{{- if ( eq .system "linux-desktop" ) }}
 workspace $ws1 output primary
 workspace $ws2 output primary
 workspace $ws3 output primary
@@ -209,7 +209,7 @@ exec --no-startup-id birdtray
 exec --no-startup-id secret-tool lookup keepass Passwords | keepassxc --pw-stdin ~/.config/dotfiles/Passwords/Passwords.kdbx &
 {{- if ( eq .system "arch-laptop" ) }}
 exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent       # For Redshift
-{{- else if ( eq .system "ubuntu-workstation" ) }}
+{{- else if ( eq .system "linux-desktop" ) }}
 #exec --no-startup-id /usr/libexec/geoclue-2.0/demos/agent   # For Redshift
 exec --no-startup-id redshift
 {{- end }}
@@ -228,7 +228,7 @@ exec_always $HOME/.config/polybar/launch.sh
 
 #--[ GAPS and BORDERS ]--#
 
-{{- if ( eq .system "arch-laptop" "ubuntu-workstation") }}
+{{- if ( eq .system "arch-laptop" "linux-desktop") }}
 gaps inner 10
 gaps outer 15
 {{- else if ( eq .system "arch-asus" ) }}

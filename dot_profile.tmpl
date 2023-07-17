@@ -147,7 +147,7 @@ export QL=/usr/lib/quicklisp/setup.lisp
 OPENJDK_8=/usr/lib/jvm/java-1.8.0-openjdk-amd64
 {{- if (eq .system "arch-laptop" "arch-asus" ) }}
 export JAVA_HOME=/usr/lib/jvm/default-runtime/
-{{- else if (eq .system "ubuntu-workstation") }}
+{{- else if (eq .system "linux-desktop") }}
 export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
 {{- end }}
 
@@ -194,7 +194,7 @@ load_alias "book"
 
 {{- if (eq .system "arch-laptop" "arch-asus") }} 
 source $XDG_CONFIG_HOME/dotfiles/scripts/startup/nvm.sh
-{{- else if (eq .system "ubuntu-workstation") }}
+{{- else if (eq .system "linux-desktop") }}
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # Load nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # Load shell completions for nvm
 {{- end }}

@@ -36,7 +36,7 @@ margin-bottom = 5
 
 [bar/topbar]
 width = 100%
-{{- if ( eq .system "ubuntu-workstation"  ) }}
+{{- if ( eq .system "linux-desktop"  ) }}
 height = 24
 {{- else if ( eq .system "arch-asus" ) }}
 height = 30
@@ -66,7 +66,7 @@ padding-right = 5
 module-margin-left = 2
 module-margin-right = 2
 
-{{- if ( eq .system "ubuntu-workstation"  ) }}
+{{- if ( eq .system "linux-desktop"  ) }}
 font-0 = Inconsolata Nerd Font:style=Bold:size=14;6
 {{- else if ( eq .system "arch-asus" ) }}
 font-0 = Inconsolata Nerd Font:style=Bold:size=18;6
@@ -80,7 +80,7 @@ font-2 = Material Design Icons:style=Regular:12;6
 font-3 = Font Awesome 5 Free:style=Regular:size=12;6
 {{- end }}
 
-{{- if ( eq .system "ubuntu-workstation") }}
+{{- if ( eq .system "linux-desktop") }}
 modules-right = pulseaudio eth date
 {{- else if ( eq .system "arch-laptop" "arch-asus" ) }}
 modules-right = protonvpn xbacklight pulseaudio xkeyboard wlan battery date 
@@ -97,7 +97,7 @@ cursor-scroll = ns-resize
 
 [bar/bottombar]
 width = 100%
-{{- if ( eq .system "ubuntu-workstation" ) }}
+{{- if ( eq .system "linux-desktop" ) }}
 height = 24
 {{- else if ( eq .system "arch-asus" ) }}
 height = 30
@@ -123,7 +123,7 @@ padding-right = 5
 module-margin-left = 2
 module-margin-right = 2
 
-{{- if ( eq .system "ubuntu-workstation"  ) }}
+{{- if ( eq .system "linux-desktop"  ) }}
 font-0 = Inconsolata Nerd Font:style=Bold:size=14;0
 {{- else if ( eq .system "arch-asus" ) }}
 font-0 = Inconsolata Nerd Font:style=Bold:size=18;6
@@ -139,7 +139,7 @@ font-3 = Font Awesome 5 Free:style=Solid:size=12;0
 font-4 = Fira Code Nerd Font:style=Regular:size=10;-1
 {{- end }}
 
-{{- if ( eq .system "ubuntu-workstation" ) }}
+{{- if ( eq .system "linux-desktop" ) }}
 modules-left = weather
 {{- else if ( eq .system "arch-laptop" "arch-asus" ) }}
 modules-left = weather mpd
@@ -352,7 +352,7 @@ ramp-signal-foreground = ${bar/topbar.foreground}
 
 {{- end }}
 
-{{- if ( eq .system "ubuntu-workstation" ) }}
+{{- if ( eq .system "linux-desktop" ) }}
 [module/eth]
 type = internal/network
 interface = enp0s31f6
@@ -480,7 +480,7 @@ label = %temperature%
 label-warn = %temperature%
 {{- if ( eq .system "arch-laptop" "arch-asus" ) }}
 hwmon-path = ${env:HWMON_PATH}
-{{- else if ( eq .system "ubuntu-workstation" ) }}
+{{- else if ( eq .system "linux-desktop" ) }}
 hwmon-path = /sys/devices/platform/coretemp.0/hwmon/hwmon1/temp2_input 
 {{- end }}
 
@@ -494,7 +494,7 @@ interval = 10
 format = <label>
 {{- if ( eq .system "arch-laptop" "arch-asus") }}
 exec = ~/.config/polybar/weather
-{{- else if ( eq .system "ubuntu-workstation" ) }}
+{{- else if ( eq .system "linux-desktop" ) }}
 exec = python3 ~/.config/polybar/weather
 {{- end }}
 

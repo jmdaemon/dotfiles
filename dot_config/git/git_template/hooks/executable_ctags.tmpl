@@ -4,7 +4,7 @@ PATH="/usr/local/bin:$PATH"
 dir="`git rev-parse --git-dir`"
 trap 'rm -f "$dir/$$.tags"' EXIT
 git ls-files | \
-{{- if ( eq .system "ubuntu-workstation" ) }} 
+{{- if ( eq .system "linux-desktop" ) }} 
   ctags-universal --tag-relative=yes -L - -f"$dir/$$.tags" --languages=-javascript,sql
 {{- else if ( eq .system "arch-laptop" "arch-asus") }}
   ctags --tag-relative -L - -f"$dir/$$.tags" --languages=-javascript,sql

@@ -1,4 +1,4 @@
-{{- $system         := promptStringOnce . "system" "Set System Config: [ubuntu-workstation, arch-laptop, arch-asus, windows-desktop]: " -}}
+{{- $system         := promptStringOnce . "system" "Set System Config: [linux-desktop, arch-laptop, arch-asus, windows-desktop]: " -}}
 {{- $backgrounds    := joinPath .chezmoi.homeDir "Pictures/Backgrounds" -}}
 {{- $wallpaper      := joinPath $backgrounds "Flat Colors/DpvywNN.jpg" -}}
 {{- $terminal       := "alacritty" -}}

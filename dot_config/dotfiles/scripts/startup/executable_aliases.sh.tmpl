@@ -45,7 +45,7 @@ if [ "$(printf '%s\n' "$requiredver" "$yarnv" | sort -V | head -n1)" = "$require
 else
     alias yarn='yarn --use-yarnrc "$XDG_CONFIG_HOME/yarn/config"'
 fi
-{{- else if (eq .system "ubuntu-workstation" ) }}
+{{- else if (eq .system "linux-desktop" ) }}
 alias yarn='yarn --use-yarnrc "$XDG_CONFIG_HOME/yarn/config"'
 {{- end }}
 #alias npm-list=`ls -l $(npm root -g) | cut -d ' ' -f 12`
@@ -53,7 +53,7 @@ alias pipup='pip3 list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f
 alias npmup='source ~/.config/dotfiles/scripts/autorun/npmup.sh'
 alias vimup='nvim +PlugUpdate +PlugUpgrade +qall'
 alias cz=chezmoi
-{{- if (eq .system "ubuntu-workstation" ) }}
+{{- if (eq .system "linux-desktop" ) }}
 alias nvsmi="watch -n 1 nvidia-smi"
 alias nvsmc="nvidia-smi --query-gpu=timestamp,pstate,temperature.gpu,utilization.gpu,utilization.memory,memory.total,memory.free,memory.used --format=csv -l 1"
 alias nvhelp="nvidia-smi --help-query-gpu"
@@ -64,7 +64,7 @@ alias nvcent="nvidia-smi dmon -s u"
 {{- end }}
 
 # Functions
-{{- if (eq .system "ubuntu-workstation" ) }}
+{{- if (eq .system "linux-desktop" ) }}
 apt-list() {
     opts=$1
     if [[ -z "$opts" ]]; then
@@ -160,7 +160,7 @@ update() {
     source "$autorun"/rustup.sh # Update all rust cargo packages
     {{- if (eq .system "arch-laptop" ) }}
     yay -Syu
-    {{- else if (eq .system "ubuntu-workstation" ) }}
+    {{- else if (eq .system "linux-desktop" ) }}
     aptup
     {{- end }}
 }

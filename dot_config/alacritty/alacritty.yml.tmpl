@@ -18,13 +18,13 @@ font:
     family: monospace
     style: Bold Italic 
 {{- if (eq .dsp "xorg") }} 
-{{- if (eq .system "ubuntu-workstation" "arch-laptop") }} 
+{{- if (eq .system "linux-desktop" "arch-laptop") }} 
   size: 12
 {{- else if (eq .system "arch-asus" ) }} 
   size: 9
 {{- end }}
 {{- else if (eq .dsp "wayland") }} 
-{{- if (eq .system "ubuntu-workstation" "arch-laptop") }} 
+{{- if (eq .system "linux-desktop" "arch-laptop") }} 
   size: 11
 {{- else if (eq .system "arch-asus" ) }} 
   size: 10.5

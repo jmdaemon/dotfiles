@@ -8,7 +8,7 @@
   path = ~/.config/git/personal
 [includeIf "gitdir:~/Workspace/horse/Projects/bmare/"]
   path = ~/.config/git/bmare
-{{- else if (eq .system "ubuntu-workstation") -}}
+{{- else if (eq .system "linux-desktop") -}}
 [includeIf "gitdir:~/Workspace/personal/"]
   path = ~/.config/git/personal
 {{- end }}

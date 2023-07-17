@@ -55,7 +55,7 @@ element {
     padding: 1px ;
     {{ if ( eq .system "arch-laptop" ) -}}
     cursor:  pointer;
-    {{- else if ( eq .system "ubuntu-workstation" ) -}}
+    {{- else if ( eq .system "linux-desktop" ) -}}
     /*cursor:  pointer;*/
     {{- end }}
     spacing: 5px ;
@@ -150,7 +150,7 @@ sidebar {
 button {
     {{ if ( eq .system "arch-laptop" ) -}}
     cursor:  pointer;
-    {{- else if ( eq .system "ubuntu-workstation" ) -}}
+    {{- else if ( eq .system "linux-desktop" ) -}}
     /*cursor:  pointer;*/
     {{- end }}
     spacing:    0;
@@ -188,7 +188,7 @@ entry {
     text-color:        var(normal-foreground);
     {{ if ( eq .system "arch-laptop" ) -}}
     cursor:  text;
-    {{- else if ( eq .system "ubuntu-workstation" ) -}}
+    {{- else if ( eq .system "linux-desktop" ) -}}
     /*cursor:  text;*/
     {{- end }}
     spacing:           0;

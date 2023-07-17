@@ -3,6 +3,6 @@
 # Install pip packages
 {{- if (eq .system "arch-laptop") }}
 pip install wora sapply clopy
-{{- else if (eq .system "ubuntu-workstation") }}
+{{- else if (eq .system "linux-desktop") }}
 pip install pipenv capstone ropper keystone-engine i3-agenda websocket-client yt-dlp xdot uvicorn udiskie ufw conan
 {{- end }}

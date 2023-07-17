@@ -194,7 +194,7 @@ source $HOME/.profile
 #  /usr/bin/tmux new -s 0
 #  /usr/bin/tmux attach -t 0
 #fi 
-{{- if ( eq .system "ubuntu-workstation") }}
+{{- if ( eq .system "linux-desktop") }}
 if [ -e "$HOME.nix-profile/etc/profile.d/nix.sh" ]; then
     . "$HOME.nix-profile/etc/profile.d/nix.sh";
 fi

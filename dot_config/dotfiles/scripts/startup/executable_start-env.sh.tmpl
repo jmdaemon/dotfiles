@@ -6,7 +6,7 @@ CONDA_PATH='/opt/{{- .conda -}}3/etc/profile.d/conda.sh'
 {{- else }}
 CONDA_PATH='/opt/{{- .conda -}}/etc/profile.d/conda.sh'
 {{- end }}
-{{- else if ( eq .system "ubuntu-workstation" ) }}
+{{- else if ( eq .system "linux-desktop" ) }}
 CONDA_PATH='$HOME/{{- .conda -}}/etc/profile.d/conda.sh'
 {{- end }}
 

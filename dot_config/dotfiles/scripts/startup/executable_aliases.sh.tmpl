@@ -83,7 +83,7 @@ aptup() {
     sudo ${apt_bin} upgrade -y
     sudo ${apt_bin} autoremove
 }
-{{- else if (eq .system "arch-laptop" "arch-asus") }}
+{{- else if (eq .system "arch-laptop" "linux-laptop") }}
 pkgs() {
     # https://wiki.archlinux.org/title/Pacman/Tips_and_tricks
     opts=$1

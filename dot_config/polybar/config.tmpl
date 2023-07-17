@@ -38,7 +38,7 @@ margin-bottom = 5
 width = 100%
 {{- if ( eq .system "linux-desktop"  ) }}
 height = 24
-{{- else if ( eq .system "arch-asus" ) }}
+{{- else if ( eq .system "linux-laptop" ) }}
 height = 30
 {{- else if ( eq .system "arch-laptop" ) }}
 height = 40
@@ -51,7 +51,7 @@ tray-scale = 1.0
 {{- if ( eq .system "arch-laptop" ) }}
 tray-maxsize = 666
 dpi=240
-{{- else if ( eq .system "arch-asus" ) }}
+{{- else if ( eq .system "linux-laptop" ) }}
 tray-maxsize = 24
 {{- end }}
 
@@ -68,7 +68,7 @@ module-margin-right = 2
 
 {{- if ( eq .system "linux-desktop"  ) }}
 font-0 = Inconsolata Nerd Font:style=Bold:size=14;6
-{{- else if ( eq .system "arch-asus" ) }}
+{{- else if ( eq .system "linux-laptop" ) }}
 font-0 = Inconsolata Nerd Font:style=Bold:size=18;6
 font-1 = Monaco for Powerline:style=Regular:size=18;6
 font-2 = Material Design Icons:style=Regular:18;6
@@ -82,7 +82,7 @@ font-3 = Font Awesome 5 Free:style=Regular:size=12;6
 
 {{- if ( eq .system "linux-desktop") }}
 modules-right = pulseaudio eth date
-{{- else if ( eq .system "arch-laptop" "arch-asus" ) }}
+{{- else if ( eq .system "arch-laptop" "linux-laptop" ) }}
 modules-right = protonvpn xbacklight pulseaudio xkeyboard wlan battery date 
 {{- end }}
 
@@ -99,7 +99,7 @@ cursor-scroll = ns-resize
 width = 100%
 {{- if ( eq .system "linux-desktop" ) }}
 height = 24
-{{- else if ( eq .system "arch-asus" ) }}
+{{- else if ( eq .system "linux-laptop" ) }}
 height = 30
 {{- else if ( eq .system "arch-laptop" ) }}
 height = 40
@@ -125,7 +125,7 @@ module-margin-right = 2
 
 {{- if ( eq .system "linux-desktop"  ) }}
 font-0 = Inconsolata Nerd Font:style=Bold:size=14;0
-{{- else if ( eq .system "arch-asus" ) }}
+{{- else if ( eq .system "linux-laptop" ) }}
 font-0 = Inconsolata Nerd Font:style=Bold:size=18;6
 font-1 = Monaco for Powerline:style=Regular:size=18;0
 font-2 = Material Design Icons:style=Regular:size=18;0
@@ -141,7 +141,7 @@ font-4 = Fira Code Nerd Font:style=Regular:size=10;-1
 
 {{- if ( eq .system "linux-desktop" ) }}
 modules-left = weather
-{{- else if ( eq .system "arch-laptop" "arch-asus" ) }}
+{{- else if ( eq .system "arch-laptop" "linux-laptop" ) }}
 modules-left = weather mpd
 {{- end }}
 
@@ -155,7 +155,7 @@ cursor-scroll = ns-resize
 override-redirect = true
 wm-restack = i3
 
-{{ if ( eq .system "arch-laptop" "arch-asus" ) -}}
+{{ if ( eq .system "arch-laptop" "linux-laptop" ) -}}
 [module/xwindow]
 type = internal/xwindow
 label = %title:0:30:...%
@@ -266,7 +266,7 @@ bar-indicator-font = 5
 bar-empty-font = 5
 bar-fill-font = 5
 
-{{ if ( eq .system "arch-laptop" "arch-asus" ) -}}
+{{ if ( eq .system "arch-laptop" "linux-laptop" ) -}}
 [module/xbacklight]
 type = internal/xbacklight
 
@@ -305,11 +305,11 @@ format-prefix = "﬙ "
 format-prefix-foreground = ${bar/bottombar.foreground}
 label = %percentage_used%%
 
-{{ if ( eq .system "arch-laptop" "arch-asus" ) }}
+{{ if ( eq .system "arch-laptop" "linux-laptop" ) }}
 [module/wlan]
 type = internal/network
 
-{{- if ( eq .system "arch-asus"  ) }}
+{{- if ( eq .system "linux-laptop"  ) }}
 interface = wlo1
 {{- else if ( eq .system "arch-laptop" ) }}
 interface = wlp58s0
@@ -418,7 +418,7 @@ bar-volume-empty-font = 2
 bar-volume-empty-foreground = ${bar/topbar.foreground}
 click-middle = pavucontrol
 
-{{ if ( eq .system "arch-laptop" "arch-asus" ) -}}
+{{ if ( eq .system "arch-laptop" "linux-laptop" ) -}}
 [module/battery]
 type = internal/battery
 battery = BAT0
@@ -478,7 +478,7 @@ format-warn = <ramp> <label-warn>
 
 label = %temperature%
 label-warn = %temperature%
-{{- if ( eq .system "arch-laptop" "arch-asus" ) }}
+{{- if ( eq .system "arch-laptop" "linux-laptop" ) }}
 hwmon-path = ${env:HWMON_PATH}
 {{- else if ( eq .system "linux-desktop" ) }}
 hwmon-path = /sys/devices/platform/coretemp.0/hwmon/hwmon1/temp2_input 
@@ -492,13 +492,13 @@ ramp-foreground = ${bar/bottombar.foreground}
 type = custom/script
 interval = 10
 format = <label>
-{{- if ( eq .system "arch-laptop" "arch-asus") }}
+{{- if ( eq .system "arch-laptop" "linux-laptop") }}
 exec = ~/.config/polybar/weather
 {{- else if ( eq .system "linux-desktop" ) }}
 exec = python3 ~/.config/polybar/weather
 {{- end }}
 
-{{ if ( eq .system "arch-laptop" "arch-asus") -}}
+{{ if ( eq .system "arch-laptop" "linux-laptop") -}}
 [module/agenda]
 type = custom/script
 ; Show the next event and forget cache automatically every 60 minutes

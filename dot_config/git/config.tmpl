@@ -2,7 +2,7 @@
 [user]
   name = {{ output "jq" ".git.main.name" $secrets | trim }}
   email = {{ output "jq" ".git.main.email" $secrets | trim }}
-{{- if ( eq .system "arch-laptop" "arch-asus" ) }}
+{{- if ( eq .system "arch-laptop" "linux-laptop" ) }}
 	signingkey = 5B3AE73F7980EE81
 [includeIf "gitdir:~/Workspace/horse/Projects/sfilly/"]
   path = ~/.config/git/personal

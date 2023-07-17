@@ -20,13 +20,13 @@ font:
 {{- if (eq .dsp "xorg") }} 
 {{- if (eq .system "linux-desktop" "arch-laptop") }} 
   size: 12
-{{- else if (eq .system "arch-asus" ) }} 
+{{- else if (eq .system "linux-laptop" ) }} 
   size: 9
 {{- end }}
 {{- else if (eq .dsp "wayland") }} 
 {{- if (eq .system "linux-desktop" "arch-laptop") }} 
   size: 11
-{{- else if (eq .system "arch-asus" ) }} 
+{{- else if (eq .system "linux-laptop" ) }} 
   size: 10.5
 {{- end }}
 {{- end }}

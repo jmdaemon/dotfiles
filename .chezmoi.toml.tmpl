@@ -5,6 +5,7 @@
 {{- $conda          := "miniconda" -}}
 {{- $dsp            := promptStringOnce . "dsp" "Set Display Server Protocol: [xorg, wayland]: " -}}
 {{- $yarnv          := "3" -}}
+{{- $hidpi          := false -}}
 [data]
     system="{{ $system }}"
     backgrounds="{{ $backgrounds }}"
@@ -13,3 +14,4 @@
     conda="{{ $conda }}"
     dsp="{{ $dsp }}"
     yarnv="{{ $yarnv }}"
+    hidpi={{ $hidpi }}

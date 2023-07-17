@@ -178,7 +178,7 @@ load_alias "draw"
 load_alias "book"
 
 # Load all shortpath completions here
-[ -s "$XDG_CONFIG_HOME/shortpaths/commpletions/bash/shortpaths.sh" ] && source $XDG_CONFIG_HOME/shortpaths/commpletions/bash/shortpaths.sh
+[ -s "$XDG_CONFIG_HOME/shortpath/completions/bash/shortpaths.sh" ] && source $XDG_CONFIG_HOME/shortpath/completions/bash/shortpaths.sh 
 
 {{- if .hidpi }}
 # HiDPI - These environment variables scale applications x2, but can also make some icons blurry
@@ -196,7 +196,12 @@ source $XDG_CONFIG_HOME/dotfiles/scripts/startup/nvm.sh
 
 eval "$(rbenv init -)" # Load rbenv
 source $CARGO_HOME/env # Load cargo
-#source $scripts/terminal/fortunecow.sh
+
+#
+# Terminal Splash Screen
+# 
+# Load terminal splash screen
+# source $scripts/terminal/fortunecow.sh
 
 # Persistent Tmux Sessions
 #/usr/bin/tmux attach -t 0

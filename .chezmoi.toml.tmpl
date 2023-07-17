@@ -1,10 +1,10 @@
 {{- $system         := promptStringOnce . "system" "Set System Config: [linux-desktop, linux-laptop, arch-laptop, windows-desktop]: " -}}
 {{- $backgrounds    := joinPath .chezmoi.homeDir "Pictures/Backgrounds" -}}
 {{- $wallpaper      := joinPath $backgrounds "Flat Colors/DpvywNN.jpg" -}}
-{{- $terminal       := "alacritty" -}}
-{{- $conda          := "miniconda" -}}
+{{- $terminal       := default "alacritty" .terminal -}}
+{{- $conda          := default "miniconda" .conda -}}
 {{- $dsp            := promptStringOnce . "dsp" "Set Display Server Protocol: [xorg, wayland]: " -}}
-{{- $yarnv          := "3" -}}
+{{- $yarnv          := default "3" .yarnv -}}
 {{- $hidpi          := default false .hidpi -}}
 [data]
     system="{{ $system }}"

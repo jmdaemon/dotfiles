@@ -1,5 +1,8 @@
 [build]
-rustflags = ["-C", "link-arg=-fuse-ld=mold"]
+
+#
+# Profiles
+#
 
 [profile.minsize]
 inherits = 'release'
@@ -25,3 +28,22 @@ lto = true          # Enable link-time optimization
 codegen-units = 1   # Reduce number of codegen units to increase optimizations
 panic = 'abort'     # Abort on panic
 strip = true        # Strip symbols from binary*
+
+#
+# Cross-Compilation
+#
+
+# Cross-compile for windows with mingw
+# 64-bit
+[target.x86_64-pc-windows-gnu]
+linker = "/usr/bin/x86_64-w64-mingw32-gcc"
+ar = "/usr/x86_64-w64-mingw32/bin/ar"
+
+# 32-bit
+[target.i686-pc-windows-gnu]
+linker = "/usr/bin/i686-w64-mingw32-gcc"
+ar = "/usr/i686-w64-mingw32/bin/ar"
+
+# Faster compilation for unix-like development environments
+[target.'cfg(all(unix))']
+rustflags = ["-C", "link-arg=-fuse-ld=mold"]

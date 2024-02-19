@@ -82,7 +82,7 @@ font-3 = Font Awesome 5 Free:style=Regular:size=12;6
 
 {{- if ( eq .system "linux-desktop") }}
 modules-right = pulseaudio eth date
-:{- else if ( eq .system "linux-laptop" ) }}
+{{- else if ( eq .system "linux-laptop" ) }}
 modules-right = protonvpn xbacklight pulseaudio xkeyboard wlan battery date 
 {{- end }}
 

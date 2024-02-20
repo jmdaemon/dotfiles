@@ -16,15 +16,15 @@ apps=(
 	"audacity"
 	"kdenlive"
 	"obs-studio"
-	"pdf-arranger"
+	"pdfarranger"
 	"neovim"
 # Application Development:
-	"qt-creator"
+	"qtcreator"
 	"cutter"
 	"android-studio"
 	"bless"
 	"intellij"
-	"scenebuilder"
+	"javafx-scenebuilder"
 	"vscodium"
 # Communication Applications:
 	"discord"

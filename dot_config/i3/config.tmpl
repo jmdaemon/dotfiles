@@ -280,6 +280,7 @@ exec --no-startup-id nm-applet
 exec --no-startup-id picom -bc --config ~/.config/picom/picom.conf
 exec --no-startup-id dunst
 
+# Always reload these apps
 exec_always --no-startup-id sh ~/.fehbg &
 exec_always $HOME/.config/polybar/launch.sh
 
@@ -288,6 +289,7 @@ exec_always $HOME/.config/polybar/launch.sh
 #
 # Redshift  : Adjusts screen bluelight
 # Clight    : Adjusts screen brightness
+exec_always --no-startup-id clight-gui --tray &
 
 {{- if .hidpi }} 
 # === [ HIDPI ] === #
